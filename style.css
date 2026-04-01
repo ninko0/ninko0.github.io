@@ -7,10 +7,10 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
 
 :root {
-  --bg:           #f7f6f2;
-  --bg-alt:       #f0ede8;
-  --bg-card:      #faf9f6;
-  --bg-sidebar:   #ede9f5;
+  --bg:           #f3ede3;
+  --bg-alt:       #ebe3d5;
+  --bg-card:      #f7f1e8;
+  --bg-sidebar:   #e8e1f0;
 
   --text:         #2d2b35;
   --text-muted:   #7a7587;
@@ -24,8 +24,8 @@
   --green-light:  #a8d4be;
   --green-pale:   #e8f4ee;
 
-  --border:       #ddd8d0;
-  --border-md:    #c8c2d8;
+  --border:       #d4c9b8;
+  --border-md:    #c0b8d0;
 
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
   --font-body: 'Lora', Georgia, serif;
