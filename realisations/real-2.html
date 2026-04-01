@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sonde IDS — Nicolas Lages</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body data-page="realisations">
+  <script src="../navbar.js"></script>
+  <main>
+    <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 02</p>
+    <div class="realisation-layout">
+      <div class="realisation-main">
+        <div class="page-header">
+          <h1>Sonde IDS conteneurisée</h1>
+          <div class="page-tags" style="margin-top:0.4rem;">
+            <a href="../competences/tech-2.html"># Virtualisation &amp; Conteneurisation</a>
+            <a href="../competences/tech-5.html"># Tooling &amp; Scripting</a>
+            <a href="../competences/hum-3.html"># Autonomie</a>
+            <a href="../competences/hum-4.html"># Initiative</a>
+          </div>
+        </div>
+        <div class="placeholder-img large">[ Schéma d'architecture Docker ou capture GitHub — 700×260px ]</div>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Présentation et origine du projet</h2>
+        <p style="margin-bottom:1rem;">Ce projet trouve son origine dans une problématique professionnelle : une réflexion était en cours autour du remplacement d'une solution de détection existante. J'ai mené une phase de <strong>R&D</strong> pour identifier des alternatives. Deux approches ont émergé : une solution entièrement open source basée sur Suricata, Zeek et Arkime déployés de manière conteneurisée, ou Security Onion, plus intégrée mais freemium. Security Onion s'est révélée plus adaptée à l'intégration rapide en entreprise — mais j'ai fait le choix, à titre personnel, de poursuivre le développement de l'approche open source. C'est de cette initiative individuelle qu'est né ce projet.</p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Objectifs et enjeux</h2>
+        <p style="margin-bottom:1rem;">Ces solutions (Suricata, Zeek, Arkime) sont puissantes mais leur déploiement est complexe : il faut définir l'architecture, lister les VLAN, configurer les interfaces réseau — ce qui peut être chronophage selon l'infrastructure. L'objectif était de <strong>standardiser et automatiser ce déploiement</strong>, en réduisant la complexité initiale tout en conservant la flexibilité des outils. J'ai également voulu intégrer une logique de validation en amont, pour limiter les erreurs de configuration et garantir un lancement fiable.</p>
+        <p style="margin-bottom:1rem;">Un second objectif fort : s'inscrire dans une démarche <strong>entièrement open source</strong>, avec un projet facilement réutilisable, compréhensible et modifiable par n'importe qui.</p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Conception et approche technique</h2>
+        <p style="margin-bottom:1rem;">Le projet repose sur <strong>Docker</strong>. J'ai conçu une architecture modulaire dans laquelle chaque outil est encapsulé dans une image Docker dédiée. Cette approche permet de découpler les composants, de faciliter leur mise à jour et de rendre l'ensemble flexible selon les besoins. La conteneurisation joue ici un rôle central : elle transforme une infrastructure IDS complexe en une solution portable, rapide à déployer et facilement adaptable.</p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Réalisation</h2>
+        <p style="margin-bottom:1rem;">J'ai développé des images Docker pour chaque outil avec des paramètres préconfigurés et des placeholders pour les configurations nécessaires. Des exemples complets ont été fournis avec les IP les plus courantes en réseau local, couvrant des scénarios avec une ou plusieurs interfaces réseau. L'ensemble du projet est documenté en anglais, avec des fichiers de configuration commentés, pour garantir sa compréhension et sa réutilisation. Le projet est versionné et maintenu publiquement sur GitHub.</p>
+        <p style="margin-bottom:1rem;">
+          🔗 <a href="https://github.com/ninko0/Docker-IDS-Sensor" target="_blank">github.com/ninko0/Docker-IDS-Sensor</a>
+        </p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Résultats</h2>
+        <p style="margin-bottom:1rem;">Ce projet m'a permis de développer une solution fonctionnelle de déploiement de sondes IDS conteneurisées, de monter significativement en compétences sur Docker et la structuration d'architectures distribuées, et d'entrer concrètement dans le monde de l'open source — avec les responsabilités que cela implique : maintenance, versionnement, documentation.</p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Les suites du projet</h2>
+        <p style="margin-bottom:1rem;">Parmi les pistes envisagées : intégration de honeypots pour élargir les capacités de détection, amélioration de la robustesse et de la compatibilité avec les évolutions des stacks, et réflexion autour d'une migration vers <strong>Kubernetes</strong> pour une orchestration plus avancée. L'objectif reste de maintenir un projet propre, documenté et versionné, utilisable et améliorable par la communauté.</p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Regard critique</h2>
+        <p>Ce projet représente une étape importante dans mon évolution — passer d'une logique d'utilisation d'outils à une logique de <strong>conception de solution</strong>, en prenant en compte des problématiques réelles de déploiement, de maintenabilité et d'expérience utilisateur. Il a aussi renforcé ma conviction que la documentation n'est pas optionnelle : un projet technique n'a de valeur que s'il peut être compris et réutilisé.</p>
+      </div>
+      <div class="realisation-sidebar">
+        <div class="sidebar-header"><span>Technique</span><span>Humaines</span></div>
+        <div class="sidebar-row">
+          <a href="../competences/tech-2.html">Virtualisation</a>
+          <a href="../competences/hum-3.html">Autonomie</a>
+        </div>
+        <div class="sidebar-row">
+          <a href="../competences/tech-5.html">Scripting</a>
+          <a href="../competences/hum-4.html">Initiative</a>
+        </div>
+        <div class="sidebar-row">
+          <a href="../competences/tech-1.html">Git</a>
+          <a href="../competences/hum-1.html">Gestion projet</a>
+        </div>
+        <div class="sidebar-row">
+          <a href="../competences/tech-3.html">Réseau</a>
+          <a href="../competences/hum-5.html">Persévérance</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

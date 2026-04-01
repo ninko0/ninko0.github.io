@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio auto-hébergé — Nicolas Lages</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body data-page="realisations">
+  <script src="../navbar.js"></script>
+  <main>
+    <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 05</p>
+    <div class="realisation-layout">
+      <div class="realisation-main">
+        <div class="page-header">
+          <h1>Portfolio auto-hébergé</h1>
+          <div class="page-tags" style="margin-top:0.4rem;">
+            <a href="../competences/tech-4.html"># Configuration Système</a>
+            <a href="../competences/tech-5.html"># Tooling &amp; Scripting</a>
+            <a href="../competences/hum-3.html"># Rigueur &amp; Méthode</a>
+          </div>
+        </div>
+        <div class="placeholder-img large">[ Capture du portfolio en ligne — 700×260px ]</div>
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Contexte et objectifs</h2>
+        <p style="margin-bottom:1rem;">Plutôt que d'utiliser une solution d'hébergement clé en main, j'ai choisi d'héberger ce portfolio sur ma propre infrastructure — une <strong>VM Debian avec Apache</strong> — exposée sur internet. L'objectif était double : produire un livrable concret pour mon portfolio et mettre en pratique mes compétences en configuration système, sécurisation d'un service web et automatisation du déploiement.</p>
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Réalisation</h2>
+        <p style="margin-bottom:1rem;">L'infrastructure comprend une VM Debian 13 avec Apache configuré avec des <strong>headers de sécurité</strong> (CSP, HSTS, X-Frame-Options), un <strong>pare-feu UFW</strong> restrictif, et <strong>Fail2ban</strong> pour la protection contre les tentatives d'intrusion. Le déploiement est automatisé via un <strong>script bash</strong> qui extrait le zip, sauvegarde l'ancienne version, déploie les nouveaux fichiers, applique les permissions et recharge Apache en une seule commande.</p>
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Résultats</h2>
+        <p>Le portfolio est accessible en ligne. Le script de déploiement permet de publier une nouvelle version en moins d'une minute. Ce projet illustre ma capacité à concevoir une infrastructure complète autour d'un besoin concret, de la VM à la mise en ligne.</p>
+      </div>
+      <div class="realisation-sidebar">
+        <div class="sidebar-header"><span>Technique</span><span>Humaines</span></div>
+        <div class="sidebar-row">
+          <a href="../competences/tech-4.html">Config. Système</a>
+          <a href="../competences/hum-3.html">Rigueur</a>
+        </div>
+        <div class="sidebar-row">
+          <a href="../competences/tech-5.html">Scripting</a>
+          <a href="../competences/hum-1.html">Autonomie</a>
+        </div>
+        <div class="sidebar-row">
+          <a href="../competences/tech-3.html">Réseau</a>
+          <a href="../competences/hum-5.html">Persévérance</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

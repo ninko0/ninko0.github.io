@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virtualisation & Conteneurisation — Nicolas Lages</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body data-page="competences">
+  <script src="../navbar.js"></script>
+  <main>
+    <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Technique 02</p>
+    <div class="page-header">
+      <h1>Virtualisation &amp; Conteneurisation</h1>
+      <a class="cross-link" href="../realisations/real-2.html">→ Réalisation associée : Laboratoire Proxmox</a>
+    </div>
+
+    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Définition</h2>
+    <p style="margin-bottom:1rem;">
+      La virtualisation sur hyperviseur repose sur un logiciel intermédiaire qui crée une couche d'abstraction
+      entre le matériel et les systèmes invités, permettant à plusieurs environnements indépendants de
+      fonctionner simultanément sur une même machine physique. L'hyperviseur répartit et gère les ressources
+      (CPU, mémoire, stockage, réseau) tout en garantissant l'isolation de chaque machine virtuelle.
+    </p>
+    <p style="margin-bottom:1rem;">
+      La <strong>conteneurisation</strong> est une méthode complémentaire qui permet d'exécuter des applications
+      dans des environnements isolés légers, partageant le noyau du système hôte. <strong>Docker</strong>
+      standardise la création et le déploiement de conteneurs. <strong>Kubernetes</strong> orchestre ces
+      conteneurs à grande échelle — déploiement, mise à l'échelle, répartition de charge, résilience.
+      <strong>Terraform</strong> permet de décrire et provisionner l'infrastructure nécessaire sous forme de
+      code (IaC), en complément de Docker et Kubernetes.
+    </p>
+
+    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Éléments de preuve</h2>
+    <p style="margin-bottom:0.75rem;">
+      J'ai utilisé <strong>VirtualBox</strong> lors de ma formation pour des machines virtuelles temporaires,
+      puis mis en place un <strong>laboratoire personnel sous Proxmox</strong> avec sauvegardes et architectures
+      réseau segmentées. En contexte professionnel, j'ai travaillé sur Proxmox avec haute disponibilité,
+      stockage distribué Ceph et gestion de VLAN multiples.
+    </p>
+    <p style="margin-bottom:1rem;">
+      Concernant la conteneurisation, j'ai réalisé un projet académique utilisant <strong>Kubernetes et
+      Terraform</strong>, validant les bases de l'orchestration et de l'IaC. J'ai également développé une
+      solution personnelle de <strong>déploiement rapide de sondes IDS</strong> basée sur Docker, permettant
+      de déployer en quelques minutes Suricata, Zeek et OpenCanary avec un système de monitoring des alertes.
+    </p>
+    <div class="placeholder-text">[ Lien vers le dépôt GitHub de la sonde IDS Docker — à compléter ]</div>
+
+    <h2 style="font-size:1.05rem; margin: 1.5rem 0 0.5rem;">Autocritique</h2>
+    <p style="margin-bottom:1rem;">
+      Je dispose d'un bon niveau global sur les technologies de virtualisation. Les hyperviseurs font partie
+      des domaines que je maîtrise avec assurance. La conteneurisation reste un axe de progression, notamment
+      sur l'orchestration avancée et l'industrialisation à grande échelle. Mon acquisition de cette compétence
+      s'est faite rapidement, guidée par des contraintes concrètes d'optimisation de ressources en tant
+      qu'étudiant. <strong>Je recommande de ne pas se limiter à une approche théorique</strong> et de pratiquer
+      en conditions réelles le plus tôt possible.
+    </p>
+
+    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Évolution</h2>
+    <p>
+      Je développe actuellement un projet personnel d'infrastructure complète basée sur Docker et Kubernetes,
+      incluant DNS, serveur web, proxy, GitLab auto-hébergé et base de données. L'objectif est d'atteindre
+      un niveau opérationnel équivalent à celui d'un administrateur systèmes junior sur ces technologies,
+      en couvrant déploiement, interconnexion, sécurisation et automatisation des services.
+    </p>
+  </main>
+</body>
+</html>
