@@ -3,22 +3,240 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio — Nicolas Lages</title>
+  <title>Nicolas Lages — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero {
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-name {
+      font-family: var(--font-mono);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--violet);
+      letter-spacing: 0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-md);
+      background: var(--bg-alt);
+      color: var(--text-muted);
+    }
+
+    .hero-badge.violet {
+      color: var(--violet);
+      border-color: var(--violet-light);
+      background: var(--violet-pale);
+    }
+
+    .hero-badge.green {
+      color: var(--green);
+      border-color: var(--green-light);
+      background: var(--green-pale);
+    }
+
+    .dispo-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--green);
+      background: var(--green-pale);
+      border: 1px solid var(--green-light);
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    .dispo-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity:1; } 50% { opacity:0.4; }
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius);
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .hero-link:hover {
+      border-color: var(--violet-light);
+      color: var(--violet);
+      text-decoration: none;
+    }
+
+    /* ===== SECTION CARDS SIMPLES ===== */
+    .home-section { margin-bottom: 2rem; }
+
+    .home-section-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .nav-card {
+      display: block;
+      padding: 1rem 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--violet), var(--green));
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .nav-card:hover {
+      border-color: var(--violet-light);
+      background: var(--violet-pale);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-card:hover::before { opacity: 1; }
+
+    .nav-card strong {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+  </style>
 </head>
 <body data-page="home">
   <script src="navbar.js"></script>
 
-  <main class="landing">
-    <div class="placeholder-img large">[ Photo ou illustration d'accueil — recommandé : 1000×260px ]</div>
-    <h1>Nicolas Lages</h1>
-    <p class="subtitle">Apprenti en Cybersécurité &amp; Réseaux — orienté systèmes Linux, infrastructure et open source</p>
-    <div class="cta-grid">
-      <a href="presentation.html" class="cta-card">👤 Présentation</a>
-      <a href="competences.html" class="cta-card">🛠 Compétences</a>
-      <a href="realisations.html" class="cta-card">🚀 Réalisations</a>
-      <a href="parcours.html" class="cta-card">🎓 Parcours</a>
-    </div>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-name">Nicolas Lages</div>
+      <div class="hero-title">Cybersécurité · Infrastructure Systèmes &amp; Réseaux · Linux</div>
+      <div class="hero-sub">
+        Alternant en Mastère Architecte Cloud, DevSecOps &amp; Cybersécurité à l'ESIEA.
+        Orienté systèmes Linux, architecture d'infrastructures sécurisées et open source.
+      </div>
+
+      <div class="hero-badges">
+        <span class="dispo-pill">
+          <span class="dispo-dot"></span>
+          Disponible sept. 2026
+        </span>
+        <span class="hero-badge violet">ESIEA — Mastère DevSecOps &amp; Cybersécurité</span>
+        <span class="hero-badge">Paris 19e (75019)</span>
+        <span class="hero-badge green">Open source contributor</span>
+      </div>
+
+      <div class="hero-links">
+        <a class="hero-link" href="mailto:nicolas@lages.fr">nicolas@lages.fr</a>
+        <a class="hero-link" href="tel:+33616644529">06 16 64 45 29</a>
+        <a class="hero-link" href="https://github.com/ninko0" target="_blank">github.com/ninko0</a>
+        <a class="hero-link" href="https://portfolio.lages.fr" target="_blank">portfolio.lages.fr</a>
+      </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <section class="home-section">
+      <p class="home-section-title">// Explorer</p>
+      <div class="nav-cards">
+        <a href="presentation.html" class="nav-card">
+          <strong>Présentation</strong>
+          Parcours, valeurs professionnelles, méthode de travail et projection à moyen terme.
+        </a>
+        <a href="competences.html" class="nav-card">
+          <strong>Compétences</strong>
+          Cinq compétences techniques et cinq compétences humaines, détaillées et illustrées par des exemples concrets.
+        </a>
+        <a href="realisations.html" class="nav-card">
+          <strong>Réalisations</strong>
+          Cinq projets menés de bout en bout — de la sonde IDS open source à l'infrastructure complète d'une entreprise.
+        </a>
+        <a href="parcours.html" class="nav-card">
+          <strong>Parcours</strong>
+          Expériences professionnelles, formations, certifications et engagements, présentés en frise anti-chronologique.
+        </a>
+        <a href="contact.html" class="nav-card">
+          <strong>Contact</strong>
+          Coordonnées, CV à télécharger et disponibilité.
+        </a>
+      </div>
+    </section>
+
   </main>
 </body>
 </html>

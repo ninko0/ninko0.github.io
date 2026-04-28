@@ -20,7 +20,7 @@
             <a href="../competences/hum-4.html"># Initiative</a>
           </div>
         </div>
-        <div class="placeholder-img large">[ Schéma d'architecture Docker ou capture GitHub — 700×260px ]</div>
+
 
         <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Présentation et origine du projet</h2>
         <p style="margin-bottom:1rem;">Ce projet trouve son origine dans une problématique professionnelle : une réflexion était en cours autour du remplacement d'une solution de détection existante. J'ai mené une phase de <strong>R&D</strong> pour identifier des alternatives. Deux approches ont émergé : une solution entièrement open source basée sur Suricata, Zeek et Arkime déployés de manière conteneurisée, ou Security Onion, plus intégrée mais freemium. Security Onion s'est révélée plus adaptée à l'intégration rapide en entreprise — mais j'ai fait le choix, à titre personnel, de poursuivre le développement de l'approche open source. C'est de cette initiative individuelle qu'est né ce projet.</p>
@@ -37,6 +37,66 @@
         <p style="margin-bottom:1rem;">
           🔗 <a href="https://github.com/ninko0/Docker-IDS-Sensor" target="_blank">github.com/ninko0/Docker-IDS-Sensor</a>
         </p>
+
+        <!-- Schéma architecture -->
+        <div style="margin-bottom:1.75rem; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1rem; overflow:hidden;">
+          <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.75rem;">Architecture — Vue d'ensemble</p>
+          <svg width="100%" viewBox="0 0 680 480" role="img" style="display:block;">
+            <title>Architecture Docker IDS Sensor</title>
+            <desc>Trafic réseau capturé via interface miroir, distribué aux conteneurs Suricata, Zeek et Arkime, avec centralisation des alertes vers le monitoring.</desc>
+            <defs>
+              <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </marker>
+            </defs>
+            <!-- Réseau source -->
+            <rect x="240" y="20" width="200" height="44" rx="8" fill="var(--bg-alt)" stroke="var(--border-md)" stroke-width="0.5"/>
+            <text x="340" y="38" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" font-weight="600" fill="var(--text)">Trafic réseau</text>
+            <text x="340" y="55" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">Interface miroir / VLAN span</text>
+            <!-- Flèche vers host -->
+            <line x1="340" y1="64" x2="340" y2="108" stroke="var(--text-light)" stroke-width="1.2" marker-end="url(#arr2)" fill="none"/>
+            <!-- Docker host -->
+            <rect x="60" y="108" width="560" height="316" rx="12" fill="var(--violet-pale)" stroke="var(--violet-light)" stroke-width="1"/>
+            <text x="90" y="132" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" font-weight="600" fill="var(--violet)">Docker host</text>
+            <text x="90" y="150" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">Réseau host mode — accès direct aux interfaces</text>
+            <!-- Suricata -->
+            <rect x="88" y="168" width="154" height="96" rx="8" fill="var(--green-pale)" stroke="var(--green-light)" stroke-width="0.5"/>
+            <text x="165" y="192" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" font-weight="600" fill="var(--green)">Suricata</text>
+            <text x="165" y="210" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">Détection par signatures</text>
+            <text x="165" y="225" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">(règles IDS/IPS)</text>
+            <text x="165" y="242" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">Alertes EVE JSON</text>
+            <!-- Zeek -->
+            <rect x="263" y="168" width="154" height="96" rx="8" fill="var(--violet-pale)" stroke="var(--violet-light)" stroke-width="0.5"/>
+            <text x="340" y="192" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" font-weight="600" fill="var(--violet)">Zeek</text>
+            <text x="340" y="210" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">Analyse comportementale</text>
+            <text x="340" y="225" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">des flux réseau</text>
+            <text x="340" y="242" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">Logs structurés</text>
+            <!-- Arkime -->
+            <rect x="438" y="168" width="154" height="96" rx="8" fill="#fdf0ec" stroke="#e8c4b3" stroke-width="0.5"/>
+            <text x="515" y="192" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" font-weight="600" fill="#993C1D">Arkime</text>
+            <text x="515" y="210" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">Capture &amp; indexation</text>
+            <text x="515" y="225" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">des paquets (PCAP)</text>
+            <text x="515" y="242" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">Interface de recherche</text>
+            <!-- Flèches réseau → conteneurs -->
+            <line x1="270" y1="108" x2="178" y2="168" stroke="var(--text-light)" stroke-width="1" marker-end="url(#arr2)" fill="none"/>
+            <line x1="340" y1="108" x2="340" y2="168" stroke="var(--text-light)" stroke-width="1" marker-end="url(#arr2)" fill="none"/>
+            <line x1="410" y1="108" x2="492" y2="168" stroke="var(--text-light)" stroke-width="1" marker-end="url(#arr2)" fill="none"/>
+            <!-- Flèches → monitoring -->
+            <line x1="165" y1="264" x2="165" y2="320" stroke="var(--green)" stroke-width="1" marker-end="url(#arr2)" fill="none" stroke-dasharray="4 3"/>
+            <line x1="340" y1="264" x2="340" y2="320" stroke="var(--violet)" stroke-width="1" marker-end="url(#arr2)" fill="none" stroke-dasharray="4 3"/>
+            <line x1="515" y1="264" x2="515" y2="320" stroke="#993C1D" stroke-width="1" marker-end="url(#arr2)" fill="none" stroke-dasharray="4 3"/>
+            <!-- Monitoring -->
+            <rect x="88" y="320" width="504" height="84" rx="8" fill="var(--bg-alt)" stroke="var(--border-md)" stroke-width="0.5"/>
+            <text x="340" y="345" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="13" font-weight="600" fill="var(--text)">Monitoring &amp; visualisation</text>
+            <text x="200" y="368" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">Centralisation des alertes</text>
+            <text x="200" y="385" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">Dashboard temps réel</text>
+            <text x="470" y="368" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--text-muted)">Déploiement en 1 commande</text>
+            <text x="470" y="385" text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)" font-size="11" fill="var(--violet)">docker compose up</text>
+            <!-- Notes bas -->
+            <text x="340" y="430" text-anchor="middle" font-family="var(--font-mono)" font-size="10" fill="var(--text-light)">Configuration via placeholders · Compatible VLAN · 1 ou plusieurs interfaces</text>
+          </svg>
+        </div>
+
 
         <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Résultats</h2>
         <p style="margin-bottom:1rem;">Ce projet m'a permis de développer une solution fonctionnelle de déploiement de sondes IDS conteneurisées, de monter significativement en compétences sur Docker et la structuration d'architectures distribuées, et d'entrer concrètement dans le monde de l'open source — avec les responsabilités que cela implique : maintenance, versionnement, documentation.</p>

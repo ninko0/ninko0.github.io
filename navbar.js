@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <li><a href="/contact.html" ${currentPage === 'contact' ? 'class="active"' : ''}>Contact</a></li>
     </ul>
     <div class="navbar-logo">
-      <div class="logo-placeholder">Logo ESIEA</div>
+      <a href="https://www.esiea.fr" target="_blank" title="ESIEA — École du monde numérique">
+        <img src="/esiea-logo.png" alt="ESIEA" class="logo-img" />
+      </a>
     </div>
   `;
   document.body.prepend(navbar);
@@ -58,4 +60,16 @@ document.addEventListener('DOMContentLoaded', () => {
     <a href="/contact.html">Contact</a>
   `;
   document.body.append(footer);
+
+  // Shrink navbar on scroll
+  const nav = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+      document.body.style.paddingTop = '54px';
+    } else {
+      nav.classList.remove('scrolled');
+      document.body.style.paddingTop = 'var(--nav-h)';
+    }
+  }, { passive: true });
 });
