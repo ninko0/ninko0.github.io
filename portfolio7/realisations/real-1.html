@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infrastructure sécurisée — Nicolas Lages</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body data-page="realisations">
+  <script src="../navbar.js"></script>
+  <main>
+    <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 01</p>
+    <div class="realisation-layout">
+      <div class="realisation-main">
+        <div class="page-header">
+          <h1>Création d'une infrastructure sécurisée</h1>
+          <div class="page-tags" style="margin-top:0.4rem;">
+            <a href="../competences/tech-2.html"># Virtualisation</a>
+            <a href="../competences/tech-3.html"># Administration Réseau</a>
+            <a href="../competences/tech-4.html"># Configuration Système</a>
+            <a href="../competences/hum-1.html"># Gestion de projet</a>
+            <a href="../competences/hum-4.html"># Initiative</a>
+          </div>
+        </div>
+        <div class="placeholder-img large">[ Schéma de l'architecture finale — 700×260px ]</div>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Contexte et présentation</h2>
+        <p style="margin-bottom:1rem;">Dans le cadre de ma première alternance chez <strong>Valesys</strong>, entre septembre 2023 et août 2024, j'ai travaillé sur l'infrastructure interne d'une entreprise d'environ quinze personnes. À mon arrivée, accompagné d'un autre alternant, nous avons découvert un environnement extrêmement limité : un pare-feu et un NAS, sans gestion des identités, sans segmentation réseau, sans environnement de test ni outils de supervision. L'ensemble des utilisateurs partageait un réseau unique, sans distinction des usages ni contrôle des flux.</p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Objectifs et redéfinition du besoin</h2>
+        <p style="margin-bottom:1rem;">La demande initiale consistait à déployer un SOC. Après une phase d'analyse de l'existant, nous avons identifié que cette demande reposait sur des fondations insuffisantes. Nous avons pris l'initiative, en concertation avec notre responsable, de <strong>redéfinir les priorités</strong> : construire d'abord une infrastructure sécurisée et cohérente, avant d'envisager tout mécanisme avancé de détection. L'enjeu était double : améliorer immédiatement la sécurité globale, tout en posant les bases d'un SOC réellement pertinent.</p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Étapes de réalisation</h2>
+        <p style="margin-bottom:0.75rem;"><strong>1 — Refonte réseau :</strong> Mise en place d'une segmentation logique via <strong>VLAN</strong>, configuration des règles de filtrage inter-VLAN, maîtrise des flux sortants. Déploiement d'un accès distant sécurisé via <strong>VPN OpenVPN/pfSense</strong>.</p>
+        <p style="margin-bottom:0.75rem;"><strong>2 — Virtualisation :</strong> Intégration d'un serveur Dell, déploiement d'un hyperviseur <strong>Proxmox</strong> pour virtualiser l'ensemble des composants critiques. Isolation des services, facilitation des opérations de maintenance.</p>
+        <p style="margin-bottom:0.75rem;"><strong>3 — Services essentiels :</strong> Serveur DNS interne, <strong>Proxmox Backup Server</strong> pour la résilience, <strong>Passbolt</strong> (gestionnaire de mots de passe open source) déployé à tous les utilisateurs, <strong>Zabbix</strong> pour la supervision en temps réel, reverse proxy <strong>Nginx</strong> pour centraliser les accès et gérer les certificats.</p>
+        <p style="margin-bottom:1rem;"><strong>4 — SOC :</strong> Une fois l'infrastructure stabilisée, déploiement d'un SOC complet basé sur <strong>Wazuh</strong>, intégrant la stack ELK, Graylog et Grafana. Capacités avancées de détection, corrélation et visualisation des événements.</p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Organisation et acteurs</h2>
+        <p style="margin-bottom:1rem;">Ce projet a été mené exclusivement par mon collègue alternant et moi-même, avec une validation ponctuelle d'un responsable sans compétences techniques approfondies. Cette situation nous a amenés à structurer le projet de manière autonome, à prendre des décisions techniques importantes et à assumer pleinement la responsabilité des choix effectués.</p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Résultats</h2>
+        <p style="margin-bottom:1rem;">À la fin de l'alternance, l'entreprise disposait d'une infrastructure totalement transformée : réseau segmenté, systèmes sécurisés, accès contrôlés et supervisés, SOC fonctionnel. L'environnement était prêt à accueillir des projets de R&D.</p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Les suites du projet</h2>
+        <p style="margin-bottom:1rem;">Le projet a continué après mon départ : déploiement d'un Active Directory, extension du SOC à plusieurs clients, ajout de nouveaux nœuds Proxmox en datacenter. Ces évolutions confirment la pertinence des choix d'architecture réalisés en amont.</p>
+
+        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Regard critique</h2>
+        <p>Ce projet constitue une étape déterminante dans mon parcours. Le manque d'encadrement technique, bien que contraignant, a été un facteur d'apprentissage fort — il m'a obligé à développer une approche rigoureuse et à structurer mes méthodes. Cette expérience a profondément modifié ma manière d'aborder les projets, en m'amenant à accorder une importance centrale à la conception et à l'intégration de la sécurité dès les premières étapes.</p>
+      </div>
+      <div class="realisation-sidebar">
+        <div class="sidebar-header"><span>Technique</span><span>Humaines</span></div>
+        <div class="sidebar-row">
+          <a href="../competences/tech-2.html">Virtualisation</a>
+          <a href="../competences/hum-1.html">Gestion projet</a>
+        </div>
+        <div class="sidebar-row">
+          <a href="../competences/tech-3.html">Réseau</a>
+          <a href="../competences/hum-4.html">Initiative</a>
+        </div>
+        <div class="sidebar-row">
+          <a href="../competences/tech-4.html">Config. Système</a>
+          <a href="../competences/hum-2.html">Analyse</a>
+        </div>
+        <div class="sidebar-row">
+          <a href="../competences/tech-5.html">Scripting</a>
+          <a href="../competences/hum-3.html">Autonomie</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
