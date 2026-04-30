@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <a href="/competences/hum-2.html">Esprit d'analyse</a>
               <a href="/competences/hum-3.html">Autonomie</a>
               <a href="/competences/hum-4.html">Faire preuve d'initiative</a>
-              <a href="/competences/hum-5.html">Persévérance &amp; Engagement</a>
+              <a href="/competences/hum-5.html">Esprit de partage</a>
             </div>
           </div>
         </div>
@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
       <li class="has-dropdown">
         <a href="/realisations.html" ${currentPage === 'realisations' ? 'class="active"' : ''}>Réalisations</a>
         <div class="dropdown">
-          <a href="/realisations/real-1.html">Infrastructure sécurisée (Valesys)</a>
+          <a href="/realisations/real-1.html">Infrastructure sécurisée</a>
           <a href="/realisations/real-2.html">Sonde IDS conteneurisée</a>
-          <a href="/realisations/real-3.html">Laboratoire Proxmox</a>
-          <a href="/realisations/real-4.html">Scripts de durcissement</a>
-          <a href="/realisations/real-5.html">Portfolio auto-hébergé</a>
+          <a href="/realisations/real-3.html">Audit de sécurité</a>
+          <a href="/realisations/real-4.html">Script de setup personnel</a>
+          <a href="/realisations/real-5.html">Outil de déploiement automatisé</a>
         </div>
       </li>
       <li><a href="/parcours.html" ${currentPage === 'parcours' ? 'class="active"' : ''}>Parcours</a></li>

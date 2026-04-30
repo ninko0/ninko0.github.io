@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio auto-hébergé — Nicolas Lages</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outil de déploiement automatisé — Nicolas Lages</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body data-page="realisations">
   <script src="../navbar.js"></script>
   <main>
     <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 05</p>
-    <div class="realisation-layout">
-      <div class="realisation-main">
-        <div class="page-header">
-          <h1>Portfolio auto-hébergé</h1>
-          <div class="page-tags" style="margin-top:0.4rem;">
-            <a href="../competences/tech-4.html"># Configuration Système</a>
-            <a href="../competences/tech-5.html"># Tooling &amp; Scripting</a>
-            <a href="../competences/hum-3.html"># Rigueur &amp; Méthode</a>
-          </div>
-        </div>
-        <div class="placeholder-img large">[ Capture du portfolio en ligne — 700×260px ]</div>
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Contexte et objectifs</h2>
-        <p style="margin-bottom:1rem;">Plutôt que d'utiliser une solution d'hébergement clé en main, j'ai choisi d'héberger ce portfolio sur ma propre infrastructure — une <strong>VM Debian avec Apache</strong> — exposée sur internet. L'objectif était double : produire un livrable concret pour mon portfolio et mettre en pratique mes compétences en configuration système, sécurisation d'un service web et automatisation du déploiement.</p>
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Réalisation</h2>
-        <p style="margin-bottom:1rem;">L'infrastructure comprend une VM Debian 13 avec Apache configuré avec des <strong>headers de sécurité</strong> (CSP, HSTS, X-Frame-Options), un <strong>pare-feu UFW</strong> restrictif, et <strong>Fail2ban</strong> pour la protection contre les tentatives d'intrusion. Le déploiement est automatisé via un <strong>script bash</strong> qui extrait le zip, sauvegarde l'ancienne version, déploie les nouveaux fichiers, applique les permissions et recharge Apache en une seule commande.</p>
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Résultats</h2>
-        <p>Le portfolio est accessible en ligne. Le script de déploiement permet de publier une nouvelle version en moins d'une minute. Ce projet illustre ma capacité à concevoir une infrastructure complète autour d'un besoin concret, de la VM à la mise en ligne.</p>
-      </div>
-      <div class="realisation-sidebar">
-        <div class="sidebar-header"><span>Technique</span><span>Humaines</span></div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-4.html">Config. Système</a>
-          <a href="../competences/hum-3.html">Rigueur</a>
-        </div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-5.html">Scripting</a>
-          <a href="../competences/hum-1.html">Autonomie</a>
-        </div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-3.html">Réseau</a>
-          <a href="../competences/hum-5.html">Persévérance</a>
-        </div>
+
+    <div class="page-header">
+      <h1>Outil de déploiement automatisé</h1>
+      <div class="page-tags" style="margin-top:0.4rem;">
+        <a href="../competences/tech-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Tooling &amp; Scripting</a>
+        <a href="../competences/tech-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Configuration Système</a>
+        <a href="../competences/hum-3.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Autonomie</a>
+        <a href="../competences/hum-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Faire preuve d'initiative</a>
       </div>
     </div>
+
+    <h2>Présentation</h2>
+    <p>Avant de connaître Ansible, j'avais un problème concret : je gérais un grand nombre de machines virtuelles, aussi bien dans le cadre de mon alternance chez Valesys que dans mon lab personnel, et chaque nouvelle VM nécessitait une série de configurations initiales répétitives. Mise à jour du système, installation des utilitaires réseau, déploiement d'agents, configuration SSH... Des tâches identiques, réalisées à la main, encore et encore.</p>
+    <p>Plutôt que de chercher immédiatement une solution existante, j'ai fait le choix délibéré de <strong>construire mon propre outil</strong>. Non pas par méconnaissance d'Ansible, dont j'avais entendu parler, mais par volonté de comprendre de l'intérieur ce que ce type d'outil fait réellement. C'est cette démarche qui a donné naissance à ce projet.</p>
+
+    <h2>Objectifs, contexte et enjeux</h2>
+    <p>L'objectif était de disposer d'un outil léger, portable et flexible, capable de déployer automatiquement des configurations et des outils sur un ou plusieurs endpoints distants, en utilisant uniquement une <strong>connexion SSH</strong> comme prérequis.</p>
+    <p>L'enjeu était double. D'un côté, gagner du temps sur des tâches répétitives et réduire les erreurs humaines liées aux configurations manuelles. De l'autre, mieux comprendre les mécanismes sous-jacents à l'automatisation de déploiement, ce qui s'est révélé particulièrement formateur pour la suite.</p>
+
+    <h2>Les étapes</h2>
+    <div style="margin-bottom:1.5rem;">
+      <img src="deploiement-archi.png" alt="Architecture de l'outil de déploiement automatisé" style="width:100%; max-width:620px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
+      <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Architecture de l'outil — entrées, moteur et endpoints cibles via SSH</p>
+    </div>
+    <p>La conception de l'outil a démarré par l'identification des besoins récurrents : quelles configurations revenaient systématiquement sur chaque nouvelle VM, quels outils devaient être présents par défaut, et quelles actions devaient rester optionnelles selon le contexte.</p>
+    <p>L'outil propose <strong>deux modes d'utilisation</strong> distincts. Le premier permet de cibler un endpoint unique directement en ligne de commande, avec des options passées en arguments pour définir ce qui doit être installé ou configuré. Le second accepte un <strong>fichier de configuration structuré</strong>, dans lequel on liste plusieurs endpoints avec, pour chacun, les outils à installer ou mettre à jour selon une syntaxe définie. L'outil lit ce fichier et déploie automatiquement l'ensemble, machine par machine, sans intervention manuelle.</p>
+    <p>L'architecture a été pensée pour être facilement <strong>extensible</strong> : ajouter un nouvel agent, un nouvel outil ou une nouvelle action ne nécessite pas de modifier le cœur du programme. Il suffit d'étendre les templates existants, ce qui rend l'outil adaptable à de nouveaux contextes sans repartir de zéro.</p>
+    <p>Le seul prérequis côté endpoint est un accès SSH valide. Pas d'agent à installer, pas de dépendance particulière sur les machines cibles.</p>
+
+    <h2>Les acteurs</h2>
+    <p>Ce projet a été développé seul, dans le cadre de mon alternance chez Valesys et de mon lab personnel. Il a été hébergé sur le <strong>GitLab interne</strong> de Valesys, auquel je n'ai plus accès aujourd'hui. Les utilisateurs directs étaient moi-même, dans les deux contextes.</p>
+
+    <h2>Les résultats</h2>
+    <p>L'outil a permis de réduire significativement le temps de mise en place des configurations initiales sur les VMs, aussi bien en entreprise que dans mon lab. Des tâches qui prenaient auparavant plusieurs dizaines de minutes par machine, répétées manuellement, sont devenues une affaire de <strong>quelques secondes</strong> une fois le fichier de configuration prêt.</p>
+    <p>Au-delà du gain de temps, ce projet m'a permis de comprendre concrètement ce que signifie concevoir un outil destiné à être réutilisé et modifié dans le temps. La contrainte d'extensibilité, que je m'étais fixée dès le départ, m'a obligé à réfléchir à la structure du code différemment de ce que je faisais habituellement.</p>
+
+    <h2>Les lendemains du projet</h2>
+    <p>Ce projet a marqué une étape importante dans mon parcours. Peu après l'avoir développé, j'ai commencé à travailler avec <strong>Ansible</strong>, puis avec <strong>GitLab CI</strong> et <strong>AWX</strong> pour l'orchestration. La compréhension que j'avais acquise en construisant mon propre outil m'a permis d'appréhender ces technologies bien plus rapidement que si je les avais découvertes sans ce bagage. Savoir ce qu'un outil fait de l'intérieur change profondément la façon dont on l'utilise.</p>
+    <p>Aujourd'hui, l'outil en lui-même n'est plus maintenu. Il a été remplacé par des solutions plus robustes et standardisées. Mais la démarche qui l'a fait naître, comprendre avant d'utiliser, reste une constante dans ma façon de travailler.</p>
+
+    <h2>Regard critique</h2>
+    <p>Ce projet illustre quelque chose que je défends : <strong>réinventer la roue a parfois beaucoup de valeur</strong>, à condition de le faire consciemment et dans un objectif d'apprentissage. Je ne recommande pas de reconstruire Ansible pour une utilisation en production. En revanche, construire un outil similaire à plus petite échelle pour en comprendre les mécanismes est un des exercices les plus formateurs que j'aie faits.</p>
+    <p>Si c'était à refaire, j'ajouterais dès le départ une gestion des erreurs plus robuste et un système de logs plus lisible. Ce sont les deux points qui ont montré leurs limites lorsque l'outil a commencé à être utilisé sur un nombre croissant de machines simultanément.</p>
   </main>
 </body>
 </html>

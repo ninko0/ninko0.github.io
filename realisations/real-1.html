@@ -2,26 +2,29 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Infrastructure sécurisée — Nicolas Lages</title>
+  <title>Infrastructure sécurisée, Nicolas Lages</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body data-page="realisations">
   <script src="../navbar.js"></script>
   <main>
     <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 01</p>
-    <div class="realisation-layout">
-      <div class="realisation-main">
+    <div>
+      <div>
         <div class="page-header">
           <h1>Création d'une infrastructure sécurisée</h1>
           <div class="page-tags" style="margin-top:0.4rem;">
-            <a href="../competences/tech-2.html"># Virtualisation</a>
-            <a href="../competences/tech-3.html"># Administration Réseau</a>
-            <a href="../competences/tech-4.html"># Configuration Système</a>
-            <a href="../competences/hum-1.html"># Gestion de projet</a>
-            <a href="../competences/hum-4.html"># Initiative</a>
+            <a href="../competences/tech-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Virtualisation</a>
+            <a href="../competences/tech-3.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Administration Réseau</a>
+            <a href="../competences/tech-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Configuration Système</a>
+            <a href="../competences/hum-1.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Gestion de projet</a>
+            <a href="../competences/hum-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Initiative</a>
           </div>
         </div>
-        <div class="placeholder-img large">[ Schéma de l'architecture finale — 700×260px ]</div>
+        <div style="margin-bottom:1.75rem;">
+      <img src="infra-valesys.png" alt="Architecture infrastructure sécurisée — VLAN, pfSense, Proxmox, services" style="width:100%; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
+      <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Architecture de l'infrastructure — VLAN utilisateur, serveur, test, pfSense, Proxmox et services</p>
+    </div>
 
         <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Contexte et présentation</h2>
         <p style="margin-bottom:1rem;">Dans le cadre de ma première alternance chez <strong>Valesys</strong>, entre septembre 2023 et août 2024, j'ai travaillé sur l'infrastructure interne d'une entreprise d'environ quinze personnes. À mon arrivée, accompagné d'un autre alternant, nous avons découvert un environnement extrêmement limité : un pare-feu et un NAS, sans gestion des identités, sans segmentation réseau, sans environnement de test ni outils de supervision. L'ensemble des utilisateurs partageait un réseau unique, sans distinction des usages ni contrôle des flux.</p>
@@ -45,28 +48,8 @@
         <p style="margin-bottom:1rem;">Le projet a continué après mon départ : déploiement d'un Active Directory, extension du SOC à plusieurs clients, ajout de nouveaux nœuds Proxmox en datacenter. Ces évolutions confirment la pertinence des choix d'architecture réalisés en amont.</p>
 
         <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Regard critique</h2>
-        <p>Ce projet constitue une étape déterminante dans mon parcours. Le manque d'encadrement technique, bien que contraignant, a été un facteur d'apprentissage fort — il m'a obligé à développer une approche rigoureuse et à structurer mes méthodes. Cette expérience a profondément modifié ma manière d'aborder les projets, en m'amenant à accorder une importance centrale à la conception et à l'intégration de la sécurité dès les premières étapes.</p>
-      </div>
-      <div class="realisation-sidebar">
-        <div class="sidebar-header"><span>Technique</span><span>Humaines</span></div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-2.html">Virtualisation</a>
-          <a href="../competences/hum-1.html">Gestion projet</a>
-        </div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-3.html">Réseau</a>
-          <a href="../competences/hum-4.html">Initiative</a>
-        </div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-4.html">Config. Système</a>
-          <a href="../competences/hum-2.html">Analyse</a>
-        </div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-5.html">Scripting</a>
-          <a href="../competences/hum-3.html">Autonomie</a>
-        </div>
-      </div>
-    </div>
+        <p>Ce projet constitue une étape déterminante dans mon parcours. Le manque d'encadrement technique, bien que contraignant, a été un facteur d'apprentissage fort, il m'a obligé à développer une approche rigoureuse et à structurer mes méthodes. Cette expérience a profondément modifié ma manière d'aborder les projets, en m'amenant à accorder une importance centrale à la conception et à l'intégration de la sécurité dès les premières étapes.</p>
+      </div></div>
   </main>
 </body>
 </html>

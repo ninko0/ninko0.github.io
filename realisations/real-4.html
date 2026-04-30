@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scripts de durcissement — Nicolas Lages</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Script de setup personnel — Nicolas Lages</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body data-page="realisations">
   <script src="../navbar.js"></script>
   <main>
     <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 04</p>
-    <div class="realisation-layout">
-      <div class="realisation-main">
-        <div class="page-header">
-          <h1>Scripts de durcissement</h1>
-          <div class="page-tags" style="margin-top:0.4rem;">
-            <a href="../competences/tech-5.html"># Tooling &amp; Scripting</a>
-            <a href="../competences/tech-4.html"># Configuration Système</a>
-            <a href="../competences/hum-4.html"># Partage &amp; Transmission</a>
-          </div>
-        </div>
-        <div class="placeholder-img large">[ Capture du script ou exemple de sortie — 700×260px ]</div>
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Contexte et objectifs</h2>
-        <p style="margin-bottom:1rem;">Face à la répétitivité des opérations de durcissement lors du déploiement de nouvelles machines, j'ai développé un ensemble de <strong>scripts open source</strong> permettant d'automatiser l'application des bonnes pratiques de sécurité sur des systèmes Linux. L'objectif est de garantir une cohérence de configuration sur l'ensemble d'une infrastructure, tout en réduisant le temps de mise en place.</p>
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Réalisation</h2>
-        <p style="margin-bottom:1rem;">Les scripts couvrent les principales étapes de durcissement : gestion des utilisateurs et des droits, désactivation des services inutiles, configuration des politiques SSH, paramétrage du pare-feu, et journalisation. Ils sont conçus pour être modulaires — chaque module peut être appliqué indépendamment selon les besoins. La documentation intégrée permet leur utilisation sans compréhension approfondie du code.</p>
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Résultats</h2>
-        <p style="margin-bottom:1rem;">Ces scripts sont utilisés dans mon laboratoire et dans certains de mes projets professionnels. Ils sont publiés sur GitHub afin de les rendre accessibles à la communauté.</p>
-        <div class="placeholder-text">[ Lien vers le dépôt GitHub — à compléter ]</div>
-      </div>
-      <div class="realisation-sidebar">
-        <div class="sidebar-header"><span>Technique</span><span>Humaines</span></div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-5.html">Scripting</a>
-          <a href="../competences/hum-4.html">Partage</a>
-        </div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-4.html">Config. Système</a>
-          <a href="../competences/hum-3.html">Rigueur</a>
-        </div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-1.html">Git</a>
-          <a href="../competences/hum-1.html">Autonomie</a>
-        </div>
+
+    <div class="page-header">
+      <h1>Script de setup personnel</h1>
+      <div class="page-tags" style="margin-top:0.4rem;">
+        <a href="../competences/tech-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Tooling &amp; Scripting</a>
+        <a href="../competences/tech-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Configuration Système</a>
+        <a href="../competences/hum-3.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Autonomie</a>
       </div>
     </div>
+
+    <h2>Présentation</h2>
+    <p>Tout technicien qui travaille régulièrement sur plusieurs machines finit par se poser la même question : combien de temps faut-il pour retrouver un environnement de travail pleinement opérationnel sur une nouvelle installation ? Pour moi, la réponse était trop longue. J'ai donc développé un <strong>script d'installation automatisée</strong> qui me permet de passer d'un système Linux vierge à un poste entièrement configuré, avec tous mes outils et mes préférences personnelles, en moins d'une heure et en quelques commandes.</p>
+    <p>Ce projet est disponible sur mon GitHub, mais il reste personnel : il est conçu pour mon workflow, mes habitudes et mes besoins spécifiques.</p>
+
+    <h2>Objectifs, contexte et enjeux</h2>
+    <p>L'objectif est simple : ne plus jamais perdre de temps à reconfigurer un poste from scratch. Que ce soit après une réinstallation, sur une nouvelle machine ou dans un lab, je veux être opérationnel le plus vite possible, avec un environnement identique à celui que je connais.</p>
+    <p>L'enjeu est avant tout une question d'<strong>efficacité</strong> et de <strong>confort de travail</strong>. Un environnement mal configuré ou incomplet ralentit, distrait et génère des frictions inutiles. Un environnement maîtrisé, c'est de la concentration préservée et du temps gagné sur chaque session de travail.</p>
+
+    <h2>Les étapes</h2>
+    <div style="margin-bottom:1.5rem;">
+      <img src="setup-couches.png" alt="Couches d'installation du script de setup" style="width:100%; max-width:560px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
+      <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Les quatre couches d'installation du script</p>
+    </div>
+    <p>Le script couvre plusieurs couches distinctes, dans un ordre logique de déploiement.</p>
+    <p><strong>Les outils d'administration réseau</strong> sont installés en premier : nmap, netcat, tcpdump, wireshark, traceroute, ainsi que les utilitaires de diagnostic courants. Ce sont les outils que j'utilise quotidiennement, que ce soit pour analyser un réseau, déboguer une connectivité ou préparer un audit.</p>
+    <p><strong>Les outils d'administration système</strong> suivent : htop, lsof, rsync, curl, wget, vim, ainsi que les gestionnaires de paquets complémentaires et les utilitaires de gestion des processus et des logs. Tout ce qui permet de comprendre et de contrôler rapidement l'état d'un système.</p>
+    <p><strong>La configuration SSH</strong> est appliquée automatiquement : durcissement du fichier sshd_config avec désactivation de l'authentification par mot de passe, génération d'une nouvelle paire de clés pour mon utilisateur, et ajout de la clé publique dans les emplacements appropriés. La machine est sécurisée dès le départ, sans manipulation manuelle.</p>
+    <p><strong>Les outils de développement et d'infrastructure</strong> sont ensuite déployés : Git avec ma configuration personnelle, Docker et ses dépendances, ainsi que kubectl pour la gestion de clusters Kubernetes. Ces outils sont indispensables dans la quasi-totalité de mes projets.</p>
+    <p><strong>L'environnement visuel et personnel</strong> constitue la dernière couche. J'installe <strong>Hyprland</strong>, un compositeur de fenêtres dynamique pour Linux basé sur Wayland, particulièrement apprécié dans les environnements de travail techniques. Mon terminal est <strong>Kitty</strong>, configuré avec mes raccourcis personnels, mes couleurs et mes préférences d'affichage. Le shell par défaut est remplacé par <strong>ZSH</strong>, avec mes thèmes Oh My Zsh et mes alias habituels. Mes polices d'écran (Nerd Fonts) sont également installées automatiquement.</p>
+
+    <h2>Les acteurs</h2>
+    <p>C'est un projet entièrement individuel. Il n'implique aucun collaborateur externe, mais il bénéficie indirectement de la communauté open source : une grande partie des outils et configurations s'appuient sur des projets maintenus collectivement.</p>
+
+    <h2>Les résultats</h2>
+    <p>Le résultat est concret et mesurable : une installation complète en <strong>moins d'une heure</strong>, reproductible à l'identique sur n'importe quelle machine sous Linux. Plus aucune friction lors d'une réinstallation, plus de temps perdu à rechercher des configurations oubliées ou à réinstaller des outils un par un.</p>
+    <p>Ce script m'a également permis de mieux comprendre les dépendances entre les différents composants de mon environnement, et de documenter mes propres choix techniques de manière structurée.</p>
+
+    <h2>Les lendemains du projet</h2>
+    <p>Ce script est en <strong>évolution permanente</strong>. Chaque nouvel outil que j'adopte, chaque configuration que j'affine finit par y être intégré. C'est un projet vivant, qui reflète à tout moment l'état de mon environnement de travail idéal. À terme, je souhaite le rendre plus modulaire, avec des profils distincts selon le contexte : un profil orienté audit, un profil orienté développement, un profil orienté administration système.</p>
+
+    <h2>Regard critique</h2>
+    <p>Ce projet m'a appris quelque chose d'important : <strong>documenter et automatiser ses propres habitudes de travail</strong> est un exercice qui oblige à les questionner. En formalisant chaque choix dans un script, on réalise ce qui est vraiment utile, ce qui est superflu, et ce qui manque. C'est une forme de recul sur sa propre pratique qu'on n'a pas souvent l'occasion de prendre.</p>
+    <p>Si je devais conseiller quelque chose à d'autres techniciens, ce serait de ne pas attendre d'avoir un environnement parfait pour commencer ce type de projet. Un script imparfait qui automatise 70% du travail vaut mieux qu'une installation manuelle parfaite qui recommence à zéro à chaque fois.</p>
   </main>
 </body>
 </html>

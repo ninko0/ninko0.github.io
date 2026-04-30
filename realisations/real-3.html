@@ -1,49 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Infrastructure conteneurisée — Nicolas Lages</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit de sécurité — Nicolas Lages</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body data-page="realisations">
   <script src="../navbar.js"></script>
   <main>
     <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 03</p>
-    <div class="realisation-layout">
-      <div class="realisation-main">
-        <div class="page-header">
-          <h1>Infrastructure conteneurisée</h1>
-          <div class="page-tags" style="margin-top:0.4rem;">
-            <a href="../competences/tech-2.html"># Virtualisation &amp; Conteneurisation</a>
-            <a href="../competences/tech-1.html"># Git &amp; Versioning</a>
-            <a href="../competences/hum-3.html"># Rigueur &amp; Méthode</a>
-          </div>
-        </div>
-        <div class="placeholder-img large">[ Schéma de l'architecture Docker/K8s — 700×260px ]</div>
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Contexte et objectifs</h2>
-        <p style="margin-bottom:1rem;">Ce projet personnel vise à monter en compétence sur la conteneurisation avancée et l'orchestration, en construisant une infrastructure complète basée sur <strong>Docker et Kubernetes</strong>. L'objectif est de reproduire des conditions proches d'un environnement réel, en déployant et interconnectant plusieurs services avec un niveau d'exigence professionnel.</p>
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Réalisation</h2>
-        <p style="margin-bottom:1rem;">L'infrastructure en cours de développement inclut : un serveur <strong>DNS</strong>, un <strong>serveur web</strong> avec reverse proxy, un <strong>GitLab auto-hébergé</strong> et une <strong>base de données</strong>. Chaque service est conteneurisé, documenté et versionné via Git. Le déploiement est orchestré par Kubernetes, avec une attention particulière portée à la sécurisation des communications inter-services et à l'automatisation.</p>
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Résultats</h2>
-        <p style="margin-bottom:1rem;">Projet en cours. Les premiers services sont déployés et fonctionnels. Ce projet constitue le socle de ma montée en compétence sur l'orchestration avancée.</p>
-        <div class="placeholder-text">[ Lien vers le dépôt GitHub — à compléter ]</div>
-      </div>
-      <div class="realisation-sidebar">
-        <div class="sidebar-header"><span>Technique</span><span>Humaines</span></div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-2.html">Virtualisation</a>
-          <a href="../competences/hum-3.html">Rigueur</a>
-        </div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-1.html">Git</a>
-          <a href="../competences/hum-4.html">Partage</a>
-        </div>
-        <div class="sidebar-row">
-          <a href="../competences/tech-4.html">Config. Système</a>
-          <a href="../competences/hum-2.html">Curiosité</a>
-        </div>
+
+    <div class="page-header">
+      <h1>Audit de sécurité</h1>
+      <div class="page-tags" style="margin-top:0.4rem;">
+        <a href="../competences/tech-3.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Administration Réseau</a>
+        <a href="../competences/tech-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Tooling &amp; Scripting</a>
+        <a href="../competences/hum-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Esprit d'analyse</a>
       </div>
     </div>
+
+    <h2>Présentation</h2>
+    <p>Cette réalisation regroupe un ensemble d'actions offensives menées dans des contextes variés : <strong>audits de sécurité internes</strong> en entreprise, <strong>pentest externe</strong> sur une filiale, participation à des <strong>CTF</strong> (Capture The Flag) et programmes de <strong>bug bounty</strong>. Ce sont des expériences distinctes par leur contexte et leurs enjeux, mais qui se rejoignent toutes autour d'une même démarche : identifier les failles avant que quelqu'un de malveillant ne le fasse.</p>
+
+    <h2>Objectifs, contexte et enjeux</h2>
+    <p>L'objectif est toujours le même : trouver les erreurs de configuration et les vulnérabilités présentes sur le périmètre étudié. Ce qui change, c'est l'enjeu.</p>
+    <p>Dans un <strong>cadre professionnel</strong>, l'enjeu est critique. Une faille non détectée peut avoir des conséquences directes sur la confidentialité des données, la continuité de service ou la réputation de l'organisation. Le niveau d'exigence est donc élevé, la méthodologie rigoureuse, et le livrable attendu est un rapport structuré et exploitable.</p>
+    <p>Dans un <strong>cadre personnel</strong> (CTF ou bug bounty), l'enjeu est différent. Il n'y a pas de système en production à protéger, pas de client à rassurer. En revanche, les erreurs sont entièrement à ma charge, et c'est précisément ce qui en fait un terrain d'apprentissage particulièrement efficace. On apprend infiniment plus de ses propres erreurs quand personne d'autre n'en subit les conséquences.</p>
+
+    <h2>Les étapes</h2>
+    <div style="margin-bottom:1.5rem;">
+      <img src="audit-methodologie.png" alt="Méthodologie d'audit de sécurité" style="width:100%; max-width:560px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
+      <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Schéma de méthodologie — du cadrage à la restitution</p>
+    </div>
+    <p><strong>Dans un contexte professionnel</strong>, je commence systématiquement par cadrer le périmètre. Je liste les éléments inclus dans le scope, je détermine le format du rapport attendu, et je définis la grille de notation qui sera utilisée pour qualifier les vulnérabilités. Cela passe par la définition des <strong>CVE</strong> (Common Vulnerabilities and Exposures), qui sont des identifiants standardisés attribués aux vulnérabilités connues, et par l'utilisation du score <strong>CVSS</strong> (Common Vulnerability Scoring System), qui permet de mesurer objectivement la criticité d'une faille sur une échelle de 0 à 10, en tenant compte de facteurs comme l'exploitabilité, l'impact sur la confidentialité, l'intégrité et la disponibilité. Cette grille permet de prioriser les correctifs de manière rationnelle plutôt qu'intuitive.</p>
+    <p><strong>Dans tous les contextes</strong>, la phase technique suit la même logique. Je commence par un scan réseau avec <strong>NMAP</strong> afin de lister les hôtes actifs, les services exposés et les versions en cours d'exécution. Ce premier inventaire me donne déjà une vision claire de l'état de l'infrastructure : ce qui est à jour, ce qui ne l'est pas, ce qui est correctement isolé ou au contraire trop exposé.</p>
+    <p>Je teste ensuite les vecteurs d'attaque les plus courants : brute force, mots de passe par défaut, mauvaises configurations sur les services récurrents. Dans la grande majorité des cas, les mêmes services reviennent : bases de données mal sécurisées, interfaces web sans authentification robuste, accès <strong>SSH</strong>, <strong>RDP</strong>, <strong>FTP</strong> ou <strong>SMB</strong> mal configurés. Ces points d'entrée sont classiques, mais ils restent parmi les plus exploités en conditions réelles.</p>
+
+    <div style="margin:1.5rem 0;">
+      <img src="audit-outils.png" alt="Boîte à outils — Audit de sécurité" style="width:100%; max-width:620px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
+      <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Outils utilisés — reconnaissance, exploitation, analyse et services ciblés</p>
+    </div>
+
+    <h2>Les acteurs</h2>
+    <p>Dans un cadre professionnel, j'interviens en coordination avec les équipes internes : les responsables du système d'information pour la définition du scope, et les équipes techniques pour la restitution des résultats. Dans un cadre personnel, je travaille seul, en m'appuyant sur des communautés en ligne et les échanges avec des pentesters de mon réseau.</p>
+
+    <h2>Les résultats</h2>
+    <p>En entreprise, les audits ont permis d'identifier des vulnérabilités concrètes et d'apporter des recommandations exploitables, avec une priorisation claire basée sur les scores CVSS. Certaines failles identifiées ont conduit à des corrections immédiates sur des services exposés.</p>
+    <p>Sur les CTF et bug bounty, les résultats sont avant tout personnels : une progression constante dans la compréhension des vecteurs d'attaque, une meilleure lecture des environnements cibles, et une capacité d'analyse qui s'affine à chaque challenge.</p>
+
+    <h2>Les lendemains du projet</h2>
+    <p>À court terme, ces expériences ont directement alimenté mes compétences en administration réseau et en configuration système, en me forçant à comprendre les failles de l'intérieur. À distance, elles ont structuré ma façon d'aborder n'importe quel projet technique : je pense naturellement à la sécurité dès la conception, pas après coup. Aujourd'hui, cette compétence offensive est un complément direct à mon approche défensive, et les deux se renforcent mutuellement.</p>
+
+    <h2>Regard critique</h2>
+    <p>Ce qui m'a le plus marqué dans ces expériences, c'est la récurrence des mêmes erreurs. Des mots de passe par défaut, des services inutilement exposés, des mises à jour non appliquées : des problèmes simples, connus, documentés, et pourtant encore omniprésents. Cela m'a convaincu que la sécurité n'est pas qu'une question de compétence technique, c'est aussi une question de rigueur et de culture au sein des organisations.</p>
+    <p>Ma valeur ajoutée sur ces missions ne réside pas uniquement dans la capacité à trouver des failles, mais dans la capacité à les expliquer clairement, à les prioriser intelligemment et à proposer des correctifs réalistes et adaptés au contexte.</p>
   </main>
 </body>
 </html>
