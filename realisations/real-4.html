@@ -1,58 +1,320 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Script de setup personnel — Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Script de setup personnel, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  h2.section-title {
+   font-size: 1.1rem;
+   margin-top: 1.8rem;
+   margin-bottom: 0.6rem;
+   padding-bottom: 0.35rem;
+   border-bottom: 1px solid var(--border);
+  }
+  .step-block {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-left: 3px solid var(--violet);
+   border-radius: var(--radius);
+   padding: 1rem 1.2rem;
+   margin-bottom: 1rem;
+  }
+  .step-block .step-tag {
+   font-family: var(--font-mono);
+   font-size: 0.7rem;
+   color: var(--violet);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.35rem;
+   display: block;
+  }
+  .step-block h3 {
+   font-size: 1rem;
+   margin: 0 0 0.6rem;
+   color: var(--text);
+  }
+  .step-block p { margin-bottom: 0.6rem; }
+  .step-block p:last-child { margin-bottom: 0; }
+  .step-block pre {
+   background: var(--bg-alt);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.7rem 0.9rem;
+   font-family: var(--font-mono);
+   font-size: 0.78rem;
+   line-height: 1.55;
+   overflow-x: auto;
+   margin: 0.6rem 0;
+   color: var(--text);
+  }
+  .step-block code {
+   font-family: var(--font-mono);
+   font-size: 0.85rem;
+   background: var(--bg-alt);
+   padding: 0.08rem 0.35rem;
+   border-radius: 3px;
+   color: var(--violet);
+  }
+  .horizon-block {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.85rem 1.1rem;
+   margin-bottom: 0.7rem;
+  }
+  .horizon-block .horizon-tag {
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
+   font-weight: 600;
+   color: var(--green);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.3rem;
+   display: block;
+  }
+  .horizon-block p { margin: 0 0 0.5rem; font-size: 0.92rem; }
+  .horizon-block p:last-child { margin: 0; }
+  .conclusion-block {
+   background: var(--green-pale);
+   border: 1px solid var(--green-light);
+   border-radius: var(--radius-lg);
+   padding: 1rem 1.25rem;
+   margin: 1rem 0;
+  }
+  .conclusion-block h3 {
+   font-size: 0.85rem;
+   font-family: var(--font-mono);
+   color: var(--green);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin: 0 0 0.45rem;
+  }
+  .conclusion-block p { margin-bottom: 0.6rem; }
+  .conclusion-block p:last-child { margin-bottom: 0; }
+  .kpi-row {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+   gap: 0.6rem;
+   margin: 1rem 0;
+  }
+  .kpi-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.75rem;
+   text-align: center;
+  }
+  .kpi-card .kpi-value {
+   font-size: 1.35rem;
+   font-weight: 700;
+   color: var(--violet);
+   font-family: var(--font-mono);
+   display: block;
+   margin-bottom: 0.15rem;
+  }
+  .kpi-card .kpi-label {
+   font-size: 0.7rem;
+   color: var(--text-muted);
+   text-transform: uppercase;
+   letter-spacing: 0.05em;
+  }
+ </style>
 </head>
 <body data-page="realisations">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 04</p>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 04</p>
 
-    <div class="page-header">
-      <h1>Script de setup personnel</h1>
-      <div class="page-tags" style="margin-top:0.4rem;">
-        <a href="../competences/tech-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Tooling &amp; Scripting</a>
-        <a href="../competences/tech-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Configuration Système</a>
-        <a href="../competences/hum-3.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Autonomie</a>
-      </div>
-    </div>
+  <div class="page-header">
+   <h1>Script de setup personnel</h1>
+   <div class="page-tags" style="margin-top:0.4rem;">
+    <a href="../competences/tech-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Tooling &amp; Scripting</a>
+    <a href="../competences/tech-1.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Configuration Système</a>
+    <a href="../competences/tech-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Git</a>
+    <a href="../competences/hum-3.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Autonomie</a>
+    <a href="../competences/hum-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Initiative</a>
+   </div>
+  </div>
 
-    <h2>Présentation</h2>
-    <p>Tout technicien qui travaille régulièrement sur plusieurs machines finit par se poser la même question : combien de temps faut-il pour retrouver un environnement de travail pleinement opérationnel sur une nouvelle installation ? Pour moi, la réponse était trop longue. J'ai donc développé un <strong>script d'installation automatisée</strong> qui me permet de passer d'un système Linux vierge à un poste entièrement configuré, avec tous mes outils et mes préférences personnelles, en moins d'une heure et en quelques commandes.</p>
-    <p>Ce projet est disponible sur mon GitHub, mais il reste personnel : il est conçu pour mon workflow, mes habitudes et mes besoins spécifiques.</p>
+  <!-- ========================================== -->
+  <!-- REGARD CRITIQUE EN OUVERTURE        -->
+  <!-- ========================================== -->
+  <div class="conclusion-block">
+   <h3>// En une phrase</h3>
+   <p>Passer d'un poste Linux vierge à un environnement de travail entièrement configuré et durci en <strong>moins d'une heure</strong>, grâce à un script Python idempotent qui automatise cinq couches d'installation et qui transforme ma propre discipline de travail en code versionné.</p>
+  </div>
 
-    <h2>Objectifs, contexte et enjeux</h2>
-    <p>L'objectif est simple : ne plus jamais perdre de temps à reconfigurer un poste from scratch. Que ce soit après une réinstallation, sur une nouvelle machine ou dans un lab, je veux être opérationnel le plus vite possible, avec un environnement identique à celui que je connais.</p>
-    <p>L'enjeu est avant tout une question d'<strong>efficacité</strong> et de <strong>confort de travail</strong>. Un environnement mal configuré ou incomplet ralentit, distrait et génère des frictions inutiles. Un environnement maîtrisé, c'est de la concentration préservée et du temps gagné sur chaque session de travail.</p>
+  <!-- ========================================== -->
+  <!-- 1. CONTEXTE ET PRÉSENTATION         -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Contexte et présentation</h2>
+  <p>Tout technicien qui travaille régulièrement sur plusieurs machines finit par se poser la même question : combien de temps faut-il pour retrouver un environnement de travail pleinement opérationnel sur une nouvelle installation ? Pour moi, la réponse était trop longue. J'ai donc développé un <strong>script Python d'installation automatisée</strong> qui me permet de passer d'un système Linux vierge à un poste entièrement configuré, avec mes outils, mes politiques de durcissement et mes préférences personnelles, en moins d'une heure et en quelques commandes.</p>
 
-    <h2>Les étapes</h2>
-    <div style="margin-bottom:1.5rem;">
-      <img src="setup-couches.png" alt="Couches d'installation du script de setup" style="width:100%; max-width:560px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
-      <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Les quatre couches d'installation du script</p>
-    </div>
-    <p>Le script couvre plusieurs couches distinctes, dans un ordre logique de déploiement.</p>
-    <p><strong>Les outils d'administration réseau</strong> sont installés en premier : nmap, netcat, tcpdump, wireshark, traceroute, ainsi que les utilitaires de diagnostic courants. Ce sont les outils que j'utilise quotidiennement, que ce soit pour analyser un réseau, déboguer une connectivité ou préparer un audit.</p>
-    <p><strong>Les outils d'administration système</strong> suivent : htop, lsof, rsync, curl, wget, vim, ainsi que les gestionnaires de paquets complémentaires et les utilitaires de gestion des processus et des logs. Tout ce qui permet de comprendre et de contrôler rapidement l'état d'un système.</p>
-    <p><strong>La configuration SSH</strong> est appliquée automatiquement : durcissement du fichier sshd_config avec désactivation de l'authentification par mot de passe, génération d'une nouvelle paire de clés pour mon utilisateur, et ajout de la clé publique dans les emplacements appropriés. La machine est sécurisée dès le départ, sans manipulation manuelle.</p>
-    <p><strong>Les outils de développement et d'infrastructure</strong> sont ensuite déployés : Git avec ma configuration personnelle, Docker et ses dépendances, ainsi que kubectl pour la gestion de clusters Kubernetes. Ces outils sont indispensables dans la quasi-totalité de mes projets.</p>
-    <p><strong>L'environnement visuel et personnel</strong> constitue la dernière couche. J'installe <strong>Hyprland</strong>, un compositeur de fenêtres dynamique pour Linux basé sur Wayland, particulièrement apprécié dans les environnements de travail techniques. Mon terminal est <strong>Kitty</strong>, configuré avec mes raccourcis personnels, mes couleurs et mes préférences d'affichage. Le shell par défaut est remplacé par <strong>ZSH</strong>, avec mes thèmes Oh My Zsh et mes alias habituels. Mes polices d'écran (Nerd Fonts) sont également installées automatiquement.</p>
+  <p>Le projet est <strong>hébergé sur mon dépôt GitHub mais en mode privé</strong>. Mes dotfiles contiennent en effet des configurations personnelles que je ne souhaite pas exposer publiquement (paramètres de proxy, raccourcis spécifiques, références à des hôtes de mon homelab). Le script reste néanmoins <strong>facilement adaptable à un usage en entreprise</strong> en modifiant deux ou trois variables : c'est exactement le type d'outil qui peut servir aussi bien sur poste personnel que dans un contexte professionnel maîtrisé.</p>
 
-    <h2>Les acteurs</h2>
-    <p>C'est un projet entièrement individuel. Il n'implique aucun collaborateur externe, mais il bénéficie indirectement de la communauté open source : une grande partie des outils et configurations s'appuient sur des projets maintenus collectivement.</p>
+  <!-- ========================================== -->
+  <!-- 2. GENÈSE, OBJECTIFS, ENJEUX        -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Genèse, objectifs et enjeux</h2>
 
-    <h2>Les résultats</h2>
-    <p>Le résultat est concret et mesurable : une installation complète en <strong>moins d'une heure</strong>, reproductible à l'identique sur n'importe quelle machine sous Linux. Plus aucune friction lors d'une réinstallation, plus de temps perdu à rechercher des configurations oubliées ou à réinstaller des outils un par un.</p>
-    <p>Ce script m'a également permis de mieux comprendre les dépendances entre les différents composants de mon environnement, et de documenter mes propres choix techniques de manière structurée.</p>
+  <p>Le projet a commencé sous forme de <strong>petites briques disparates en mi-2024</strong>, sans architecture claire : quelques alias shell sauvegardés, un script d'installation de paquets, des dotfiles éparpillés. Le vrai déclic est arrivé <strong>début 2025</strong>, après avoir vu une <a href="https://www.youtube.com/watch?v=Tx9dHc0MyHs" target="_blank" rel="noopener">vidéo de la chaîne Dinkii</a> qui présentait une approche structurée de l'automatisation d'environnement de travail. Cela m'a donné le cadre méthodologique qui manquait à mes briques personnelles, et m'a poussé à transformer ces fragments en un véritable outil cohérent.</p>
 
-    <h2>Les lendemains du projet</h2>
-    <p>Ce script est en <strong>évolution permanente</strong>. Chaque nouvel outil que j'adopte, chaque configuration que j'affine finit par y être intégré. C'est un projet vivant, qui reflète à tout moment l'état de mon environnement de travail idéal. À terme, je souhaite le rendre plus modulaire, avec des profils distincts selon le contexte : un profil orienté audit, un profil orienté développement, un profil orienté administration système.</p>
+  <p>L'objectif est simple à formuler mais structurant à atteindre : <strong>ne plus jamais perdre de temps à reconfigurer un poste depuis zéro</strong>. Que ce soit après une réinstallation, sur une nouvelle machine, ou dans un lab éphémère, je veux être opérationnel le plus vite possible, avec un environnement identique à celui que je connais et qui me convient.</p>
 
-    <h2>Regard critique</h2>
-    <p>Ce projet m'a appris quelque chose d'important : <strong>documenter et automatiser ses propres habitudes de travail</strong> est un exercice qui oblige à les questionner. En formalisant chaque choix dans un script, on réalise ce qui est vraiment utile, ce qui est superflu, et ce qui manque. C'est une forme de recul sur sa propre pratique qu'on n'a pas souvent l'occasion de prendre.</p>
-    <p>Si je devais conseiller quelque chose à d'autres techniciens, ce serait de ne pas attendre d'avoir un environnement parfait pour commencer ce type de projet. Un script imparfait qui automatise 70% du travail vaut mieux qu'une installation manuelle parfaite qui recommence à zéro à chaque fois.</p>
-  </main>
+  <p>L'enjeu est triple. Un enjeu d'<strong>efficacité</strong> d'abord : un environnement mal configuré ou incomplet ralentit, distrait et génère des frictions inutiles. Un enjeu de <strong>cohérence</strong> ensuite : avoir le même environnement sur toutes mes machines évite les surprises et les ajustements à chaque transition. Un enjeu de <strong>sécurité</strong> enfin : intégrer les politiques de durcissement (SSH notamment) dès l'installation initiale garantit qu'aucune machine ne reste exposée pendant la fenêtre temporelle qui sépare habituellement l'install d'un système et son durcissement manuel.</p>
+
+  <p><strong>Les risques propres au projet</strong> sont à prendre au sérieux. Un script d'installation qui casse une étape peut laisser le système dans un état intermédiaire incohérent. Un script qui s'exécute sur des distributions différentes sans précautions peut provoquer des comportements inattendus. Une configuration de durcissement mal pensée peut me <strong>verrouiller hors de ma propre machine</strong>, notamment sur le volet SSH si la clé n'est pas correctement déployée avant la désactivation du mot de passe. Ces risques ont façonné mes choix techniques : idempotence, gestion d'erreur explicite, et tests systématiques en VM jetable avant tout déploiement sur une machine cible.</p>
+
+  <!-- ========================================== -->
+  <!-- 3. ÉTAPES DE RÉALISATION          -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Étapes de réalisation</h2>
+
+  <div style="margin: 0 0 1.5rem;">
+   <img src="setup-couches.png" alt="Les couches d'installation du script de setup personnel" style="width:100%; max-width:560px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
+   <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Les cinq couches d'installation du script, déployées dans un ordre logique de dépendance.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 1 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 1 · Cadrage technique et choix Python</span>
+   <h3>Choisir le langage, structurer le script, garantir l'idempotence</h3>
+   <p>Le choix du langage a été le premier arbitrage. J'ai opté pour <strong>Python</strong> en première version, principalement parce que c'est mon langage le plus à l'aise et parce qu'il offre une gestion d'erreur structurée que Bash rend plus difficile. Cette décision a un revers que j'assume : <strong>Python n'est pas toujours présent sur un système fraîchement installé</strong>, surtout sur des distributions minimalistes. C'est pourquoi une <strong>version Bash est en cours de développement</strong> en parallèle, pour éliminer cette dépendance et garantir que le script peut tourner sur n'importe quel Linux dès le premier boot.</p>
+
+   <p>L'idempotence a été imposée comme contrainte de conception dès le départ. Le script peut être <strong>relancé plusieurs fois sans casser le système</strong> : avant chaque action, il vérifie si l'état cible est déjà atteint, et passe l'étape si c'est le cas. Concrètement, cela signifie vérifier qu'un paquet n'est pas déjà installé avant <code>apt install</code>, qu'une ligne de configuration n'est pas déjà présente avant de l'ajouter, qu'une clé SSH n'existe pas déjà avant d'en générer une nouvelle. Cette discipline transforme le script en outil <strong>réutilisable comme outil de mise à jour</strong>, pas seulement comme outil d'installation initiale.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 2 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 2 · Couche 1, outils réseau et système</span>
+   <h3>Installer les utilitaires indispensables au diagnostic et à l'administration</h3>
+   <p>La première couche déployée concerne les <strong>outils d'administration réseau</strong>, qui sont mes outils du quotidien dès qu'il s'agit d'analyser un trafic ou de déboguer une connectivité : <code>nmap</code> pour la cartographie réseau, <code>netcat</code> pour les tests de port et le tunneling rapide, <code>tcpdump</code> pour la capture en ligne de commande, <code>wireshark</code> pour l'analyse approfondie, <code>traceroute</code>, ainsi que les utilitaires de diagnostic courants (<code>iproute2</code>, <code>iputils</code>, <code>dnsutils</code>).</p>
+
+   <p>Les <strong>outils d'administration système</strong> suivent dans la même couche, par cohérence d'usage : <code>htop</code> pour la supervision interactive, <code>lsof</code> pour l'inspection des descripteurs de fichiers, <code>rsync</code> pour les synchronisations fiables, <code>curl</code> et <code>wget</code> pour les requêtes web, <code>vim</code> comme éditeur de référence, ainsi que les utilitaires de gestion de processus et de logs. Cette couche est la <strong>fondation</strong> sur laquelle s'appuient toutes les suivantes : sans ces outils, le diagnostic en cas de problème ultérieur devient compliqué.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 3 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 3 · Couche 2, durcissement SSH</span>
+   <h3>Sécuriser l'accès distant dès l'installation initiale</h3>
+   <p>Avant de pousser plus loin, le script applique automatiquement une <strong>politique de durcissement SSH</strong>. C'est une étape critique : un poste fraîchement installé reste vulnérable tant que les politiques par défaut ne sont pas durcies. Le script génère une <strong>nouvelle paire de clés</strong> pour mon utilisateur, ajoute ma clé publique aux <code>authorized_keys</code>, puis modifie <code>sshd_config</code> pour <strong>désactiver l'authentification par mot de passe</strong>, désactiver le login root direct et restreindre les algorithmes utilisés à ceux considérés comme sûrs.</p>
+
+   <p>L'ordre des opérations est <strong>déterminant</strong> ici. Désactiver l'authentification par mot de passe avant d'avoir déployé une clé fonctionnelle revient à se verrouiller hors de la machine. Le script implémente une <strong>séquence sécurisée</strong> : générer la clé, déployer la clé publique, tester l'authentification par clé en local, et seulement ensuite modifier <code>sshd_config</code>. Cette précaution est née d'un retour d'expérience douloureux pendant la phase de développement où je me suis effectivement verrouillé hors d'une VM de test, ce qui m'a fait perdre une heure de configuration mais m'a définitivement formé sur la prudence à appliquer.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 4 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 4 · Couche 3, outils de développement et d'infrastructure</span>
+   <h3>Déployer Git, Docker, Kubernetes et les dépendances de projet</h3>
+   <p>La troisième couche déploie les <strong>outils de développement et d'infrastructure</strong> qui sont indispensables à la quasi-totalité de mes projets. <strong>Git</strong> est installé avec ma configuration personnelle (user, email, signature, alias usuels). <strong>Docker</strong> est installé via le dépôt officiel pour disposer de la version à jour plutôt que celle parfois en retard des dépôts de distribution, avec son démon configuré et mon utilisateur ajouté au groupe <code>docker</code>. <strong>kubectl</strong> est installé pour interagir avec mes clusters Kubernetes de lab.</p>
+
+   <p>Les versions installées suivent une logique simple : <strong>dernière version stable</strong> pour les outils de développement, version recommandée par l'éditeur pour Docker, version compatible avec mon cluster Kubernetes courant pour kubectl. Cette approche m'a évité des incompatibilités quand je passe d'une machine à l'autre, car toutes ont la même base de versions.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 5 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 5 · Couche 4, environnement visuel et personnel</span>
+   <h3>Installer Hyprland, Kitty, Zsh, Nerd Fonts, et la couche qui m'a donné le plus de fil à retordre</h3>
+   <p>La dernière couche d'installation concerne l'<strong>environnement visuel et personnel</strong>, et c'est de loin celle qui a posé le plus de problèmes techniques. J'installe <strong>Hyprland</strong>, un compositeur de fenêtres dynamique pour Linux basé sur Wayland, particulièrement adapté aux environnements de travail techniques avec son approche tiling. Mon terminal est <strong>Kitty</strong>, configuré avec mes raccourcis personnels, mes thèmes de couleurs et mes préférences d'affichage. Le shell par défaut est remplacé par <strong>Zsh</strong>, avec <strong>Oh My Zsh</strong>, mes thèmes et mes alias habituels. Les <strong>Nerd Fonts</strong> sont installées pour permettre l'affichage correct des icônes et glyphes utilisés par mon prompt et mes éditeurs.</p>
+
+   <p>La <strong>difficulté principale</strong> a concerné Hyprland sur Debian. Jusqu'à très récemment, Hyprland n'était <strong>pas disponible dans les dépôts officiels Debian</strong>, ce qui obligeait à le compiler depuis les sources avec ses nombreuses dépendances (wayland-protocols, libdrm, libinput, hyprlang, etc.). Cette compilation était fragile et longue, et l'aboutissement n'était pas garanti selon la version de Debian utilisée. À l'inverse, sur <strong>Arch</strong>, Hyprland est dans l'AUR et l'installation est triviale, ce qui explique en partie ma préférence personnelle pour Arch comme distribution principale.</p>
+
+   <p>L'autre point sensible est la <strong>compatibilité avec les drivers Nvidia</strong>. Hyprland a longtemps souffert de problèmes d'affichage avec les drivers propriétaires Nvidia : artefacts, écrans noirs, performances dégradées, instabilités lors de la mise en veille. Selon la génération de carte et la version du driver, le script pouvait produire un environnement parfaitement fonctionnel ou un environnement inutilisable. Depuis quelques mois, la situation s'est largement améliorée et l'installation se passe correctement <strong>tant que je ne modifie pas la configuration matérielle</strong>. Toute modification (changement de carte, mise à jour majeure de driver, switch entre GPU intégré et discret) déclenche encore aujourd'hui des petits ajustements et des tests pour vérifier que tout fonctionne.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 6 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 6 · Multi-distribution</span>
+   <h3>Gérer Debian et Arch avec leurs gestionnaires de paquets respectifs</h3>
+   <p>Le script supporte deux familles de distributions : <strong>Debian</strong> (avec <code>apt</code>) et <strong>Arch Linux</strong> (avec <code>pacman</code> et l'AUR via <code>yay</code>). La distinction est aujourd'hui passée en paramètre explicite à l'invocation du script, mais je travaille sur une <strong>détection automatique</strong> qui utilisera les standards habituels : lecture de <code>/etc/os-release</code> en priorité, et fallback sur la commande <code>lsb_release -i</code> si nécessaire. Cette évolution permettra de simplifier l'invocation et de réduire le risque d'erreur utilisateur en sélectionnant le mauvais profil.</p>
+   <p>Les packages installés sont mappés entre les deux écosystèmes via un fichier de correspondance simple, ce qui me permet de définir un outil une seule fois et de laisser le script choisir le nom de paquet adapté à la distribution cible.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 4. ACTEURS                 -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Organisation et acteurs</h2>
+  <p>Ce projet est <strong>entièrement individuel</strong>. Il n'implique aucun collaborateur externe, mais il bénéficie indirectement et largement de la communauté open source : une grande partie des outils, configurations et bonnes pratiques que le script automatise s'appuient sur des projets maintenus collectivement, dont mes dotfiles ne sont en pratique qu'un assemblage personnalisé.</p>
+
+  <p>L'inspiration méthodologique principale vient de la <strong>chaîne YouTube Dinkii</strong>, dont la vidéo de référence (lien plus haut) a donné le cadre structurel que mes premières briques disparates n'avaient pas. C'est un bon exemple de ce que peut apporter une bonne ressource pédagogique au bon moment : transformer des fragments épars en un projet cohérent.</p>
+
+  <p>Au-delà de Dinkii, je continue à m'enrichir des partages d'autres techniciens sur ma communauté Keybase et sur Twitter, qui publient régulièrement leurs propres configurations et donnent des idées pour améliorer la mienne.</p>
+
+  <!-- ========================================== -->
+  <!-- 5. RÉSULTATS                -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Résultats</h2>
+
+  <div class="kpi-row">
+   <div class="kpi-card">
+    <span class="kpi-value">&lt; 1h</span>
+    <span class="kpi-label">Install complète</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">5</span>
+    <span class="kpi-label">Couches d'installation</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">2</span>
+    <span class="kpi-label">Distributions supportées</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">4</span>
+    <span class="kpi-label">Déploiements réels</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">100%</span>
+    <span class="kpi-label">Idempotent</span>
+   </div>
+  </div>
+
+  <p><strong>Pour moi</strong>, le résultat est très concret et directement mesurable. Une installation complète depuis un Linux vierge prend désormais <strong>moins d'une heure</strong> en quelques commandes, là où la même opération manuelle prenait facilement une demi-journée pour atteindre un niveau équivalent de finition. Le script a été utilisé en conditions réelles <strong>quatre fois</strong> à ce jour, sur des contextes variés : une réinstallation complète de mon poste principal, un nouvel ordinateur portable, deux machines virtuelles de lab. À chaque exécution, je retrouve mon environnement à l'identique, sans friction.</p>
+
+  <p>Le gain n'est pas seulement temporel. Il est aussi <strong>qualitatif</strong> : plus aucune friction lors d'une réinstallation, plus de temps perdu à chercher des configurations oubliées, plus de moments où je me dis "il faudrait que je remette tel alias, j'y penserai plus tard". Tout ce qui était dans ma tête est désormais dans le code, et le code ne perd rien.</p>
+
+  <p>Le script m'a également permis de <strong>mieux comprendre les dépendances</strong> entre les différents composants de mon environnement et de <strong>documenter mes propres choix techniques</strong> de manière structurée. Un script de setup, c'est en réalité une carte mentale de son propre environnement de travail rendue exécutable.</p>
+
+  <!-- ========================================== -->
+  <!-- 6. LENDEMAINS                -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Lendemains du projet</h2>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// Futur immédiat (après chaque réinstallation)</span>
+   <p>Chaque utilisation du script déclenche une <strong>passe d'ajustement</strong> immédiatement après : ajout d'un nouvel outil que j'avais oublié d'intégrer, correction d'un comportement légèrement différent sur la nouvelle machine, mise à jour d'un alias devenu obsolète. Cette boucle de rétroaction permanente fait que chaque utilisation du script l'améliore pour la suivante. C'est exactement le principe d'un outil vivant, par opposition à un outil figé qu'on installe une fois pour toutes.</p>
+  </div>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// À distance (depuis le déclic début 2025)</span>
+   <p>Le projet s'est étoffé continûment depuis la version initiale début 2025. La couche réseau a été enrichie, la couche système densifiée, le durcissement SSH affiné, et la couche environnement visuel est passée d'une simple installation de Zsh à toute la stack Hyprland + Kitty + Nerd Fonts. Le passage du mode "petites briques" au mode "outil cohérent" a été le saut de maturité le plus important, et il n'aurait pas eu lieu sans le déclic vidéo.</p>
+  </div>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// Aujourd'hui et à venir (2026)</span>
+   <p>Plusieurs évolutions concrètes sont sur ma roadmap. La <strong>version Bash en cours de développement</strong> permettra d'éliminer la dépendance Python et d'utiliser le script sur n'importe quel Linux dès le premier boot. La <strong>détection automatique de distribution</strong> via <code>/etc/os-release</code> et <code>lsb_release</code> simplifiera l'invocation. Une <strong>modularisation par profils</strong> est aussi prévue : un profil orienté audit (outils offensifs), un profil orienté développement (langages, IDE), un profil orienté administration système (monitoring, outils d'infra), pour pouvoir adapter le déploiement au contexte d'usage de la machine cible.</p>
+   <p>À plus long terme, je réfléchis à une <strong>réécriture en Ansible ou NixOS</strong> qui apporterait une idempotence native sans avoir à la coder à la main, et qui pourrait aussi servir à provisionner des machines distantes. La publication sur GitHub <strong>en public</strong> reste un objectif, mais elle exigera de séparer rigoureusement les dotfiles génériques (publiables) des dotfiles sensibles (personnels, références à mon infrastructure). C'est un travail de séparation que je n'ai pas encore eu le temps de faire proprement.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 7. REGARD CRITIQUE             -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Regard critique</h2>
+
+  <p><strong>Mes apports concrets</strong> sur ce projet sont de trois ordres. D'abord la <strong>discipline d'automatisation appliquée à mon propre poste</strong>, qui n'est pas naturelle pour un technicien : on automatise volontiers les serveurs des autres, beaucoup moins facilement son propre environnement de travail. Ensuite la <strong>capture de mes choix techniques en code versionné</strong>, qui transforme une connaissance tacite (ce que j'aime avoir sur un poste) en connaissance explicite et transférable. Enfin l'<strong>intégration du durcissement dès l'installation</strong>, qui fait passer la sécurité d'un sujet "à appliquer plus tard" à un sujet "déjà appliqué par défaut".</p>
+
+  <p><strong>Ma valeur ajoutée mesurable</strong> est double. D'une part, un gain de temps direct mesurable à chaque utilisation : moins d'une heure pour un setup complet vs une demi-journée manuelle, sur quatre utilisations cela représente déjà plusieurs jours-homme économisés. D'autre part, une <strong>cohérence d'environnement</strong> entre toutes mes machines qui élimine les frictions de transition : je n'ai plus à me demander si telle commande va marcher ailleurs, parce que tout est identique partout.</p>
+
+  <p><strong>Mes enseignements personnels</strong> sont marquants. Le plus important est probablement que <strong>documenter et automatiser ses propres habitudes de travail oblige à les questionner</strong>. En formalisant chaque choix dans un script, on réalise ce qui est vraiment utile, ce qui est superflu, et ce qui manque. C'est une forme de recul sur sa propre pratique qu'on n'a pas souvent l'occasion de prendre. Le second enseignement, plus pratique, est qu'<strong>un script imparfait qui automatise 70% du travail vaut infiniment mieux qu'une installation manuelle parfaite qui recommence à zéro à chaque fois</strong>. C'est le conseil que je donnerais à n'importe qui voudrait se lancer dans ce type de projet : ne pas attendre la version parfaite pour commencer.</p>
+
+  <p>Avec le recul, je vois aussi <strong>les limites du projet en l'état actuel</strong>. La <strong>maintenance est irrégulière</strong> : entre deux utilisations réelles du script, je ne le mets pas systématiquement à jour, ce qui veut dire que des <strong>versions vulnérables d'outils peuvent rester épinglées</strong> sans que je le sache. Cette dette de sécurité est inhérente à un projet personnel sans CI/CD ni revue régulière, et elle constitue précisément l'un des arguments pour la migration vers Ansible ou NixOS prévue. Par ailleurs, le caractère <strong>personnel</strong> du dépôt limite la valeur communautaire du projet : il ne profite à personne d'autre que moi, alors qu'un dépôt public aurait pu servir à d'autres techniciens. C'est un compromis assumé, mais c'est un compromis.</p>
+
+  <!-- ========================================== -->
+  <!-- COMPÉTENCES RATTACHÉES           -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Compétences rattachées</h2>
+  <p>Ce projet mobilise principalement des compétences techniques, tout en s'appuyant sur des qualités personnelles fortes. Sur le volet technique, il illustre directement le <a href="../competences/tech-4.html"><strong>Tooling &amp; Scripting</strong></a> dans son aspect outil structuré et idempotent (par opposition au script jetable), la <a href="../competences/tech-1.html"><strong>Configuration Système</strong></a> par la maîtrise fine des fichiers et processus configurés automatiquement (SSH, gestionnaires de paquets, dotfiles), et <a href="../competences/tech-5.html"><strong>Git</strong></a> par la mise en versionnement de l'ensemble. Sur le volet humain, il met en avant l'<a href="../competences/hum-3.html"><strong>Autonomie</strong></a> de bout en bout sur un projet personnel et la capacité à <a href="../competences/hum-4.html"><strong>Faire preuve d'initiative</strong></a> en construisant son propre outillage plutôt qu'en attendant qu'une solution toute faite existe.</p>
+
+ </main>
 </body>
 </html>

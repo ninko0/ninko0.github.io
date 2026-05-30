@@ -1,39 +1,131 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Esprit de partage — Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Esprit de partage, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  .anecdote{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius);padding:1rem 1.2rem;margin-bottom:1rem}
+  .anecdote-tag{font-family:var(--font-mono);font-size:0.7rem;color:var(--green);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.35rem;display:block}
+  .anecdote h3{font-size:1rem;margin:0 0 0.6rem;color:var(--text)}
+  .anecdote p{margin-bottom:0.6rem}
+  .anecdote p:last-child{margin-bottom:0}
+  .anecdote-result{margin-top:0.7rem;padding:0.55rem 0.8rem;background:var(--violet-pale);border-left:2px solid var(--violet);border-radius:var(--radius);font-size:0.9rem}
+  .anecdote-result strong{color:var(--violet)}
+  .skill-level-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin:0.8rem 0 1rem}
+  .skill-level-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:0.7rem 0.9rem}
+  .skill-level-card .lvl-name{font-family:var(--font-mono);font-size:0.78rem;font-weight:600;margin-bottom:0.3rem}
+  .skill-level-card .lvl-bar{height:6px;background:var(--bg-alt);border-radius:999px;overflow:hidden;margin-bottom:0.3rem}
+  .skill-level-card .lvl-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--violet));border-radius:999px}
+  .skill-level-card .lvl-text{font-size:0.78rem;color:var(--text-muted)}
+  h2{margin-top:1.8rem;padding-bottom:0.35rem;border-bottom:1px solid var(--border);font-size:1.1rem}
+ </style>
 </head>
 <body data-page="competences">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Humaine 05</p>
-    <div class="page-header">
-      <h1>Esprit de partage</h1>
-</div>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Humaine 05</p>
+  <div class="page-header">
+   <h1>Esprit de partage</h1>
+  </div>
 
-    <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
-      <a href="../realisations/real-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
-      <a href="../realisations/real-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Script de setup personnel</a>
-    </div>
+  <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
+   <a href="../realisations/real-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
+   <a href="../realisations/real-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Portfolio auto-hébergé</a>
+  </div>
 
-    <h2>Définition</h2>
-    <p>L'esprit de partage, c'est la volonté sincère de transmettre ce qu'on sait, de rendre accessible ce qu'on a construit, et de contribuer à la progression des autres sans en attendre quelque chose en retour. Dans l'écosystème du <strong>logiciel libre</strong> et de la <strong>cybersécurité</strong>, c'est une valeur fondatrice : une grande partie des outils, des documentations et des pratiques qui structurent le métier existent uniquement parce que des gens ont choisi de partager plutôt que de garder pour eux.</p>
-    <p style="margin-bottom:1.5rem;">Pour moi, partager ne se limite pas à publier du code. C'est expliquer la logique derrière une décision technique, accompagner quelqu'un qui bloque sur un problème, ou documenter un projet pour que quelqu'un d'autre puisse s'en emparer sans avoir à tout redécouvrir from scratch.</p>
+  <h2>Définition</h2>
+  <p>L'<strong>esprit de partage</strong>, c'est la volonté sincère de transmettre ce qu'on sait, de rendre accessible ce qu'on a construit, et de contribuer à la progression des autres sans en attendre quelque chose en retour. Dans l'écosystème du <strong>logiciel libre</strong> et de la <strong>cybersécurité</strong>, c'est une valeur fondatrice : une grande partie des outils, des documentations et des pratiques qui structurent le métier existent uniquement parce que des gens ont choisi de partager plutôt que de garder pour eux.</p>
 
-    <h2>Éléments de preuve</h2>
-    <p>Mes projets <strong>GitHub</strong> sont construits dans une logique de réutilisabilité dès le départ. L'objectif n'est pas simplement de versionner mon code, c'est de produire quelque chose qu'une autre personne peut comprendre, utiliser et améliorer sans avoir besoin de me solliciter. La documentation, la structure des dépôts et les choix d'architecture reflètent cette intention.</p>
-    <p>Au quotidien, j'aide régulièrement d'autres apprenants de ma promotion ou de mon entourage technique lorsqu'ils rencontrent des difficultés. Que ce soit sur des problèmes de <strong>configuration réseau</strong>, des questions de <strong>scripting</strong> ou des blocages sur des projets de lab, je prends le temps d'expliquer la logique plutôt que de donner simplement la réponse. Pour moi, donner la réponse directement ne fait pas progresser. Comprendre pourquoi, si.</p>
-    <p style="margin-bottom:1.5rem;">J'échange également régulièrement avec une équipe de <strong>pentesters</strong> dans une dynamique de partage mutuel. Ils me transmettent leur expérience terrain, je partage mes retours sur des outils ou des configurations que j'ai testés. C'est ce type d'échange, horizontal et sans ego, qui fait vraiment avancer.</p>
+  <p>Pour moi, partager ne se limite pas à publier du code. C'est <strong>expliquer la logique derrière une décision technique, accompagner quelqu'un qui bloque sur un problème, ou documenter un projet pour que quelqu'un d'autre puisse s'en emparer sans avoir à tout redécouvrir from scratch</strong>.</p>
 
-    <h2>Autocritique</h2>
-    <p style="margin-bottom:1.5rem;">Mon esprit de partage est sincère mais encore limité dans sa portée. Je partage principalement dans mon entourage proche ou via GitHub, sans encore avoir contribué formellement à des projets communautaires structurés. Mes contributions publiques restent modestes en termes de visibilité et d'audience. Je suis conscient que partager dans un cercle restreint, c'est bien, mais que l'impact réel vient quand on s'ouvre à des communautés plus larges.</p>
+  <p>Dans le contexte actuel, où les <strong>chaînes d'approvisionnement open source</strong> sont devenues centrales dans toutes les infrastructures (xz, OpenSSL, log4j ont rappelé que des composants maintenus par quelques bénévoles tiennent une partie d'Internet), l'esprit de partage n'est plus un supplément d'âme : c'est l'une des forces qui maintient l'écosystème technique en état de marche. Mon engagement dans cette direction est cohérent avec mon objectif personnel de devenir contributeur reconnu de l'écosystème libre.</p>
 
-    <h2>Évolution</h2>
-    <p>Mon objectif à moyen terme est de m'inscrire durablement dans des <strong>communautés open source</strong> actives, en passant du statut d'utilisateur à celui de contributeur reconnu. Cela implique de proposer des correctifs, de documenter des problèmes, de participer aux discussions et à terme de maintenir des composants dans des projets existants.</p>
-    <p>C'est dans cette logique que s'inscrit mon travail actuel sur mes outils personnels : les rendre suffisamment matures et documentés pour pouvoir les proposer à des communautés plus larges, et commencer à exister en dehors de mon cercle immédiat.</p>
-  </main>
+  <h2>La compétence en pratique</h2>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 1, depuis 2024, accompagnement de camarades à l'ESIEA</span>
+   <h3>Aider régulièrement des camarades à débloquer leurs problèmes techniques</h3>
+   <p>Au quotidien, j'aide régulièrement d'autres apprenants de ma promotion à l'<strong>ESIEA</strong> lorsqu'ils rencontrent des difficultés. Que ce soit sur des problèmes de <strong>configuration réseau</strong>, des questions de <strong>scripting</strong>, des blocages sur des projets de lab, ou des sujets de cybersécurité que j'ai pratiqués avant eux, je prends le temps d'expliquer la logique plutôt que de donner simplement la réponse.</p>
+   <p>Pour moi, <strong>donner la réponse directement ne fait pas progresser</strong>. Comprendre pourquoi, si. C'est une discipline que je m'impose même quand ça me coûte du temps : je préfère poser deux ou trois questions ouvertes pour que la personne arrive elle-même à la solution, plutôt que de balancer la commande exacte qui résout son problème. Cette posture rend les sessions d'aide plus longues mais beaucoup plus formatrices pour la personne qui demande.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> plusieurs camarades me sollicitent désormais de manière régulière en cas de blocage, ce qui me renvoie un signal positif sur la qualité de cet accompagnement. Ma valeur ajoutée ici n'est pas dans la résolution des problèmes, c'est dans la <strong>transmission de la méthode</strong> qui permet à la personne de débloquer la prochaine situation similaire toute seule.
+   </div>
+  </div>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 2, octobre 2025, publication open source</span>
+   <h3>Publier ses outils plutôt que de les garder pour soi</h3>
+   <p>Mon projet <a href="https://github.com/ninko0/Docker-IDS-Sensor" target="_blank">Docker-IDS-Sensor</a> est construit dans une logique de réutilisabilité dès le départ. Publier le projet sur GitHub plutôt que de le garder en privé est en soi un acte de partage : l'objectif n'est pas simplement de versionner mon code, c'est de produire quelque chose qu'une autre personne peut comprendre, utiliser et améliorer sans avoir besoin de me solliciter.</p>
+   <p>La <strong>documentation, la structure du dépôt et les choix d'architecture</strong> reflètent cette intention : un <code>README</code> structuré, un <code>docker-compose</code> qui s'auto-explique, des Dockerfiles compréhensibles. C'est un investissement en temps significatif (probablement 30% du temps total du projet est passé sur la documentation et la propreté du code) que j'aurais pu économiser si j'avais publié sans intention de partage réel.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> un proche pentester de ma communauté a pu déployer le projet en suivant uniquement le README, et utilise activement le composant OpenCanary dans son infrastructure professionnelle. C'est la <strong>preuve par l'usage</strong> que l'effort de partage a fonctionné : un autre humain a réutilisé mon travail sans intervention de ma part.
+   </div>
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-2.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Sonde IDS conteneurisée</a></p>
+  </div>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 3, en continu, échanges avec ma communauté technique</span>
+   <h3>Cultiver un échange horizontal avec une communauté de pairs</h3>
+   <p>J'entretiens des échanges réguliers avec une équipe de <strong>pentesters</strong> sur <strong>Keybase</strong>, dans une dynamique de partage mutuel. Ils me transmettent leur expérience terrain, je partage mes retours sur des outils ou des configurations que j'ai testés, des découvertes en CTF, des analyses de papers ou d'incidents publics. C'est ce type d'échange, <strong>horizontal et sans ego</strong>, qui fait vraiment avancer.</p>
+   <p>Cette communauté n'est pas un canal de support à sens unique : chacun y apporte ce qu'il sait, et reçoit en retour. C'est exactement ce que j'aimerais retrouver à plus grande échelle dans les projets open source structurés. C'est aussi dans ce cadre informel que j'ai validé beaucoup d'apprentissages techniques en les confrontant à des praticiens plus expérimentés que moi, ce qui évite les angles morts qu'une autoformation pure peut produire.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> ce canal d'échange continu est l'un de mes meilleurs <strong>accélérateurs d'apprentissage</strong>. Il me confirme aussi que le partage n'a pas besoin d'être public pour exister : un échange à 5 personnes qui s'entraident vaut souvent mieux que 100 followers passifs.
+   </div>
+  </div>
+
+  <h2>Mon niveau de maîtrise</h2>
+  <p>Mon esprit de partage est <strong>sincère et présent au quotidien</strong>, mais encore <strong>limité dans sa portée publique</strong>. Je partage volontiers dans mon entourage proche et via GitHub, sans encore avoir contribué formellement à des projets communautaires structurés. Mes contributions publiques restent modestes en termes de visibilité et d'audience.</p>
+
+  <div class="skill-level-grid">
+   <div class="skill-level-card">
+    <div class="lvl-name">Aide individuelle (camarades, collègues)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:85%;"></div></div>
+    <div class="lvl-text">17/20 · Habitude quotidienne</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Documentation de mes projets</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:80%;"></div></div>
+    <div class="lvl-text">16/20 · README systématique</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Publication open source</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:55%;"></div></div>
+    <div class="lvl-text">11/20 · Présent, peu de visibilité</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Contribution à projets externes</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:30%;"></div></div>
+    <div class="lvl-text">6/20 · Axe d'évolution principal</div>
+   </div>
+  </div>
+
+  <p><strong>Contextualisation :</strong> je suis conscient que partager dans un cercle restreint, c'est bien, mais que l'<strong>impact réel vient quand on s'ouvre à des communautés plus larges</strong>. C'est précisément la zone que je veux travailler dans les prochains mois et années.</p>
+
+  <h2>Place dans mon profil et vitesse d'acquisition</h2>
+  <p>L'esprit de partage est une compétence <strong>identitaire</strong> pour moi : elle est cohérente avec mon objectif personnel de devenir contributeur reconnu de l'écosystème libre, et c'est une valeur que je considère comme structurelle dans ma définition de ce qu'est un bon ingénieur. Sans esprit de partage, on construit des silos personnels qui ne survivent pas au départ de la personne qui les a montés.</p>
+
+  <p><strong>Vitesse d'acquisition :</strong> cette compétence n'a pas eu de pic d'apprentissage, c'est une <strong>disposition cultivée progressivement</strong>. Ce qui a évolué avec l'expérience, c'est la <strong>qualité technique</strong> de mes partages : ma documentation aujourd'hui est sensiblement meilleure qu'il y a 2 ans, mes explications à l'oral plus structurées, mes échanges techniques plus précis. C'est cette qualité qui transforme l'intention de partager en partage réellement utile.</p>
+
+  <h2>Mon recul sur la compétence</h2>
+  <p>Avec l'expérience que j'ai aujourd'hui, je conseille de <strong>partager même quand on se sent illégitime</strong>. Beaucoup de gens attendent d'avoir « le niveau » pour publier quelque chose, et ce niveau n'arrive jamais. La vérité, c'est qu'il y aura toujours quelqu'un de plus expérimenté que vous, mais il y aura aussi toujours quelqu'un qui apprend exactement les notions que vous maîtrisez. Pour cette seconde personne, votre partage a une valeur réelle, indépendamment de ce que pensent les seniors.</p>
+
+  <p>Je conseille aussi de <strong>documenter pour soi-même d'abord</strong>. Quand on documente un projet en se mettant à la place d'un futur soi qui n'aura plus le contexte, on documente bien. Quand on documente en pensant aux autres, on documente trop ou trop peu. Cette inversion de perspective a transformé la qualité de mes READMEs.</p>
+
+  <p>Enfin, je conseille d'<strong>expliquer la logique plutôt que la commande</strong>. Donner la solution exacte à un problème, c'est aider une fois. Expliquer la méthode qui mène à la solution, c'est apprendre à pêcher au lieu de donner le poisson. Cette discipline coûte plus de temps sur le moment mais paie largement sur la durée, à la fois pour la personne aidée et pour la qualité de la relation qui s'établit.</p>
+
+  <h2>Évolution et formations</h2>
+  <p>Mon objectif à moyen terme est de m'inscrire durablement dans des <strong>communautés open source</strong> actives, en passant du statut d'utilisateur à celui de contributeur reconnu. Cela implique de proposer des correctifs, de documenter des problèmes, de participer aux discussions et à terme de maintenir des composants dans des projets existants.</p>
+
+  <p>C'est dans cette logique que s'inscrit mon travail actuel sur mes outils personnels : les rendre <strong>suffisamment matures et documentés</strong> pour pouvoir les proposer à des communautés plus larges, et commencer à exister en dehors de mon cercle immédiat.</p>
+
+  <p>Concrètement, mes <strong>cibles de contribution open source</strong> à court et moyen terme sont des projets que j'utilise quotidiennement : modules ou règles pour <strong>Suricata</strong> et <strong>Wazuh</strong>, améliorations de <strong>scripts d'installation Alpine</strong>, ou paquets <strong>Debian</strong> que je connais bien pour les avoir installés des dizaines de fois. Plutôt que de viser tout de suite des contributions majeures, je préfère commencer par des contributions modestes (typos dans la documentation, signalements de bugs avec reproduction propre, petits correctifs) pour <strong>apprendre les codes de chaque communauté</strong> avant d'y prendre une place plus significative.</p>
+
+  <p>Sur le plan des <strong>apprentissages formels</strong>, je n'ai pas pour stratégie de me former par lectures sur la communication ou la transmission. Mon mode d'apprentissage reste basé sur la <strong>pratique terrain et la veille active</strong>. Je tiens un système de notes personnel structuré (Obsidian privé) qui me sert à la fois à organiser ma propre réflexion et à produire de meilleures explications à l'oral : ce qu'on a structuré pour soi, on l'explique mieux aux autres. C'est probablement l'investissement à plus fort rendement que j'ai fait sur cette compétence ces deux dernières années.</p>
+
+  <h2>Réalisations rattachées</h2>
+  <p>Cette compétence est mobilisée principalement dans deux réalisations. La <a href="../realisations/real-2.html"><strong>Sonde IDS conteneurisée</strong></a> matérialise un partage open source structuré, depuis la conception jusqu'à la documentation utilisateur. Le <a href="../realisations/real-4.html"><strong>Portfolio auto-hébergé</strong></a> est lui-même un acte de partage : rendre publiquement accessible le détail de mes compétences, projets et réflexions techniques.</p>
+ </main>
 </body>
 </html>

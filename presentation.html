@@ -1,68 +1,254 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Présentation — Nicolas Lages</title>
-  <link rel="stylesheet" href="style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Présentation, Nicolas Lages</title>
+ <link rel="stylesheet" href="style.css" />
+ <style>
+  .pres-section { margin-bottom: 2rem; }
+  .pres-section h2 {
+   font-size: 1.15rem;
+   margin-bottom: 0.75rem;
+   padding-bottom: 0.35rem;
+   border-bottom: 1px solid var(--border);
+  }
+  .pres-section h3 {
+   font-size: 0.95rem;
+   margin: 1rem 0 0.4rem;
+   font-family: var(--font-mono);
+   color: var(--violet);
+  }
+  .pres-section p { margin-bottom: 0.85rem; }
+  .quality-block {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-left: 3px solid var(--violet);
+   border-radius: var(--radius);
+   padding: 0.85rem 1.1rem;
+   margin-bottom: 0.7rem;
+  }
+  .quality-block strong { color: var(--violet); }
+  .quality-block.green { border-left-color: var(--green); }
+  .quality-block.green strong { color: var(--green); }
+  .interest-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+   gap: 0.7rem;
+   margin-top: 0.8rem;
+  }
+  .interest-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-lg);
+   padding: 0.85rem 1.1rem;
+  }
+  .interest-card strong {
+   display: block;
+   font-family: var(--font-mono);
+   font-size: 0.82rem;
+   color: var(--text);
+   margin-bottom: 0.3rem;
+  }
+  .interest-card p {
+   font-size: 0.86rem;
+   color: var(--text-muted);
+   margin: 0;
+   line-height: 1.5;
+  }
+  .project-timeline {
+   margin-top: 0.8rem;
+   padding: 0.85rem 1.1rem;
+   background: var(--violet-pale);
+   border: 1px solid var(--violet-light);
+   border-radius: var(--radius-lg);
+  }
+  .project-timeline strong { color: var(--violet); }
+ </style>
 </head>
 <body data-page="presentation">
-  <script src="navbar.js"></script>
+ <script src="navbar.js"></script>
 
-  <main>
-    <h1>Présentation générale</h1>
+ <main>
+  <h1>Présentation générale</h1>
 
-    <div style="margin-bottom:2rem;">
-      <div>
-        <h2 style="font-size:1.1rem; margin-bottom:0.75rem;">Parcours et orientation</h2>
-        <p style="margin-bottom:1rem;">
-          Actuellement en apprentissage dans le domaine de la cybersécurité et des réseaux, j'évolue dans un
-          environnement technique exigeant qui nécessite une mise à jour continue des compétences. Au fil de mon
-          parcours, mon intérêt s'est progressivement orienté vers les systèmes, en particulier autour de Linux,
-          avec une approche structurée et centrée sur la sécurité. Cette orientation me conduit aujourd'hui à me
-          projeter vers des missions de conception et de déploiement d'infrastructures systèmes et réseaux, avec
-          une exigence forte en matière de sécurité, dans l'objectif d'évoluer vers un rôle d'architecte
-          infrastructure orienté sécurité.
-        </p>
-      </div>
+  <p style="font-size:1.02rem; color:var(--text-muted); margin-bottom:2rem; line-height:1.65;">
+   Construire des infrastructures sécurisées, durables et utiles aux personnes qui les utilisent,
+   c'est ce qui motive concrètement mon parcours d'ingénieur en cybersécurité et systèmes Linux.
+   Au-delà de la maîtrise technique, je crois qu'un bon ingénieur doit rester
+   <strong>conscient des choix qu'il fait</strong>, des données qu'il manipule et des
+   utilisateurs qui en dépendent.
+  </p>
+
+  <!-- ============ VALEURS ============ -->
+  <section class="pres-section">
+   <h2>Mes valeurs</h2>
+
+   <p>
+    Mon rapport à l'ingénierie repose sur une conviction simple : la technique n'est jamais neutre.
+    Chaque choix d'architecture, chaque ligne de configuration, chaque ouverture de flux a un impact
+    sur des personnes, utilisateurs, collègues, clients, citoyens. C'est pourquoi je m'inscris
+    résolument dans une démarche d'<strong>ingénieur conscient et responsable</strong>.
+   </p>
+
+   <h3>// Responsabilité</h3>
+   <p>
+    Je considère que toute personne qui conçoit ou maintient un système porte une responsabilité
+    envers ses utilisateurs : protéger leurs données, garantir la disponibilité de leurs services,
+    documenter ses choix pour qu'ils soient compréhensibles et réversibles. Cette responsabilité ne
+    se délègue pas à un audit ou à une norme : elle s'exerce au quotidien, dans chaque décision.
+   </p>
+
+   <h3>// Transparence et logiciel libre</h3>
+   <p>
+    Je travaille majoritairement avec des outils libres, par choix éthique autant que technique.
+    Le logiciel libre garantit l'auditabilité, l'autonomie des utilisateurs et la pérennité des
+    systèmes. C'est, à mes yeux, l'expression d'un rapport <strong>honnête</strong> à la technique :
+    on partage ce qu'on construit, on accepte que d'autres le regardent, le critiquent, l'améliorent.
+   </p>
+
+   <h3>// Humilité technique</h3>
+   <p>
+    Aucun ingénieur ne maîtrise tout, et prétendre le contraire est dangereux. Je préfère reconnaître
+    ce que je ne sais pas, prendre le temps de chercher, et m'appuyer sur les communautés
+    plutôt que de bricoler des solutions fragiles. L'humilité technique, c'est ce qui permet
+    d'apprendre vite et de produire des systèmes solides.
+   </p>
+  </section>
+
+  <!-- ============ QUALITÉS HUMAINES ============ -->
+  <section class="pres-section">
+   <h2>Mes principales qualités humaines</h2>
+
+   <p>
+    Mes valeurs se traduisent au quotidien par trois qualités sur lesquelles je m'appuie pour
+    travailler avec les autres et faire avancer les projets.
+   </p>
+
+   <div class="quality-block">
+    <p style="margin-bottom:0.3rem;"><strong>Engagement</strong></p>
+    <p style="margin:0;">
+     Quand je prends en charge un sujet, je vais au bout. Cela signifie ne pas me contenter du
+     minimum demandé, prendre le temps de comprendre vraiment le besoin, et accepter d'y consacrer
+     l'énergie nécessaire, quitte à oublier la pause déjeuner quand je suis dans un problème
+     intéressant. Cet engagement se ressent dans mes projets personnels comme dans mon travail :
+     je m'investis comme si c'était le mien.
+    </p>
+   </div>
+
+   <div class="quality-block green">
+    <p style="margin-bottom:0.3rem;"><strong>Esprit critique</strong></p>
+    <p style="margin:0;">
+     Je n'accepte pas une solution parce qu'elle est populaire, ni un cahier des charges parce
+     qu'il est validé. Je préfère poser les questions désagréables au début plutôt que de
+     découvrir un problème de conception en production. Cet esprit critique m'a déjà conduit
+     à reformuler des demandes initiales, comme remplacer un projet de SOC mal cadré par
+     la refonte complète de l'infrastructure sous-jacente, qui en était le vrai préalable.
+    </p>
+   </div>
+
+   <div class="quality-block">
+    <p style="margin-bottom:0.3rem;"><strong>Bienveillance</strong></p>
+    <p style="margin:0;">
+     La technique ne m'intéresse que si elle sert les personnes qui l'utilisent. J'aide
+     régulièrement d'autres apprenants quand ils bloquent, je prends le temps d'expliquer la
+     logique plutôt que de donner la réponse, et je suis convaincu qu'un bon environnement de
+     travail repose sur la qualité des échanges entre collègues. Être bienveillant, ce n'est pas
+     être complaisant : c'est respecter sincèrement les autres dans leurs limites comme dans
+     leurs forces.
+    </p>
+   </div>
+  </section>
+
+  <!-- ============ PROJET PRO + PERSO ============ -->
+  <section class="pres-section">
+   <h2>Mon projet professionnel et personnel</h2>
+
+   <h3>// À court terme (sept. 2026)</h3>
+   <p>
+    Intégrer un poste junior en ingénierie systèmes et sécurité, dans une équipe technique
+    exigeante où je pourrai continuer à apprendre vite. Je cherche un environnement qui valorise
+    la qualité des fondations techniques plutôt que la course aux livrables, et où les choix
+    d'architecture sont vraiment réfléchis.
+   </p>
+
+   <h3>// À moyen terme (3-5 ans)</h3>
+   <p>
+    Évoluer vers un rôle d'<strong>architecte d'infrastructures orienté sécurité</strong>,
+    capable de concevoir des environnements complets de bout en bout : du réseau aux services,
+    du durcissement aux mécanismes de supervision. Avec un niveau de responsabilité croissant
+    sur les choix structurants.
+   </p>
+
+   <h3>// À long terme</h3>
+   <p>
+    M'inscrire durablement dans l'écosystème du logiciel libre comme <strong>contributeur
+    reconnu</strong>. Concrètement : maintenir des composants utiles à la communauté Linux,
+    participer aux discussions techniques sur des projets d'envergure, et transmettre ce que
+    j'ai appris à d'autres apprenants ou contributeurs débutants.
+   </p>
+
+   <div class="project-timeline">
+    <strong>Projet personnel en cours :</strong> conception d'une infrastructure complète
+    auto-hébergée basée sur Docker et Kubernetes (DNS, serveur web, reverse proxy,
+    GitLab auto-hébergé, base de données), avec un objectif clair : atteindre un niveau
+    opérationnel équivalent à un administrateur systèmes junior sur ces technologies d'ici fin 2026.
+   </div>
+  </section>
+
+  <!-- ============ CENTRES D'INTÉRÊT ============ -->
+  <section class="pres-section">
+   <h2>Mes principaux centres d'intérêt</h2>
+
+   <p>
+    En dehors du strict cadre professionnel, mes centres d'intérêt nourrissent ma manière
+    de penser le métier, et inversement.
+   </p>
+
+   <div class="interest-grid">
+
+    <div class="interest-card">
+     <strong>// Open source</strong>
+     <p>
+      Au-delà de l'outil, c'est une <strong>culture</strong> qui m'attire : transparence,
+      partage, construction collective de la connaissance. Je suis des projets comme Debian,
+      Arch ou des distros plus confidentielles, et je commence à publier mes propres outils
+      sur GitHub avec la même exigence de qualité.
+     </p>
     </div>
 
-    <h2 style="font-size:1.1rem; margin-bottom:0.75rem;">Valeurs professionnelles</h2>
-    <p style="margin-bottom:1.5rem;">
-      Ma manière de travailler repose sur un ensemble de valeurs qui structurent mon approche.
-      <strong>L'engagement et la persévérance</strong> me permettent de maintenir un niveau d'exigence constant
-      dans les projets que je mène. <strong>L'initiative</strong> se traduit par ma capacité à explorer des
-      solutions par moi-même et à approfondir les sujets au-delà du cadre demandé. <strong>Le partage des
-      connaissances</strong>, notamment à travers l'open source et l'accompagnement d'autres apprenants,
-      constitue un levier important dans ma progression. Enfin, une <strong>recherche continue
-      d'optimisation</strong> guide mes choix techniques, que ce soit dans la configuration des systèmes,
-      l'automatisation ou l'organisation des environnements.
-    </p>
+    <div class="interest-card">
+     <strong>// Lecture</strong>
+     <p>
+      Lecture technique (RFC, documentations, papers de sécurité) mais aussi essais sur
+      la <strong>philosophie du numérique</strong>, l'éthique des données et l'histoire
+      d'Internet. Comprendre <em>pourquoi</em> les systèmes sont devenus ce qu'ils sont
+      m'aide à imaginer ce qu'ils pourraient être.
+     </p>
+    </div>
 
-    <h2 style="font-size:1.1rem; margin-bottom:0.75rem;">Centres d'intérêt &amp; projet personnel</h2>
-    <p style="margin-bottom:1.5rem;">
-      Au-delà du cadre professionnel, mon intérêt pour les systèmes, la sécurité et les technologies libres fait
-      partie de mon quotidien. Je travaille sur plusieurs outils open source que je souhaite publier afin de
-      commencer à contribuer aux communautés Linux. Je suis également en contact régulier avec une équipe de
-      pentesters, qui me permettent de confronter mes connaissances à des situations concrètes et d'affiner ma
-      compréhension des enjeux opérationnels. À plus long terme, mon objectif est de concevoir des architectures
-      systèmes et réseaux sécurisées, avec un niveau de responsabilité croissant, tout en m'inscrivant
-      durablement dans l'écosystème du logiciel libre en tant que contributeur actif.
-    </p>
+    <div class="interest-card">
+     <strong>// Veille technologique</strong>
+     <p>
+      Quotidienne, sur les nouveautés Linux, les CVE significatives, les évolutions des
+      outils de sécurité et les annonces des communautés majeures. Pas pour suivre les
+      modes, mais pour repérer les fondations qui auront un impact durable.
+     </p>
+    </div>
 
-    <h2 style="font-size:1.1rem; margin-bottom:0.75rem;">Méthode de travail</h2>
-    <p style="margin-bottom:1rem;">
-      Dans ma manière de travailler, j'adopte une approche structurée qui commence systématiquement par une
-      <strong>analyse du besoin</strong>, afin de comprendre les objectifs, les contraintes et les usages
-      attendus. Cette phase me permet de concevoir une architecture cohérente en définissant les rôles des
-      composants, les zones de confiance et les flux.
-    </p>
-    <p>
-      Cette démarche a été appliquée dans différents projets, notamment lors de la conception d'environnements
-      virtualisés et de déploiements de solutions de sécurité, où la segmentation réseau, le filtrage des flux
-      et le durcissement des systèmes ont été intégrés dès les premières étapes. J'intègre également des
-      mécanismes de supervision et de sauvegarde afin d'assurer un premier niveau de résilience.
-    </p>
-  </main>
+    <div class="interest-card">
+     <strong>// Communauté cyber</strong>
+     <p>
+      Échanges réguliers avec une équipe de pentesters hors temps de travail,
+      participation à des événements (<strong>FOSDEM 2023</strong>, Le Hack 2022 &amp; 2023,
+      Hack in Paris 2019). Ces rencontres confrontent la théorie au terrain et tiennent
+      ma vision du métier connectée à la réalité opérationnelle.
+     </p>
+    </div>
+
+   </div>
+  </section>
+
+ </main>
 </body>
 </html>

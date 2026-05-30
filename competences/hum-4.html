@@ -1,40 +1,131 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Faire preuve d'initiative, Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Faire preuve d'initiative, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  .anecdote{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius);padding:1rem 1.2rem;margin-bottom:1rem}
+  .anecdote-tag{font-family:var(--font-mono);font-size:0.7rem;color:var(--green);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.35rem;display:block}
+  .anecdote h3{font-size:1rem;margin:0 0 0.6rem;color:var(--text)}
+  .anecdote p{margin-bottom:0.6rem}
+  .anecdote p:last-child{margin-bottom:0}
+  .anecdote-result{margin-top:0.7rem;padding:0.55rem 0.8rem;background:var(--violet-pale);border-left:2px solid var(--violet);border-radius:var(--radius);font-size:0.9rem}
+  .anecdote-result strong{color:var(--violet)}
+  .skill-level-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin:0.8rem 0 1rem}
+  .skill-level-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:0.7rem 0.9rem}
+  .skill-level-card .lvl-name{font-family:var(--font-mono);font-size:0.78rem;font-weight:600;margin-bottom:0.3rem}
+  .skill-level-card .lvl-bar{height:6px;background:var(--bg-alt);border-radius:999px;overflow:hidden;margin-bottom:0.3rem}
+  .skill-level-card .lvl-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--violet));border-radius:999px}
+  .skill-level-card .lvl-text{font-size:0.78rem;color:var(--text-muted)}
+  h2{margin-top:1.8rem;padding-bottom:0.35rem;border-bottom:1px solid var(--border);font-size:1.1rem}
+ </style>
 </head>
 <body data-page="competences">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Humaine 04</p>
-    <div class="page-header">
-      <h1>Faire preuve d'initiative</h1>
-</div>
-    <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
-      <a href="../realisations/real-1.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
-      <a href="../realisations/real-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
-      <a href="../realisations/real-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Script de setup personnel</a>
-    </div>
-    <h2>Définition</h2>
-    <p>Prendre des initiatives, c'est ne pas attendre qu'on vous dise quoi faire pour agir. C'est regarder autour de soi, repérer ce qui manque ou ce qui pourrait être mieux, et s'y mettre. Pas parce qu'on vous l'a demandé, mais parce que vous avez vu que c'était nécessaire.</p>
-    <p style="margin-bottom:1.5rem;">Dans un métier technique, ça peut prendre beaucoup de formes : proposer une solution que personne n'avait envisagée, anticiper un problème avant qu'il n'arrive, ou créer un outil parce qu'on a réalisé qu'il n'existait pas. C'est ce qui fait la différence entre quelqu'un qui exécute et quelqu'un qui fait avancer les choses.</p>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Humaine 04</p>
+  <div class="page-header">
+   <h1>Faire preuve d'initiative</h1>
+  </div>
 
-    <h2>Éléments de preuve</h2>
-    <p>La sonde IDS en est l'exemple le plus parlant. À la base, c'était un besoin identifié en entreprise. Plutôt que de partir directement sur la première solution venue, j'ai pris l'initiative de mener une période de <strong>R&amp;D</strong> : j'ai exploré plusieurs approches, comparé les outils disponibles, testé différentes architectures. Au terme de cette phase, j'ai présenté mes conclusions et j'ai démontré que la solution qui me plaisait le plus personnellement n'était pas forcément la plus adaptée au contexte de l'entreprise. J'ai donc mis en place une solution différente en production, celle qui correspondait réellement aux besoins et aux contraintes de l'organisation.</p>
-    <p>Ce qui est intéressant, c'est que ce travail de R&amp;D ne s'est pas arrêté là. En parallèle, j'ai continué à développer de mon côté la solution qui m'avait initialement attiré, et c'est elle qui a donné naissance au <a href="https://github.com/ninko0/Docker-IDS-Sensor" target="_blank">projet disponible sur GitHub</a>. Deux trajectoires distinctes issues d'un même point de départ : une décision pragmatique en entreprise, et une exploration personnelle poussée jusqu'au bout.</p>
-    <p>Lors de ma première expérience en entreprise, j'ai intégré une TPE dont l'infrastructure se résumait à un firewall mal configuré et un NAS. Ma mission initiale était claire et limitée : mettre en place un SOC. Mais en arrivant sur place, j'ai rapidement constaté que monter un SOC sur des fondations aussi fragiles n'avait aucun sens. J'ai donc pris l'initiative de concevoir et de déployer <strong>l'architecture réseau complète de l'entreprise</strong>, avant même d'aborder l'objectif initial. Ce n'était pas ce qu'on m'avait demandé, mais c'était ce qui était nécessaire pour que le travail ait une vraie valeur. <a href="../realisations/real-1.html">→ Voir la réalisation : Infrastructure sécurisée.</a></p>
-    <p style="margin-bottom:1.5rem;">Au travail, c'est la même logique sur d'autres sujets. Quand je vois quelque chose qui peut être amélioré, je ne passe pas mon chemin. J'ai par exemple proposé et mis en place des <strong>scripts de durcissement système</strong> réutilisables sur l'ensemble de l'infrastructure, sans que personne ne me le demande. Ce n'était pas dans ma fiche de poste, mais ça avait du sens de le faire.</p>
+  <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
+   <a href="../realisations/real-1.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
+   <a href="../realisations/real-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
+   <a href="../realisations/real-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Portfolio auto-hébergé</a>
+  </div>
 
-    <h2>Autocritique</h2>
-    <p style="margin-bottom:1.5rem;">C'est clairement une de mes forces, mais elle a ses revers. J'ai tendance à lancer plusieurs projets en même temps parce que les idées s'enchaînent et que j'ai du mal à me freiner. Résultat : certains projets avancent plus lentement que prévu, faute de focus. Ce n'est pas quelque chose qu'on me reproche souvent, mes employeurs, collègues et collaborateurs y voient généralement un atout plutôt qu'un défaut. Mais je sais, avec du recul, que je pourrais avoir une meilleure rentabilité si j'apprenais à mieux canaliser cette énergie. Faire moins de choses à la fois, mais les faire mieux et plus vite.</p>
+  <h2>Définition</h2>
+  <p><strong>Prendre des initiatives</strong>, c'est ne pas attendre qu'on vous dise quoi faire pour agir. C'est regarder autour de soi, repérer ce qui manque ou ce qui pourrait être mieux, et s'y mettre. Pas parce qu'on vous l'a demandé, mais parce que vous avez vu que c'était nécessaire.</p>
 
-    <h2>Évolution</h2>
-    <p>L'enjeu pour moi, c'est de travailler sur mon <strong>focus</strong>. Continuer à alimenter cette prise d'initiative, parce que c'est une vraie valeur ajoutée, mais apprendre à l'utiliser à bon escient. Une initiative bien placée au bon moment a bien plus d'impact que dix idées lancées en même temps sans jamais être finalisées.</p>
-    <p>En entreprise, c'est particulièrement important. Une initiative bien menée, c'est du temps gagné pour l'équipe, un problème évité, une solution trouvée avant que quelqu'un d'autre ait eu à la chercher. C'est aussi un signal fort envoyé à ses collaborateurs et à sa hiérarchie : celui d'un profil fiable, qui ne se contente pas d'attendre les instructions mais qui anticipe et contribue activement à la dynamique collective. C'est ce type de profil qui prend naturellement des responsabilités supplémentaires avec le temps.</p>
-    <p>L'étape suivante, c'est donc de diriger cette énergie vers des projets à impact plus large, en contribuant à des initiatives collectives, que ce soit en entreprise ou dans des projets open source, plutôt que de toujours repartir de zéro de mon côté.</p>
-  </main>
+  <p>Dans un métier technique, ça peut prendre beaucoup de formes : <strong>proposer une solution que personne n'avait envisagée, anticiper un problème avant qu'il n'arrive, ou créer un outil parce qu'on a réalisé qu'il n'existait pas</strong>. C'est ce qui fait la différence entre quelqu'un qui exécute et quelqu'un qui fait avancer les choses.</p>
+
+  <p>Cette compétence est étroitement liée à l'autonomie, mais elle s'en distingue par sa <strong>dimension de proposition</strong>. Là où l'autonomie permet d'agir sans supervision, l'initiative consiste à <strong>identifier ce qu'il faut faire</strong> avant même que la question soit posée. Dans des structures de plus en plus plates et orientées résultats, c'est devenu une des qualités les plus recherchées sur le marché tech actuel.</p>
+
+  <h2>La compétence en pratique</h2>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 1, octobre 2025, R&amp;D sonde IDS</span>
+   <h3>Mener une R&amp;D personnelle après un choix professionnel pragmatique</h3>
+   <p>La sonde IDS est l'exemple le plus parlant. À la base, c'était un besoin identifié en entreprise. Plutôt que de partir directement sur la première solution venue, j'ai pris l'initiative de mener une période de <strong>R&amp;D</strong> : j'ai exploré plusieurs approches, comparé les outils disponibles (Suricata, Zeek, Snort, Security Onion), testé différentes architectures. Au terme de cette phase, j'ai présenté mes conclusions et j'ai démontré que la solution qui me plaisait le plus personnellement n'était pas forcément la plus adaptée au contexte de l'entreprise. J'ai donc mis en place une solution différente en production, celle qui correspondait réellement aux besoins et aux contraintes de l'organisation.</p>
+   <p>Ce qui rend cette anecdote intéressante, c'est la <strong>suite</strong>. Le travail de R&amp;D ne s'est pas arrêté à la décision pro. En parallèle, j'ai continué à développer de mon côté la solution qui m'avait initialement attiré, et c'est elle qui a donné naissance au projet <a href="https://github.com/ninko0/Docker-IDS-Sensor" target="_blank">Docker-IDS-Sensor</a> publié en octobre 2025. <strong>Deux trajectoires distinctes issues d'un même point de départ</strong> : une décision pragmatique en entreprise, et une exploration personnelle poussée jusqu'au bout.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> deux livrables là où la majorité des gens en aurait fait un seul, et la démonstration qu'<strong>initiative et pragmatisme ne sont pas contradictoires</strong>. La valeur ajoutée a été de capitaliser sur l'investissement R&amp;D plutôt que de l'abandonner en chemin.
+   </div>
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-2.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Sonde IDS conteneurisée</a></p>
+  </div>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 2, septembre 2023, Valesys, recadrage de mission</span>
+   <h3>Reformuler une mission initiale pour livrer ce qui était réellement nécessaire</h3>
+   <p>Lors de ma première expérience en entreprise chez Valesys, j'ai intégré une TPE dont l'infrastructure se résumait à un firewall mal configuré et un NAS. Ma mission initiale était claire et limitée : <strong>mettre en place un SOC</strong>. Mais en arrivant sur place, j'ai rapidement constaté que monter un SOC sur des fondations aussi fragiles n'avait aucun sens.</p>
+   <p>J'ai donc pris l'initiative de <strong>concevoir et déployer l'architecture réseau complète de l'entreprise</strong> avant même d'aborder l'objectif initial. Ce n'était pas ce qu'on m'avait demandé, mais c'était ce qui était nécessaire pour que le travail ait une vraie valeur. Cette initiative a allongé le projet de plusieurs mois, mais a permis de livrer une infrastructure et un SOC qui ont ensuite été <strong>commercialisés auprès des clients</strong>.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> projet commercialisé, alors que la mission initiale aurait produit un dispositif de surface. L'initiative était risquée (recadrer une mission en arrivant) mais elle a transformé un projet superficiel en livrable réellement utile à l'entreprise.
+   </div>
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-1.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Infrastructure sécurisée</a></p>
+  </div>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 3, en cours, Paritel, identifier des sujets non priorisés</span>
+   <h3>Identifier et porter des sujets que personne ne traitait</h3>
+   <p>Chez Paritel, ma manière de prendre des initiatives s'adapte au contexte d'une équipe structurée. Plutôt que de proposer de grands projets, je m'attache à <strong>identifier des sujets opérationnels que personne ne priorise faute de temps</strong>, et à les traiter quand ils me bloquent au quotidien.</p>
+   <p>Je développe ainsi un <strong>outil d'aide à la création de tickets</strong> pour l'équipe DEV, parce que la qualité variable des tickets reçus rallongeait inutilement les cycles de résolution sans que personne ne formalise le problème. J'ai aussi mis en place des <strong>scripts de durcissement système</strong> réutilisables sur les machines que je configure, sans que personne ne me le demande. Ces initiatives ne sont pas dans ma fiche de poste, mais elles produisent un gain mesurable pour l'équipe.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> ces initiatives s'inscrivent dans la durée. Elles produisent moins d'effet "wow" qu'un projet de grande envergure, mais elles <strong>améliorent le quotidien de l'équipe de manière cumulative</strong>, ce qui est probablement la forme d'initiative la plus utile dans une structure établie.
+   </div>
+  </div>
+
+  <h2>Mon niveau de maîtrise</h2>
+  <p>L'initiative est ma <strong>force la plus marquée</strong> sur le plan humain. Mes niveaux reflètent un profil très proactif sur la détection d'opportunités et sur la prise de décision, avec une marge claire sur le focus et la canalisation de cette énergie.</p>
+
+  <div class="skill-level-grid">
+   <div class="skill-level-card">
+    <div class="lvl-name">Détection d'opportunités / besoins non exprimés</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:90%;"></div></div>
+    <div class="lvl-text">18/20 · Réflexe naturel</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Prise de décision sans encadrement</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:85%;"></div></div>
+    <div class="lvl-text">17/20 · Confortable</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Mener une initiative à son terme</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:70%;"></div></div>
+    <div class="lvl-text">14/20 · Focus à travailler</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Initiative dans un cadre collectif structuré</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:65%;"></div></div>
+    <div class="lvl-text">13/20 · En progression</div>
+   </div>
+  </div>
+
+  <p><strong>Contextualisation :</strong> c'est clairement une de mes forces, mais elle a ses revers. J'ai tendance à <strong>lancer plusieurs projets en même temps</strong> parce que les idées s'enchaînent et que j'ai du mal à me freiner. Résultat : certains projets avancent plus lentement que prévu, faute de focus. Ce n'est pas quelque chose qu'on me reproche souvent (mes employeurs et collaborateurs y voient généralement un atout plutôt qu'un défaut), mais je sais avec du recul que je pourrais avoir une meilleure rentabilité en apprenant à <strong>mieux canaliser cette énergie</strong>. Faire moins de choses à la fois, mais les faire mieux et plus vite.</p>
+
+  <h2>Place dans mon profil et vitesse d'acquisition</h2>
+  <p>L'initiative est <strong>indissociable de mon parcours</strong>. Tout ce qui distingue mon profil d'un parcours classique vient d'initiatives prises sans qu'on me le demande : choix de l'orientation Linux, projets personnels, exposition à des communautés, prise en charge de sujets transverses en mission. Cette compétence sera également centrale dans la trajectoire que je vise (architecte d'infrastructure orienté sécurité), où la valeur ajoutée d'un senior réside autant dans <strong>ce qu'il propose</strong> que dans <strong>ce qu'il exécute</strong>.</p>
+
+  <p><strong>Vitesse d'acquisition :</strong> ce n'est pas une compétence que j'ai acquise, c'est une disposition <strong>cultivée depuis longtemps</strong>. Ce qui a évolué avec l'expérience, c'est ma capacité à <strong>juger la pertinence d'une initiative avant de la lancer</strong>. Plus jeune, je prenais toutes les initiatives qui me venaient à l'esprit. Aujourd'hui, je sais davantage en écarter pour me concentrer sur celles qui auront un vrai impact, même si je sais que je suis encore perfectible sur ce filtre.</p>
+
+  <h2>Mon recul sur la compétence</h2>
+  <p>Avec l'expérience que j'ai aujourd'hui, je conseille de <strong>se mettre une règle de focus</strong>. Personnellement, je m'impose désormais de ne pas démarrer une nouvelle initiative tant que je n'en ai pas terminé une significative en cours. C'est une discipline difficile pour les profils naturellement proactifs, mais c'est probablement la seule qui transforme l'<strong>idéation en livraison</strong> sur la durée.</p>
+
+  <p>Je conseille aussi de <strong>distinguer l'initiative dans le cadre et l'initiative hors cadre</strong>. Dans le cadre, c'est-à-dire dans une mission ou un projet structuré, l'initiative consiste à améliorer ce qu'on est en train de faire. Hors cadre, elle consiste à proposer des sujets qui n'étaient pas demandés. Les deux sont précieuses, mais elles n'ont pas la même valeur perçue par la hiérarchie : la première est presque toujours bien accueillie, la seconde demande à être présentée avec discernement.</p>
+
+  <p>Enfin, je conseille de <strong>ne pas confondre initiative et désobéissance</strong>. Une initiative bien comprise s'articule avec les objectifs du projet ou de l'équipe, elle ne les contourne pas. Le recadrage de mission chez Valesys était une initiative parce qu'il a été <strong>présenté, expliqué et validé</strong>, pas parce que j'ai unilatéralement changé ce qu'on me demandait.</p>
+
+  <h2>Évolution et formations</h2>
+  <p>L'enjeu pour moi est de travailler sur mon <strong>focus</strong>. Continuer à alimenter cette prise d'initiative, parce que c'est une vraie valeur ajoutée, mais apprendre à l'utiliser à bon escient. Une initiative bien placée au bon moment a bien plus d'impact que dix idées lancées en même temps sans jamais être finalisées.</p>
+
+  <p>Mon objectif concret à moyen terme est de <strong>diriger cette énergie vers des projets à impact plus large</strong>, en contribuant à des initiatives collectives, que ce soit en entreprise ou dans des projets open source, plutôt que de toujours repartir de zéro de mon côté. Le passage d'un poste d'alternant à un poste junior post-études devrait précisément me confronter à des projets de plus longue durée où l'initiative s'exerce <strong>au service d'un collectif</strong> plutôt qu'à titre individuel.</p>
+
+  <p>Sur le plan des <strong>apprentissages formels</strong>, je n'ai pas pour stratégie de me former par lectures sur le développement personnel ou les soft skills. Mon mode d'apprentissage reste basé sur la <strong>pratique terrain et la veille active</strong>, en observant comment d'autres profils techniques très orientés initiative structurent leur impact dans des organisations. Ces observations passent par mes échanges sur Keybase, mes lectures de posts de mainteneurs de projets open source qui partagent leur retour d'expérience, et les interactions avec ma communauté de pentesters.</p>
+
+  <h2>Réalisations rattachées</h2>
+  <p>Cette compétence est mobilisée dans plusieurs réalisations. L'<a href="../realisations/real-1.html"><strong>Infrastructure sécurisée</strong></a> Valesys illustre une initiative de recadrage qui a transformé un projet. La <a href="../realisations/real-2.html"><strong>Sonde IDS conteneurisée</strong></a> matérialise une initiative R&amp;D poussée jusqu'à la publication. Le <a href="../realisations/real-4.html"><strong>Portfolio auto-hébergé</strong></a> est en lui-même une initiative personnelle de bout en bout.</p>
+ </main>
 </body>
 </html>

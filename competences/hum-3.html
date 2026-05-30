@@ -1,35 +1,127 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autonomie, Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Autonomie, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  .anecdote{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius);padding:1rem 1.2rem;margin-bottom:1rem}
+  .anecdote-tag{font-family:var(--font-mono);font-size:0.7rem;color:var(--green);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.35rem;display:block}
+  .anecdote h3{font-size:1rem;margin:0 0 0.6rem;color:var(--text)}
+  .anecdote p{margin-bottom:0.6rem}
+  .anecdote p:last-child{margin-bottom:0}
+  .anecdote-result{margin-top:0.7rem;padding:0.55rem 0.8rem;background:var(--violet-pale);border-left:2px solid var(--violet);border-radius:var(--radius);font-size:0.9rem}
+  .anecdote-result strong{color:var(--violet)}
+  .skill-level-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin:0.8rem 0 1rem}
+  .skill-level-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:0.7rem 0.9rem}
+  .skill-level-card .lvl-name{font-family:var(--font-mono);font-size:0.78rem;font-weight:600;margin-bottom:0.3rem}
+  .skill-level-card .lvl-bar{height:6px;background:var(--bg-alt);border-radius:999px;overflow:hidden;margin-bottom:0.3rem}
+  .skill-level-card .lvl-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--violet));border-radius:999px}
+  .skill-level-card .lvl-text{font-size:0.78rem;color:var(--text-muted)}
+  h2{margin-top:1.8rem;padding-bottom:0.35rem;border-bottom:1px solid var(--border);font-size:1.1rem}
+ </style>
 </head>
 <body data-page="competences">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Humaine 03</p>
-    <div class="page-header">
-      <h1>Autonomie</h1>
-</div>
-    <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
-      <a href="../realisations/real-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
-      <a href="../realisations/real-3.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Audit de sécurité</a>
-    </div>
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Définition</h2>
-    <p style="margin-bottom:1rem;">L'autonomie, ce n'est pas simplement être capable de travailler seul. C'est avant tout ne jamais attendre qu'on nous assigne une tâche pour avancer. C'est se trouver soi-même quelque chose à faire, identifier ce qui peut être amélioré, et s'y mettre sans qu'on ait besoin de le demander. C'est être en constante évolution, que ce soit à titre personnel ou sur les projets auxquels on contribue, même en l'absence d'instructions claires.</p>
-    <p style="margin-bottom:1.5rem;">C'est aussi être force de proposition, quelle que soit sa place dans la hiérarchie. Défendre des idées fortes lorsqu'on est convaincu de leur pertinence, y compris face à un supérieur. Pour moi, l'autonomie ne s'arrête pas à l'exécution : elle inclut la capacité à penser, à proposer et à challenger.</p>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Humaine 03</p>
+  <div class="page-header">
+   <h1>Autonomie</h1>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Éléments de preuve</h2>
-    <p style="margin-bottom:1rem;">Mes projets personnels en sont l'illustration la plus directe. Personne ne m'a demandé de développer une sonde IDS, de monter un laboratoire Proxmox ou de publier des outils sur GitHub. Ces projets sont nés d'une volonté personnelle d'apprendre et de produire quelque chose de concret, sans encadrement ni validation externe à chaque étape.</p>
-    <p style="margin-bottom:1rem;">Dans mon contexte professionnel, cette autonomie s'est traduite par une capacité à identifier des axes d'amélioration et à les porter. Que ce soit en proposant des outils, en anticipant des besoins ou en prenant position sur des choix techniques, je m'implique au-delà de ce qui m'est strictement demandé.</p>
+  <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
+   <a href="../realisations/real-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
+   <a href="../realisations/real-3.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Audit de sécurité</a>
+   <a href="../realisations/real-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Portfolio auto-hébergé</a>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin: 1.5rem 0 0.5rem;">Autocritique</h2>
-    <p style="margin-bottom:1rem;">Mon niveau d'autonomie est élevé, au point qu'il peut parfois me conduire à passer trop de temps sur un problème avant de solliciter de l'aide. L'autonomie doit rester un levier d'efficacité, pas un frein à la collaboration. Cela dit, en observant ma génération, je constate que le manque d'autonomie est répandu, beaucoup attendent qu'on leur trace le chemin. Ce n'est pas ma façon de fonctionner, et je pense que c'est ce qui me démarquera sur le long terme.</p>
+  <h2>Définition</h2>
+  <p>L'<strong>autonomie</strong>, ce n'est pas simplement être capable de travailler seul. C'est avant tout ne jamais attendre qu'on nous assigne une tâche pour avancer. C'est se trouver soi-même quelque chose à faire, identifier ce qui peut être amélioré, et s'y mettre sans qu'on ait besoin de le demander. C'est être en constante évolution, que ce soit à titre personnel ou sur les projets auxquels on contribue, même en l'absence d'instructions claires.</p>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Évolution</h2>
-    <p>Je souhaite ancrer cette autonomie dans des contextes plus collaboratifs, où elle devient un atout collectif. Participer à des projets open source structurés, avec leurs processus de contribution et de revue, me permettra d'exercer cette autonomie dans un cadre défini par des pairs, et de progresser en apprenant à la mettre au service d'un collectif.</p>
-  </main>
+  <p>C'est aussi être <strong>force de proposition</strong>, quelle que soit sa place dans la hiérarchie. Défendre des idées fortes lorsqu'on est convaincu de leur pertinence, y compris face à un supérieur. Pour moi, l'autonomie ne s'arrête pas à l'exécution : elle inclut la capacité à <strong>penser, à proposer et à challenger</strong>.</p>
+
+  <p>Dans le contexte actuel d'<strong>équipes hybrides et de télétravail généralisé</strong> hérité de la période post-2020, l'autonomie n'est plus une qualité optionnelle : c'est devenu un prérequis structurel pour tenir un poste technique. Une bonne partie du marché de l'emploi tech mise désormais sur la capacité du collaborateur à délivrer sans supervision rapprochée, ce qui rend cette compétence plus stratégique que jamais.</p>
+
+  <h2>La compétence en pratique</h2>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 1, depuis 2020, projets personnels</span>
+   <h3>Construire des projets personnels que personne ne m'a demandé de faire</h3>
+   <p>Mes projets personnels sont l'illustration la plus directe de mon autonomie. Personne ne m'a demandé de développer une <strong>sonde IDS open source</strong>, de monter un <strong>laboratoire Proxmox</strong> avec Ceph et PBS, d'auto-héberger ce <strong>portfolio</strong> derrière un WAF, ou de publier des outils sur GitHub. Ces projets sont nés d'une volonté personnelle d'apprendre et de produire quelque chose de concret, sans encadrement ni validation externe à chaque étape.</p>
+   <p>Ils représentent ensemble plusieurs centaines d'heures de travail réparties sur 5 ans, intégralement sur du temps libre. Cette discipline d'investir mon temps personnel dans des projets techniques structurés est ce qui distingue le plus mon parcours d'un parcours scolaire classique : je n'ai pas attendu les opportunités, j'ai construit mon environnement de pratique.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> un homelab Proxmox opérationnel, un GitLab auto-hébergé, une sonde IDS publique sur GitHub, un portfolio auto-hébergé qui sert également de démonstration vivante de mes compétences. La valeur ajoutée n'est pas dans ces livrables individuels mais dans la <strong>cohérence du parcours</strong> qu'ils dessinent.
+   </div>
+  </div>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 2, septembre 2023 → août 2024, Valesys, mission sans encadrement direct</span>
+   <h3>Tenir une infrastructure en quasi-totale autonomie pendant un an</h3>
+   <p>Chez Valesys, j'ai exercé mon autonomie dans un cadre plus contraint et plus exigeant : <strong>une mission de construction d'infrastructure menée à deux alternants, sans encadrement technique senior dédié</strong>. La hiérarchie validait les choix structurants mais ne pouvait pas nous accompagner sur les décisions techniques au quotidien. Cela signifiait qu'à chaque blocage, c'était à nous de trouver la solution, soit en cherchant dans la documentation, soit en testant en lab, soit en confrontant nos hypothèses entre alternants.</p>
+   <p>Cette responsabilité m'a forcé à <strong>arbitrer en autonomie</strong> sur des sujets sensibles : choix de l'hyperviseur (Proxmox), choix de l'architecture de stockage (cluster Ceph), choix des solutions de sauvegarde (PBS), choix du SIEM (Wazuh + ELK), choix du pare-feu (OPNsense). Sur certains de ces sujets, je n'avais aucune expérience préalable et c'est l'autonomie qui m'a permis de les acquérir au lieu de les éviter.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> infrastructure livrée, opérée pendant la durée de mon contrat, et commercialisée sous forme d'offre SOC. Cette expérience m'a apporté la <strong>confiance opérationnelle</strong> qu'on ne peut pas acquérir en école : la certitude que face à un problème inconnu, je trouverai un chemin, parce que je l'ai déjà fait sur du concret.
+   </div>
+  </div>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 3, en cours, Paritel, proposition d'outil ticketing DEV</span>
+   <h3>Identifier et porter un sujet d'amélioration que personne ne traitait</h3>
+   <p>Chez Paritel, mon autonomie s'exprime différemment : dans un environnement structuré, mon rôle n'est pas de construire à zéro mais d'<strong>identifier ce qui peut être amélioré et de le porter</strong>. C'est dans cette logique que je développe actuellement un outil pour améliorer la qualité des tickets reçus de l'équipe DEV. Le constat était simple : les allers-retours sur des tickets mal qualifiés faisaient perdre du temps à toutes les équipes. Personne n'avait formellement priorisé ce sujet, mais il méritait d'être traité.</p>
+   <p>De même, j'ai pris l'initiative de mettre en place des <strong>scripts de durcissement système</strong> réutilisables sur les machines que je configure, sans que personne ne me le demande. Ce n'était pas dans ma fiche de poste, mais ça avait du sens de le faire.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> ma valeur ajoutée dans une équipe établie n'est pas dans la production brute, c'est dans la <strong>capacité à identifier des angles morts</strong> et à les traiter sans qu'on me le demande. C'est ce profil qui prend naturellement des responsabilités avec le temps.
+   </div>
+  </div>
+
+  <h2>Mon niveau de maîtrise</h2>
+  <p>Je considère mon autonomie comme l'une de mes <strong>forces les plus marquées</strong>. Mes niveaux reflètent un profil très autonome en exécution, en initiative et en autoformation, avec une marge à travailler sur la dimension collaborative.</p>
+
+  <div class="skill-level-grid">
+   <div class="skill-level-card">
+    <div class="lvl-name">Autonomie d'exécution</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:90%;"></div></div>
+    <div class="lvl-text">18/20 · Sans supervision rapprochée</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Autonomie d'initiative</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:90%;"></div></div>
+    <div class="lvl-text">18/20 · Identification autonome de sujets</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Autonomie d'autoformation</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:90%;"></div></div>
+    <div class="lvl-text">18/20 · Apprentissage continu</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Autonomie articulée au collectif</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:60%;"></div></div>
+    <div class="lvl-text">12/20 · Axe d'amélioration</div>
+   </div>
+  </div>
+
+  <p><strong>Contextualisation :</strong> mon autonomie est élevée au point qu'elle peut parfois me conduire à <strong>passer trop de temps sur un problème avant de solliciter de l'aide</strong>. L'autonomie doit rester un levier d'efficacité, pas un frein à la collaboration. Cela dit, en observant ma génération, je constate que le manque d'autonomie est répandu : beaucoup attendent qu'on leur trace le chemin. Ce n'est pas ma façon de fonctionner, et je pense que c'est ce qui me démarquera sur le long terme.</p>
+
+  <h2>Place dans mon profil et vitesse d'acquisition</h2>
+  <p>L'autonomie est probablement la compétence non-technique qui <strong>structure le plus mon profil</strong>. Sans elle, je n'aurais ni l'homelab, ni la sonde IDS publique, ni le portfolio auto-hébergé, ni la maîtrise de la diversité de distributions Linux que j'ai accumulée. Tout ce qui distingue mon parcours d'un parcours scolaire moyen est rendu possible par cette autonomie.</p>
+
+  <p><strong>Vitesse d'acquisition :</strong> ce n'est pas une compétence que j'ai acquise par formation, c'est une <strong>disposition cultivée depuis longtemps</strong>. Probablement antérieure à ma vie professionnelle, ancrée dans la manière dont j'aborde naturellement les sujets qui m'intéressent : les explorer à fond, sans attendre qu'on me dise par où commencer. La seule chose qui ait changé avec l'expérience, c'est ma capacité à mieux <strong>canaliser cette autonomie</strong> pour qu'elle produise des résultats plutôt que de l'éparpillement.</p>
+
+  <h2>Mon recul sur la compétence</h2>
+  <p>Avec l'expérience que j'ai aujourd'hui, je conseille de <strong>se construire son propre terrain de jeu technique</strong>. Un homelab, un repository GitHub, des projets personnels, peu importe la forme : avoir un espace où on prend toutes les décisions force à exercer son autonomie. C'est aussi le meilleur antidote à la peur de prendre des décisions importantes en contexte professionnel : on a déjà pris des décisions de structure équivalentes en perso, donc l'enjeu n'est plus paralysant.</p>
+
+  <p>Je conseille aussi de <strong>savoir reconnaître les limites de son autonomie</strong>. Ne pas demander d'aide par fierté coûte beaucoup plus cher que demander d'aide à un collègue qui aurait pu nous débloquer en 10 minutes. L'autonomie est une force, pas une obligation : il faut la déployer là où elle apporte de la valeur, pas l'imposer là où elle nous fait perdre du temps.</p>
+
+  <h2>Évolution et formations</h2>
+  <p>Je souhaite ancrer cette autonomie dans des <strong>contextes plus collaboratifs</strong>, où elle devient un atout collectif plutôt qu'une caractéristique individuelle. Participer à des projets open source structurés, avec leurs processus de contribution et de revue, me permettra d'exercer cette autonomie dans un cadre défini par des pairs, et de progresser en apprenant à la mettre au service d'un collectif.</p>
+
+  <p>Concrètement, mes axes de progression à court et moyen terme sont la <strong>première contribution significative à un projet open source</strong> dont je suis utilisateur (Suricata, Wazuh, Arkime, ou un paquet Debian que je connais bien), et l'<strong>animation d'une équipe CTF</strong> dès la fin de mes études, où mon autonomie devra servir le groupe plutôt que de produire des résolutions solitaires.</p>
+
+  <p>Sur le plan des <strong>apprentissages formels</strong>, je n'ai pas pour stratégie de lire de la théorie sur l'autonomie ou le développement personnel : mon mode d'apprentissage reste basé sur la <strong>pratique et la veille active</strong>. Je préfère observer comment d'autres profils techniques très autonomes (que je croise sur Keybase, dans ma communauté pentest, ou dans la communauté Linux) structurent leurs propres parcours, et m'en inspirer concrètement.</p>
+
+  <h2>Réalisations rattachées</h2>
+  <p>Cette compétence sous-tend l'ensemble de mes réalisations. La <a href="../realisations/real-2.html"><strong>Sonde IDS conteneurisée</strong></a> est l'expression la plus pure d'un projet d'autonomie. Le <a href="../realisations/real-4.html"><strong>Portfolio auto-hébergé</strong></a> et l'<a href="../realisations/real-3.html"><strong>Audit de sécurité</strong></a> illustrent cette autonomie dans des contextes différents.</p>
+ </main>
 </body>
 </html>

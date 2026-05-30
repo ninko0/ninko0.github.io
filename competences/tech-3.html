@@ -1,70 +1,306 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administration Réseau, Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Administration Réseau, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  .logo-row {
+   display: flex; flex-wrap: wrap; gap: 1rem;
+   align-items: center; margin: 1rem 0 1.5rem;
+  }
+  .logo-chip {
+   display: flex; align-items: center; gap: 0.5rem;
+   padding: 0.4rem 0.85rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-lg);
+   font-family: var(--font-mono); font-size: 0.78rem;
+   color: var(--text-muted);
+   transition: border-color 0.15s;
+  }
+  .logo-chip:hover { border-color: var(--violet-light); }
+
+  .anecdote {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-left: 3px solid var(--violet);
+   border-radius: var(--radius);
+   padding: 1rem 1.2rem;
+   margin-bottom: 1rem;
+  }
+  .anecdote-tag {
+   font-family: var(--font-mono);
+   font-size: 0.7rem;
+   color: var(--violet);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.35rem;
+   display: block;
+  }
+  .anecdote h3 {
+   font-size: 1rem;
+   margin: 0 0 0.6rem;
+   color: var(--text);
+  }
+  .anecdote p { margin-bottom: 0.6rem; }
+  .anecdote p:last-child { margin-bottom: 0; }
+  .anecdote-result {
+   margin-top: 0.7rem;
+   padding: 0.55rem 0.8rem;
+   background: var(--green-pale);
+   border-left: 2px solid var(--green);
+   border-radius: var(--radius);
+   font-size: 0.9rem;
+  }
+  .anecdote-result strong { color: var(--green); }
+
+  .skill-level-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   gap: 0.6rem;
+   margin: 0.8rem 0 1rem;
+  }
+  .skill-level-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.7rem 0.9rem;
+  }
+  .skill-level-card .lvl-name {
+   font-family: var(--font-mono);
+   font-size: 0.78rem;
+   font-weight: 600;
+   margin-bottom: 0.3rem;
+  }
+  .skill-level-card .lvl-bar {
+   height: 6px;
+   background: var(--bg-alt);
+   border-radius: 999px;
+   overflow: hidden;
+   margin-bottom: 0.3rem;
+  }
+  .skill-level-card .lvl-fill {
+   height: 100%;
+   background: linear-gradient(90deg, var(--violet), var(--green));
+   border-radius: 999px;
+  }
+  .skill-level-card .lvl-text {
+   font-size: 0.78rem;
+   color: var(--text-muted);
+  }
+
+  .cert-row {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.5rem;
+   margin: 0.8rem 0;
+  }
+  .cert-badge {
+   background: var(--violet-pale);
+   border: 1px solid var(--violet-light);
+   color: var(--violet);
+   font-family: var(--font-mono);
+   font-size: 0.75rem;
+   padding: 0.3rem 0.7rem;
+   border-radius: 999px;
+  }
+
+  h2 {
+   margin-top: 1.8rem;
+   padding-bottom: 0.35rem;
+   border-bottom: 1px solid var(--border);
+   font-size: 1.1rem;
+  }
+ </style>
 </head>
 <body data-page="competences">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Technique 03</p>
-    <div class="page-header">
-      <h1>Administration Réseau</h1>
-</div>
-    <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
-      <a href="../realisations/real-1.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
-      <a href="../realisations/real-3.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Audit de sécurité</a>
-    </div>
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Définition</h2>
-    <p style="margin-bottom:1rem;">
-      L'administration réseau consiste à concevoir, mettre en place et maintenir des infrastructures réseau
-      adaptées aux besoins d'une organisation. Elle implique la gestion des topologies, des flux et des
-      équipements afin de garantir la disponibilité, la performance et la sécurité des communications.
-      Elle nécessite de comprendre les protocoles réseau et l'interaction entre routeurs, switchs, pare-feu
-      et équipements utilisateurs.
-    </p>
-    <p style="margin-bottom:1.5rem;">
-      Dans mon environnement professionnel, je suis rattaché à une équipe réseau au sein d'un opérateur,
-      dans un contexte incluant un cœur de réseau avec interconnexions entre data centers via liaisons fibre
-      point à point. J'ai manipulé des notions telles que le routage <strong>BGP</strong>, les portes de
-      collecte, la gestion de clients en CGN avec des LNS, ainsi que les mécanismes de filtrage au niveau
-      cœur de réseau.
-    </p>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Technique 03</p>
+  <div class="page-header">
+   <h1>Administration Réseau</h1>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Éléments de preuve</h2>
-    <p style="margin-bottom:1rem;">
-      J'interviens sur des problématiques réseau internes variées : incidents de connectivité, performance
-      des infrastructures Wi-Fi, gestion de pare-feu internes, mise en place de solutions VPN et VPN de
-      secours. Ces interventions couvrent des environnements utilisateurs et serveurs avec segmentation,
-      filtrage et gestion des accès.
-    </p>
-    <p style="margin-bottom:1rem;">
-      J'ai validé plusieurs certifications Cisco : <strong>CCNA 2</strong>, <strong>Network Security</strong>,
-      <strong>CyberOps</strong> et <strong>Ethical Hacker</strong>, attestant de mes connaissances théoriques
-      et pratiques dans les domaines réseau et sécurité. Les équipements sur lesquels j'ai travaillé incluent
-      Juniper, pfSense/OPNsense, Fortinet, Cisco et Palo Alto.
-    </p>
+  <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
+   <a href="../realisations/real-1.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
+   <a href="../realisations/real-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Firewall cœur de réseau Paritel</a>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin: 1.5rem 0 0.5rem;">Autocritique</h2>
-    <p style="margin-bottom:1rem;">
-      Je me positionne comme un profil <strong>junior en administration réseau</strong>. Mon niveau est cohérent
-      avec mes formations, certifications et mon expérience terrain. J'ai une bonne compréhension des
-      fondamentaux et des enjeux de sécurité associés, mais je reste en phase d'apprentissage sur des aspects
-      plus avancés. Mon approche est davantage orientée vers la <strong>sécurité du réseau</strong> que vers
-      une spécialisation purement réseau.
-    </p>
+  <!-- ========================================== -->
+  <!-- DÉFINITION                 -->
+  <!-- ========================================== -->
+  <h2>Définition</h2>
+  <p>L'<strong>administration réseau</strong> consiste à concevoir, mettre en place et maintenir des infrastructures réseau adaptées aux besoins d'une organisation. Elle implique la gestion des topologies, des flux, des protocoles et des équipements, afin de garantir la disponibilité, la performance et la sécurité des communications. Cette discipline mobilise une compréhension fine des protocoles (routage, commutation, filtrage) et une maîtrise des interactions entre équipements : routeurs, commutateurs, pare-feu, contrôleurs Wi-Fi, et terminaux utilisateurs.</p>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Évolution</h2>
-    <p>
-      Le réseau reste une composante essentielle des infrastructures systèmes et de la cybersécurité, je
-      n'ai pas vocation à l'écarter de mon périmètre. En revanche, je ne souhaite pas en faire mon domaine
-      principal et privilégie une montée en compétence sur les aspects systèmes et architecture. Je reste
-      ouvert à l'approfondissement sur des environnements constructeurs variés, dans une logique de
-      complémentarité où le réseau constitue un socle indispensable à la conception d'infrastructures
-      sécurisées.
-    </p>
-  </main>
+  <p>Mon contexte professionnel est particulièrement riche sur ce plan : je suis aujourd'hui rattaché à l'équipe Sécurité &amp; Réseaux d'un <strong>opérateur télécom national</strong>, avec un cœur de réseau interconnectant plusieurs datacenters, des portes de collecte fibre Orange et Covage, et un parc d'équipements multi-constructeurs (Juniper, Fortinet, Palo Alto, Cisco MX). En parallèle, mon expérience précédente chez Valesys m'a permis d'aborder la conception réseau à plus petite échelle, en partant d'une feuille blanche.</p>
+
+  <p>L'<strong>actualité récente</strong> rappelle régulièrement l'importance de cette discipline : entre les pannes BGP Cloudflare et Meta, les incidents de routage chez plusieurs opérateurs en 2024-2025, et la pression croissante sur la cybersécurité des infrastructures critiques, la qualité de l'administration réseau est devenue un sujet de souveraineté autant qu'un sujet technique. Mon orientation personnelle place le réseau comme <strong>socle</strong> de la sécurité plutôt que comme spécialité principale, mais c'est un socle que je tiens à maintenir solide.</p>
+
+  <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.07em; margin:1rem 0 0.5rem;">Constructeurs et équipements pratiqués</p>
+  <div class="logo-row">
+   <div class="logo-chip">Juniper (MX, SRX)</div>
+   <div class="logo-chip">Cisco MX, switching</div>
+   <div class="logo-chip">Fortinet FortiGate</div>
+   <div class="logo-chip">Palo Alto</div>
+   <div class="logo-chip">pfSense / OPNsense</div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- ANECDOTES                 -->
+  <!-- ========================================== -->
+  <h2>La compétence en pratique</h2>
+
+  <!-- ===== ANECDOTE 1 ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 1, décembre 2025 → mars 2026, Paritel, firewall cœur de réseau</span>
+   <h3>Définir les profils de filtrage d'une nouvelle offre firewall cœur de réseau</h3>
+
+   <p>Paritel a porté tout au long de l'année 2025 un projet structurant : intégrer un <strong>pare-feu cœur de réseau</strong> directement dans la chaîne CGN / LNS afin de proposer aux clients de l'opérateur une protection mutualisée, sans déploiement d'équipement chez eux. La VM hôte du firewall a été installée par une équipe dédiée, et j'ai pris en charge la partie qui m'intéressait le plus : <strong>la conception des profils de règles commercialisables</strong>.</p>
+
+   <p>Concrètement, entre <strong>décembre 2025 et février 2026</strong>, j'ai défini et formalisé <strong>5 profils de filtrage</strong> répondant chacun à une typologie client distincte (politiques différentes selon les usages : services publics exposés, postes utilisateurs uniquement, environnement hybride, etc.). Pour chaque profil, il a fallu trancher sur les flux autorisés par défaut, les blocages explicites, la posture vis-à-vis des protocoles courants (DNS, HTTP/HTTPS, SMTP, RDP) et le niveau de logging conservé pour la corrélation côté SIEM. Les <strong>premiers clients en phase de test ont été déployés en mars 2026</strong>.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> les 5 profils que j'ai définis sont aujourd'hui <strong>commercialisés</strong> par Paritel auprès de sa base clients. Ma contribution n'a duré que 2 mois sur un projet annuel, mais elle portait précisément sur la partie de définition fonctionnelle qui détermine la valeur du service vendu. Cette expérience m'a fait passer d'une logique de "règle par règle" à une logique de "<strong>politique de sécurité par typologie de client</strong>", qui est exactement la maturité attendue à l'échelle opérateur.
+   </div>
+
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-5.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Firewall cœur de réseau Paritel</a></p>
+  </div>
+
+  <!-- ===== ANECDOTE 2 ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 2, Paritel, refonte de la matrice de flux interne</span>
+   <h3>Reprendre une matrice de flux historique encombrée de règles "any/any"</h3>
+
+   <p>L'infrastructure interne Paritel compte plus de <strong>50 VLAN historiques</strong> regroupés en une <strong>quinzaine de zones de sécurité</strong> (VOIP, Management, Serveurs, Utilisateurs, VPN, etc.) répartis sur les pare-feux Fortinet, Palo Alto et Juniper, avec des règles plus générales côté Cisco MX. À mon arrivée, certaines règles historiques entre zones Serveurs et Utilisateurs (et VOIP) étaient configurées en <strong>any/any</strong>, ce qui est l'antithèse d'une bonne hygiène réseau : aucun moindre privilège, aucune visibilité fine sur les flux légitimes, journalisation diluée.</p>
+
+   <p>J'ai pris en charge la <strong>réécriture complète de ces règles historiques</strong>, en réécrivant l'ensemble des règles pour mes projets et en intégrant un <strong>processus de ticketing</strong> auprès de l'équipe DSI Dev pour toute nouvelle demande d'ouverture de flux. La méthode : identifier les flux réellement utilisés en analysant les logs, valider chaque flux avec son propriétaire fonctionnel, écrire les règles fines, puis remplacer progressivement les "any/any" sans interruption de service. J'ai créé <strong>2 nouveaux VLAN</strong> dans le cadre de ces projets, là où la majorité du travail consistait à <strong>rationaliser l'existant</strong> plutôt qu'à étendre.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> la posture de sécurité interne a été significativement renforcée par la suppression des règles "any/any" entre zones critiques. Le processus de ticketing mis en place avec la DSI Dev rend désormais traçable toute évolution de la matrice de flux, ce qui facilite les audits et limite la dette technique réseau. Ma valeur ajoutée a été de transformer un travail ingrat (réécrire des règles existantes) en <strong>processus pérenne</strong> documenté.
+   </div>
+  </div>
+
+  <!-- ===== ANECDOTE 3 ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 3, Paritel, deux incidents formateurs</span>
+   <h3>Diagnostiquer un Wi-Fi saturé et une perte de porte de collecte opérateur</h3>
+
+   <p>Deux incidents distincts chez Paritel ont durablement marqué ma compréhension du réseau au-delà des couches théoriques.</p>
+
+   <p>Le premier concernait le <strong>Wi-Fi interne</strong> : les utilisateurs remontaient une latence croissante et des déconnexions intermittentes. Le diagnostic interne ne suffisant pas à isoler la cause, nous avons fait intervenir une société spécialisée en <strong>analyse spectrale Wi-Fi</strong>. Le verdict a été contre-intuitif : nous avions <strong>trop de bornes</strong> dans les locaux, créant des <strong>conflits de canaux</strong> et de la pollution radio. La densification, prévue pour améliorer la couverture, avait en réalité dégradé la performance. Cet incident illustre parfaitement le principe que "plus" ne signifie pas "mieux" en réseau radio, et que sans mesure objective on travaille à l'aveugle.</p>
+
+   <p>Le second incident concernait une <strong>panne de carte réseau sur une porte de collecte Orange</strong>. La bascule vers la porte de collecte secondaire Zion a fonctionné, mais cette dernière s'est retrouvée <strong>presque saturée</strong> sous le trafic redirigé. Pendant <strong>10 heures</strong>, le temps qu'Orange intervienne, nous avons surveillé en continu les flux pour anticiper un éventuel basculement de secours. Finalement, aucun impact client n'a été constaté, mais cet incident a confirmé l'importance de <strong>dimensionner correctement les liens de secours</strong> en partant du principe qu'ils peuvent être amenés à porter 100 % du trafic, pas seulement un appoint.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> ces deux incidents m'ont apporté ce qu'aucune certification ne donne : la <strong>lecture instinctive des signaux faibles</strong> d'une dégradation réseau. Au-delà de la résolution elle-même, ils ont ancré chez moi le réflexe de dimensionner les infrastructures pour le pire cas, pas pour le nominal.
+   </div>
+  </div>
+
+  <!-- ===== ANECDOTE 4 ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 4, Valesys, conception réseau depuis zéro</span>
+   <h3>Concevoir une segmentation réseau de petite infrastructure</h3>
+
+   <p>Chez Valesys, j'arrivais dans un environnement sans segmentation. Avec un autre alternant, nous avons découpé l'infrastructure en <strong>3 VLAN</strong> (production, lab/pré-production, management) sur les commutateurs et le pare-feu <strong>OPNsense</strong>, complétés par des règles <strong>firewalld</strong> et <strong>iptables</strong> au niveau des serveurs eux-mêmes pour une défense en profondeur. Le VPN d'administration utilisait WireGuard pour éviter l'exposition directe des interfaces de gestion sur Internet.</p>
+
+   <p>Avec le recul, mon découpage initial était <strong>perfectible</strong> : à l'époque, je ne maîtrisais pas la notion de <strong>zones regroupant plusieurs VLAN</strong>, que j'ai découverte ensuite chez Paritel. Sur une infrastructure plus mature, j'aurais distingué une zone DMZ pour les services exposés, une zone serveurs internes et une zone clients/postes, chacune pouvant contenir plusieurs VLAN logiques. C'est exactement le type d'apprentissage que seul le passage à une échelle supérieure permet.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> l'infrastructure Valesys a fonctionné sans incident réseau notable sur toute la durée de mon contrat. Plus important pour ma progression : cette première conception m'a donné un <strong>référentiel concret</strong> que j'ai pu confronter ensuite à des architectures plus complexes, ce qui a accéléré ma compréhension du modèle zones / VLAN à l'échelle opérateur.
+   </div>
+
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-1.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Infrastructure sécurisée</a></p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- CERTIFICATIONS               -->
+  <!-- ========================================== -->
+  <h2>Certifications obtenues</h2>
+  <p>Mes connaissances théoriques sont validées par plusieurs certifications Cisco obtenues en <strong>2025</strong> dans le cadre de mon cursus à l'ESIEA via la <strong>Cisco Networking Academy</strong>. Elles couvrent aussi bien les fondamentaux de routage et commutation que les volets sécurité et opérations.</p>
+  <div class="cert-row">
+   <span class="cert-badge">Cisco CCNA 1</span>
+   <span class="cert-badge">Cisco CCNA 2</span>
+   <span class="cert-badge">Network Security</span>
+   <span class="cert-badge">CyberOps Associate</span>
+   <span class="cert-badge">Ethical Hacker</span>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- NIVEAU DE MAÎTRISE             -->
+  <!-- ========================================== -->
+  <h2>Mon niveau de maîtrise</h2>
+  <p>Je me positionne aujourd'hui comme un <strong>profil junior</strong> en administration réseau. Mon orientation est plus marquée vers la <strong>sécurité du réseau</strong> que vers une spécialisation purement réseau, ce qui se reflète dans mes niveaux : très solide sur le filtrage et les politiques de sécurité, plus modeste sur les protocoles de routage avancés.</p>
+
+  <div class="skill-level-grid">
+   <div class="skill-level-card">
+    <div class="lvl-name">Routage / commutation (VLAN, OSPF)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:65%;"></div></div>
+    <div class="lvl-text">13/20 · Bases CCNA solides</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">BGP</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:55%;"></div></div>
+    <div class="lvl-text">11/20 · Compréhension, peu d'opérations</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Pare-feu multi-constructeurs</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:85%;"></div></div>
+    <div class="lvl-text">17/20 · Production opérateur</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Wi-Fi entreprise</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:75%;"></div></div>
+    <div class="lvl-text">15/20 · Diagnostic + déploiement</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">VPN / IPSec / WireGuard</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:70%;"></div></div>
+    <div class="lvl-text">14/20 · Déploiement autonome</div>
+   </div>
+  </div>
+
+  <p><strong>Contextualisation :</strong> ma compétence ne fonctionne pas de la même façon partout. Je suis <strong>à l'aise sur les pare-feux multi-constructeurs et la conception de politiques de filtrage</strong>, sur la segmentation VLAN/zone, et sur la sécurisation des accès distants. Je suis en revanche <strong>moins outillé sur l'ingénierie réseau pure</strong> : optimisation BGP fine, conception de cœurs de réseau MPLS, traffic engineering avancé. Cette spécialisation est cohérente avec mon projet professionnel, qui place le réseau comme socle de la sécurité plutôt que comme cœur de métier.</p>
+
+  <!-- ========================================== -->
+  <!-- PLACE & VITESSE D'ACQUISITION       -->
+  <!-- ========================================== -->
+  <h2>Place dans mon profil et vitesse d'acquisition</h2>
+  <p>Le réseau occupe une place de <strong>socle indispensable</strong> dans mon profil, mais pas de spécialisation principale. Aucune architecture sécurisée ne se conçoit sans une compréhension solide des couches réseau, et c'est exactement le rôle qu'il joue dans ma trajectoire : connaître suffisamment pour concevoir, dialoguer avec les spécialistes réseau, et identifier les zones où une expertise pointue est nécessaire.</p>
+
+  <p><strong>Vitesse d'acquisition :</strong> les fondamentaux ont été acquis de façon structurée via les cursus Cisco Networking Academy, ce qui a donné une <strong>base théorique très complète en 2025</strong> sur les volets routage, commutation, sécurité et CyberOps. La maîtrise opérationnelle, elle, s'est construite par exposition au terrain : la rencontre avec un environnement opérateur (Paritel) en cours d'alternance a accéléré la prise de hauteur sur des notions absentes des cursus académiques, comme la gestion de zones multi-VLAN ou le dimensionnement de portes de collecte.</p>
+
+  <!-- ========================================== -->
+  <!-- RECUL & CONSEILS              -->
+  <!-- ========================================== -->
+  <h2>Mon recul sur la compétence</h2>
+  <p>Le premier conseil que je donnerais à quelqu'un qui s'attaque au réseau, c'est qu'<strong>apprendre seul est très difficile et très répétitif</strong>. Cette compétence est probablement celle où l'isolement coûte le plus cher en temps. Je conseille donc fortement de <strong>s'entourer de personnes qui peuvent apprendre avec vous ou vous aider</strong> : un mentor, des collègues plus seniors, une communauté technique en ligne, ou simplement un binôme qui avance en parallèle. Mes propres progressions les plus rapides ont toutes eu lieu au contact direct d'autres personnes, jamais en lisant des cours dans mon coin.</p>
+
+  <p>Au-delà de la dimension humaine, je conseille de <strong>visualiser physiquement les flux</strong> avant de configurer quoi que ce soit. Un schéma à jour, qui montre les VLAN, les zones, les firewalls et les chemins réels du trafic, vaut mille pages de configuration. Beaucoup d'erreurs viennent du fait qu'on configure sans avoir dessiné ce qu'on cherche à obtenir.</p>
+
+  <p>Je conseille aussi de <strong>ne jamais accepter une règle "any/any" en production</strong>, même temporaire, même "le temps de débugger". Une règle "any/any" temporaire est presque toujours une règle "any/any" définitive : c'est la cause racine d'une bonne partie des dettes techniques réseau que j'ai eu à reprendre. Mieux vaut perdre 30 minutes à écrire la règle fine du premier coup.</p>
+
+  <p>Enfin, et c'est un constat plus large que le réseau, <strong>les certifications théoriques ne remplacent pas l'exposition terrain</strong>. Mes CCNA m'ont donné un vocabulaire et une grille de lecture, mais c'est le travail quotidien sur des équipements réels, avec des incidents réels, qui m'a fait comprendre ce que signifie vraiment <em>administrer un réseau</em>. Le diplôme valide le potentiel, pas la maîtrise.</p>
+
+  <!-- ========================================== -->
+  <!-- ÉVOLUTION & FORMATIONS           -->
+  <!-- ========================================== -->
+  <h2>Évolution et formations</h2>
+  <p>Le réseau reste une composante essentielle de tout métier d'ingénieur infrastructure, et je n'ai aucune intention de l'écarter de mon périmètre de compétences. En revanche, je ne souhaite pas en faire ma <strong>spécialisation principale</strong>. Mon évolution privilégie donc une <strong>complémentarité</strong> avec mes axes forts (configuration système, sécurité, virtualisation) plutôt qu'une montée en spécialisation pure réseau type CCNP ou JNCIE.</p>
+
+  <p>À court terme, je veux <strong>continuer à élargir ma base multi-constructeurs</strong>. J'ai aujourd'hui une exposition concrète sur Juniper, Fortinet, Palo Alto, Cisco, pfSense et OPNsense, et je souhaite consolider cette polyvalence plutôt que de m'enfermer sur un seul vendeur. Cela m'aide à raisonner en termes de <strong>concepts</strong> (zones, politiques, NAT, peering) plutôt qu'en commandes propres à un constructeur.</p>
+
+  <p>Sur le plan des certifications, mes parcours en cours sur <strong>Microsoft Azure</strong> et <strong>Google Cloud Associate Cloud Engineer</strong> incluent une composante réseau (VNet, peering, NSG côté Azure ; VPC, Cloud NAT, Cloud Armor côté GCP) qui complète ma vision on-premise par une compréhension du réseau cloud. <strong>Je ne vise plus de certification spécifiquement réseau au-delà de mes CCNA</strong> : cette discipline n'étant pas mon axe principal de spécialisation, je préfère investir mon temps de formation sur la sécurité, le système et le cloud.</p>
+
+  <p>En revanche, je veux <strong>renforcer ma veille réseau</strong> pour rester au fait de l'actualité du domaine sans pour autant me spécialiser. Je cherche actuellement de bons <strong>journaux ou newsletters hebdomadaires</strong> sur le réseau (Packet Pushers Weekly, NANOG mailing-lists, blog Cloudflare, blog Juniper) pour comprendre les évolutions de l'écosystème sans y consacrer plus de temps que nécessaire. Ma veille passive reste structurée autour de mes <strong>flux RSS</strong>, des échanges sur <strong>Keybase</strong> avec ma communauté technique, et de Twitter sur les comptes pertinents.</p>
+
+  <!-- ========================================== -->
+  <!-- RÉALISATIONS LIÉES             -->
+  <!-- ========================================== -->
+  <h2>Réalisations rattachées</h2>
+  <p>Cette compétence est principalement mobilisée dans deux réalisations détaillées. Le <a href="../realisations/real-5.html"><strong>Firewall cœur de réseau Paritel</strong></a> illustre la conception de profils de filtrage commercialisables à l'échelle opérateur. L'<a href="../realisations/real-1.html"><strong>Infrastructure sécurisée</strong></a> Valesys montre la conception réseau d'une petite infrastructure depuis zéro, avec segmentation VLAN, pare-feu OPNsense et VPN d'administration.</p>
+
+ </main>
 </body>
 </html>

@@ -1,60 +1,386 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Audit de sécurité — Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Audit de sécurité, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  h2.section-title {
+   font-size: 1.1rem;
+   margin-top: 1.8rem;
+   margin-bottom: 0.6rem;
+   padding-bottom: 0.35rem;
+   border-bottom: 1px solid var(--border);
+  }
+  .step-block {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-left: 3px solid var(--violet);
+   border-radius: var(--radius);
+   padding: 1rem 1.2rem;
+   margin-bottom: 1rem;
+  }
+  .step-block .step-tag {
+   font-family: var(--font-mono);
+   font-size: 0.7rem;
+   color: var(--violet);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.35rem;
+   display: block;
+  }
+  .step-block h3 {
+   font-size: 1rem;
+   margin: 0 0 0.6rem;
+   color: var(--text);
+  }
+  .step-block p { margin-bottom: 0.6rem; }
+  .step-block p:last-child { margin-bottom: 0; }
+  .step-block pre {
+   background: var(--bg-alt);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.7rem 0.9rem;
+   font-family: var(--font-mono);
+   font-size: 0.78rem;
+   line-height: 1.55;
+   overflow-x: auto;
+   margin: 0.6rem 0;
+   color: var(--text);
+  }
+  .step-block code {
+   font-family: var(--font-mono);
+   font-size: 0.85rem;
+   background: var(--bg-alt);
+   padding: 0.08rem 0.35rem;
+   border-radius: 3px;
+   color: var(--violet);
+  }
+  .horizon-block {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.85rem 1.1rem;
+   margin-bottom: 0.7rem;
+  }
+  .horizon-block .horizon-tag {
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
+   font-weight: 600;
+   color: var(--green);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.3rem;
+   display: block;
+  }
+  .horizon-block p { margin: 0 0 0.5rem; font-size: 0.92rem; }
+  .horizon-block p:last-child { margin: 0; }
+  .conclusion-block {
+   background: var(--green-pale);
+   border: 1px solid var(--green-light);
+   border-radius: var(--radius-lg);
+   padding: 1rem 1.25rem;
+   margin: 1rem 0;
+  }
+  .conclusion-block h3 {
+   font-size: 0.85rem;
+   font-family: var(--font-mono);
+   color: var(--green);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin: 0 0 0.45rem;
+  }
+  .conclusion-block p { margin-bottom: 0.6rem; }
+  .conclusion-block p:last-child { margin-bottom: 0; }
+  .kpi-row {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+   gap: 0.6rem;
+   margin: 1rem 0;
+  }
+  .kpi-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.75rem;
+   text-align: center;
+  }
+  .kpi-card .kpi-value {
+   font-size: 1.35rem;
+   font-weight: 700;
+   color: var(--violet);
+   font-family: var(--font-mono);
+   display: block;
+   margin-bottom: 0.15rem;
+  }
+  .kpi-card .kpi-label {
+   font-size: 0.7rem;
+   color: var(--text-muted);
+   text-transform: uppercase;
+   letter-spacing: 0.05em;
+  }
+  .tool-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+   gap: 0.7rem;
+   margin: 1rem 0;
+  }
+  .tool-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.7rem 0.9rem;
+  }
+  .tool-card .tool-cat {
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
+   color: var(--violet);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.3rem;
+  }
+  .tool-card .tool-list {
+   font-size: 0.85rem;
+   color: var(--text-muted);
+   line-height: 1.5;
+  }
+ </style>
 </head>
 <body data-page="realisations">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 03</p>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 03</p>
 
-    <div class="page-header">
-      <h1>Audit de sécurité</h1>
-      <div class="page-tags" style="margin-top:0.4rem;">
-        <a href="../competences/tech-3.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Administration Réseau</a>
-        <a href="../competences/tech-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Tooling &amp; Scripting</a>
-        <a href="../competences/hum-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Esprit d'analyse</a>
-      </div>
-    </div>
+  <div class="page-header">
+   <h1>Audit de sécurité</h1>
+   <div class="page-tags" style="margin-top:0.4rem;">
+    <a href="../competences/tech-3.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Administration Réseau</a>
+    <a href="../competences/tech-1.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Configuration Système</a>
+    <a href="../competences/tech-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Tooling &amp; Scripting</a>
+    <a href="../competences/hum-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Esprit d'analyse</a>
+    <a href="../competences/hum-3.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Autonomie</a>
+   </div>
+  </div>
 
-    <h2>Présentation</h2>
-    <p>Cette réalisation regroupe un ensemble d'actions offensives menées dans des contextes variés : <strong>audits de sécurité internes</strong> en entreprise, <strong>pentest externe</strong> sur une filiale, participation à des <strong>CTF</strong> (Capture The Flag) et programmes de <strong>bug bounty</strong>. Ce sont des expériences distinctes par leur contexte et leurs enjeux, mais qui se rejoignent toutes autour d'une même démarche : identifier les failles avant que quelqu'un de malveillant ne le fasse.</p>
+  <!-- ========================================== -->
+  <!-- REGARD CRITIQUE EN OUVERTURE        -->
+  <!-- ========================================== -->
+  <div class="conclusion-block">
+   <h3>// En une phrase</h3>
+   <p>Conduire une <strong>dizaine d'audits de sécurité</strong> et de pentests dans des contextes variés (stage, alternance, projets personnels), pratiquer en parallèle plus de <strong>115 challenges CTF résolus</strong> et plusieurs <strong>vulnérabilités de bug bounty soumises</strong> pour bâtir une compétence offensive qui sert avant tout à mieux concevoir la sécurité défensive.</p>
+  </div>
 
-    <h2>Objectifs, contexte et enjeux</h2>
-    <p>L'objectif est toujours le même : trouver les erreurs de configuration et les vulnérabilités présentes sur le périmètre étudié. Ce qui change, c'est l'enjeu.</p>
-    <p>Dans un <strong>cadre professionnel</strong>, l'enjeu est critique. Une faille non détectée peut avoir des conséquences directes sur la confidentialité des données, la continuité de service ou la réputation de l'organisation. Le niveau d'exigence est donc élevé, la méthodologie rigoureuse, et le livrable attendu est un rapport structuré et exploitable.</p>
-    <p>Dans un <strong>cadre personnel</strong> (CTF ou bug bounty), l'enjeu est différent. Il n'y a pas de système en production à protéger, pas de client à rassurer. En revanche, les erreurs sont entièrement à ma charge, et c'est précisément ce qui en fait un terrain d'apprentissage particulièrement efficace. On apprend infiniment plus de ses propres erreurs quand personne d'autre n'en subit les conséquences.</p>
+  <!-- ========================================== -->
+  <!-- 1. PRÉSENTATION               -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Présentation</h2>
+  <p>Cette réalisation regroupe un ensemble d'<strong>actions offensives</strong> menées dans des contextes variés : <strong>audits de sécurité internes</strong> en entreprise, <strong>pentests sur clients</strong>, <strong>scans d'Active Directory</strong> en environnement opérateur, participation à des <strong>CTF</strong> (Capture The Flag) et programmes de <strong>bug bounty</strong>. Ces expériences se distinguent par leurs contextes et leurs enjeux, mais convergent toutes vers une même démarche : <strong>identifier les failles avant qu'un acteur malveillant ne le fasse</strong>.</p>
 
-    <h2>Les étapes</h2>
-    <div style="margin-bottom:1.5rem;">
-      <img src="audit-methodologie.png" alt="Méthodologie d'audit de sécurité" style="width:100%; max-width:560px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
-      <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Schéma de méthodologie — du cadrage à la restitution</p>
-    </div>
-    <p><strong>Dans un contexte professionnel</strong>, je commence systématiquement par cadrer le périmètre. Je liste les éléments inclus dans le scope, je détermine le format du rapport attendu, et je définis la grille de notation qui sera utilisée pour qualifier les vulnérabilités. Cela passe par la définition des <strong>CVE</strong> (Common Vulnerabilities and Exposures), qui sont des identifiants standardisés attribués aux vulnérabilités connues, et par l'utilisation du score <strong>CVSS</strong> (Common Vulnerability Scoring System), qui permet de mesurer objectivement la criticité d'une faille sur une échelle de 0 à 10, en tenant compte de facteurs comme l'exploitabilité, l'impact sur la confidentialité, l'intégrité et la disponibilité. Cette grille permet de prioriser les correctifs de manière rationnelle plutôt qu'intuitive.</p>
-    <p><strong>Dans tous les contextes</strong>, la phase technique suit la même logique. Je commence par un scan réseau avec <strong>NMAP</strong> afin de lister les hôtes actifs, les services exposés et les versions en cours d'exécution. Ce premier inventaire me donne déjà une vision claire de l'état de l'infrastructure : ce qui est à jour, ce qui ne l'est pas, ce qui est correctement isolé ou au contraire trop exposé.</p>
-    <p>Je teste ensuite les vecteurs d'attaque les plus courants : brute force, mots de passe par défaut, mauvaises configurations sur les services récurrents. Dans la grande majorité des cas, les mêmes services reviennent : bases de données mal sécurisées, interfaces web sans authentification robuste, accès <strong>SSH</strong>, <strong>RDP</strong>, <strong>FTP</strong> ou <strong>SMB</strong> mal configurés. Ces points d'entrée sont classiques, mais ils restent parmi les plus exploités en conditions réelles.</p>
+  <p>Avoir une posture offensive solide n'est pas, pour moi, un objectif en soi. C'est un <strong>outil de compréhension</strong> qui sert directement ma trajectoire défensive : on conçoit mieux une infrastructure sécurisée quand on a passé du temps à attaquer des infrastructures mal sécurisées. C'est cette complémentarité entre attaque et défense qui structure mon approche du métier.</p>
 
-    <div style="margin:1.5rem 0;">
-      <img src="audit-outils.png" alt="Boîte à outils — Audit de sécurité" style="width:100%; max-width:620px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
-      <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Outils utilisés — reconnaissance, exploitation, analyse et services ciblés</p>
-    </div>
+  <!-- ========================================== -->
+  <!-- 2. OBJECTIFS, CONTEXTE, ENJEUX       -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Objectifs, contextes et enjeux</h2>
 
-    <h2>Les acteurs</h2>
-    <p>Dans un cadre professionnel, j'interviens en coordination avec les équipes internes : les responsables du système d'information pour la définition du scope, et les équipes techniques pour la restitution des résultats. Dans un cadre personnel, je travaille seul, en m'appuyant sur des communautés en ligne et les échanges avec des pentesters de mon réseau.</p>
+  <p>L'objectif technique est toujours le même : trouver les erreurs de configuration, les vulnérabilités connues non corrigées, les vecteurs d'exploitation présents sur le périmètre étudié. Ce qui change selon le contexte, c'est <strong>l'enjeu</strong> et le niveau d'exigence sur le livrable.</p>
 
-    <h2>Les résultats</h2>
-    <p>En entreprise, les audits ont permis d'identifier des vulnérabilités concrètes et d'apporter des recommandations exploitables, avec une priorisation claire basée sur les scores CVSS. Certaines failles identifiées ont conduit à des corrections immédiates sur des services exposés.</p>
-    <p>Sur les CTF et bug bounty, les résultats sont avant tout personnels : une progression constante dans la compréhension des vecteurs d'attaque, une meilleure lecture des environnements cibles, et une capacité d'analyse qui s'affine à chaque challenge.</p>
+  <p>En <strong>cadre professionnel</strong>, l'enjeu est critique. Une faille non détectée peut avoir des conséquences directes sur la confidentialité des données, la continuité de service ou la réputation de l'organisation. Le niveau d'exigence est élevé : méthodologie rigoureuse, scope clairement défini, livrable structuré et exploitable par les équipes IT qui devront corriger. Le rapport ne sert à rien s'il n'est pas compréhensible et actionnable.</p>
 
-    <h2>Les lendemains du projet</h2>
-    <p>À court terme, ces expériences ont directement alimenté mes compétences en administration réseau et en configuration système, en me forçant à comprendre les failles de l'intérieur. À distance, elles ont structuré ma façon d'aborder n'importe quel projet technique : je pense naturellement à la sécurité dès la conception, pas après coup. Aujourd'hui, cette compétence offensive est un complément direct à mon approche défensive, et les deux se renforcent mutuellement.</p>
+  <p>En <strong>cadre personnel</strong> (CTF, bug bounty, lab personnel), l'enjeu est différent. Il n'y a pas de système en production à protéger, pas de client à rassurer. En revanche, c'est un terrain d'apprentissage particulièrement efficace, car les <strong>erreurs sont à ma charge</strong> et n'ont aucune conséquence sur des tiers. On apprend infiniment plus de ses propres erreurs quand personne d'autre n'en subit les conséquences.</p>
 
-    <h2>Regard critique</h2>
-    <p>Ce qui m'a le plus marqué dans ces expériences, c'est la récurrence des mêmes erreurs. Des mots de passe par défaut, des services inutilement exposés, des mises à jour non appliquées : des problèmes simples, connus, documentés, et pourtant encore omniprésents. Cela m'a convaincu que la sécurité n'est pas qu'une question de compétence technique, c'est aussi une question de rigueur et de culture au sein des organisations.</p>
-    <p>Ma valeur ajoutée sur ces missions ne réside pas uniquement dans la capacité à trouver des failles, mais dans la capacité à les expliquer clairement, à les prioriser intelligemment et à proposer des correctifs réalistes et adaptés au contexte.</p>
-  </main>
+  <p>Les <strong>risques propres à ces missions</strong> sont à prendre au sérieux. Un audit mal cadré peut déborder du périmètre autorisé et entrer juridiquement en zone grise. Un pentest mené sans précautions peut casser le service qu'il était censé évaluer. Une vulnérabilité divulguée publiquement avant correction expose le client à un risque immédiat. C'est pour ces raisons que je travaille toujours avec un <strong>cadre formalisé</strong> en mission professionnelle (autorisation écrite, scope précis, fenêtre temporelle définie) et que je respecte la <strong>responsible disclosure</strong> sur les vulnérabilités trouvées hors cadre.</p>
+
+  <!-- ========================================== -->
+  <!-- 3. MÉTHODOLOGIE               -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Méthodologie d'audit</h2>
+
+  <div style="margin-bottom:1.5rem;">
+   <img src="audit-methodologie.png" alt="Méthodologie d'audit de sécurité, du cadrage à la restitution" style="width:100%; max-width:560px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
+   <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Méthodologie en cinq étapes, du cadrage initial à la restitution et au suivi des corrections.</p>
+  </div>
+
+  <p>Ma démarche s'appuie sur deux référentiels reconnus : le <strong>top 10 OWASP</strong> pour les applications web et la <strong>matrice MITRE ATT&amp;CK</strong> pour structurer la pensée tactique sur l'ensemble du périmètre. Ces référentiels me donnent une grille de lecture commune avec les autres professionnels du secteur, et garantissent que je ne passe pas à côté des catégories de vulnérabilités les plus exploitées en conditions réelles.</p>
+
+  <!-- ========================================== -->
+  <!-- 4. ÉTAPES                  -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Étapes de réalisation</h2>
+
+  <!-- ===== ÉTAPE 1 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 1 · Cadrage et grille de notation</span>
+   <h3>Définir le périmètre, le format de livrable et la grille CVSS</h3>
+   <p>Toute mission professionnelle commence par un <strong>cadrage formel</strong>. Je liste les éléments inclus dans le scope (hôtes, applications, domaines), j'identifie ce qui en est explicitement exclu, et je détermine la <strong>fenêtre temporelle</strong> de l'audit pour éviter tout débordement. Le format du rapport est également défini en amont : public technique ou décisionnel, niveau de détail attendu, intégration ou non d'une partie "executive summary".</p>
+
+   <p>Je définis ensuite la <strong>grille de notation</strong> qui sera utilisée pour qualifier les vulnérabilités. Cela passe par les <strong>CVE</strong> (Common Vulnerabilities and Exposures), identifiants standardisés attribués aux vulnérabilités connues, et surtout par le score <strong>CVSS</strong> (Common Vulnerability Scoring System) qui permet de mesurer objectivement la criticité d'une faille sur une échelle de 0 à 10, en tenant compte de facteurs comme l'exploitabilité, l'impact sur la confidentialité, l'intégrité et la disponibilité. Cette grille permet de <strong>prioriser les correctifs de manière rationnelle</strong> plutôt qu'intuitive.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 2 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 2 · Reconnaissance et inventaire</span>
+   <h3>Cartographier la cible avant toute tentative d'exploitation</h3>
+   <p>La phase technique commence systématiquement par un <strong>scan réseau</strong>, généralement avec <strong>NMAP</strong>, pour lister les hôtes actifs, les services exposés et les versions logicielles en cours d'exécution. Ce premier inventaire donne déjà une vision claire de l'état de l'infrastructure : ce qui est à jour, ce qui ne l'est pas, ce qui est correctement isolé ou au contraire trop exposé.</p>
+
+   <p>En contexte interne (notamment chez Valesys), j'utilisais ensuite <strong>OpenVAS</strong> pour un scan de vulnérabilités plus exhaustif, complété par des outils spécialisés selon le périmètre : <strong>theHarvester</strong> et <strong>dnsdumpster</strong> pour le renseignement passif, <strong>Shodan</strong> pour repérer ce qui est exposé publiquement, <strong>dirb</strong> ou <strong>gobuster</strong> pour le fuzzing de répertoires web.</p>
+
+   <p>En contexte Paritel, mon approche d'audit est différente et plus ciblée. Comme l'environnement est très outillé (CrowdStrike, sondes IDS), les remontées d'anomalie fournissent déjà un excellent point de départ : je travaille sur les <strong>vulnérabilités déjà signalées par les outils</strong>, ce qui me dispense du scan généraliste. En revanche, je pratique régulièrement des scans ciblés de l'<strong>Active Directory</strong> avec <strong>PingCastle</strong>, <strong>BloodHound</strong> et <strong>Purple Knight</strong>, qui sont des outils dédiés à la détection de mauvaises configurations dans des environnements Microsoft. Ces scans s'apparentent à de l'audit de configuration plus qu'à du pentest pur, mais la méthodologie reste équivalente.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 3 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 3 · Exploitation et validation</span>
+   <h3>Tester les vecteurs d'attaque les plus courants, démontrer l'impact</h3>
+   <p>Après l'inventaire, je teste les <strong>vecteurs d'attaque les plus courants</strong> sur les services repérés : brute force avec <strong>Hydra</strong> sur les services exposés, recherche de mots de passe par défaut, exploitation de mauvaises configurations sur les services récurrents (SSH, RDP, FTP, SMB, interfaces d'administration web).</p>
+
+   <p>Dans la grande majorité des cas, les mêmes problèmes reviennent et correspondent aux catégories du <strong>top 10 OWASP</strong> côté web : injections (notamment SQL, exploitées avec <strong>sqlmap</strong>), <strong>chiffrement faible</strong> (flux non chiffrés ou simple Base64 sur le réseau, certificats expirés ou mal configurés), <strong>identifiants par défaut</strong> sur les plateformes d'administration et les bases de données, <strong>CVE connues</strong> impactant la disponibilité (DoS, DDoS) ou permettant l'exécution de code, et <strong>fuites d'information</strong> sur des sources publiques (forums, repositories Git mal configurés contenant des credentials clients).</p>
+
+   <p>Sur les <strong>environnements WordPress</strong>, qui représentent un cas d'usage fréquent, j'ai construit une checklist méthodique au fil des audits : utilisation de <strong>WPScan</strong> pour énumérer les plugins installés et les utilisateurs, vérification de l'exposition de <strong>XML-RPC</strong> qui reste une porte d'entrée trop souvent oubliée, contrôle de la présence de <strong>2FA</strong> sur les comptes administrateurs, et vérification de l'<strong>obfuscation du chemin WP-Admin</strong> pour rendre les tentatives d'accès moins évidentes. Cette checklist est née d'un vrai audit professionnel que j'ai mené, et je continue à l'enrichir mission après mission.</p>
+
+   <p>Pour l'<strong>élévation de privilèges</strong> sur un serveur compromis, je m'appuie systématiquement sur <strong>GTFOBins</strong>, qui répertorie les binaires Unix permettant un contournement d'isolation. C'est un raccourci efficace pour identifier rapidement si un binaire mal configuré permet une escalade. Sur la phase de post-exploitation, j'ai déjà utilisé <strong>Mimikatz</strong> et <strong>BloodHound</strong> pour cartographier des environnements compromis, mais c'est plus rare que la phase exploitation directe.</p>
+
+   <p>Récemment, j'ai eu à reproduire et démontrer l'exploitation de la faille <strong>CopyFail</strong> dans un cadre de validation et de pédagogie technique. Je n'ai pas développé l'exploit moi-même, mais le rejouer en conditions contrôlées m'a permis d'en comprendre finement le mécanisme et d'expliquer ses implications à des équipes non spécialistes.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 4 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 4 · Restitution et rapport</span>
+   <h3>Produire un livrable exploitable, pas une démonstration technique</h3>
+   <p>La phase de restitution est <strong>la plus déterminante pour la valeur du livrable</strong>, et c'est sans doute là que se joue la différence entre un bon et un mauvais auditeur. Trouver des failles n'est qu'une étape : il faut les <strong>expliquer clairement</strong> à un public dont le niveau technique varie, les <strong>prioriser intelligemment</strong> via la grille CVSS définie au cadrage, et proposer des <strong>correctifs réalistes et adaptés au contexte</strong>.</p>
+
+   <p>Mes rapports d'audit suivent une structure stable : un executive summary pour les décideurs, un inventaire détaillé des vulnérabilités identifiées avec leur score CVSS, une explication pédagogique de chaque faille trouvée (qu'est-ce que c'est, comment elle a été identifiée, quel est son impact concret), et surtout une <strong>section recommandations</strong> précise et actionnable. Pour chaque vulnérabilité, je propose une remédiation détaillée et applicable rapidement par les équipes IT du client.</p>
+
+   <p>Sur l'audit WordPress aux Mousquetaires, j'ai ainsi produit en parallèle du rapport une <strong>documentation interne</strong> sur "comment auditer un WordPress" qui sert encore aujourd'hui de référence pour les missions similaires. Transformer un audit ponctuel en référence méthodologique réutilisable est probablement la forme la plus aboutie de valeur ajoutée qu'un junior puisse apporter.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 5 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 5 · Suivi et vérification des correctifs</span>
+   <h3>Valider que les recommandations ont été appliquées correctement</h3>
+   <p>Une recommandation appliquée à moitié ou mal interprétée peut donner une <strong>fausse sensation de sécurité</strong> pire que l'absence de correctif. Quand le contexte de la mission le permet, j'inclus donc une phase de <strong>vérification des correctifs</strong> appliqués par le client. Concrètement, je reproduis les attaques qui avaient réussi pour vérifier qu'elles échouent désormais, et je teste également les vecteurs adjacents pour m'assurer que la correction n'a pas été contournable d'une autre façon.</p>
+
+   <p>Cette phase n'est pas toujours possible (selon le budget client, le périmètre contractuel, le délai), mais quand elle l'est, elle apporte au client une assurance qu'aucun rapport seul ne peut donner.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 5. BOÎTE À OUTILS              -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Ma boîte à outils</h2>
+
+  <div style="margin-bottom:1rem;">
+   <img src="audit-outils.png" alt="Boîte à outils Audit de sécurité, reconnaissance, exploitation, analyse et services ciblés" style="width:100%; max-width:620px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
+   <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Outils utilisés en mission, par catégorie : reconnaissance, exploitation, post-exploitation et environnement de travail.</p>
+  </div>
+
+  <div class="tool-grid">
+   <div class="tool-card">
+    <div class="tool-cat">// Reconnaissance</div>
+    <div class="tool-list">NMAP, theHarvester, dirb, dnsdumpster, Shodan, OpenVAS</div>
+   </div>
+   <div class="tool-card">
+    <div class="tool-cat">// Web</div>
+    <div class="tool-list">Burp Suite, Nikto, sqlmap, WPScan</div>
+   </div>
+   <div class="tool-card">
+    <div class="tool-cat">// Exploitation</div>
+    <div class="tool-list">Metasploit, Hydra, John the Ripper, Hashcat</div>
+   </div>
+   <div class="tool-card">
+    <div class="tool-cat">// Post-exploitation</div>
+    <div class="tool-list">Mimikatz, BloodHound</div>
+   </div>
+   <div class="tool-card">
+    <div class="tool-cat">// Active Directory</div>
+    <div class="tool-list">PingCastle, BloodHound, Purple Knight</div>
+   </div>
+   <div class="tool-card">
+    <div class="tool-cat">// Référentiels et environnement</div>
+    <div class="tool-list">OWASP Top 10, MITRE ATT&amp;CK, Kali Linux (fervent défenseur), GTFOBins</div>
+   </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 6. ACTEURS                 -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Organisation et acteurs</h2>
+
+  <p>En <strong>cadre professionnel</strong>, j'interviens en coordination étroite avec les équipes internes du client ou de l'organisation : les responsables du système d'information pour la définition du scope et la validation des autorisations, les équipes techniques pour la restitution des résultats et la planification des correctifs, et parfois les équipes métiers pour comprendre les usages réels des applications auditées. Ces interactions sont structurantes : un audit isolé de ses bénéficiaires n'a aucune valeur durable.</p>
+
+  <p>En <strong>cadre personnel</strong> (CTF, bug bounty), je travaille seul. Je m'appuie sur les communautés en ligne pour confronter mes raisonnements et sur les <strong>échanges réguliers avec ma communauté de pentesters sur Keybase</strong> pour partager des techniques, discuter de méthodologies et débloquer des problèmes. Cette communauté est probablement le meilleur accélérateur d'apprentissage que j'ai eu sur le volet offensif, car elle confronte la pratique théorique des challenges à la réalité du terrain de profils plus expérimentés.</p>
+
+  <!-- ========================================== -->
+  <!-- 7. RÉSULTATS                -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Résultats</h2>
+
+  <div class="kpi-row">
+   <div class="kpi-card">
+    <span class="kpi-value">~10</span>
+    <span class="kpi-label">Rapports d'audit rédigés</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">115</span>
+    <span class="kpi-label">Challenges CTF résolus</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">1890</span>
+    <span class="kpi-label">Points Root-Me</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">4-5</span>
+    <span class="kpi-label">XSS DOM trouvées en bug bounty</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">2</span>
+    <span class="kpi-label">Référentiels structurants (OWASP, ATT&amp;CK)</span>
+   </div>
+  </div>
+
+  <p><strong>En entreprise</strong>, les audits que j'ai menés ont permis d'identifier des vulnérabilités concrètes et d'apporter des recommandations exploitables, avec une priorisation claire basée sur les scores CVSS. Certaines failles identifiées ont conduit à des <strong>corrections immédiates</strong> sur des services exposés. La documentation WordPress produite chez Les Mousquetaires sert toujours de référence pour les audits similaires, ce qui est probablement le résultat le plus durable d'une mission de quelques semaines.</p>
+
+  <p><strong>Sur les CTF et le bug bounty</strong>, les résultats sont avant tout personnels. Mon parcours Root-Me actuel (place 7168, 1890 points, 115 challenges) reflète une pratique soutenue, mais les chiffres sont moins importants que la <strong>progression dans la compréhension des vecteurs d'attaque</strong>, la meilleure lecture des environnements cibles, et la capacité d'analyse qui s'affine à chaque challenge. Sur le bug bounty, j'ai identifié <strong>4 à 5 XSS côté client (DOM-based)</strong> sur différentes plateformes, mais aucune n'a donné lieu à rémunération car cette catégorie est explicitement exclue par la majorité des programmes que j'ai pratiqués (YesWeHack, Bugcrowd). J'ai néanmoins rédigé <strong>un rapport complet</strong> sur l'une d'entre elles pour me constituer un template réutilisable, et ne pas reporter ces XSS est devenu chez moi un automatisme par manque de retour sur investissement.</p>
+
+  <!-- ========================================== -->
+  <!-- 8. LENDEMAINS                -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Lendemains du projet</h2>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// Futur immédiat (après chaque mission)</span>
+   <p>Chaque audit a alimenté directement mes compétences en administration réseau et en configuration système, en me forçant à comprendre les failles de l'intérieur. La documentation WordPress produite chez Les Mousquetaires a immédiatement servi de référence pour les missions similaires qui ont suivi, ce qui prouve que les retours d'expérience écrits ont une vraie utilité opérationnelle au-delà du livrable initial. Sur les CTF, chaque challenge résolu vient enrichir mes notes Obsidian structurées pour pouvoir réutiliser les techniques apprises sur des contextes équivalents plus tard.</p>
+  </div>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// À distance (2023-2025)</span>
+   <p>Ces expériences ont profondément structuré ma façon d'aborder n'importe quel projet technique. Je pense désormais naturellement à la sécurité <strong>dès la conception</strong>, pas après coup, parce que j'ai passé du temps à exploiter des infrastructures où elle avait été pensée en dernier. C'est exactement ce principe qui a structuré le <a href="real-1.html">déploiement de l'infrastructure Valesys</a> et qui me sert quotidiennement dans la définition des règles firewall chez Paritel.</p>
+  </div>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// Aujourd'hui et à venir (2026)</span>
+   <p>Chez Paritel, je continue à pratiquer l'audit dans une logique plus défensive : <strong>analyse des remontées</strong> de CrowdStrike, des sondes IDS, et investigation des anomalies signalées. Les scans réguliers d'Active Directory avec PingCastle, BloodHound et Purple Knight m'apportent une continuité de pratique sur des outils dédiés à cet écosystème. La compétence offensive devient ici un <strong>complément direct à mon approche défensive</strong>, et les deux se renforcent mutuellement.</p>
+   <p>À horizon post-études (juillet 2026), je prévois plusieurs axes de développement. <strong>Reprendre activement les CTF</strong> en reconstituant une équipe pour bénéficier de la dynamique collective. <strong>Reprendre le bug bounty</strong> avec un objectif clair : trouver et reporter des vulnérabilités hors de la catégorie XSS DOM, sur des classes mieux rémunérées. À plus long terme, viser une certification offensive de référence comme <strong>OSCP</strong> (Offensive Security Certified Professional) ou <strong>PNPT</strong> (Practical Network Penetration Tester), qui valideraient formellement la compétence et apporteraient une crédibilité supplémentaire dans des contextes professionnels où ces certifications sont attendues.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 9. REGARD CRITIQUE             -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Regard critique</h2>
+
+  <p><strong>Mes apports concrets</strong> sur les missions d'audit sont triples. D'abord la <strong>capacité à expliquer clairement</strong> à un public dont le niveau technique varie : trouver une faille technique sophistiquée mais ne pas savoir l'expliquer à un dirigeant rend l'audit inutile. Ensuite la <strong>priorisation intelligente via la grille CVSS</strong>, qui transforme une liste brute de vulnérabilités en feuille de route corrective réaliste. Enfin la <strong>proposition de correctifs adaptés au contexte</strong> : "appliquez le dernier patch" n'est pas une recommandation, "désactivez tel module et restreignez l'accès à telle interface en attendant la migration vers la version N+1" en est une.</p>
+
+  <p><strong>Ma valeur ajoutée mesurable</strong> est de faire passer un audit du statut d'<em>exercice technique</em> à celui de <strong>livrable exploitable</strong> par les équipes IT. La documentation WordPress produite chez Les Mousquetaires est l'exemple le plus clair : un audit ponctuel a généré une référence méthodologique durable, qui survit à la mission elle-même et apporte de la valeur sur les audits suivants. C'est cette transformation du ponctuel en pérenne qui distingue un auditeur efficace d'un simple exécutant.</p>
+
+  <p><strong>Mes enseignements personnels</strong> sont profonds. Le plus marquant est la <strong>récurrence des mêmes erreurs</strong> d'un environnement à l'autre : mots de passe par défaut jamais changés, mises à jour non appliquées sur des CVE pourtant publiques depuis des mois, services exposés sans nécessité fonctionnelle, certificats expirés. Ces problèmes sont simples, connus, documentés, et pourtant omniprésents. Cela m'a convaincu que la sécurité <strong>n'est pas qu'une question de compétence technique</strong> : c'est aussi et surtout une question de <strong>rigueur opérationnelle et de culture organisationnelle</strong>. Le second enseignement, plus personnel, est la conviction profonde que <strong>l'attaque sert la défense</strong> : on conçoit objectivement mieux quand on a vu de l'intérieur comment ça casse.</p>
+
+  <p>Avec le recul, je vois aussi <strong>les limites de mon expérience actuelle</strong>. Les XSS côté client trouvées en bug bounty ne sont pas reportées par défaut faute de retour sur investissement, ce qui veut dire que je ne contribue pas à la sécurité de ces plateformes. C'est un compromis assumé mais discutable éthiquement, et que je veux corriger en m'orientant vers des vulnérabilités mieux rémunérées plutôt qu'en abandonnant cette pratique. Par ailleurs, ma pratique offensive reste <strong>celle d'un junior</strong>, sans certification de référence à ce jour. C'est exactement la raison pour laquelle je vise OSCP ou PNPT à moyen terme, pour ancrer cette pratique dans une validation externe formelle.</p>
+
+  <!-- ========================================== -->
+  <!-- COMPÉTENCES RATTACHÉES           -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Compétences rattachées</h2>
+  <p>Cette réalisation mobilise une combinaison de compétences techniques et humaines. Sur le volet technique, elle illustre l'<a href="../competences/tech-3.html"><strong>Administration Réseau</strong></a> par la maîtrise des protocoles et des architectures attaquées, la <a href="../competences/tech-1.html"><strong>Configuration Système</strong></a> par la compréhension fine des systèmes audités et le <a href="../competences/tech-4.html"><strong>Tooling &amp; Scripting</strong></a> par l'usage et l'enchaînement de nombreux outils. Sur le volet humain, elle met en avant l'<a href="../competences/hum-2.html"><strong>Esprit d'analyse</strong></a> indispensable pour décomposer un environnement complexe et l'<a href="../competences/hum-3.html"><strong>Autonomie</strong></a> nécessaire pour mener des CTF et investigations offensives sans encadrement.</p>
+
+ </main>
 </body>
 </html>

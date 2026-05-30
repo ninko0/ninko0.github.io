@@ -1,36 +1,127 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Esprit d'analyse, Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Esprit d'analyse, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  .anecdote{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius);padding:1rem 1.2rem;margin-bottom:1rem}
+  .anecdote-tag{font-family:var(--font-mono);font-size:0.7rem;color:var(--green);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.35rem;display:block}
+  .anecdote h3{font-size:1rem;margin:0 0 0.6rem;color:var(--text)}
+  .anecdote p{margin-bottom:0.6rem}
+  .anecdote p:last-child{margin-bottom:0}
+  .anecdote-result{margin-top:0.7rem;padding:0.55rem 0.8rem;background:var(--violet-pale);border-left:2px solid var(--violet);border-radius:var(--radius);font-size:0.9rem}
+  .anecdote-result strong{color:var(--violet)}
+  .skill-level-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin:0.8rem 0 1rem}
+  .skill-level-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:0.7rem 0.9rem}
+  .skill-level-card .lvl-name{font-family:var(--font-mono);font-size:0.78rem;font-weight:600;margin-bottom:0.3rem}
+  .skill-level-card .lvl-bar{height:6px;background:var(--bg-alt);border-radius:999px;overflow:hidden;margin-bottom:0.3rem}
+  .skill-level-card .lvl-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--violet));border-radius:999px}
+  .skill-level-card .lvl-text{font-size:0.78rem;color:var(--text-muted)}
+  h2{margin-top:1.8rem;padding-bottom:0.35rem;border-bottom:1px solid var(--border);font-size:1.1rem}
+ </style>
 </head>
 <body data-page="competences">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Humaine 02</p>
-    <div class="page-header">
-      <h1>Esprit d'analyse</h1>
-</div>
-    <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
-      <a href="../realisations/real-1.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
-      <a href="../realisations/real-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
-    </div>
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Définition</h2>
-    <p style="margin-bottom:1rem;">L'esprit d'analyse, c'est la capacité à décomposer un problème complexe, à en identifier les causes profondes et à construire une réponse logique et structurée. En ingénierie systèmes et cybersécurité, c'est une compétence centrale : un incident réseau mal analysé, une configuration mal lue, une dépendance mal identifiée peuvent avoir des conséquences lourdes.</p>
-    <p style="margin-bottom:1.5rem;">L'analyse ne se limite pas à la résolution de pannes. Elle s'applique aussi en amont : lors de la conception d'une architecture, il faut analyser les flux attendus, les risques potentiels, les zones de confiance et les contraintes de performance avant de poser la première ligne de configuration.</p>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Humaine 02</p>
+  <div class="page-header">
+   <h1>Esprit d'analyse</h1>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Éléments de preuve</h2>
-    <p style="margin-bottom:1rem;">La pratique des <strong>CTF (Capture The Flag)</strong> est l'un des terrains où j'exerce le plus régulièrement mon esprit d'analyse. Ces challenges imposent de comprendre un environnement inconnu, d'identifier des vulnérabilités à partir d'indices parcellaires et de construire une chaîne de raisonnement cohérente. Il n'y a pas de place pour l'approximation.</p>
-    <p style="margin-bottom:1rem;">Sur mes <strong>projets GitHub</strong>, j'applique systématiquement une phase d'analyse du besoin avant de démarrer : cadrage des objectifs, identification des contraintes, structuration de l'architecture dès le départ.</p>
-    <p style="margin-bottom:1rem;">Dans mon contexte professionnel, chez Valesys, cette démarche s'est traduite concrètement : plutôt que de déployer le SOC demandé sur des fondations fragiles, j'ai analysé l'existant, identifié les lacunes réelles et redéfini les priorités du projet, ce qui a conduit à une infrastructure bien plus solide qu'initialement envisagée.</p>
+  <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
+   <a href="../realisations/real-1.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
+   <a href="../realisations/real-3.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Audit de sécurité</a>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin: 1.5rem 0 0.5rem;">Autocritique</h2>
-    <p style="margin-bottom:1rem;">C'est une compétence dans laquelle je me sens à l'aise, développée autant par la pratique terrain que par les CTF. Ma limite actuelle est que mon analyse reste parfois trop individuelle : je ne confronte pas encore systématiquement mes conclusions à un tiers avant d'agir, ce qui peut générer des angles morts.</p>
+  <h2>Définition</h2>
+  <p>L'<strong>esprit d'analyse</strong>, c'est la capacité à décomposer un problème complexe, à en identifier les causes profondes et à construire une réponse logique et structurée. En ingénierie systèmes et cybersécurité, c'est une compétence centrale : un incident réseau mal analysé, une configuration mal lue, une dépendance mal identifiée peuvent avoir des conséquences lourdes en production.</p>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Évolution</h2>
-    <p>Je cherche à renforcer cette compétence en me confrontant à des contextes toujours plus variés, CTF, bug bounty, échanges avec des pentesters. À terme, je souhaite développer une capacité d'analyse plus systémique, orientée vers la <strong>modélisation des menaces</strong> dans des architectures complexes.</p>
-  </main>
+  <p>L'analyse ne se limite pas à la résolution de pannes. Elle s'applique aussi <strong>en amont</strong> : lors de la conception d'une architecture, il faut analyser les flux attendus, les risques potentiels, les zones de confiance et les contraintes de performance avant de poser la première ligne de configuration. C'est exactement ce que la <strong>modélisation des menaces</strong> formalise dans les démarches sécurité, et c'est aussi ce que les bonnes pratiques type STRIDE ou MITRE ATT&amp;CK structurent pour les analystes.</p>
+
+  <p>L'actualité récente le rappelle régulièrement : les incidents majeurs (CrowdStrike, fuites de données massives, ransomwares ciblés) ont rarement une cause unique. Ce sont presque toujours des chaînes de défaillances que seule une analyse rigoureuse permet de reconstruire et de prévenir.</p>
+
+  <h2>La compétence en pratique</h2>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 1, 2023-2025, Root-Me et CTF</span>
+   <h3>Exercer mon analyse sur des contextes hostiles et incomplets</h3>
+   <p>La pratique des <strong>CTF (Capture The Flag)</strong> est l'un des terrains où j'exerce le plus régulièrement mon esprit d'analyse. Ces challenges imposent de comprendre un environnement inconnu, d'identifier des vulnérabilités à partir d'indices parcellaires, et de construire une chaîne de raisonnement cohérente. Il n'y a pas de place pour l'approximation : soit la chaîne logique tient, soit le flag ne tombe pas.</p>
+   <p>Mon parcours sur <strong>Root-Me</strong> totalise aujourd'hui <strong>115 challenges résolus, 1890 points, place 7168</strong>, sur des catégories variées (web, programmation, cracking, forensic, réseau). Chaque challenge non-trivial mobilise la même séquence d'analyse : observer ce qu'on voit, formuler des hypothèses sur ce qui est caché, tester les hypothèses, ajuster. C'est exactement le réflexe qu'on retrouve en investigation d'incident réel, à ceci près que sur un CTF on a la garantie qu'il y a une solution.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> ces années de CTF m'ont apporté un <strong>réflexe d'analyse systématique</strong> face à un environnement inconnu, qui se transfère directement sur les incidents réseau et système rencontrés en mission. Quand un service ne répond pas comme attendu chez Paritel, je n'attaque pas la solution, j'attaque l'analyse.
+   </div>
+  </div>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 2, septembre 2023, Valesys, recadrage de mission initiale</span>
+   <h3>Refuser une mission mal cadrée pour analyser le vrai problème</h3>
+   <p>À mon arrivée chez Valesys en septembre 2023, ma mission initiale était claire et limitée : <strong>mettre en place un SOC</strong>. Mais en arrivant sur place, j'ai analysé l'existant et constaté que l'infrastructure se résumait à un firewall mal configuré et un NAS. Monter un SOC sur des fondations aussi fragiles n'avait aucun sens : on aurait livré un outil de surveillance pour une infrastructure qui n'existait pas vraiment, ce qui aurait été un produit de façade plutôt qu'un dispositif de sécurité utile.</p>
+   <p>J'ai donc <strong>recadré la mission</strong> en présentant cette analyse à mon encadrement, et la priorité du projet est devenue la conception de l'architecture réseau complète, avant même d'aborder l'objectif SOC initial. Cette décision a allongé le projet de plusieurs mois mais a permis de livrer une solution qui a ensuite été <strong>commercialisée</strong>, ce qui n'aurait jamais été le cas en partant des fondations initiales.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> infrastructure complète puis SOC, le tout commercialisé. Ma valeur ajoutée a été de <strong>résister à la facilité d'exécuter la commande initiale</strong> pour analyser ce qui était réellement nécessaire. C'est exactement l'esprit d'analyse qu'on attend d'un ingénieur : ne pas faire ce qu'on lui demande, mais ce qu'il faut.
+   </div>
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-1.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Infrastructure sécurisée</a></p>
+  </div>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 3, en continu, prise de notes structurée</span>
+   <h3>Structurer ma réflexion dans un système de notes personnel</h3>
+   <p>L'analyse n'est pas qu'une compétence du moment : c'est aussi une discipline de <strong>capitalisation</strong>. Je tiens un système de notes personnel structuré (Obsidian privé) où je consigne mes raisonnements sur les sujets que j'étudie : décomposition d'un protocole réseau, analyse d'un comportement suspect observé en logs, schémas d'architecture en cours d'élaboration, retours d'incidents. Cette pratique me sert de <strong>second cerveau</strong> et me permet de revenir sur des analyses passées plutôt que de tout réinventer à chaque problème similaire.</p>
+   <p>L'intérêt n'est pas le contenu des notes en soi, mais l'<strong>obligation de structurer une pensée pour pouvoir l'écrire</strong>. Si un raisonnement ne tient pas par écrit, c'est qu'il était flou dans ma tête. Cette discipline a transformé ma manière d'analyser : je le fais désormais à l'écrit aussi systématiquement que possible, ce qui élimine une bonne partie des angles morts.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> mes notes m'ont déjà servi plusieurs fois à <strong>débloquer un problème actuel en retrouvant un cas similaire passé</strong>. C'est une discipline qui apporte sa valeur sur plusieurs mois plutôt que sur le moment, mais c'est probablement l'investissement à plus fort rendement que j'ai fait sur mon esprit d'analyse.
+   </div>
+  </div>
+
+  <h2>Mon niveau de maîtrise</h2>
+  <p>Je me considère comme <strong>solide sur l'analyse technique individuelle</strong>, et en progression sur l'analyse en équipe ou face à des contextes que je n'ai pas l'habitude de croiser.</p>
+
+  <div class="skill-level-grid">
+   <div class="skill-level-card">
+    <div class="lvl-name">Analyse de problème technique</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:80%;"></div></div>
+    <div class="lvl-text">16/20 · Réflexe quotidien</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Analyse d'incident sécurité</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:70%;"></div></div>
+    <div class="lvl-text">14/20 · Bonne pratique CTF + terrain</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Analyse systémique (modélisation menaces)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:55%;"></div></div>
+    <div class="lvl-text">11/20 · En progression</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Analyse collaborative (confrontation à un tiers)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:50%;"></div></div>
+    <div class="lvl-text">10/20 · Axe d'amélioration assumé</div>
+   </div>
+  </div>
+
+  <p><strong>Contextualisation :</strong> ma limite actuelle est que mon analyse reste <strong>parfois trop individuelle</strong>. Je ne confronte pas encore systématiquement mes conclusions à un tiers avant d'agir, ce qui peut générer des angles morts surtout sur les sujets où je suis très à l'aise. C'est une zone que je travaille progressivement, notamment en partageant mes analyses dès que possible avec ma communauté de pentesters.</p>
+
+  <h2>Place dans mon profil et vitesse d'acquisition</h2>
+  <p>L'esprit d'analyse est une compétence <strong>centrale</strong> dans mon profil. C'est probablement la compétence non-technique qui a le plus d'impact direct sur la qualité de mes livrables techniques. Sans elle, mes autres compétences (configuration, scripting, virtualisation) produiraient du résultat fonctionnel mais sans la finesse qui distingue un bon ingénieur d'un excellent.</p>
+
+  <p><strong>Vitesse d'acquisition :</strong> progressive et soutenue par deux pratiques régulières : les CTF (depuis plusieurs années) et la prise de notes structurée. Cette compétence n'a pas eu de pic d'apprentissage particulier mais une <strong>amélioration constante</strong> au fil de la confrontation à des problèmes de plus en plus complexes.</p>
+
+  <h2>Mon recul sur la compétence</h2>
+  <p>Avec l'expérience que j'ai aujourd'hui, je conseille avant tout d'<strong>écrire ses analyses</strong>. Pas dans un rapport formel, juste dans des notes personnelles. Le simple fait de transformer une pensée en phrase complète révèle immédiatement ses zones floues. C'est probablement le conseil le plus simple à appliquer et celui qui apporte le plus de valeur sur la durée.</p>
+
+  <p>Je conseille aussi de <strong>se méfier de la première hypothèse qui colle</strong>. Quand un problème semble avoir une cause évidente, c'est souvent qu'on a vu une corrélation, pas une causalité. Prendre 5 minutes pour formuler une seconde hypothèse alternative, même improbable, force à vérifier la première au lieu de l'accepter par paresse. C'est un réflexe qui m'a évité plusieurs fois de partir dans la mauvaise direction sur des incidents réseau.</p>
+
+  <h2>Évolution et formations</h2>
+  <p>Je cherche à renforcer cette compétence en me confrontant à des contextes <strong>toujours plus variés</strong> : reprise des CTF dès la fin de mes études, retour sur le bug bounty (YesWeHack, Bugcrowd), et échanges plus structurés avec des pentesters expérimentés.</p>
+
+  <p>À terme, je souhaite développer une capacité d'analyse plus <strong>systémique</strong>, orientée vers la modélisation des menaces dans des architectures complexes. Cela passera notamment par une pratique plus formelle des méthodologies type <strong>STRIDE</strong>, <strong>MITRE ATT&amp;CK</strong> et <strong>arbres d'attaque</strong>, que j'utilise aujourd'hui de manière intuitive mais sans la rigueur d'un threat modeler formé.</p>
+
+  <p>Sur le plan des <strong>apprentissages formels</strong>, je n'ai pas de stratégie de lecture théorique sur ce sujet : j'apprends par la <strong>pratique et la veille active</strong>. Ma veille se structure autour de mes flux RSS, des échanges sur Keybase avec ma communauté technique, et de Twitter sur les comptes de chercheurs en sécurité offensive et défensive dont j'analyse les raisonnements publiés (write-ups, post-mortem d'incidents, threat reports).</p>
+
+  <h2>Réalisations rattachées</h2>
+  <p>Cette compétence est mobilisée dans plusieurs réalisations. L'<a href="../realisations/real-1.html"><strong>Infrastructure sécurisée</strong></a> Valesys illustre l'analyse qui a conduit au recadrage complet de la mission initiale. L'<a href="../realisations/real-3.html"><strong>Audit de sécurité</strong></a> mobilise mon esprit d'analyse de manière intensive sur des contextes clients variés.</p>
+ </main>
 </body>
 </html>

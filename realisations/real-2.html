@@ -1,59 +1,365 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sonde IDS, Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Sonde IDS conteneurisée, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  h2.section-title {
+   font-size: 1.1rem;
+   margin-top: 1.8rem;
+   margin-bottom: 0.6rem;
+   padding-bottom: 0.35rem;
+   border-bottom: 1px solid var(--border);
+  }
+  .step-block {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-left: 3px solid var(--violet);
+   border-radius: var(--radius);
+   padding: 1rem 1.2rem;
+   margin-bottom: 1rem;
+  }
+  .step-block .step-tag {
+   font-family: var(--font-mono);
+   font-size: 0.7rem;
+   color: var(--violet);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.35rem;
+   display: block;
+  }
+  .step-block h3 {
+   font-size: 1rem;
+   margin: 0 0 0.6rem;
+   color: var(--text);
+  }
+  .step-block p { margin-bottom: 0.6rem; }
+  .step-block p:last-child { margin-bottom: 0; }
+  .step-block pre {
+   background: var(--bg-alt);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.7rem 0.9rem;
+   font-family: var(--font-mono);
+   font-size: 0.78rem;
+   line-height: 1.55;
+   overflow-x: auto;
+   margin: 0.6rem 0;
+   color: var(--text);
+  }
+  .step-block code {
+   font-family: var(--font-mono);
+   font-size: 0.85rem;
+   background: var(--bg-alt);
+   padding: 0.08rem 0.35rem;
+   border-radius: 3px;
+   color: var(--violet);
+  }
+  .horizon-block {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.85rem 1.1rem;
+   margin-bottom: 0.7rem;
+  }
+  .horizon-block .horizon-tag {
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
+   font-weight: 600;
+   color: var(--green);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.3rem;
+   display: block;
+  }
+  .horizon-block p { margin: 0 0 0.5rem; font-size: 0.92rem; }
+  .horizon-block p:last-child { margin: 0; }
+  .conclusion-block {
+   background: var(--green-pale);
+   border: 1px solid var(--green-light);
+   border-radius: var(--radius-lg);
+   padding: 1rem 1.25rem;
+   margin: 1rem 0;
+  }
+  .conclusion-block h3 {
+   font-size: 0.85rem;
+   font-family: var(--font-mono);
+   color: var(--green);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin: 0 0 0.45rem;
+  }
+  .conclusion-block p { margin-bottom: 0.6rem; }
+  .conclusion-block p:last-child { margin-bottom: 0; }
+  .kpi-row {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+   gap: 0.6rem;
+   margin: 1rem 0;
+  }
+  .kpi-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.75rem;
+   text-align: center;
+  }
+  .kpi-card .kpi-value {
+   font-size: 1.35rem;
+   font-weight: 700;
+   color: var(--violet);
+   font-family: var(--font-mono);
+   display: block;
+   margin-bottom: 0.15rem;
+  }
+  .kpi-card .kpi-label {
+   font-size: 0.7rem;
+   color: var(--text-muted);
+   text-transform: uppercase;
+   letter-spacing: 0.05em;
+  }
+  .github-link {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.45rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.45rem 0.8rem;
+   font-family: var(--font-mono);
+   font-size: 0.82rem;
+   color: var(--text);
+   text-decoration: none;
+   transition: border-color 0.15s;
+   margin: 0.5rem 0 1rem;
+  }
+  .github-link:hover {
+   border-color: var(--violet);
+   color: var(--violet);
+   text-decoration: none;
+  }
+  .github-link svg {
+   flex-shrink: 0;
+  }
+ </style>
 </head>
 <body data-page="realisations">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 02</p>
-    <div>
-      <div>
-        <div class="page-header">
-          <h1>Sonde IDS conteneurisée</h1>
-          <div class="page-tags" style="margin-top:0.4rem;">
-            <a href="../competences/tech-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Virtualisation &amp; Conteneurisation</a>
-            <a href="../competences/tech-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Tooling &amp; Scripting</a>
-            <a href="../competences/hum-3.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Autonomie</a>
-            <a href="../competences/hum-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Initiative</a>
-          </div>
-        </div>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 02</p>
 
+  <div class="page-header">
+   <h1>Sonde IDS conteneurisée</h1>
+   <div class="page-tags" style="margin-top:0.4rem;">
+    <a href="../competences/tech-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Virtualisation</a>
+    <a href="../competences/tech-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Tooling &amp; Scripting</a>
+    <a href="../competences/tech-1.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Configuration Système</a>
+    <a href="../competences/tech-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Git</a>
+    <a href="../competences/hum-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Initiative</a>
+    <a href="../competences/hum-5.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Esprit de partage</a>
+   </div>
+  </div>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Présentation et origine du projet</h2>
-        <p style="margin-bottom:1rem;">Ce projet trouve son origine dans une problématique professionnelle : une réflexion était en cours autour du remplacement d'une solution de détection existante. J'ai mené une phase de <strong>R&D</strong> pour identifier des alternatives. Deux approches ont émergé : une solution entièrement open source basée sur Suricata, Zeek et Arkime déployés de manière conteneurisée, ou Security Onion, plus intégrée mais freemium. Security Onion s'est révélée plus adaptée à l'intégration rapide en entreprise, mais j'ai fait le choix, à titre personnel, de poursuivre le développement de l'approche open source. C'est de cette initiative individuelle qu'est né ce projet.</p>
+  <div style="margin-bottom:1.75rem;">
+   <img src="ids-architecture.png" alt="Architecture conteneurisée d'une sonde IDS : Suricata, Zeek, Arkime, OpenCanary, OpenSearch" style="width:100%; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
+   <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Architecture conteneurisée : Suricata, Zeek, Arkime (init / capture / viewer), OpenCanary, et OpenSearch en back-end, raccordés à un réseau macvlan dédié à la capture.</p>
+  </div>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Objectifs et enjeux</h2>
-        <p style="margin-bottom:1rem;">Ces solutions (Suricata, Zeek, Arkime) sont puissantes mais leur déploiement est complexe : il faut définir l'architecture, lister les VLAN, configurer les interfaces réseau, ce qui peut être chronophage selon l'infrastructure. L'objectif était de <strong>standardiser et automatiser ce déploiement</strong>, en réduisant la complexité initiale tout en conservant la flexibilité des outils. J'ai également voulu intégrer une logique de validation en amont, pour limiter les erreurs de configuration et garantir un lancement fiable.</p>
-        <p style="margin-bottom:1rem;">Un second objectif fort : s'inscrire dans une démarche <strong>entièrement open source</strong>, avec un projet facilement réutilisable, compréhensible et modifiable par n'importe qui.</p>
+  <a href="https://github.com/ninko0/Docker-IDS-Sensor" target="_blank" rel="noopener" class="github-link">
+   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22 0 1.61-.01 2.91-.01 3.3 0 .32.22.7.83.58C20.56 21.79 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg>
+   github.com/ninko0/Docker-IDS-Sensor
+  </a>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Conception et approche technique</h2>
-        <p style="margin-bottom:1rem;">Le projet repose sur <strong>Docker</strong>. J'ai conçu une architecture modulaire dans laquelle chaque outil est encapsulé dans une image Docker dédiée. Cette approche permet de découpler les composants, de faciliter leur mise à jour et de rendre l'ensemble flexible selon les besoins. La conteneurisation joue ici un rôle central : elle transforme une infrastructure IDS complexe en une solution portable, rapide à déployer et facilement adaptable.</p>
+  <!-- ========================================== -->
+  <!-- REGARD CRITIQUE EN OUVERTURE        -->
+  <!-- ========================================== -->
+  <div class="conclusion-block">
+   <h3>// En une phrase</h3>
+   <p>Transformer une frustration opérationnelle, déployer manuellement plusieurs sondes IDS identiques sur des VM, en un <strong>scaffold Docker open source</strong> publié sur GitHub, qui ramène le temps de déploiement de <strong>1 à 2 heures par sonde à 10 à 20 minutes de configuration</strong>, et qui sert de référence à au moins un autre praticien en production.</p>
+  </div>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Réalisation</h2>
-        <p style="margin-bottom:1rem;">J'ai développé des images Docker pour chaque outil avec des paramètres préconfigurés et des placeholders pour les configurations nécessaires. Des exemples complets ont été fournis avec les IP les plus courantes en réseau local, couvrant des scénarios avec une ou plusieurs interfaces réseau. L'ensemble du projet est documenté en anglais, avec des fichiers de configuration commentés, pour garantir sa compréhension et sa réutilisation. Le projet est versionné et maintenu publiquement sur GitHub.</p>
-        <p style="margin-bottom:1rem;">
-          🔗 <a href="https://github.com/ninko0/Docker-IDS-Sensor" target="_blank">github.com/ninko0/Docker-IDS-Sensor</a>
-        </p>
+  <!-- ========================================== -->
+  <!-- 1. CONTEXTE ET PRÉSENTATION         -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Contexte et présentation</h2>
+  <p><strong>Docker-IDS-Sensor</strong> est un projet personnel open source démarré en <strong>octobre 2025</strong>, qui réunit quatre outils de sécurité réseau dans une <strong>stack Docker reproductible</strong> : <strong>Suricata</strong> pour la détection par signatures, <strong>Zeek</strong> pour la télémétrie réseau riche, <strong>Arkime</strong> pour la capture full-packet avec indexation des sessions, et <strong>OpenCanary</strong> comme honeypot bas niveau. Le tout s'appuie sur un back-end <strong>OpenSearch/Elasticsearch</strong> pour le stockage et la recherche des données.</p>
 
-        <!-- Schéma architecture -->
-        <div style="margin-bottom:1.75rem;">
-      <img src="ids-architecture.png" alt="Architecture de la sonde IDS — Zeek, Suricata, Arkime, OpenCanary, SIEM" style="width:100%; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
-      <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Architecture complète — Sensor L2, Zeek, Suricata, Arkime, OpenCanary, SIEM/Log Store</p>
-    </div>
+  <p>Le projet est explicitement positionné comme un <strong>PoC / lab scaffold</strong> pour praticiens à l'aise avec Docker et la configuration de ces outils. Ce n'est pas un produit clé en main, c'est un raccourci concret pour quiconque doit monter une sonde réseau open source sans repartir de zéro à chaque fois.</p>
 
+  <!-- ========================================== -->
+  <!-- 2. OBJECTIFS, ENJEUX, RISQUES        -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Origine, objectifs et enjeux</h2>
+  <p>L'origine du projet est très concrète, et c'est ce qui en fait sa pertinence. Dans mon rôle chez Paritel, j'ai eu à <strong>déployer plusieurs sondes IDS</strong> sur des machines virtualisées distinctes. À chaque sonde, le même rituel : provisionner une VM, installer un OS minimal, ajouter les dépôts, installer et configurer Suricata, configurer la capture, gérer les interfaces, vérifier que le trafic remontait, refaire la même chose pour Zeek, etc. Ce processus durait <strong>une à deux heures par sonde</strong>, pour produire à chaque fois exactement la même chose, à des variables d'environnement près (interfaces, VLAN, IP de management).</p>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Résultats</h2>
-        <p style="margin-bottom:1rem;">Ce projet m'a permis de développer une solution fonctionnelle de déploiement de sondes IDS conteneurisées, de monter significativement en compétences sur Docker et la structuration d'architectures distribuées, et d'entrer concrètement dans le monde de l'open source, avec les responsabilités que cela implique : maintenance, versionnement, documentation.</p>
+  <p>J'ai alors envisagé de <strong>conteneuriser les composants</strong>, en partant du principe que Docker existe précisément pour résoudre ce genre de répétition. Mais les images publiques disponibles posaient deux problèmes : elles n'étaient pas à jour, et faire fonctionner les composants individuellement en conteneur exigeait à chaque fois de résoudre les mêmes problèmes (capture promisc, capabilities réseau, persistance des logs, raccord à OpenSearch). Plutôt que de répéter cette résolution à chaque besoin, j'ai décidé sur mon temps personnel de <strong>construire un scaffold réutilisable</strong> qui résoudrait ces questions une fois pour toutes.</p>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Les suites du projet</h2>
-        <p style="margin-bottom:1rem;">Parmi les pistes envisagées : intégration de honeypots pour élargir les capacités de détection, amélioration de la robustesse et de la compatibilité avec les évolutions des stacks, et réflexion autour d'une migration vers <strong>Kubernetes</strong> pour une orchestration plus avancée. L'objectif reste de maintenir un projet propre, documenté et versionné, utilisable et améliorable par la communauté.</p>
+  <p>L'enjeu était double. <strong>Pour moi</strong>, gagner du temps sur tous les déploiements futurs et capitaliser proprement sur l'expérience acquise. <strong>Pour la communauté</strong>, publier un travail qui pourrait servir à d'autres praticiens cyber confrontés au même rituel répétitif. Les risques étaient ceux classiques d'un projet open source amateur : produire quelque chose de bancal qui décevrait, ou pire, qui induirait en erreur. C'est pourquoi j'ai investi un effort significatif dans la <strong>documentation</strong> et dans la qualité du README, plus que strictement nécessaire pour mon usage personnel.</p>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Regard critique</h2>
-        <p>Ce projet représente une étape importante dans mon évolution, passer d'une logique d'utilisation d'outils à une logique de <strong>conception de solution</strong>, en prenant en compte des problématiques réelles de déploiement, de maintenabilité et d'expérience utilisateur. Il a aussi renforcé ma conviction que la documentation n'est pas optionnelle : un projet technique n'a de valeur que s'il peut être compris et réutilisé.</p>
-      </div></div>
-  </main>
+  <!-- ========================================== -->
+  <!-- 3. ÉTAPES DE RÉALISATION          -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Étapes de réalisation</h2>
+
+  <!-- ===== ÉTAPE 1 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 1 · Cadrage et choix techniques</span>
+   <h3>Sélectionner les outils, l'OS de base et le modèle de réseau Docker</h3>
+   <p>La première étape a été un <strong>cadrage technique précis</strong>, en m'appuyant sur mes déploiements individuels précédents. J'avais déjà déployé Suricata, Zeek, Arkime et OpenCanary séparément hors Docker, ce qui m'a évité de découvrir leurs particularités <em>en route</em>. J'ai retenu ces quatre outils parce qu'ils <strong>se complètent fonctionnellement</strong> sans se concurrencer : Suricata fait de la détection par signatures, Zeek produit des logs structurés riches, Arkime conserve les PCAP indexés, OpenCanary apporte des données issues d'un honeypot.</p>
+
+   <p>Pour l'OS de base, j'ai choisi <strong>Alpine Linux</strong>. C'est une habitude personnelle (Alpine est léger, son écosystème de paquets est suffisant, son empreinte de surface d'attaque est minimale), mais le projet reste compatible avec n'importe quelle base Debian-like en cas de besoin. Le choix n'est pas dogmatique.</p>
+
+   <p>Côté réseau Docker, j'ai retenu un modèle <strong>macvlan</strong> qui permet d'attacher la sonde directement sur le segment surveillé (SPAN/TAP, VLAN dédié), tout en gardant le management isolé. Le réseau macvlan se crée en une commande, qui est exécutée par un script bootstrap pour faciliter l'initialisation :</p>
+   <pre><code>PARENT_IF=enp3s0
+SUBNET=192.168.50.0/24
+GATEWAY=192.168.50.1
+NET_NAME=ids_macvlan
+
+docker network create -d macvlan \
+ --subnet="$SUBNET" --gateway="$GATEWAY" \
+ -o parent="$PARENT_IF" "$NET_NAME"</code></pre>
+
+   <p>L'alternative <code>network_mode: host</code> reste supportée et documentée, pour les contextes où macvlan n'est pas adapté (lab simple sur un poste de dev par exemple).</p>
+  </div>
+
+  <!-- ===== ÉTAPE 2 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 2 · Conception modulaire du dépôt</span>
+   <h3>Structurer le projet en quatre composants indépendants</h3>
+   <p>L'architecture du dépôt suit un principe simple : <strong>un dossier par outil</strong>, chaque dossier autonome avec son propre <code>Dockerfile</code>, son <code>docker-compose.yml</code> et sa configuration. Cette modularité permet à un utilisateur de n'utiliser que ce dont il a besoin : déployer Suricata seul, ou Suricata+Zeek, ou la stack complète, sans devoir tout charger.</p>
+
+   <pre><code>Docker-IDS-Sensor/
+├─ arkime-docker/     # Arkime : init, capture, viewer + config.ini
+├─ opencanary-docker/   # OpenCanary + .opencanary.conf
+├─ suricata-docker/    # Suricata + suricata.yaml + local.rules
+├─ zeek-docker/      # Zeek + scripts/ + zeekctl.cfg
+├─ init-and-start_IDS_Honeypot.sh # Bootstrap macvlan + démarrage stack
+└─ README.md</code></pre>
+
+   <p>Arkime se découpe en trois conteneurs (<strong>init</strong>, <strong>capture</strong>, <strong>viewer</strong>) car c'est l'architecture native de l'outil. Le conteneur <code>init</code> prépare les index OpenSearch lors du premier démarrage, <code>capture</code> fait la capture continue, et <code>viewer</code> expose l'interface web. Cette séparation suit les recommandations officielles d'Arkime et facilite le scaling horizontal du capture si nécessaire.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 3 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 3 · Construction et compilation des images</span>
+   <h3>Résoudre la question des versions à jour des outils</h3>
+   <p>Le problème principal avec les images publiques disponibles était que <strong>les versions étaient en retard</strong> par rapport aux releases officielles des projets upstream. Pour Suricata et Zeek notamment, les images Docker Hub étaient parfois six mois en retard sur la dernière version stable, ce qui pose un vrai problème en sécurité où les nouvelles détections sont régulièrement ajoutées.</p>
+
+   <p>J'ai donc choisi de <strong>compiler les outils depuis les sources</strong> dans des Dockerfiles multi-stage Alpine. Cette approche permet d'avoir toujours la dernière version au moment du build, au prix d'un temps de construction plus long (compilation initiale de quelques minutes par outil). Pour Suricata, cela impliquait de gérer les dépendances système (libpcap, hyperscan pour la performance des règles, libmagic, jansson). Pour Zeek, des dépendances plus volumineuses (libpcap, OpenSSL, ZeroMQ).</p>
+
+   <p>L'autre point critique a été la <strong>capture réseau dans un conteneur</strong>. Sans capabilities spécifiques, un conteneur ne peut pas mettre une interface en mode promiscuous, donc ne voit aucun trafic. Le réflexe naïf est de lancer le conteneur en <code>--privileged</code>, ce qui marche mais ouvre largement la surface d'attaque. La bonne approche est de donner uniquement les capabilities nécessaires :</p>
+   <pre><code>services:
+ suricata:
+  cap_add:
+   - NET_ADMIN
+   - NET_RAW
+   - SYS_NICE
+  network_mode: host  # ou attachement à un macvlan dédié</code></pre>
+
+   <p>Sans ces capabilities, les conteneurs démarrent sans erreur mais ne capturent rien, ce qui est un <strong>faux positif silencieux particulièrement piégeant</strong> : tout semble fonctionner, mais Suricata ne voit aucun paquet et donc ne génère aucune alerte. Ce piège est documenté explicitement dans le README pour éviter à d'autres utilisateurs de tomber dedans.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 4 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 4 · Script d'orchestration et bootstrap</span>
+   <h3>Automatiser la création du réseau macvlan et le démarrage de la stack</h3>
+   <p>Pour réduire le temps de déploiement, j'ai écrit un script shell <code>init-and-start_IDS_Honeypot.sh</code> qui prend en charge le <strong>bootstrap complet</strong> de la sonde. Il crée le réseau macvlan selon les paramètres locaux, démarre les conteneurs dans le bon ordre (OpenSearch en premier, puis Arkime-init, puis les composants de capture), et fait un diagnostic basique pour vérifier que tout est opérationnel.</p>
+
+   <p>L'utilisateur peut soit utiliser ce script tout-en-un, soit lancer chaque composant individuellement avec un simple <code>docker compose up -d</code> dans le dossier correspondant. Les deux modes sont documentés dans le README pour s'adapter à des cas d'usage différents (lab rapide vs déploiement plus structuré).</p>
+  </div>
+
+  <!-- ===== ÉTAPE 5 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 5 · Documentation et publication</span>
+   <h3>Écrire un README de qualité avant de communiquer publiquement</h3>
+   <p>Le README représente probablement <strong>30 % du temps total</strong> que j'ai passé sur ce projet. Je le considère comme le composant le plus important : un outil de sécurité que personne ne comprend ne sera jamais utilisé. Le README couvre la description, l'architecture, les prérequis, le quickstart, une checklist de configuration par outil, les opérations courantes, les notes de hardening, le troubleshooting, et une FAQ.</p>
+
+   <p>J'ai rédigé l'intégralité du README <strong>en anglais</strong> pour maximiser la portée potentielle. Une fois la v1 stable, j'ai annoncé le projet sur trois canaux : <strong>GitHub</strong> (publication publique), <strong>Keybase</strong> dans ma communauté technique, et <strong>X (Twitter)</strong> en post public. La communication est restée modeste, sans relayage par des comptes influents, ce qui explique en partie la traction limitée de la publication.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 4. ACTEURS                 -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Organisation et acteurs</h2>
+  <p>Ce projet est mené <strong>intégralement en solo</strong>, sur mon temps personnel, sans encadrement ni co-contributeur. C'est à la fois sa force (liberté totale de conception, pas de compromis) et sa limite (pas de revue de code, pas de challenge sur les choix d'architecture).</p>
+
+  <p>Le principal acteur extérieur est un <strong>ami pentester</strong>, membre de ma communauté technique sur Keybase, qui a testé le déploiement complet en suivant uniquement le README. Son retour a été précieux à deux niveaux : il a confirmé que le déploiement était <strong>reproductible par un tiers</strong> (pas seulement par moi qui ai écrit le code), et il a relevé quelques points peu clairs dans la documentation que j'ai ensuite ajustés. Il est resté <strong>utilisateur silencieux sur la partie IDS principale</strong> mais utilise activement le composant <strong>OpenCanary dans l'infrastructure de son entreprise</strong>, ce qui est le meilleur signal possible : il l'utilise en vrai, pas juste pour faire plaisir à un copain.</p>
+
+  <p>Au-delà de cet utilisateur identifié, le projet existe publiquement avec <strong>2 stars</strong> sur GitHub à ce jour, ce qui reste modeste mais réel. Je ne dispose pas de statistiques sur les utilisateurs anonymes qui auraient cloné le dépôt sans laisser de trace.</p>
+
+  <!-- ========================================== -->
+  <!-- 5. RÉSULTATS                -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Résultats</h2>
+
+  <div class="kpi-row">
+   <div class="kpi-card">
+    <span class="kpi-value">35</span>
+    <span class="kpi-label">Commits sur main</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">4</span>
+    <span class="kpi-label">Composants conteneurisés</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">~500</span>
+    <span class="kpi-label">Lignes de code et conf</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">1h, 2h</span>
+    <span class="kpi-label">→ 10-20 min par sonde</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">1+1</span>
+    <span class="kpi-label">Utilisateurs confirmés</span>
+   </div>
+  </div>
+
+  <p><strong>Pour moi</strong>, le résultat principal est un <strong>scaffold réutilisable</strong> qui élimine la répétition que je subissais à chaque besoin de nouvelle sonde. Là où un déploiement manuel coûtait une à deux heures par sonde, le scaffold ramène ce temps à <strong>10 à 20 minutes de configuration</strong> (interfaces, IP de management, paramètres macvlan) plus quelques minutes de build et démarrage des conteneurs. Sur un déploiement de quatre sondes complètes, le gain cumulé approche <strong>une heure de travail effectif</strong> sur quelques heures de coût total.</p>
+
+  <p><strong>Pour la communauté</strong>, le résultat est plus modeste mais réel : un dépôt public, documenté, fonctionnel, qui sert de référence à au moins un autre praticien en production sur le volet OpenCanary, et qui pourrait éventuellement aider d'autres profils cyber confrontés à la même répétition que moi. La traction publique reste limitée (2 stars, 0 forks visibles, peu de visibilité après les annonces Twitter/Keybase), mais c'est un point que j'aborde honnêtement dans le regard critique plus bas.</p>
+
+  <!-- ========================================== -->
+  <!-- 6. LENDEMAINS                -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Lendemains du projet</h2>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// Futur immédiat (novembre 2025, post-v1)</span>
+   <p>Après la publication de la v1 fin octobre 2025, j'ai continué à pousser des commits sur la branche <code>main</code> pour stabiliser l'ensemble : ajustements de la documentation suite aux retours de l'ami pentester, correction de petits problèmes de configuration relevés en test, amélioration du script de bootstrap. La communication initiale s'est faite sur Twitter et Keybase, sans relais notable. C'est aussi à cette période que le composant OpenCanary a été repris en production réelle par mon contact pentester.</p>
+  </div>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// À distance (hiver 2025-2026)</span>
+   <p>Le projet est ensuite <strong>entré en pause active</strong> par manque de temps. La combinaison du Mastère ESIEA + de l'alternance Paritel n'a pas laissé suffisamment de bande passante pour pousser le projet plus loin pendant cette période. J'ai conservé une <strong>volonté claire de le reprendre</strong> et de le pousser à plus grande échelle, mais sans forcer un rythme intenable qui aurait fini par dégrader la qualité du code. C'est un arbitrage honnête entre charges professionnelles, charge scolaire et projets personnels.</p>
+  </div>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// Aujourd'hui et à venir (2026)</span>
+   <p>Le projet est encore vivant et sera <strong>repris activement dès la fin de mes études en juillet 2026</strong>. La roadmap envisagée à ce stade tourne autour de plusieurs axes : passer la <strong>configuration macvlan en mode par défaut</strong> (le mode <code>network_mode: host</code> deviendrait l'option de repli), publier un <strong>build multi-architecture</strong> incluant ARM pour permettre le déploiement sur des Raspberry Pi en sonde de proximité, intégrer un <strong>flux MISP</strong> pour alimenter automatiquement Suricata avec des indicateurs de compromission communautaires, et mettre en place un pipeline <strong>GitHub Actions</strong> pour automatiser les builds et tests à chaque push.</p>
+   <p>À plus long terme, l'idée est de transformer ce qui est aujourd'hui un <strong>scaffold de lab</strong> en quelque chose de plus proche d'un outil "prêt à déployer" pour des praticiens qui n'ont pas le temps de tout reconfigurer manuellement. Ce serait un changement de positionnement assumé, du PoC au produit.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 7. REGARD CRITIQUE             -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Regard critique</h2>
+
+  <p><strong>Mes apports concrets au projet</strong> sont triples. D'abord la <strong>conception architecturale</strong> : choix des quatre outils complémentaires, choix d'Alpine, choix du modèle macvlan, structuration modulaire par composant. Ensuite le <strong>travail de compilation depuis les sources</strong> dans des Dockerfiles multi-stage propres, qui résout le vrai problème opérationnel (versions à jour) et qui n'avait pas de solution toute faite. Enfin la <strong>documentation</strong>, qui est le composant le plus chronophage mais aussi celui qui détermine si le projet est utilisable par d'autres ou non.</p>
+
+  <p><strong>Ma valeur ajoutée mesurable</strong> est le gain de temps concret sur tout déploiement de sonde IDS, à la fois pour moi et pour quiconque adoptera le scaffold. C'est aussi la démonstration qu'un alternant peut produire du <strong>code open source publié qui n'est pas une copie de tutoriel</strong>, mais une vraie réponse à un problème opérationnel concret. Cette légitimité, même modeste, est précieuse dans une trajectoire orientée vers la contribution open source.</p>
+
+  <p><strong>Mes enseignements personnels</strong> sont nombreux, et certains sont inconfortables. Le plus marquant est sans doute la confirmation que <strong>publier ne suffit pas à être adopté</strong> : malgré un README soigné, des choix techniques défendables et une vraie utilité opérationnelle, le projet n'a pas décollé en termes de visibilité. La traction communautaire dépend largement de relais que je n'avais pas et que je n'ai pas cherché à construire. C'est une leçon importante pour les projets open source à venir : <strong>la communication est aussi importante que le code</strong>, et un projet qui n'est pas vu n'existe pas socialement. Le second enseignement est la <strong>discipline du README</strong> : ce n'est pas un accessoire qu'on bâcle à la fin, c'est l'interface principale entre le projet et le monde. Tout le temps investi sur la documentation a été du temps bien dépensé.</p>
+
+  <p>Avec le recul, je vois aussi <strong>les limites de ce projet</strong>. Le fait d'être seul sur la conception m'a privé de challenges techniques que j'aurais bénéficié à recevoir : pas de revue de code, pas de discussion sur les choix d'architecture, pas de confrontation à des cas d'usage que je n'ai pas anticipés. La pause active du projet pendant l'hiver 2025-2026 est aussi une faiblesse assumée : un projet open source vit ou meurt par sa régularité, et plusieurs mois de silence reduisent mécaniquement les chances qu'un nouvel utilisateur s'y intéresse. La reprise prévue à la fin de mes études sera l'occasion de corriger cela.</p>
+
+  <!-- ========================================== -->
+  <!-- COMPÉTENCES RATTACHÉES           -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Compétences rattachées</h2>
+  <p>Ce projet mobilise une combinaison de compétences techniques et humaines. Sur le volet technique, il illustre principalement la <a href="../competences/tech-2.html"><strong>Virtualisation</strong></a> dans son aspect conteneurisation avancée (Docker, macvlan, capabilities), le <a href="../competences/tech-4.html"><strong>Tooling &amp; Scripting</strong></a> (passage d'un script personnel à un scaffold publié réutilisable), la <a href="../competences/tech-1.html"><strong>Configuration Système</strong></a> (Suricata, Zeek, Arkime, OpenCanary, OpenSearch) et <a href="../competences/tech-5.html"><strong>Git</strong></a> (utilisation publique d'un dépôt GitHub avec 35 commits sur main). Sur le volet humain, il met en avant la capacité à <a href="../competences/hum-4.html"><strong>Faire preuve d'initiative</strong></a> (transformer une frustration opérationnelle en projet personnel construit) et l'<a href="../competences/hum-5.html"><strong>Esprit de partage</strong></a> (publier en open source plutôt que de garder pour soi).</p>
+
+ </main>
 </body>
 </html>

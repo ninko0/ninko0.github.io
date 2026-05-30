@@ -1,64 +1,292 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><strong>Git</strong> & Versioning, Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Configuration Système, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  .logo-row {
+   display: flex; flex-wrap: wrap; gap: 1rem;
+   align-items: center; margin: 1rem 0 1.5rem;
+  }
+  .logo-chip {
+   display: flex; align-items: center; gap: 0.5rem;
+   padding: 0.4rem 0.85rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-lg);
+   font-family: var(--font-mono); font-size: 0.78rem;
+   color: var(--text-muted);
+   transition: border-color 0.15s;
+  }
+  .logo-chip:hover { border-color: var(--violet-light); }
+  .logo-chip svg { flex-shrink: 0; }
+
+  .anecdote {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-left: 3px solid var(--violet);
+   border-radius: var(--radius);
+   padding: 1rem 1.2rem;
+   margin-bottom: 1rem;
+  }
+  .anecdote-tag {
+   font-family: var(--font-mono);
+   font-size: 0.7rem;
+   color: var(--violet);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.35rem;
+   display: block;
+  }
+  .anecdote h3 {
+   font-size: 1rem;
+   margin: 0 0 0.6rem;
+   color: var(--text);
+  }
+  .anecdote p { margin-bottom: 0.6rem; }
+  .anecdote p:last-child { margin-bottom: 0; }
+  .anecdote-result {
+   margin-top: 0.7rem;
+   padding: 0.55rem 0.8rem;
+   background: var(--green-pale);
+   border-left: 2px solid var(--green);
+   border-radius: var(--radius);
+   font-size: 0.9rem;
+  }
+  .anecdote-result strong { color: var(--green); }
+
+  .skill-level-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   gap: 0.6rem;
+   margin: 0.8rem 0 1rem;
+  }
+  .skill-level-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.7rem 0.9rem;
+  }
+  .skill-level-card .lvl-name {
+   font-family: var(--font-mono);
+   font-size: 0.78rem;
+   font-weight: 600;
+   margin-bottom: 0.3rem;
+  }
+  .skill-level-card .lvl-bar {
+   height: 6px;
+   background: var(--bg-alt);
+   border-radius: 999px;
+   overflow: hidden;
+   margin-bottom: 0.3rem;
+  }
+  .skill-level-card .lvl-fill {
+   height: 100%;
+   background: linear-gradient(90deg, var(--violet), var(--green));
+   border-radius: 999px;
+  }
+  .skill-level-card .lvl-text {
+   font-size: 0.78rem;
+   color: var(--text-muted);
+  }
+
+  h2 {
+   margin-top: 1.8rem;
+   padding-bottom: 0.35rem;
+   border-bottom: 1px solid var(--border);
+   font-size: 1.1rem;
+  }
+ </style>
 </head>
 <body data-page="competences">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Technique 01</p>
-    <div class="page-header">
-      <h1>Git &amp; Versioning</h1>
-</div>
-    <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
-      <a href="../realisations/real-3.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Audit de sécurité</a>
-      <a href="../realisations/real-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
-      <a href="../realisations/real-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Outil de déploiement automatisé</a>
-    </div>
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Définition</h2>
-    <p style="margin-bottom:1rem;">
-      <strong>Git</strong> est un système de gestion de versions distribué permettant de suivre les modifications apportées à un
-      ensemble de fichiers au cours du temps. Créé en 2005 par <strong>Linus Torvalds</strong> dans le cadre du développement du
-      <strong>noyau Linux</strong>, il s'est imposé comme le standard dans le développement logiciel et l'ingénierie informatique.
-      Contrairement aux systèmes centralisés, chaque utilisateur dispose d'une copie complète du dépôt, ce qui
-      offre résilience et flexibilité.
-    </p>
-    <p style="margin-bottom:1.5rem;">
-      Dans ma pratique, j'utilise <strong>Git</strong> principalement à travers <strong>GitHub</strong> et <strong>GitLab</strong>,
-      y compris en auto-hébergement. Ces outils me permettent de versionner mes projets, structurer leur
-      évolution et garantir la reproductibilité des environnements que je mets en place. GitLab occupe une place
-      particulière pour ses fonctionnalités <strong>DevOps</strong>, notamment les pipelines <strong>CI/CD</strong> et la gestion de déploiements.
-    </p>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Technique 01</p>
+  <div class="page-header">
+   <h1>Configuration Système</h1>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Éléments de preuve</h2>
-    <p style="margin-bottom:1rem;">
-      <strong>Git</strong> s'inscrit dans l'ensemble de mes projets techniques. Je l'utilise pour versionner mes configurations
-      systèmes, mes scripts d'automatisation ainsi que mes projets liés à la cybersécurité, notamment dans le
-      cadre du développement de ma <strong>sonde IDS</strong>. <strong>Git</strong> me permet de structurer les évolutions, tester différentes
-      approches sans impacter les versions stables et maintenir une cohérence entre les différentes briques
-      de mes infrastructures.
-    </p>
-    <div class="placeholder-text">🔗 <a href="https://github.com/ninko0" target="_blank">github.com/ninko0</a></div>
+  <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
+   <a href="../realisations/real-1.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
+   <a href="../realisations/real-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
+   <a href="../realisations/real-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Portfolio auto-hébergé</a>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin: 1.5rem 0 0.5rem;">Autocritique</h2>
-    <p style="margin-bottom:1rem;">
-      Je considère avoir atteint un niveau satisfaisant pour un usage personnel et technique. Je maîtrise les
-      fonctionnalités essentielles : structuration des dépôts, suivi des évolutions, gestion de branches simples.
-      Mon utilisation reste cependant principalement centrée sur des projets individuels, je n'ai pas encore
-      pleinement exploité les aspects collaboratifs avancés tels que les workflows en équipe ou les processus
-      de revue de code à grande échelle.
-    </p>
+  <!-- ========================================== -->
+  <!-- DÉFINITION                 -->
+  <!-- ========================================== -->
+  <h2>Définition</h2>
+  <p>La <strong>configuration système</strong> regroupe l'ensemble des actions visant à installer, paramétrer et maintenir un système d'exploitation et ses services dans un état fonctionnel, cohérent et sécurisé. Elle couvre les fondamentaux comme la gestion des processus, des utilisateurs, des droits d'accès et des services, ainsi que des configurations plus avancées : serveurs web (Nginx, Apache), serveurs DNS (Bind9), reverse proxies, WAF (BunkerWeb, CrowdSec), stacks de centralisation de logs (ELK, Graylog), solutions SIEM (Wazuh, Security Onion), monitoring (Zabbix, CheckMK) et services métiers spécifiques.</p>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Évolution</h2>
-    <p>
-      Mon objectif est de renforcer mon utilisation dans des environnements impliquant plusieurs contributeurs,
-      en m'appropriant des workflows structurés et des pratiques de contribution utilisées dans des projets
-      <strong>open source</strong> d'envergure, similaires à celles du développement de distributions Linux. Cette évolution
-      s'inscrit dans ma démarche de contribution active à l'écosystème du logiciel libre.
-    </p>
-  </main>
+  <p>Cette compétence est le <strong>fil rouge de tout métier d'ingénieur infrastructure</strong>. Elle conditionne directement la stabilité, la performance et la sécurité de tout ce qui tourne au-dessus. En 2024 et 2025, plusieurs incidents médiatisés (CrowdStrike, fuites massives liées à des certificats expirés, ransomwares exploitant des services mal configurés) ont rappelé qu'<strong>une mauvaise configuration suffit à neutraliser une infrastructure pourtant correctement dimensionnée</strong>. C'est ce qui rend cette compétence à la fois technique et critique.</p>
+
+  <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.07em; margin:1rem 0 0.5rem;">Familles d'OS pratiquées</p>
+  <div class="logo-row">
+   <div class="logo-chip">Debian, Ubuntu, Mint, Kali, Parrot</div>
+   <div class="logo-chip">RHEL, Rocky, Alma, CentOS, Oracle</div>
+   <div class="logo-chip">Fedora, openSUSE</div>
+   <div class="logo-chip">Arch, BlackArch, Manjaro</div>
+   <div class="logo-chip">Alpine, Gentoo, NixOS</div>
+   <div class="logo-chip">Windows Server</div>
+  </div>
+
+  <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.07em; margin:1rem 0 0.5rem;">Services régulièrement configurés</p>
+  <div class="logo-row">
+   <div class="logo-chip">Nginx, Apache</div>
+   <div class="logo-chip">Bind9 DNS</div>
+   <div class="logo-chip">HAProxy, BunkerWeb, CrowdSec</div>
+   <div class="logo-chip">Wazuh SIEM</div>
+   <div class="logo-chip">ELK, Graylog</div>
+   <div class="logo-chip">Grafana, Zabbix, CheckMK</div>
+   <div class="logo-chip">Passbolt, Mimecast</div>
+   <div class="logo-chip">Security Onion, CrowdStrike</div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- ANECDOTES                 -->
+  <!-- ========================================== -->
+  <h2>La compétence en pratique</h2>
+
+  <!-- ===== ANECDOTE 1 ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 1, 2023, 2024, Valesys, configuration complète d'une stack SIEM</span>
+   <h3>Mettre en place et opérer une stack de supervision sécurité de bout en bout</h3>
+
+   <p>Pendant ma mission chez Valesys, j'ai conçu et configuré <strong>l'intégralité de la stack de supervision et sécurité</strong>, à l'exception de l'Active Directory géré par un collègue. La pile comprenait <strong>Wazuh</strong> comme SIEM, <strong>ELK (Elasticsearch, Logstash, Kibana)</strong> pour la centralisation et l'exploration des logs, <strong>Graylog</strong> en complément sur certains flux, <strong>Grafana</strong> pour la visualisation, <strong>Zabbix</strong> pour le monitoring d'infrastructure, <strong>Passbolt</strong> pour la gestion des secrets, et <strong>Bind9</strong> pour le DNS interne, le tout exposé via du <strong>reverse proxy Nginx</strong>.</p>
+
+   <p>Le travail ne se limitait pas à l'installation. Pour Wazuh, j'ai dû passer plusieurs semaines à <strong>comprendre en profondeur comment l'outil fonctionne</strong> : le moteur de règles XML, la corrélation d'événements, les decoders, l'intégration avec les agents distants et la manière dont les alertes sont remontées dans le format compatible Elasticsearch. Sur l'ELK, j'ai défini les <strong>politiques de rétention via ILM</strong> (hot / warm / cold), construit des <strong>pipelines Logstash</strong> spécifiques pour parser les logs entrants (pare-feu, sondes, serveurs), et structuré les index pour rester performant à mesure que la volumétrie grossissait.</p>
+
+   <p>Sur la stack web, le reverse proxy Nginx a demandé <strong>plusieurs jours d'optimisation</strong> : tuning des workers, gestion des buffers pour les uploads lourds, terminaison TLS, headers de sécurité, isolation des back-ends. Et pour Bind9, l'apprentissage initial m'a coûté <strong>quelques heures de lecture de la documentation officielle</strong>, mais a ensuite permis de gérer proprement les vues internes / externes et les délégations de zones.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> stack de supervision complète opérationnelle pour une dizaine d'utilisateurs internes, capable d'ingérer les logs de tous les équipements de l'infrastructure et de générer des alertes exploitables. La maîtrise acquise sur cette stack a directement permis sa <strong>commercialisation en tant qu'offre de service SOC</strong> auprès des clients de Valesys. Ma valeur ajoutée a été de tenir une stack complète seul, en comprenant chaque brique plutôt que de les empiler aveuglément.
+   </div>
+
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-1.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Infrastructure sécurisée</a></p>
+  </div>
+
+  <!-- ===== ANECDOTE 2 ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 2, Paritel, opérateur télécom, supervision et services à grande échelle</span>
+   <h3>Configurer et exploiter des services en environnement opérateur</h3>
+
+   <p>Chez Paritel, l'échelle change radicalement. J'interviens dans une équipe Sécurité &amp; Réseaux qui gère le SI interne et le cœur de réseau d'un opérateur. Côté configuration système, je suis amené à configurer et exploiter <strong>plusieurs outils de monitoring et de sécurité</strong> simultanément : <strong>Security Onion</strong> pour la détection réseau, <strong>CrowdStrike</strong> pour l'EDR, <strong>les remontées de pare-feu Juniper, Fortinet et Palo Alto</strong>, le SSO <strong>1Password</strong>, ainsi que <strong>Mimecast</strong> pour la sécurité de la messagerie, avec une visualisation centralisée dans <strong>ELK</strong>.</p>
+
+   <p>La volumétrie quotidienne dépasse <strong>500 000 requêtes traitées par jour</strong> et environ <strong>100 000 alertes IPS</strong> remontées par les firewalls. À cette échelle, la moindre configuration mal pensée a un impact direct : un parser Logstash mal calibré sature l'index Elasticsearch en quelques heures, une règle Wazuh trop bruyante noie les vraies alertes, un certificat expiré coupe un service entier. C'est exactement le contexte dans lequel cette compétence prend tout son sens.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> contribution à la supervision d'une infrastructure opérateur traitant un volume quotidien de plusieurs centaines de milliers d'événements, avec une exigence forte sur la qualité des alertes et la disponibilité des services. Travailler à cette échelle m'a apporté un <strong>changement de posture</strong> : ne plus chercher à "faire marcher" mais à "faire tenir dans le temps", ce qui est probablement le saut de maturité le plus important sur cette compétence.
+   </div>
+  </div>
+
+  <!-- ===== ANECDOTE 3 ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 3, gestion de crise, certificats X.509</span>
+   <h3>Une crise d'expiration de certificat qui a façonné ma méthode</h3>
+
+   <p>L'épisode le plus formateur de ma jeune carrière reste un <strong>incident sur un certificat X.509 expiré au niveau d'un service de VOIP</strong>. Aucune alerte d'expiration n'avait été mise en place sur ce certificat. Il a expiré une nuit, déclenchant immédiatement une astreinte. Conséquence directe : <strong>environ 5 000 clients privés de service pendant 4 heures</strong>, le temps de réémettre, redéployer et propager le certificat. Je n'ai pas géré l'astreinte moi-même mais j'étais en première ligne dans l'analyse du post-mortem.</p>
+
+   <p>De mon côté, j'ai aussi vécu une situation plus modeste mais avec la même cause racine : un certificat à renouveler en urgence parce que la procédure de monitoring d'expiration manquait. Les enseignements ont été clairs et durables : <strong>tout déploiement en production nécessite désormais un plan d'action écrit avant exécution</strong>, et tout certificat doit être suivi par une <strong>alerte automatisée 30 jours avant expiration minimum</strong>. C'est aussi l'origine de mon habitude de ne plus dépendre uniquement de Let's Encrypt sur les infrastructures critiques, où j'utilise désormais d'autres autorités de certification quand le contexte le justifie.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> ces incidents ont radicalement changé ma méthode. Aujourd'hui, sur chaque service que je configure, la <strong>surveillance d'expiration des secrets</strong> (certificats, jetons, clés API) est traitée au même titre que le service lui-même. Cette discipline préventive a aussi été intégrée dans la stack ELK chez Valesys, avec des règles Wazuh dédiées.
+   </div>
+  </div>
+
+  <!-- ===== ANECDOTE 4 ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 4, projet personnel, ce portfolio</span>
+   <h3>Auto-héberger ce portfolio comme démonstration vivante</h3>
+
+   <p>Le portfolio que vous consultez actuellement est lui-même <strong>auto-hébergé sur mon homelab</strong>. Il tourne sur une VM <strong>Debian</strong> hébergée sur mon cluster Proxmox personnel, derrière un <strong>serveur Apache</strong> configuré avec les bonnes pratiques de durcissement (modules inutiles désactivés, headers de sécurité, journalisation). L'exposition Internet passe par une <strong>redirection NAT</strong>, avec un <strong>nom de domaine</strong> et un <strong>certificat X.509 émis par une autorité externe</strong>, et une protection <strong>CrowdSec</strong> en frontal pour filtrer les comportements suspects.</p>
+
+   <p>Le déploiement de chaque version se fait via un <strong>script Bash idempotent</strong> que j'ai écrit moi-même, qui prend en entrée un zip, vérifie les prérequis, sauvegarde la version précédente, redéploie, applique les permissions et recharge Apache. Ce script illustre concrètement comment je conçois la configuration système : reproductible, traçable et réversible.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> ce portfolio prouve la compétence par l'exemple. Le simple fait qu'il soit accessible depuis Internet via un nom de domaine personnel, avec un certificat valide et une protection WAF, démontre que les notions de configuration système, exposition sécurisée et automatisation sont maîtrisées en pratique et pas seulement décrites en théorie.
+   </div>
+
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-4.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Portfolio auto-hébergé</a></p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- NIVEAU DE MAÎTRISE             -->
+  <!-- ========================================== -->
+  <h2>Mon niveau de maîtrise</h2>
+
+  <p>Je distingue mon niveau selon les familles de systèmes et de services, car la réalité de mon expérience est très contrastée. Sur Linux, je me considère comme <strong>très à l'aise en relatif</strong>, c'est-à-dire par rapport à ce qu'on attend d'un ingénieur infrastructure junior. En absolu, par rapport à l'objectif que je me suis fixé (devenir un contributeur reconnu de l'écosystème libre), il me reste un palier à franchir notamment sur la compréhension fine du kernel et la construction de distributions sur mesure.</p>
+
+  <div class="skill-level-grid">
+   <div class="skill-level-card">
+    <div class="lvl-name">Linux (relatif au junior)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:90%;"></div></div>
+    <div class="lvl-text">18/20 · Très autonome</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Linux (objectif perso)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:55%;"></div></div>
+    <div class="lvl-text">11/20 · Palier kernel à franchir</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Windows Server</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:60%;"></div></div>
+    <div class="lvl-text">12/20 · Opérationnel</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Services standards (web, DNS, BDD)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:80%;"></div></div>
+    <div class="lvl-text">16/20 · Production</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Services avancés (SIEM, monitoring)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:75%;"></div></div>
+    <div class="lvl-text">15/20 · Stack ELK/Wazuh autonome</div>
+   </div>
+  </div>
+
+  <p><strong>Contextualisation :</strong> ma compétence est très solide sur les environnements Linux de production de taille petite à moyenne (TPE, PME, infrastructure opérateur). Elle resterait <strong>en progression sur des environnements grand compte</strong> avec des centaines de serveurs gérés par configuration management industrialisé (Ansible Tower, Puppet, Salt à l'échelle), ou sur des environnements très spécifiques comme les systèmes temps réel, embarqués ou HPC, que je n'ai pas eu l'occasion de pratiquer.</p>
+
+  <!-- ========================================== -->
+  <!-- PLACE & VITESSE D'ACQUISITION       -->
+  <!-- ========================================== -->
+  <h2>Place dans mon profil et vitesse d'acquisition</h2>
+  <p>Cette compétence est <strong>centrale et transverse</strong> à tout mon profil. Aucune autre compétence technique de mon portfolio ne s'exerce sans elle : la virtualisation déploie des systèmes qu'il faut configurer, le réseau interconnecte des services qu'il faut configurer, le scripting automatise des configurations système. Dans mon métier actuel comme dans le métier que je vise (architecte infrastructure orienté sécurité), la configuration système est la compétence sur laquelle tout le reste s'appuie.</p>
+
+  <p><strong>Vitesse d'acquisition :</strong> elle a été progressive plutôt que fulgurante. La nature de cette compétence rend l'apprentissage cumulatif sur plusieurs années, pas instantané. En revanche, ma capacité à <strong>m'approprier un nouveau service rapidement</strong> est bien réelle : quelques heures pour Bind9, quelques jours pour optimiser un reverse proxy Nginx, quelques semaines pour comprendre Wazuh en profondeur. Cette accélération vient surtout du nombre de systèmes différents que j'ai déjà manipulés, ce qui crée des automatismes de lecture et de diagnostic transférables d'un outil à l'autre.</p>
+
+  <!-- ========================================== -->
+  <!-- RECUL & CONSEILS              -->
+  <!-- ========================================== -->
+  <h2>Mon recul sur la compétence</h2>
+  <p>Avec l'expérience que j'ai aujourd'hui, je conseille en premier lieu de <strong>lire la documentation officielle</strong>, sérieusement et complètement, plutôt que d'enchaîner les tutoriels YouTube qui survolent. Une documentation officielle, c'est dense, mais c'est ce qui distingue ceux qui savent vraiment de ceux qui répètent.</p>
+
+  <p>Je conseille ensuite de <strong>comprendre l'histoire</strong> du système ou du service qu'on configure. Pourquoi Bind9 fonctionne ainsi ? Quelle réalité technique a fait naître Wazuh à partir d'OSSEC ? Quelles contraintes ont façonné Apache puis Nginx ? L'histoire donne le sens des choix de conception, et le sens des choix de conception donne la maîtrise des paramètres.</p>
+
+  <p>Une autre habitude utile est d'<strong>essayer de penser comme le développeur du logiciel</strong>. Quand on configure un service, on est un utilisateur. Mais quand on a la curiosité d'aller lire un peu du code source, on comprend infiniment mieux <em>pourquoi</em> tel paramètre existe, et donc comment l'utiliser à bon escient.</p>
+
+  <p>Enfin, le conseil le plus important est probablement le plus banal : <strong>toujours utiliser, toujours pratiquer</strong>. Au bout de quelques mois sans manipuler une technologie, on perd directement certaines bases. La configuration système est une compétence qui s'entretient comme une langue vivante. Mon homelab personnel sert exactement à ça : maintenir vivantes des compétences sur des outils que je ne croise pas tous les jours en mission.</p>
+
+  <!-- ========================================== -->
+  <!-- ÉVOLUTION & FORMATIONS           -->
+  <!-- ========================================== -->
+  <h2>Évolution et formations</h2>
+
+  <p>Mon objectif à 18-24 mois est de combler les zones où je sais aujourd'hui que je suis perfectible. Concrètement, je veux <strong>refaire de l'Arch Linux</strong> intensivement, car cela fait plusieurs mois que je n'en ai pas pratiqué et c'est l'une des distributions qui m'a le plus appris sur le fonctionnement bas-niveau de Linux. Je veux également <strong>creuser la compréhension du kernel Linux</strong> : comment il est compilé, ses sous-systèmes, ses mécanismes d'extension (modules, BPF/eBPF), pour ne plus traiter le noyau comme une boîte noire.</p>
+
+  <p>En parallèle, je veux orienter <strong>davantage ma configuration système vers la conteneurisation</strong> et l'orchestration, qui sont aujourd'hui ma principale marge de progression. Cela inclut la configuration de runtime de conteneurs (containerd, runc) et la compréhension des couches réseau et stockage qui les sous-tendent.</p>
+
+  <p>Sur le plan des lectures, je suis activement à la recherche d'un bon ouvrage sur le kernel. Deux références me semblent particulièrement adaptées à ma trajectoire et me sont régulièrement recommandées : <strong>"Linux Kernel Development" de Robert Love</strong> pour une vue d'ensemble du noyau et de ses sous-systèmes, et <strong>"Linux Device Drivers" de Corbet, Rubini et Kroah-Hartman</strong> pour la partie modules et pilotes. Je compte aussi me replonger dans la documentation officielle d'Arch (ArchWiki) qui reste l'une des meilleures sources techniques sur l'écosystème Linux. Ma veille technologique est aujourd'hui structurée autour de <strong>mes flux RSS</strong>, d'<strong>échanges réguliers avec des amis du milieu sur Keybase</strong>, et d'une consultation continue de Twitter sur les comptes pertinents (mainteneurs, chercheurs en sécurité, contributeurs reconnus).</p>
+
+  <p>Côté certifications, mes parcours en cours sur <strong>Microsoft Azure</strong> et <strong>Google Cloud Associate Cloud Engineer</strong> couvrent la configuration de systèmes en environnement cloud. À moyen terme, une <strong>certification Linux</strong> de type <strong>LPIC-2</strong> ou <strong>RHCSA</strong> reste une option ouverte si elle s'avère pertinente pour un contexte professionnel précis.</p>
+
+  <!-- ========================================== -->
+  <!-- RÉALISATIONS LIÉES             -->
+  <!-- ========================================== -->
+  <h2>Réalisations rattachées</h2>
+  <p>Cette compétence est mobilisée dans la quasi-totalité de mes réalisations. L'<a href="../realisations/real-1.html"><strong>Infrastructure sécurisée</strong></a> chez Valesys en est l'application la plus complète : configuration de bout en bout d'une vingtaine de services. La <a href="../realisations/real-2.html"><strong>Sonde IDS conteneurisée</strong></a> illustre la configuration fine des outils de sécurité (Suricata, Zeek, Arkime). Enfin, le <a href="../realisations/real-4.html"><strong>Portfolio auto-hébergé</strong></a> matérialise concrètement la compétence : ce que vous lisez tourne sur une configuration que j'ai entièrement définie et que je maintiens.</p>
+
+ </main>
 </body>
 </html>

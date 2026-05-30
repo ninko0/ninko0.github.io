@@ -1,58 +1,356 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Outil de déploiement automatisé — Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Outil de déploiement automatisé, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  h2.section-title {
+   font-size: 1.1rem;
+   margin-top: 1.8rem;
+   margin-bottom: 0.6rem;
+   padding-bottom: 0.35rem;
+   border-bottom: 1px solid var(--border);
+  }
+  .step-block {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-left: 3px solid var(--violet);
+   border-radius: var(--radius);
+   padding: 1rem 1.2rem;
+   margin-bottom: 1rem;
+  }
+  .step-block .step-tag {
+   font-family: var(--font-mono);
+   font-size: 0.7rem;
+   color: var(--violet);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.35rem;
+   display: block;
+  }
+  .step-block h3 {
+   font-size: 1rem;
+   margin: 0 0 0.6rem;
+   color: var(--text);
+  }
+  .step-block p { margin-bottom: 0.6rem; }
+  .step-block p:last-child { margin-bottom: 0; }
+  .step-block pre {
+   background: var(--bg-alt);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.7rem 0.9rem;
+   font-family: var(--font-mono);
+   font-size: 0.78rem;
+   line-height: 1.55;
+   overflow-x: auto;
+   margin: 0.6rem 0;
+   color: var(--text);
+  }
+  .step-block code {
+   font-family: var(--font-mono);
+   font-size: 0.85rem;
+   background: var(--bg-alt);
+   padding: 0.08rem 0.35rem;
+   border-radius: 3px;
+   color: var(--violet);
+  }
+  .horizon-block {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.85rem 1.1rem;
+   margin-bottom: 0.7rem;
+  }
+  .horizon-block .horizon-tag {
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
+   font-weight: 600;
+   color: var(--green);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.3rem;
+   display: block;
+  }
+  .horizon-block p { margin: 0 0 0.5rem; font-size: 0.92rem; }
+  .horizon-block p:last-child { margin: 0; }
+  .conclusion-block {
+   background: var(--green-pale);
+   border: 1px solid var(--green-light);
+   border-radius: var(--radius-lg);
+   padding: 1rem 1.25rem;
+   margin: 1rem 0;
+  }
+  .conclusion-block h3 {
+   font-size: 0.85rem;
+   font-family: var(--font-mono);
+   color: var(--green);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin: 0 0 0.45rem;
+  }
+  .conclusion-block p { margin-bottom: 0.6rem; }
+  .conclusion-block p:last-child { margin-bottom: 0; }
+  .kpi-row {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+   gap: 0.6rem;
+   margin: 1rem 0;
+  }
+  .kpi-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.75rem;
+   text-align: center;
+  }
+  .kpi-card .kpi-value {
+   font-size: 1.35rem;
+   font-weight: 700;
+   color: var(--violet);
+   font-family: var(--font-mono);
+   display: block;
+   margin-bottom: 0.15rem;
+  }
+  .kpi-card .kpi-label {
+   font-size: 0.7rem;
+   color: var(--text-muted);
+   text-transform: uppercase;
+   letter-spacing: 0.05em;
+  }
+  .github-link {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.45rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.45rem 0.8rem;
+   font-family: var(--font-mono);
+   font-size: 0.82rem;
+   color: var(--text);
+   text-decoration: none;
+   transition: border-color 0.15s;
+   margin: 0.5rem 0 1rem;
+  }
+  .github-link:hover {
+   border-color: var(--violet);
+   color: var(--violet);
+   text-decoration: none;
+  }
+ </style>
 </head>
 <body data-page="realisations">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 05</p>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 05</p>
 
-    <div class="page-header">
-      <h1>Outil de déploiement automatisé</h1>
-      <div class="page-tags" style="margin-top:0.4rem;">
-        <a href="../competences/tech-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Tooling &amp; Scripting</a>
-        <a href="../competences/tech-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Configuration Système</a>
-        <a href="../competences/hum-3.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Autonomie</a>
-        <a href="../competences/hum-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Faire preuve d'initiative</a>
-      </div>
-    </div>
+  <div class="page-header">
+   <h1>Outil de déploiement automatisé</h1>
+   <div class="page-tags" style="margin-top:0.4rem;">
+    <a href="../competences/tech-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Tooling &amp; Scripting</a>
+    <a href="../competences/tech-1.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Configuration Système</a>
+    <a href="../competences/tech-3.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Administration Réseau</a>
+    <a href="../competences/hum-3.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Autonomie</a>
+    <a href="../competences/hum-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Initiative</a>
+   </div>
+  </div>
 
-    <h2>Présentation</h2>
-    <p>Avant de connaître Ansible, j'avais un problème concret : je gérais un grand nombre de machines virtuelles, aussi bien dans le cadre de mon alternance chez Valesys que dans mon lab personnel, et chaque nouvelle VM nécessitait une série de configurations initiales répétitives. Mise à jour du système, installation des utilitaires réseau, déploiement d'agents, configuration SSH... Des tâches identiques, réalisées à la main, encore et encore.</p>
-    <p>Plutôt que de chercher immédiatement une solution existante, j'ai fait le choix délibéré de <strong>construire mon propre outil</strong>. Non pas par méconnaissance d'Ansible, dont j'avais entendu parler, mais par volonté de comprendre de l'intérieur ce que ce type d'outil fait réellement. C'est cette démarche qui a donné naissance à ce projet.</p>
+  <!-- ========================================== -->
+  <!-- REGARD CRITIQUE EN OUVERTURE        -->
+  <!-- ========================================== -->
+  <div class="conclusion-block">
+   <h3>// En une phrase</h3>
+   <p>Construire <strong>volontairement un outil similaire à Ansible</strong> pour comprendre les mécanismes d'automatisation par SSH de l'intérieur, l'utiliser concrètement sur <strong>30 à 40 endpoints</strong> en alternance, puis en reprendre les acquis dans une <strong>version Python publiée publiquement</strong> qui sert encore aujourd'hui de terrain d'apprentissage.</p>
+  </div>
 
-    <h2>Objectifs, contexte et enjeux</h2>
-    <p>L'objectif était de disposer d'un outil léger, portable et flexible, capable de déployer automatiquement des configurations et des outils sur un ou plusieurs endpoints distants, en utilisant uniquement une <strong>connexion SSH</strong> comme prérequis.</p>
-    <p>L'enjeu était double. D'un côté, gagner du temps sur des tâches répétitives et réduire les erreurs humaines liées aux configurations manuelles. De l'autre, mieux comprendre les mécanismes sous-jacents à l'automatisation de déploiement, ce qui s'est révélé particulièrement formateur pour la suite.</p>
+  <!-- ========================================== -->
+  <!-- 1. PRÉSENTATION               -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Présentation</h2>
+  <p>Avant de connaître Ansible, j'avais un problème très concret : je gérais un grand nombre de machines virtuelles, aussi bien dans le cadre de mon alternance chez Valesys que dans mon lab personnel, et chaque nouvelle VM imposait une série de configurations initiales répétitives. Mise à jour du système, installation des utilitaires réseau, déploiement d'agents, configuration SSH, ajout d'utilisateurs, ces tâches identiques étaient réalisées manuellement, encore et encore.</p>
 
-    <h2>Les étapes</h2>
-    <div style="margin-bottom:1.5rem;">
-      <img src="deploiement-archi.png" alt="Architecture de l'outil de déploiement automatisé" style="width:100%; max-width:620px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
-      <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Architecture de l'outil — entrées, moteur et endpoints cibles via SSH</p>
-    </div>
-    <p>La conception de l'outil a démarré par l'identification des besoins récurrents : quelles configurations revenaient systématiquement sur chaque nouvelle VM, quels outils devaient être présents par défaut, et quelles actions devaient rester optionnelles selon le contexte.</p>
-    <p>L'outil propose <strong>deux modes d'utilisation</strong> distincts. Le premier permet de cibler un endpoint unique directement en ligne de commande, avec des options passées en arguments pour définir ce qui doit être installé ou configuré. Le second accepte un <strong>fichier de configuration structuré</strong>, dans lequel on liste plusieurs endpoints avec, pour chacun, les outils à installer ou mettre à jour selon une syntaxe définie. L'outil lit ce fichier et déploie automatiquement l'ensemble, machine par machine, sans intervention manuelle.</p>
-    <p>L'architecture a été pensée pour être facilement <strong>extensible</strong> : ajouter un nouvel agent, un nouvel outil ou une nouvelle action ne nécessite pas de modifier le cœur du programme. Il suffit d'étendre les templates existants, ce qui rend l'outil adaptable à de nouveaux contextes sans repartir de zéro.</p>
-    <p>Le seul prérequis côté endpoint est un accès SSH valide. Pas d'agent à installer, pas de dépendance particulière sur les machines cibles.</p>
+  <p>Plutôt que de chercher immédiatement une solution existante, j'ai fait le choix délibéré de <strong>construire mon propre outil</strong>. Non par méconnaissance d'Ansible, dont j'avais entendu parler, mais par volonté de <strong>comprendre de l'intérieur</strong> ce que ce type d'outil fait réellement. C'est cette démarche qui a donné naissance au projet, dans une première version Bash + YAML utilisée chez Valesys, puis dans une <strong>réécriture Python publique</strong> nommée SQC (<em>SSH Quick Config</em>) hébergée sur mon GitHub.</p>
 
-    <h2>Les acteurs</h2>
-    <p>Ce projet a été développé seul, dans le cadre de mon alternance chez Valesys et de mon lab personnel. Il a été hébergé sur le <strong>GitLab interne</strong> de Valesys, auquel je n'ai plus accès aujourd'hui. Les utilisateurs directs étaient moi-même, dans les deux contextes.</p>
+  <a href="https://github.com/ninko0/SQC" target="_blank" rel="noopener" class="github-link">
+   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22 0 1.61-.01 2.91-.01 3.3 0 .32.22.7.83.58C20.56 21.79 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg>
+   github.com/ninko0/SQC
+  </a>
 
-    <h2>Les résultats</h2>
-    <p>L'outil a permis de réduire significativement le temps de mise en place des configurations initiales sur les VMs, aussi bien en entreprise que dans mon lab. Des tâches qui prenaient auparavant plusieurs dizaines de minutes par machine, répétées manuellement, sont devenues une affaire de <strong>quelques secondes</strong> une fois le fichier de configuration prêt.</p>
-    <p>Au-delà du gain de temps, ce projet m'a permis de comprendre concrètement ce que signifie concevoir un outil destiné à être réutilisé et modifié dans le temps. La contrainte d'extensibilité, que je m'étais fixée dès le départ, m'a obligé à réfléchir à la structure du code différemment de ce que je faisais habituellement.</p>
+  <!-- ========================================== -->
+  <!-- 2. OBJECTIFS, CONTEXTE, ENJEUX       -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Objectifs, contexte et enjeux</h2>
+  <p>L'objectif était de disposer d'un outil <strong>léger, portable et flexible</strong>, capable de déployer automatiquement des configurations et des outils sur un ou plusieurs endpoints distants, en utilisant uniquement une <strong>connexion SSH</strong> comme prérequis. Pas d'agent à installer côté cible, pas de dépendance lourde, juste un binaire sur la machine de contrôle et un fichier de configuration.</p>
 
-    <h2>Les lendemains du projet</h2>
-    <p>Ce projet a marqué une étape importante dans mon parcours. Peu après l'avoir développé, j'ai commencé à travailler avec <strong>Ansible</strong>, puis avec <strong>GitLab CI</strong> et <strong>AWX</strong> pour l'orchestration. La compréhension que j'avais acquise en construisant mon propre outil m'a permis d'appréhender ces technologies bien plus rapidement que si je les avais découvertes sans ce bagage. Savoir ce qu'un outil fait de l'intérieur change profondément la façon dont on l'utilise.</p>
-    <p>Aujourd'hui, l'outil en lui-même n'est plus maintenu. Il a été remplacé par des solutions plus robustes et standardisées. Mais la démarche qui l'a fait naître, comprendre avant d'utiliser, reste une constante dans ma façon de travailler.</p>
+  <p>L'enjeu était double. D'un côté, gagner du temps sur des tâches répétitives et <strong>réduire les erreurs humaines</strong> liées aux configurations manuelles : sur 30 à 40 endpoints, la moindre commande oubliée se traduit par une incohérence qui ressort plus tard en incident. De l'autre, <strong>mieux comprendre les mécanismes sous-jacents</strong> à l'automatisation de déploiement (sessions SSH parallèles, idempotence, gestion d'erreurs en chaîne, format de configuration), ce qui s'est révélé particulièrement formateur pour la suite quand j'ai abordé Ansible et AWX avec une compréhension déjà solide des concepts.</p>
 
-    <h2>Regard critique</h2>
-    <p>Ce projet illustre quelque chose que je défends : <strong>réinventer la roue a parfois beaucoup de valeur</strong>, à condition de le faire consciemment et dans un objectif d'apprentissage. Je ne recommande pas de reconstruire Ansible pour une utilisation en production. En revanche, construire un outil similaire à plus petite échelle pour en comprendre les mécanismes est un des exercices les plus formateurs que j'aie faits.</p>
-    <p>Si c'était à refaire, j'ajouterais dès le départ une gestion des erreurs plus robuste et un système de logs plus lisible. Ce sont les deux points qui ont montré leurs limites lorsque l'outil a commencé à être utilisé sur un nombre croissant de machines simultanément.</p>
-  </main>
+  <p><strong>Les risques propres à un tel outil</strong> sont nombreux et m'ont guidé dans les choix de conception. Une commande lancée sur plusieurs machines simultanément peut provoquer des dégâts <strong>multipliés par le nombre de cibles</strong> si elle est mal pensée. Une session SSH qui tombe en cours de déploiement peut laisser un système dans un état intermédiaire incohérent. Un script qui s'exécute différemment selon la distribution cible peut produire des résultats imprévisibles. Ces risques expliquent pourquoi le projet est resté volontairement <strong>limité à un usage personnel et à un lab</strong>, et n'a jamais été déployé sur des infrastructures critiques sans supervision directe.</p>
+
+  <!-- ========================================== -->
+  <!-- 3. ÉTAPES DE RÉALISATION          -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Étapes de réalisation</h2>
+
+  <div style="margin-bottom:1.5rem;">
+   <img src="deploiement-archi.png" alt="Architecture de l'outil de déploiement, entrées, moteur et endpoints cibles via SSH" style="width:100%; max-width:620px; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
+   <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Architecture de l'outil : entrées (CLI ou fichier de configuration), moteur central, et endpoints cibles via SSH.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 1 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 1 · Cadrage et choix Bash + YAML</span>
+   <h3>Définir le périmètre fonctionnel et les choix techniques de la première version</h3>
+   <p>La conception a démarré par l'identification des <strong>besoins récurrents</strong> sur les VM que je déployais chez Valesys et en lab : quelles configurations revenaient systématiquement sur chaque nouvelle VM, quels outils devaient être présents par défaut, et quelles actions devaient rester optionnelles selon le contexte. Cette analyse a donné un périmètre clair : mises à jour système, installation de paquets, création d'utilisateurs et de clés SSH, durcissement de <code>sshd_config</code>, configuration réseau via netplan, déploiement d'agents (Wazuh, Zabbix), installation de Docker.</p>
+
+   <p>Pour le langage de cette première version, j'ai retenu <strong>Bash</strong> par souci de portabilité maximale : Bash est présent sur toute distribution Linux fraîchement installée, sans dépendance à ajouter. Le <strong>format de configuration choisi a été YAML</strong>, déjà standard de fait dans l'écosystème DevOps, lisible par un humain et facilement parseable. Cette première version a été développée et utilisée en interne chez Valesys, hébergée sur le <strong>GitLab interne de l'entreprise</strong> auquel je n'ai plus accès depuis la fin de mon contrat. Le code original Bash de cette version est donc <strong>perdu</strong>, ce qui est un point de fragilité du projet sur lequel je reviendrai dans le regard critique.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 2 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 2 · Conception du fichier de configuration</span>
+   <h3>Définir un format YAML simple et extensible pour décrire les endpoints</h3>
+   <p>Le fichier de configuration suivait un schéma volontairement simple, inspiré du format inventory d'Ansible que je découvrais en parallèle. Un exemple typique ressemblait à ceci :</p>
+   <pre><code>endpoints:
+ - host: srv-web-01.lab.local
+  user: deploy
+  actions:
+   - apt_update
+   - install_packages: [nginx, certbot, fail2ban]
+   - ssh_hardening
+   - add_user: { name: nicolas, ssh_key: ~/.ssh/id_ed25519.pub }
+
+ - host: srv-monitoring-01.lab.local
+  user: deploy
+  actions:
+   - apt_update
+   - install_packages: [zabbix-agent, wazuh-agent]
+   - configure_agent: { server: 192.168.10.5 }</code></pre>
+   <p>Cette structure permet de <strong>lister plusieurs endpoints</strong> avec, pour chacun, les actions à appliquer selon une syntaxe qui se rapproche de celle des playbooks Ansible. L'outil parse ce fichier au démarrage, valide la cohérence des entrées, puis déploie machine par machine. Le format est simple mais suffisamment expressif pour couvrir la grande majorité des cas d'usage que je rencontrais.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 3 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 3 · Templates extensibles</span>
+   <h3>Structurer l'outil pour permettre l'ajout de nouvelles fonctionnalités sans toucher au cœur</h3>
+   <p>L'architecture a été pensée pour être <strong>facilement extensible</strong>. Ajouter une nouvelle action (un nouvel outil à installer, une nouvelle configuration à appliquer) ne nécessite pas de modifier le cœur du programme. Chaque action est implémentée comme un <strong>script séparé</strong> dans un dossier dédié, suivant une convention de nommage et une signature commune. Le moteur principal détecte automatiquement ces scripts et les rend disponibles via le fichier de configuration YAML.</p>
+
+   <p>Cette structure modulaire permet à <strong>une personne extérieure</strong> de contribuer à l'outil sans avoir besoin de comprendre l'ensemble du code : il suffit de comprendre la convention d'un script d'action pour en écrire un nouveau. C'est exactement le principe que j'apprécierais retrouver plus tard dans les modules Ansible.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 4 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 4 · Deux modes d'utilisation</span>
+   <h3>CLI rapide pour un endpoint, fichier de configuration pour plusieurs</h3>
+   <p>L'outil propose <strong>deux modes d'utilisation</strong> distincts, adaptés à des cas d'usage différents. Le <strong>premier mode</strong> permet de cibler un endpoint unique directement en ligne de commande, avec des options passées en arguments pour définir ce qui doit être installé ou configuré. Idéal pour les opérations rapides et ponctuelles, type "je veux juste installer Docker sur cette nouvelle VM".</p>
+
+   <p>Le <strong>second mode</strong> accepte un <strong>fichier de configuration YAML structuré</strong> dans lequel on liste plusieurs endpoints avec leurs actions respectives. Idéal pour le déploiement industrialisé d'un lab complet, ou pour reproduire à l'identique une configuration sur plusieurs machines. C'est ce second mode qui a été le plus utilisé en pratique, notamment pour préparer rapidement les VM nécessaires aux différents projets en lab.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 5 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 5 · Gestion des problèmes opérationnels</span>
+   <h3>Anticiper les pannes réseau, les redémarrages de kernel et la dépendance ordre des services</h3>
+   <p>L'expérience opérationnelle a fait remonter plusieurs <strong>problèmes spécifiques aux déploiements SSH à distance</strong> qui ne sont pas évidents quand on conçoit l'outil sur papier. La <strong>connectivité Internet</strong> est un point sensible : si la machine cible perd l'accès aux dépôts pendant un <code>apt update</code>, le déploiement échoue silencieusement ou laisse des paquets dans un état incohérent. Il faut gérer le timeout, le retry, et la reprise après erreur.</p>
+
+   <p>Le <strong>redémarrage de kernel</strong> est l'autre point délicat. Certaines mises à jour (kernel, librairies systèmes critiques) imposent un redémarrage pour être pleinement effectives. Si le déploiement enchaîne plusieurs actions dont l'une nécessite un reboot, il faut <strong>séquencer correctement</strong> : ne pas tenter d'installer un service qui dépend d'un kernel non encore actif, attendre que la machine soit réellement remontée avant de poursuivre, gérer le cas où la machine ne remonte pas (échec à signaler clairement).</p>
+
+   <p>Enfin, l'<strong>ordre d'installation et de mise à jour des services</strong> doit être maîtrisé. Installer un agent Wazuh avant la mise à jour système peut produire des conflits de dépendances. Configurer un service réseau avant que les interfaces ne soient correctement provisionnées génère des erreurs difficiles à diagnostiquer. Ces séquencements ont été appris par la pratique, et chaque échec a alimenté la robustesse de l'outil sur la version suivante.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 6 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 6 · Réécriture publique en Python, le projet SQC</span>
+   <h3>Reprendre les acquis dans une version publique pour les valoriser sur GitHub</h3>
+   <p>Après mon contrat Valesys, j'ai entamé une <strong>réécriture publique en Python</strong> sous le nom <strong>SQC (SSH Quick Config)</strong>, hébergée sur GitHub. Cette réécriture poursuit deux objectifs : <strong>conserver les acquis</strong> de la version Bash perdue, et <strong>publier un projet vérifiable</strong> dans mon portfolio open source, accessible à tout évaluateur ou employeur.</p>
+
+   <p>La version actuelle implémente déjà plusieurs actions opérationnelles : <strong>apt update et upgrade</strong> du système, <strong>ajout d'utilisateurs</strong>, <strong>installation d'une liste de paquets apt</strong>, <strong>git clone d'une liste d'outils</strong>, <strong>modification de la configuration SSH</strong>, et <strong>changement de netplan</strong>. Une roadmap claire est documentée dans le README du dépôt avec les fonctionnalités à venir : installation et configuration d'Apache avec ajout de certificats X.509, création de certificats X.509 auto-signés, gestion utilisateurs et groupes en une seule commande, installation de Zsh avec Oh My Zsh et bascule du shell par défaut.</p>
+
+   <p>Je <strong>n'ai pas caché les limites actuelles du projet</strong> dans le README public : le code y est qualifié de "spaghetti par moments", le projet est explicitement marqué "in construction", et j'ai documenté un <strong>bug connu sur la fonction netplan</strong> qui peut provoquer des collisions d'IP si elle est mal utilisée. Cette transparence n'est pas une faiblesse, c'est une <strong>discipline de contributeur open source</strong> : ne pas faire passer un projet pour plus mature qu'il ne l'est, c'est respecter le temps des éventuels utilisateurs qui s'y intéresseront.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 4. ACTEURS                 -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Organisation et acteurs</h2>
+  <p>Ce projet a été développé <strong>seul</strong>, dans le cadre de mon alternance chez Valesys et de mon lab personnel. La version originale Bash a été hébergée sur le <strong>GitLab interne</strong> de Valesys, auquel je n'ai plus accès aujourd'hui. Les utilisateurs directs de cette version originale étaient principalement moi-même, dans les deux contextes (entreprise et lab personnel).</p>
+
+  <p>La <strong>version publique Python SQC</strong> est hébergée sur mon GitHub avec <strong>10 commits</strong> et <strong>2 stars</strong> à ce jour. La traction publique reste modeste, mais le projet est <strong>vérifiable</strong>, ce qui le distingue de la version Valesys perdue. Cette différence de statut entre version privée et version publique est devenue chez moi une discipline : ce qui n'est pas accessible publiquement ne peut pas être considéré comme une réalisation portable.</p>
+
+  <!-- ========================================== -->
+  <!-- 5. RÉSULTATS                -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Résultats</h2>
+
+  <div class="kpi-row">
+   <div class="kpi-card">
+    <span class="kpi-value">30-40</span>
+    <span class="kpi-label">Endpoints déployés (Valesys)</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">6</span>
+    <span class="kpi-label">Actions implémentées (SQC)</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">4</span>
+    <span class="kpi-label">Actions roadmap publique</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">10</span>
+    <span class="kpi-label">Commits SQC sur main</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">2</span>
+    <span class="kpi-label">Modes d'utilisation</span>
+   </div>
+  </div>
+
+  <p><strong>Pour Valesys et mon lab personnel</strong>, l'outil a permis de réduire significativement le temps de mise en place des configurations initiales sur les VM. Des tâches qui prenaient auparavant <strong>plusieurs dizaines de minutes par machine</strong>, répétées manuellement, sont devenues une affaire de <strong>quelques secondes</strong> une fois le fichier de configuration prêt. Sur les 30 à 40 endpoints déployés au total, le gain cumulé représente plusieurs journées de travail économisées sur la durée de mon alternance.</p>
+
+  <p><strong>Pour moi</strong>, le résultat dépasse largement le gain de temps direct. Construire cet outil m'a permis de <strong>comprendre concrètement</strong> ce que signifie concevoir un outil destiné à être réutilisé et modifié dans le temps. La contrainte d'extensibilité que je m'étais fixée dès le départ a obligé à réfléchir à la structure du code différemment de ce que je faisais habituellement : interfaces stables, conventions partagées, séparation entre moteur et plugins. Ce sont exactement les concepts que j'ai retrouvés ensuite dans Ansible, et que j'ai pu m'approprier infiniment plus vite parce que je les avais déjà digérés à ma propre échelle.</p>
+
+  <!-- ========================================== -->
+  <!-- 6. LENDEMAINS                -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Lendemains du projet</h2>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// Futur immédiat (Valesys, lab personnel)</span>
+   <p>L'outil a été utilisé en routine pendant la durée de mon alternance chez Valesys, et adapté en continu pour intégrer de nouveaux besoins (nouveaux outils à déployer, nouvelles configurations à automatiser). Cette boucle d'usage et d'amélioration a fait évoluer l'outil d'un script ponctuel à un outil structuré que je pouvais relancer en confiance.</p>
+  </div>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// À distance (transition vers Ansible, GitLab CI, AWX)</span>
+   <p>Peu après la version Valesys, j'ai commencé à travailler sérieusement avec <strong>Ansible</strong>, puis avec <strong>GitLab CI</strong> et <strong>AWX</strong> pour l'orchestration. La compréhension acquise en construisant mon propre outil m'a permis d'<strong>appréhender ces technologies bien plus rapidement</strong> que si je les avais découvertes sans ce bagage. Savoir ce qu'un outil fait de l'intérieur change profondément la façon dont on l'utilise : on n'est plus dans la consommation passive d'un produit, on est dans la compréhension active d'un mécanisme.</p>
+   <p>Le projet personnel en lui-même a alors progressivement laissé sa place à ces solutions plus matures pour mes usages opérationnels, ce qui est un cycle de vie sain pour un outil d'apprentissage. La <strong>réécriture publique SQC en Python</strong> a continué d'exister en parallèle, plus comme exercice de versionnement public et de progression personnelle que comme outil opérationnel.</p>
+  </div>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// Aujourd'hui et à venir (2026, Paritel)</span>
+   <p>Aujourd'hui chez Paritel, j'évolue dans un contexte où <strong>Ansible est utilisé en production</strong> pour l'orchestration des outils de cybersécurité, hébergés sur le GitLab interne de l'entreprise. La <strong>compréhension de fond</strong> que j'ai construite avec mon propre outil me sert directement à analyser et comprendre les playbooks utilisés par l'équipe, sans avoir à me former from scratch à l'écosystème.</p>
+   <p>Plusieurs pistes d'évolution restent ouvertes sur SQC. La <strong>finalisation de la roadmap publique</strong> documentée dans le README (Apache+X509, certs auto-signés, gestion users/groupes, install Zsh) est un objectif court terme. Au-delà, j'envisage de <strong>réécrire SQC dans d'autres langages</strong> à des fins pédagogiques personnelles : une version Go pour explorer la concurrence native, une version Rust pour le ramener à ses fondamentaux système. Ce ne sera jamais un outil destiné à remplacer Ansible ou AWX qui restent objectivement bien plus performants et mieux maintenus, mais ce restera un excellent terrain d'expérimentation pour me confronter à de nouveaux langages avec un cahier des charges que je maîtrise déjà.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 7. REGARD CRITIQUE             -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Regard critique</h2>
+
+  <p><strong>Mes apports concrets</strong> sur ce projet sont de trois ordres. D'abord la <strong>démarche assumée de réinventer la roue</strong> à des fins d'apprentissage, plutôt que de consommer un outil mature sans en comprendre les mécanismes. Cette approche n'est pas universellement recommandable, mais quand elle est faite consciemment et avec un objectif pédagogique clair, elle apporte une profondeur de compréhension qu'aucun tutoriel ne donne. Ensuite la <strong>conception extensible dès le départ</strong>, qui a structuré ma façon de penser le code bien au-delà de ce projet. Enfin la <strong>discipline de transparence open source</strong> sur le repo SQC public : assumer les limites actuelles dans le README plutôt que de les masquer est un choix qui m'a coûté en ego mais qui correspond à mes valeurs sur le partage de code.</p>
+
+  <p><strong>Ma valeur ajoutée mesurable</strong> est double. Sur le plan opérationnel chez Valesys, des dizaines d'heures économisées en routine de déploiement sur 30 à 40 endpoints, sans erreur humaine introduite. Sur le plan personnel, une <strong>maîtrise accélérée d'Ansible et d'AWX</strong> ensuite, parce que les concepts d'inventory, de playbook, de modules et d'idempotence étaient déjà digérés à ma propre échelle. Cette accélération a été un véritable avantage compétitif quand je suis entré sur les sujets DevOps avancés chez Paritel.</p>
+
+  <p><strong>Mes enseignements personnels</strong> sont nombreux et durables. Le plus important est probablement que <strong>réinventer la roue a parfois beaucoup de valeur, à condition de le faire consciemment et dans un objectif d'apprentissage</strong>. Je ne recommande pas de reconstruire Ansible pour une utilisation en production, ce serait absurde. En revanche, construire un outil similaire à plus petite échelle pour en comprendre les mécanismes est l'un des exercices les plus formateurs que j'aie faits dans ma jeune carrière. Le second enseignement est la <strong>nécessité d'investir dès le départ dans une gestion d'erreurs robuste et des logs lisibles</strong>. Ce sont les deux points qui ont montré leurs limites lorsque l'outil a commencé à être utilisé sur un nombre croissant de machines simultanément, et c'est exactement ce que les outils matures font très bien et qui justifie leur maturité.</p>
+
+  <p>Avec le recul, je vois aussi <strong>plusieurs limites importantes du projet</strong>. La <strong>perte de la version originale Bash</strong> hébergée sur le GitLab interne de Valesys est un point de fragilité que j'ai retenu : ce qui n'est pas hébergé sur ses propres ressources n'est pas une réalisation portable, peu importe sa qualité. La <strong>limitation aux distributions Debian-based</strong> de la version Python publique restreint son adoption potentielle. Le <strong>statut "spaghetti code" assumé</strong> dans le README est honnête mais montre aussi qu'un projet d'apprentissage ne devient pas automatiquement un projet de production : il faudrait un travail de refactor sérieux pour que SQC dépasse son statut actuel. Et enfin, <strong>Ansible et AWX restent objectivement plus performants et mieux maintenus</strong>, ce qui rend SQC pédagogiquement précieux mais opérationnellement secondaire. C'est une lucidité que j'assume pleinement.</p>
+
+  <!-- ========================================== -->
+  <!-- COMPÉTENCES RATTACHÉES           -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Compétences rattachées</h2>
+  <p>Ce projet mobilise principalement des compétences techniques transverses. Sur le volet technique, il illustre directement le <a href="../competences/tech-4.html"><strong>Tooling &amp; Scripting</strong></a> dans son aspect outil structuré et extensible (par opposition au script jetable), la <a href="../competences/tech-1.html"><strong>Configuration Système</strong></a> par la connaissance fine des actions automatisées (apt, SSH, netplan, users, agents) et l'<a href="../competences/tech-3.html"><strong>Administration Réseau</strong></a> par la maîtrise du protocole SSH comme socle d'orchestration. Sur le volet humain, il met en avant l'<a href="../competences/hum-3.html"><strong>Autonomie</strong></a> nécessaire pour construire un outil de A à Z sans encadrement et la capacité à <a href="../competences/hum-4.html"><strong>Faire preuve d'initiative</strong></a>, illustrée par le choix volontaire de construire avant d'utiliser pour comprendre de l'intérieur.</p>
+
+ </main>
 </body>
 </html>

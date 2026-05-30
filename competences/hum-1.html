@@ -1,35 +1,126 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gestion de projet, Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Gestion de projet, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  .anecdote{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:var(--radius);padding:1rem 1.2rem;margin-bottom:1rem}
+  .anecdote-tag{font-family:var(--font-mono);font-size:0.7rem;color:var(--green);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.35rem;display:block}
+  .anecdote h3{font-size:1rem;margin:0 0 0.6rem;color:var(--text)}
+  .anecdote p{margin-bottom:0.6rem}
+  .anecdote p:last-child{margin-bottom:0}
+  .anecdote-result{margin-top:0.7rem;padding:0.55rem 0.8rem;background:var(--violet-pale);border-left:2px solid var(--violet);border-radius:var(--radius);font-size:0.9rem}
+  .anecdote-result strong{color:var(--violet)}
+  .skill-level-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin:0.8rem 0 1rem}
+  .skill-level-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:0.7rem 0.9rem}
+  .skill-level-card .lvl-name{font-family:var(--font-mono);font-size:0.78rem;font-weight:600;margin-bottom:0.3rem}
+  .skill-level-card .lvl-bar{height:6px;background:var(--bg-alt);border-radius:999px;overflow:hidden;margin-bottom:0.3rem}
+  .skill-level-card .lvl-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--violet));border-radius:999px}
+  .skill-level-card .lvl-text{font-size:0.78rem;color:var(--text-muted)}
+  h2{margin-top:1.8rem;padding-bottom:0.35rem;border-bottom:1px solid var(--border);font-size:1.1rem}
+ </style>
 </head>
 <body data-page="competences">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Humaine 01</p>
-    <div class="page-header">
-      <h1>Gestion de projet</h1>
-</div>
-    <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
-      <a href="../realisations/real-1.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
-      <a href="../realisations/real-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
-    </div>
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Définition</h2>
-    <p style="margin-bottom:1rem;">La gestion de projet désigne la capacité à planifier, organiser et piloter une démarche technique de bout en bout, depuis l'analyse du besoin jusqu'à la livraison d'un résultat concret. Dans un contexte d'ingénierie systèmes et réseaux, elle se traduit par la structuration des étapes, la gestion des priorités et la capacité à anticiper les risques avant qu'ils ne bloquent l'avancement.</p>
-    <p style="margin-bottom:1.5rem;">Ce n'est pas une compétence réservée aux chefs de projet : tout technicien qui conçoit une infrastructure, déploie un service ou développe un outil doit être capable de structurer son travail pour éviter les erreurs de fond et les approximations.</p>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Humaine 01</p>
+  <div class="page-header">
+   <h1>Gestion de projet</h1>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Éléments de preuve</h2>
-    <p style="margin-bottom:1rem;">Le développement de ma <strong>sonde IDS</strong> est l'exemple le plus représentatif de ma capacité à mener un projet de bout en bout. J'ai défini seul les objectifs, structuré les étapes, arbitré les choix techniques et livré un outil fonctionnel, documenté et réutilisable, sans encadrement externe.</p>
-    <p style="margin-bottom:1rem;">Dans mon contexte professionnel, j'ai assumé un rôle de pilotage sur plusieurs projets. J'ai notamment coordonné le <strong>déploiement d'un VPN de secours</strong> pour mon entreprise, en assurant la cohérence de l'ensemble. J'ai également pris en charge la <strong>création complète de l'infrastructure d'une TPE</strong> (Valesys), de la conception initiale jusqu'à la mise en production, un projet mené à deux alternants, en quasi-totale autonomie vis-à-vis de la hiérarchie.</p>
+  <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
+   <a href="../realisations/real-1.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
+   <a href="../realisations/real-2.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
+   <a href="../realisations/real-5.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Firewall cœur de réseau Paritel</a>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin: 1.5rem 0 0.5rem;">Autocritique</h2>
-    <p style="margin-bottom:1rem;">Mon expérience reste à ce stade celle de <strong>petits projets</strong> impliquant entre une et trois personnes, avec des délais souples. Je n'ai pas encore été confronté à des projets avec de nombreux intervenants, des contraintes de livraison serrées ou des enjeux clients importants. C'est une limite claire que j'assume pleinement.</p>
+  <h2>Définition</h2>
+  <p>La <strong>gestion de projet</strong> désigne la capacité à planifier, organiser et piloter une démarche technique de bout en bout, depuis l'analyse du besoin jusqu'à la livraison d'un résultat concret. Dans un contexte d'ingénierie systèmes et réseaux, elle se traduit par la structuration des étapes, la gestion des priorités, la coordination avec les acteurs concernés, et la capacité à anticiper les risques avant qu'ils ne bloquent l'avancement.</p>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Évolution</h2>
-    <p>Je souhaite développer cette compétence dans des contextes progressivement plus exigeants, davantage d'intervenants, des délais contraints, des responsabilités plus étendues. Je souhaite m'inscrire dans des dynamiques de pilotage plus structurées, notamment sur des missions techniques à plus grande échelle.</p>
-  </main>
+  <p>Ce n'est pas une compétence réservée aux chefs de projet : tout technicien qui conçoit une infrastructure, déploie un service ou développe un outil doit être capable de structurer son travail pour éviter les erreurs de fond et les approximations. Dans le contexte actuel où les <strong>chaînes d'approvisionnement logicielles</strong> et les <strong>infrastructures critiques</strong> sont sous pression réglementaire (NIS2, DORA, recommandations ANSSI), la qualité de la gestion de projet devient indissociable de la qualité du résultat livré.</p>
+
+  <h2>La compétence en pratique</h2>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 1, septembre 2023 → août 2024, Valesys, pilotage d'infrastructure complète</span>
+   <h3>Mener un projet d'infrastructure de bout en bout, à deux alternants, sans encadrement</h3>
+   <p>Chez Valesys, j'ai pris en charge avec un autre alternant <strong>la création complète de l'infrastructure d'une TPE</strong>, de l'analyse initiale jusqu'à la mise en production. Le projet s'est étendu sur près de 12 mois (septembre 2023, août 2024), en quasi-totale autonomie vis-à-vis de la hiérarchie. La structuration du projet a impliqué de cadrer les phases (analyse de l'existant, conception réseau, déploiement Proxmox, intégration des services, sécurisation, supervision), de prioriser les composants critiques (cluster Ceph en mars 2024, suite à un incident stockage qui a justifié le budget), et de coordonner notre binôme sur la répartition des tâches.</p>
+   <p>J'ai aussi piloté en parallèle le <strong>déploiement d'un VPN de secours</strong> pour assurer la continuité d'administration en cas d'indisponibilité du lien principal, projet plus court mais avec ses propres jalons et points de validation.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> infrastructure complète livrée et opérée pendant toute la durée de la mission, avec un SOC qui a ensuite été <strong>commercialisé auprès des clients de Valesys</strong>. Le pilotage en binôme sans hiérarchie technique présente m'a appris à <strong>structurer mon travail sans filet</strong>, ce qui est probablement l'apprentissage le plus solide qu'une expérience d'alternance puisse offrir sur la gestion de projet.
+   </div>
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-1.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Infrastructure sécurisée</a></p>
+  </div>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 2, octobre 2025 → en cours, projet personnel open source</span>
+   <h3>Mener un projet open source seul, de l'idée à la publication</h3>
+   <p>Le développement de ma <strong>sonde IDS conteneurisée</strong> est l'exemple le plus représentatif de ma capacité à mener un projet de bout en bout en autonomie totale. Démarré en octobre 2025, le projet a abouti à une <strong>v1 publiée en environ un mois</strong>, soit une cadence de livraison courte qui n'aurait pas été tenable sans un cadrage clair des objectifs dès le départ. J'ai défini les objectifs (déploiement rapide de sonde réseau open source), structuré les étapes (un Dockerfile par composant, tests d'intégration, documentation), arbitré les choix techniques (compilation depuis sources Alpine plutôt que dépendre d'images publiques obsolètes), et livré un outil fonctionnel, documenté et réutilisable.</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> projet livré dans le délai cible, repris en pratique par un proche pentester pour la partie OpenCanary. Avoir réussi à <strong>finir un projet personnel</strong> est en soi une démonstration de gestion de projet : la plupart des projets perso finissent en backlog, pas en livrable publié.
+   </div>
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-2.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Sonde IDS conteneurisée</a></p>
+  </div>
+
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 3, décembre 2025 → mars 2026, Paritel, contribution à un projet annuel</span>
+   <h3>S'intégrer à un projet structuré sur la phase qui m'incombait</h3>
+   <p>Sur le <strong>firewall cœur de réseau Paritel</strong>, j'ai été intégré à un projet annuel piloté par d'autres équipes. Ma contribution a duré 2 mois, de décembre 2025 à février 2026, sur la <strong>définition des 5 profils de filtrage commercialisables</strong>. J'ai dû m'adapter à un cadre projet déjà établi : respecter le calendrier de la phase suivante (déploiement client en mars 2026), produire mes livrables dans les formats attendus, et coordonner avec les équipes amont (installation VM) et aval (équipe commerciale qui devait vendre les profils).</p>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> les 5 profils ont été livrés à temps et sont aujourd'hui commercialisés. Cette anecdote complète les deux précédentes : être chef d'un petit projet et être contributeur dans un grand projet sont deux disciplines proches mais distinctes, et j'ai eu l'occasion d'exercer les deux.
+   </div>
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-5.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Firewall cœur de réseau Paritel</a></p>
+  </div>
+
+  <h2>Mon niveau de maîtrise</h2>
+  <p>Je me considère aujourd'hui comme <strong>autonome sur les projets de petite à moyenne envergure</strong>, et en progression sur les projets impliquant de multiples parties prenantes ou des contraintes contractuelles fortes.</p>
+
+  <div class="skill-level-grid">
+   <div class="skill-level-card">
+    <div class="lvl-name">Cadrage d'un projet (analyse du besoin, objectifs)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:80%;"></div></div>
+    <div class="lvl-text">16/20 · Très à l'aise</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Planification &amp; priorisation</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:75%;"></div></div>
+    <div class="lvl-text">15/20 · Bonne discipline</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Coordination multi-acteurs</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:55%;"></div></div>
+    <div class="lvl-text">11/20 · En progression</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Gestion de délais contraints</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:60%;"></div></div>
+    <div class="lvl-text">12/20 · Acquis sur courte durée</div>
+   </div>
+  </div>
+
+  <p><strong>Contextualisation :</strong> mon expérience reste à ce stade celle de <strong>projets impliquant une à trois personnes</strong>, avec des délais souples. Je n'ai pas encore été confronté à des projets impliquant de nombreux intervenants externes, des contraintes contractuelles fortes, ou des enjeux clients à plusieurs centaines de milliers d'euros. C'est une limite claire que j'assume pleinement.</p>
+
+  <h2>Place dans mon profil et vitesse d'acquisition</h2>
+  <p>La gestion de projet est une compétence <strong>structurante</strong> dans mon profil d'ingénieur, sans être une spécialisation. Elle conditionne la qualité de ce que je livre sur toutes mes autres compétences : un système mal cadré dérive en délais, un script mal planifié finit incomplet, une infrastructure mal pilotée accumule de la dette technique. Je la traite donc comme un préalable, pas comme un option.</p>
+
+  <p><strong>Vitesse d'acquisition :</strong> assez rapide grâce à la nature <strong>responsabilisante</strong> de mes deux alternances. Chez Valesys, mener un projet d'infrastructure à deux alternants sans hiérarchie technique directe m'a forcé à me structurer en moins d'un an. C'est probablement le contexte qui m'a fait le plus progresser sur cette compétence, plus que n'importe quel cours formel sur le sujet.</p>
+
+  <h2>Mon recul sur la compétence</h2>
+  <p>Avec l'expérience que j'ai aujourd'hui, je conseille avant tout de <strong>cadrer le besoin avant de cadrer la solution</strong>. Le réflexe naturel d'un profil technique est de plonger dans la solution dès qu'on entend un problème, et c'est exactement la raison pour laquelle tant de projets techniques livrent quelque chose qui ne correspond pas au vrai besoin. Passer une heure de plus à comprendre <em>ce qu'on cherche à faire</em> avant de configurer la première machine fait gagner des dizaines d'heures par la suite.</p>
+
+  <p>Je conseille aussi de <strong>découper en livrables courts</strong> plutôt qu'en grands jalons. Un projet structuré en livrables de 2 à 4 semaines reste pilotable, motivant et corrigeable. Un projet structuré en grands jalons de 3 à 6 mois est presque toujours en retard sans qu'on s'en rende compte avant le dernier moment.</p>
+
+  <h2>Évolution et formations</h2>
+  <p>Je souhaite développer cette compétence dans des contextes <strong>progressivement plus exigeants</strong> : davantage d'intervenants, des délais contraints, des responsabilités plus étendues. À court terme, mon entrée prochaine en poste junior post-alternance me confrontera mécaniquement à ces contextes, et c'est exactement ce que je recherche.</p>
+
+  <p>Sur le plan des <strong>apprentissages formels</strong>, je n'ai pas pour stratégie de me former par lectures de soft skills sur la gestion de projet. Mon mode d'apprentissage est résolument basé sur la <strong>pratique terrain et la veille active</strong>. Je préfère observer comment des projets réels sont conduits autour de moi (chez Paritel notamment, où les projets de plusieurs mois croisent plusieurs équipes), confronter ces observations à mes propres pratiques, et ajuster en continu. Cette méthode est plus lente que celle des livres mais elle a l'avantage d'être ancrée dans la réalité concrète plutôt que dans la théorie.</p>
+
+  <p>Je suis en revanche très attentif aux <strong>retours d'expérience</strong> que peuvent me transmettre des seniors techniques, notamment lors de mes échanges avec ma communauté de pentesters et de mainteneurs de projets open source. Ces conversations informelles m'apportent plus que ce que j'ai lu dans la littérature managériale classique.</p>
+
+  <h2>Réalisations rattachées</h2>
+  <p>Cette compétence est mobilisée dans plusieurs réalisations détaillées. L'<a href="../realisations/real-1.html"><strong>Infrastructure sécurisée</strong></a> chez Valesys illustre la conduite d'un projet d'envergure de bout en bout en autonomie. La <a href="../realisations/real-2.html"><strong>Sonde IDS conteneurisée</strong></a> matérialise un projet personnel mené à son terme. Le <a href="../realisations/real-5.html"><strong>Firewall cœur de réseau Paritel</strong></a> illustre l'intégration dans un projet structuré piloté par d'autres.</p>
+ </main>
 </body>
 </html>

@@ -1,69 +1,287 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tooling & Scripting, Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Git &amp; Versioning, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  .logo-row {
+   display: flex; flex-wrap: wrap; gap: 1rem;
+   align-items: center; margin: 1rem 0 1.5rem;
+  }
+  .logo-chip {
+   display: flex; align-items: center; gap: 0.5rem;
+   padding: 0.4rem 0.85rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-lg);
+   font-family: var(--font-mono); font-size: 0.78rem;
+   color: var(--text-muted);
+   transition: border-color 0.15s;
+  }
+  .logo-chip:hover { border-color: var(--violet-light); }
+
+  .anecdote {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-left: 3px solid var(--violet);
+   border-radius: var(--radius);
+   padding: 1rem 1.2rem;
+   margin-bottom: 1rem;
+  }
+  .anecdote-tag {
+   font-family: var(--font-mono);
+   font-size: 0.7rem;
+   color: var(--violet);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.35rem;
+   display: block;
+  }
+  .anecdote h3 {
+   font-size: 1rem;
+   margin: 0 0 0.6rem;
+   color: var(--text);
+  }
+  .anecdote p { margin-bottom: 0.6rem; }
+  .anecdote p:last-child { margin-bottom: 0; }
+  .anecdote-result {
+   margin-top: 0.7rem;
+   padding: 0.55rem 0.8rem;
+   background: var(--green-pale);
+   border-left: 2px solid var(--green);
+   border-radius: var(--radius);
+   font-size: 0.9rem;
+  }
+  .anecdote-result strong { color: var(--green); }
+
+  .skill-level-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   gap: 0.6rem;
+   margin: 0.8rem 0 1rem;
+  }
+  .skill-level-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.7rem 0.9rem;
+  }
+  .skill-level-card .lvl-name {
+   font-family: var(--font-mono);
+   font-size: 0.78rem;
+   font-weight: 600;
+   margin-bottom: 0.3rem;
+  }
+  .skill-level-card .lvl-bar {
+   height: 6px;
+   background: var(--bg-alt);
+   border-radius: 999px;
+   overflow: hidden;
+   margin-bottom: 0.3rem;
+  }
+  .skill-level-card .lvl-fill {
+   height: 100%;
+   background: linear-gradient(90deg, var(--violet), var(--green));
+   border-radius: 999px;
+  }
+  .skill-level-card .lvl-text {
+   font-size: 0.78rem;
+   color: var(--text-muted);
+  }
+
+  h2 {
+   margin-top: 1.8rem;
+   padding-bottom: 0.35rem;
+   border-bottom: 1px solid var(--border);
+   font-size: 1.1rem;
+  }
+ </style>
 </head>
 <body data-page="competences">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Technique 05</p>
-    <div class="page-header">
-      <h1>Tooling &amp; Scripting</h1>
-</div>
-    <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
-      <a href="../realisations/real-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
-      <a href="../realisations/real-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Script de setup personnel</a>
-      <a href="../realisations/real-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Outil de déploiement automatisé</a>
-    </div>
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Définition</h2>
-    <p style="margin-bottom:1rem;">
-      Je distingue le <strong>scripting</strong> du <strong>tooling</strong> par leur finalité et leur niveau
-      de maturité. Le scripting correspond à l'écriture de scripts destinés à répondre à un besoin ponctuel
-      ou automatiser une tâche précise, avec une logique de rapidité d'exécution et d'efficacité immédiate.
-    </p>
-    <p style="margin-bottom:1.5rem;">
-      Le tooling désigne un ensemble de scripts ou d'outils conçus de manière plus structurée, documentée
-      et maintenable, permettant leur utilisation par d'autres personnes sans compréhension approfondie du
-      code. Cela implique une réflexion sur l'ergonomie, la documentation, la modularité et la reprise par
-      d'autres utilisateurs. Je maîtrise principalement <strong>Python</strong> (langage principal), suivi
-      de <strong>Bash</strong> et <strong>PowerShell</strong> pour les scripts systèmes. J'ai également des
-      bases en C et JavaScript selon les besoins.
-    </p>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Technique 05</p>
+  <div class="page-header">
+   <h1>Git &amp; Versioning</h1>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Éléments de preuve</h2>
-    <p style="margin-bottom:1rem;">
-      J'utilise le scripting pour automatiser des tâches répétitives, faciliter la récupération d'informations
-      ou accélérer des phases d'analyse en contexte de sécurité. J'ai développé des scripts dans le cadre
-      de challenges de pentest sur <strong>Root-Me</strong>, ainsi que pour automatiser des tâches liées
-      à la production de rapports et à des tests répétitifs sur des projets longs.
-    </p>
-    <p style="margin-bottom:1rem;">
-      En parallèle, je développe dans mon temps libre des outils plus structurés avec une logique de tooling,
-      visant à proposer des solutions réutilisables et documentées dans des contextes de cybersécurité ou
-      d'administration système. Certains sont disponibles sur mes dépôts GitHub.
-    </p>
-    <div class="placeholder-text">🔗 <a href="https://github.com/ninko0" target="_blank">github.com/ninko0</a></div>
+  <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
+   <a href="../realisations/real-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
+   <a href="../realisations/real-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Portfolio auto-hébergé</a>
+  </div>
 
-    <h2 style="font-size:1.05rem; margin: 1.5rem 0 0.5rem;">Autocritique</h2>
-    <p style="margin-bottom:1rem;">
-      Je considère avoir un <strong>niveau intermédiaire</strong> en scripting et tooling. Je ne suis pas
-      développeur de formation et mes compétences se sont construites principalement de manière autodidacte,
-      en réponse à des besoins concrets. Je suis à l'aise pour développer des scripts fonctionnels adaptés
-      à des usages précis, mais reste limité sur des aspects plus avancés du développement logiciel, notamment en structuration, optimisation, maîtrise approfondie de certains langages. Mon approche reste orientée
-      vers l'efficacité opérationnelle.
-    </p>
+  <!-- ========================================== -->
+  <!-- DÉFINITION                 -->
+  <!-- ========================================== -->
+  <h2>Définition</h2>
+  <p><strong>Git</strong> est un système de gestion de versions distribué permettant de suivre les modifications apportées à un ensemble de fichiers au cours du temps. Créé en 2005 par Linus Torvalds pour les besoins du développement du noyau Linux, il s'est imposé comme le standard de fait dans le développement logiciel et l'ingénierie informatique. Contrairement aux systèmes de gestion de versions centralisés, Git repose sur un modèle distribué : chaque utilisateur dispose d'une copie complète du dépôt, ce qui offre une grande flexibilité, une meilleure résilience face aux pannes, et permet de travailler de manière indépendante avant de synchroniser les modifications.</p>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Évolution</h2>
-    <p>
-      Je souhaite explorer de nouveaux langages, notamment <strong>Go</strong> et <strong>Rust</strong>,
-      qui présentent un intérêt particulier dans les domaines systèmes et sécurité. En parallèle, je compte
-      poursuivre ma pratique du scripting dans des contextes de cybersécurité, challenges de pentest ou
-      programmes de bug bounty, afin de renforcer mes compétences tout en conservant une approche
-      pragmatique et orientée terrain.
-    </p>
-  </main>
+  <p>Dans la pratique, Git ne s'utilise presque jamais seul : il est complété par des <strong>plateformes d'hébergement</strong> qui ajoutent une couche de collaboration, de gestion d'incidents, de revue de code et d'automatisation. Les principales sont <strong>GitHub</strong> (très utilisée pour l'open source mondial), <strong>GitLab</strong> (plus orientée DevOps, disponible en auto-hébergement), et plus marginalement Bitbucket et Gitea.</p>
+
+  <p>L'<strong>actualité récente</strong> de l'écosystème Git renforce l'importance d'en maîtriser les fondamentaux. La généralisation des chaînes <strong>CI/CD</strong> et de l'<strong>Infrastructure as Code</strong> a fait du dépôt Git le point d'entrée de quasiment toutes les opérations modernes : un push déclenche désormais souvent un build, des tests, un scan de sécurité, voire un déploiement en production. La <strong>compromission de chaînes d'approvisionnement logicielles</strong> via des dépôts Git (cas SolarWinds, attaques sur PyPI, npm) rappelle aussi que la sécurité de la chaîne de versionning est devenue un sujet stratégique en soi.</p>
+
+  <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.07em; margin:1rem 0 0.5rem;">Plateformes pratiquées</p>
+  <div class="logo-row">
+   <div class="logo-chip">GitHub (public)</div>
+   <div class="logo-chip">GitLab (auto-hébergé)</div>
+   <div class="logo-chip">GitLab CI/CD</div>
+   <div class="logo-chip">Dependabot</div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- ANECDOTES                 -->
+  <!-- ========================================== -->
+  <h2>La compétence en pratique</h2>
+
+  <!-- ===== ANECDOTE 1 : Sonde IDS ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 1, octobre 2025, projet personnel open source</span>
+   <h3>Maintenir un projet open source sur GitHub</h3>
+
+   <p>Mon repository public <a href="https://github.com/ninko0/Docker-IDS-Sensor" target="_blank"><strong>Docker-IDS-Sensor</strong></a> est mon utilisation la plus structurée de Git aujourd'hui. Démarré en octobre 2025, il a accumulé une <strong>dizaine de commits significatifs en 2 semaines</strong> jusqu'à la publication de la v1. Tous les commits sont aujourd'hui sur la branche <code>main</code>, car je suis seul contributeur et que travailler en branches feature sur un projet solo aurait été plus de cérémonie que de valeur ajoutée.</p>
+
+   <p>Avec le recul, cette approche commit-direct-sur-main n'est <strong>pas une bonne pratique transférable</strong> dès qu'un projet grandit ou s'ouvre à des contributeurs. La discipline professionnelle attendue serait d'isoler chaque composant dans une branche feature (par exemple <code>feature/arkime-integration</code>, <code>feature/opencanary</code>, <code>fix/dockerfile-suricata</code>), puis de fusionner via une pull request une fois la fonctionnalité validée. Cette structuration apporte trois bénéfices que je ne capte pas aujourd'hui : la possibilité de <strong>tester une feature en isolation</strong> sans casser la branche principale, un <strong>historique lisible</strong> où chaque merge raconte une étape du projet, et un <strong>point de revue de code formel</strong> via la pull request. Je compte adopter ce workflow dès que je commencerai à travailler à plusieurs sur des projets open source ou que la sonde IDS gagnera en complexité.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> le projet existe publiquement, est documenté, est versionné de manière traçable, et a permis à un autre utilisateur de le déployer en suivant l'historique des évolutions. La valeur ajoutée est moins dans la sophistication du workflow que dans la <strong>discipline de tout versionner publiquement</strong>, ce qui constitue déjà un saut par rapport à beaucoup de projets personnels qui ne quittent jamais le poste local.
+   </div>
+
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-2.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Sonde IDS conteneurisée</a></p>
+  </div>
+
+  <!-- ===== ANECDOTE 2 : GitLab self-hosted ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 2, en cours, homelab personnel</span>
+   <h3>Auto-héberger GitLab pour mes projets non publics</h3>
+
+   <p>Je maintiens un <strong>GitLab auto-hébergé</strong> sur mon homelab Proxmox, dans une VM Debian dédiée. Il accueille mes projets en cours qui ne sont pas encore mûrs pour être publiés (outils de cybersécurité expérimentaux, scripts de durcissement système, prototypes de détection), ainsi que des projets purement personnels (notes versionnées, configurations sensibles).</p>
+
+   <p>Au-delà du stockage, j'utilise cette instance pour <strong>apprendre les concepts Git plus avancés</strong> que je ne pratique pas dans mon contexte professionnel. C'est notamment là que je teste les <strong>chaînes CI/CD GitLab</strong> sur des projets jouets : un pipeline qui lance un linter Bash sur mes scripts à chaque push, un autre qui build des images Docker de test pour vérifier que mes Dockerfiles compilent, et un troisième qui exécute des analyses de sécurité statique sur le code Python que j'écris pour des CTF. J'expérimente aussi avec <strong>Dependabot</strong> pour le suivi automatique des vulnérabilités sur les dépendances de mes projets.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> mon GitLab auto-hébergé fonctionne aujourd'hui comme <strong>laboratoire personnel</strong> pour m'approprier les pratiques DevOps modernes en cybersécurité. Ce dispositif compense partiellement le fait que je n'ai pas accès au GitLab professionnel de Paritel (où sont stockés les scripts Ansible des outils de cyber), et me permet d'arriver outillé sur ces sujets quand le besoin se présentera professionnellement.
+   </div>
+  </div>
+
+  <!-- ===== ANECDOTE 3 : Apprentissage autodidacte ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 3, 2020-2025, parcours d'apprentissage</span>
+   <h3>Cinq ans d'autodidaxie suivis d'un cours formel : un apprentissage bancal mais honnête</h3>
+
+   <p>Mon parcours sur Git est révélateur de comment j'ai construit mes compétences en général. J'ai commencé à utiliser Git en <strong>2020</strong>, principalement pour mes projets personnels, sans aucune formation préalable et sans être développeur de formation. Je l'ai utilisé "comme je pensais qu'il fallait l'utiliser", en pratiquant les commandes de base au quotidien mais sans maîtriser la <strong>logique sous-jacente</strong> (objet commit, structure DAG, références, index vs working tree).</p>
+
+   <p>Je n'ai eu mon <strong>premier cours formel sur Git qu'en 2025</strong>, dans le cadre de mon Mastère à l'ESIEA, soit cinq ans après avoir commencé à l'utiliser. Ce cours a été à la fois éclairant et frustrant : éclairant car il m'a fait comprendre <strong>pourquoi</strong> certaines commandes que j'utilisais fonctionnaient (et pourquoi d'autres que j'aurais pu utiliser auraient été plus appropriées), frustrant car il m'a fait réaliser que j'avais probablement appris quelques mauvaises habitudes pendant ces cinq années que je devrai désapprendre. Je pense d'ailleurs continuer à faire des <strong>erreurs de débutant</strong> régulièrement, malgré l'expérience accumulée.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> ce parcours en escalier m'a appris une chose qui dépasse Git : il y a une différence énorme entre <strong>savoir utiliser un outil</strong> et <strong>comprendre comment il fonctionne</strong>. C'est exactement le principe que j'applique aujourd'hui sur toutes mes autres compétences : ne jamais me contenter de la manipulation, et toujours essayer de remonter à la logique de conception du système que j'utilise.
+   </div>
+  </div>
+
+  <!-- ===== ANECDOTE 4 : Projets collaboratifs ESIEA ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 4, 2024-2025, projets de groupe ESIEA</span>
+   <h3>Première vraie expérience de Git en équipe sur des projets pédagogiques</h3>
+
+   <p>Le contexte le plus formateur sur l'aspect <strong>collaboratif</strong> de Git a été mes projets de groupe à l'ESIEA, menés à 3 ou 4 étudiants sur plusieurs mois. Sur ces projets, j'ai dû passer d'une utilisation strictement individuelle à un <strong>workflow partagé</strong> : création de branches feature par contributeur, ouverture de <strong>pull requests</strong> pour intégrer les évolutions à la branche principale, et résolution des inévitables <strong>conflits de fusion</strong> qui surviennent dès que deux personnes touchent au même fichier de configuration.</p>
+
+   <p>Cette expérience a confirmé qu'<strong>écrire du code à plusieurs n'est pas une extension naturelle du code seul</strong> : c'est un changement de discipline. Il faut apprendre à <strong>écrire des messages de commit qui parlent aux autres</strong>, à découper son travail en commits atomiques plutôt qu'en gros lots, à <strong>réviser le code de ses coéquipiers</strong> sans juger leur style, et à accepter que ses propres choix soient discutés. C'est aussi en projet à plusieurs que les erreurs Git deviennent <strong>douloureuses</strong> : un force-push mal placé peut effacer le travail d'un coéquipier, un mauvais merge peut perdre des heures de progression collective.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> les projets de groupe se sont tous bien terminés, mais surtout, ils m'ont fait <strong>prendre conscience de la dimension humaine</strong> de Git. Ma valeur ajoutée dans ces projets était plus dans la <strong>discipline</strong> (commits réguliers, messages clairs, propreté de l'historique) que dans la sophistication technique, ce qui est probablement la meilleure contribution qu'un membre d'équipe puisse apporter sur un projet pédagogique.
+   </div>
+  </div>
+
+  <!-- ===== ANECDOTE 5 : Pull request sur projet privé ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 5, projet privé, pull request</span>
+   <h3>Première contribution en pull request sur un projet existant</h3>
+
+   <p>En dehors des projets de groupe scolaires, j'ai eu l'occasion de contribuer à un <strong>projet privé d'un proche</strong> via le workflow complet : <strong>fork mental du projet, branche feature dédiée, modifications ciblées, commit propre avec message explicite, et pull request</strong> avec description du changement et de sa justification. Le projet n'étant pas public, je ne peux pas le partager ouvertement, mais l'exercice était identique à celui d'une contribution open source classique.</p>
+
+   <p>La pull request a été <strong>discutée</strong> avec le mainteneur avant intégration, ce qui m'a familiarisé avec la mécanique de <strong>code review collaborative</strong> : explication des choix, ajustement après remarques, parfois reformulation complète d'un commit. C'est un exercice très différent du commit-direct-sur-main, et qui m'a donné une <strong>première vraie expérience</strong> du workflow que pratiquent les grands projets open source.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> la contribution a été intégrée. C'est mon premier vrai pas vers l'objectif que je me suis fixé sur l'open source : devenir contributeur reconnu de projets Linux, ce qui passera nécessairement par la <strong>maîtrise du workflow pull request</strong> dans des contextes plus exigeants que ceux que je pratique aujourd'hui.
+   </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- NIVEAU DE MAÎTRISE             -->
+  <!-- ========================================== -->
+  <h2>Mon niveau de maîtrise</h2>
+  <p>Mes niveaux varient fortement selon le volet de Git considéré. Je suis très à l'aise sur les fondamentaux et l'usage quotidien d'un repo solo, mais je suis honnêtement <strong>perfectible sur les workflows collaboratifs avancés et les commandes de réécriture d'historique</strong>. Cette différence reflète mon parcours autodidacte sur la durée : j'ai utilisé intensivement ce que j'avais besoin d'utiliser, sans creuser ce dont je n'avais pas eu l'occasion d'avoir besoin.</p>
+
+  <div class="skill-level-grid">
+   <div class="skill-level-card">
+    <div class="lvl-name">Commandes de base (clone, add, commit, push, pull)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:100%;"></div></div>
+    <div class="lvl-text">20/20 · Réflexe quotidien</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Branches &amp; merge</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:70%;"></div></div>
+    <div class="lvl-text">14/20 · Confortable sur cas classiques</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Commandes avancées (rebase, cherry-pick, reflog)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:15%;"></div></div>
+    <div class="lvl-text">3/20 · Non acquis, à travailler</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Workflows collaboratifs (GitFlow, trunk-based)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:15%;"></div></div>
+    <div class="lvl-text">3/20 · Non acquis, à travailler</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Admin de plateforme (GitLab self-hosted)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:65%;"></div></div>
+    <div class="lvl-text">13/20 · Instance opérationnelle</div>
+   </div>
+  </div>
+
+  <p><strong>Contextualisation :</strong> ma compétence est solide dans son <strong>contexte habituel</strong> (projets solo, contributions occasionnelles, administration d'une instance GitLab personnelle), et reste <strong>insuffisante dans un contexte d'équipe structurée</strong> où GitFlow, rebases interactifs, et code review formels sont des prérequis quotidiens. Je sais que ce gap existe, et je sais où aller le combler.</p>
+
+  <!-- ========================================== -->
+  <!-- PLACE & VITESSE D'ACQUISITION       -->
+  <!-- ========================================== -->
+  <h2>Place dans mon profil et vitesse d'acquisition</h2>
+  <p>Git occupe une place de <strong>compétence transverse indispensable</strong> dans mon profil, mais pas de compétence centrale au sens où elle ne définit pas mon métier. C'est un outil dont je ne pourrais pas me passer pour aucune de mes autres compétences (configuration système, scripting, sécurité, infrastructure), mais ce n'est pas l'outil sur lequel ma valeur ajoutée professionnelle se construit.</p>
+
+  <p><strong>Vitesse d'acquisition :</strong> contrairement à d'autres compétences que j'ai acquises rapidement, Git a été pour moi une <strong>compétence à acquisition lente</strong>. J'ai utilisé l'outil pendant cinq ans avant de comprendre sa logique profonde, ce qui est probablement le pire ratio "temps passé / niveau atteint" de tout mon parcours. Le passage par un cours formel m'a confirmé qu'il existe des outils qu'on n'apprend pas correctement seul : Git en fait partie, parce que sa puissance se révèle seulement quand on en comprend les concepts internes, pas quand on en mémorise les commandes superficiellement.</p>
+
+  <!-- ========================================== -->
+  <!-- RECUL & CONSEILS              -->
+  <!-- ========================================== -->
+  <h2>Mon recul sur la compétence</h2>
+  <p>Avec l'expérience que j'ai aujourd'hui, je conseille avant tout de <strong>commiter souvent, avec des messages clairs</strong>. C'est un conseil basique mais c'est probablement celui qui a le plus d'impact sur la durée. Un historique propre, fait de petits commits atomiques bien décrits, vaut infiniment mieux qu'un historique de gros commits cryptiques avec des messages du type "fix" ou "update". Ce n'est ni technique ni avancé, c'est juste de la <strong>discipline quotidienne</strong>, et c'est ce qui distingue les projets dans lesquels on peut intervenir des projets qu'on doit réécrire.</p>
+
+  <p>Je conseille ensuite de <strong>ne pas attendre cinq ans avant de chercher à comprendre les concepts internes</strong>. Si je devais refaire mon apprentissage, je passerais quelques jours dès le départ à lire la documentation officielle ou un livre de référence, pour intégrer la logique d'objets commit, de références et de DAG. Cela m'aurait évité plusieurs années de manipulation à l'aveugle, où je faisais marcher les choses sans vraiment savoir pourquoi elles marchaient.</p>
+
+  <p>Le dernier conseil, et c'est probablement le plus important sur la durée, est de <strong>collaborer dès que possible</strong>. Git seul, c'est commit / push / pull. Git à plusieurs, c'est branches, pull requests, conflits, code review, discussions, ajustements. C'est dans la collaboration que la compétence Git devient vraiment riche, et que les fameuses "commandes avancées" trouvent leur sens : on ne fait pas un rebase interactif pour le plaisir, on le fait pour rendre un historique d'équipe lisible.</p>
+
+  <!-- ========================================== -->
+  <!-- ÉVOLUTION & FORMATIONS           -->
+  <!-- ========================================== -->
+  <h2>Évolution et formations</h2>
+
+  <p>Mon objectif sur cette compétence est clair : <strong>passer du Git solo bien fait au Git collaboratif solide</strong>. Cela signifie travailler les workflows que je n'utilise pas encore (GitFlow, trunk-based development, conventional commits), les commandes avancées de réécriture d'historique (<code>rebase --interactive</code>, <code>cherry-pick</code>, <code>reflog</code> pour récupérer une situation accidentelle), et la pratique du <strong>code review</strong> sur des projets que je ne maintiens pas seul.</p>
+
+  <p>Sur le plan des <strong>lectures</strong>, ma priorité immédiate est de lire intégralement le <strong>Pro Git book</strong> de Scott Chacon et Ben Straub, disponible gratuitement en ligne sur git-scm.com. C'est la référence officielle, dense mais accessible, et c'est exactement le type d'ouvrage que j'aurais dû lire en 2020 plutôt qu'en 2025. Je conseillerais d'ailleurs ce livre à toute personne qui veut bâtir une vraie maîtrise de Git plutôt que de patcher ses lacunes par des recherches Stack Overflow.</p>
+
+  <p>Sur le plan des <strong>contributions concrètes</strong>, je veux franchir le cap de la <strong>première vraie contribution à un projet open source d'envergure</strong>. Plusieurs pistes me semblent atteignables à moyen terme : contribuer à un outil de sécurité que j'utilise quotidiennement (un module Suricata, une règle Wazuh, une amélioration d'Arkime), ou contribuer à un paquet Debian que je connais bien. L'objectif est de passer de la consommation pure de l'open source à la <strong>contribution réelle</strong>, ce qui est cohérent avec mon objectif personnel de devenir contributeur reconnu de l'écosystème libre.</p>
+
+  <p>Sur le plan des <strong>chaînes CI/CD</strong>, je veux approfondir <strong>GitLab CI</strong> au-delà de mes expérimentations actuelles, en couvrant des pipelines plus complexes avec stages multiples, artefacts, environnements de déploiement et secrets correctement gérés. Cela complète directement ma compétence en conteneurisation et en virtualisation, en construisant le pont entre code et déploiement.</p>
+
+  <p>Concernant ma <strong>veille</strong>, elle suit la même structure que pour mes autres compétences : flux RSS, échanges sur Keybase avec ma communauté technique, et Twitter sur les comptes pertinents (mainteneurs de Git, équipes GitHub et GitLab, contributeurs open source actifs).</p>
+
+  <!-- ========================================== -->
+  <!-- RÉALISATIONS LIÉES             -->
+  <!-- ========================================== -->
+  <h2>Réalisations rattachées</h2>
+  <p>Cette compétence est mobilisée dans deux réalisations principales. La <a href="../realisations/real-2.html"><strong>Sonde IDS conteneurisée</strong></a> matérialise ma pratique de Git en projet open source : repository public, commits réguliers, README structuré. Le <a href="../realisations/real-4.html"><strong>Portfolio auto-hébergé</strong></a> illustre l'intégration de Git dans un pipeline de déploiement personnel, avec un script <code>deploy.sh</code> qui prend en charge la mise à jour de la version active à partir d'un export versionné.</p>
+
+ </main>
 </body>
 </html>

@@ -1,66 +1,332 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuration Système, Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Tooling &amp; Scripting, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  .logo-row {
+   display: flex; flex-wrap: wrap; gap: 1rem;
+   align-items: center; margin: 1rem 0 1.5rem;
+  }
+  .logo-chip {
+   display: flex; align-items: center; gap: 0.5rem;
+   padding: 0.4rem 0.85rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-lg);
+   font-family: var(--font-mono); font-size: 0.78rem;
+   color: var(--text-muted);
+   transition: border-color 0.15s;
+  }
+  .logo-chip:hover { border-color: var(--violet-light); }
+
+  .anecdote {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-left: 3px solid var(--violet);
+   border-radius: var(--radius);
+   padding: 1rem 1.2rem;
+   margin-bottom: 1rem;
+  }
+  .anecdote-tag {
+   font-family: var(--font-mono);
+   font-size: 0.7rem;
+   color: var(--violet);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.35rem;
+   display: block;
+  }
+  .anecdote h3 {
+   font-size: 1rem;
+   margin: 0 0 0.6rem;
+   color: var(--text);
+  }
+  .anecdote p { margin-bottom: 0.6rem; }
+  .anecdote p:last-child { margin-bottom: 0; }
+  .anecdote-result {
+   margin-top: 0.7rem;
+   padding: 0.55rem 0.8rem;
+   background: var(--green-pale);
+   border-left: 2px solid var(--green);
+   border-radius: var(--radius);
+   font-size: 0.9rem;
+  }
+  .anecdote-result strong { color: var(--green); }
+
+  .skill-level-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   gap: 0.6rem;
+   margin: 0.8rem 0 1rem;
+  }
+  .skill-level-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.7rem 0.9rem;
+  }
+  .skill-level-card .lvl-name {
+   font-family: var(--font-mono);
+   font-size: 0.78rem;
+   font-weight: 600;
+   margin-bottom: 0.3rem;
+  }
+  .skill-level-card .lvl-bar {
+   height: 6px;
+   background: var(--bg-alt);
+   border-radius: 999px;
+   overflow: hidden;
+   margin-bottom: 0.3rem;
+  }
+  .skill-level-card .lvl-fill {
+   height: 100%;
+   background: linear-gradient(90deg, var(--violet), var(--green));
+   border-radius: 999px;
+  }
+  .skill-level-card .lvl-text {
+   font-size: 0.78rem;
+   color: var(--text-muted);
+  }
+
+  /* Stats Root-Me */
+  .stats-row {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+   gap: 0.6rem;
+   margin: 1rem 0;
+  }
+  .stat-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.8rem;
+   text-align: center;
+  }
+  .stat-card .stat-value {
+   font-size: 1.5rem;
+   font-weight: 700;
+   color: var(--violet);
+   font-family: var(--font-mono);
+   display: block;
+   margin-bottom: 0.2rem;
+  }
+  .stat-card .stat-label {
+   font-size: 0.72rem;
+   color: var(--text-muted);
+   text-transform: uppercase;
+   letter-spacing: 0.06em;
+  }
+
+  h2 {
+   margin-top: 1.8rem;
+   padding-bottom: 0.35rem;
+   border-bottom: 1px solid var(--border);
+   font-size: 1.1rem;
+  }
+ </style>
 </head>
 <body data-page="competences">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Technique 04</p>
-    <div class="page-header">
-      <h1>Configuration Système</h1>
-</div>
-    <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
-      <a href="../realisations/real-1.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
-      <a href="../realisations/real-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Script de setup personnel</a>
-      <a href="../realisations/real-5.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Outil de déploiement automatisé</a>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Technique 04</p>
+  <div class="page-header">
+   <h1>Tooling &amp; Scripting</h1>
+  </div>
+
+  <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
+   <a href="../realisations/real-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
+   <a href="../realisations/real-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Portfolio auto-hébergé</a>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- DÉFINITION                 -->
+  <!-- ========================================== -->
+  <h2>Définition</h2>
+  <p>Je distingue volontairement <strong>scripting</strong> et <strong>tooling</strong>, qui sont souvent confondus mais répondent à des objectifs différents. Le <strong>scripting</strong> consiste à écrire un script pour répondre à un besoin ponctuel ou automatiser une tâche précise, le plus souvent pour un usage personnel et avec une logique d'efficacité immédiate. C'est un outil jetable ou semi-jetable, optimisé pour résoudre un problème, pas pour être réutilisé par d'autres.</p>
+
+  <p>Le <strong>tooling</strong>, à l'inverse, désigne un ensemble de scripts ou d'outils conçus de manière <strong>structurée, documentée et maintenable</strong>. L'objectif est de permettre leur utilisation par d'autres personnes, sans nécessiter une compréhension approfondie du code. Cela implique une réflexion sur l'ergonomie, la documentation, la modularité, et la capacité à être repris ou amélioré par d'autres utilisateurs.</p>
+
+  <p>Cette distinction est centrale dans ma manière de travailler. Quand je code en moins d'une heure pour résoudre un problème ponctuel, je fais du <strong>scripting</strong>. Quand je décide qu'un script mérite d'être conservé, documenté et publié, je bascule dans la logique <strong>tooling</strong> avec une exigence de qualité supérieure : README clair, gestion d'erreurs explicite, paramétrage propre.</p>
+
+  <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.07em; margin:1rem 0 0.5rem;">Langages pratiqués</p>
+  <div class="logo-row">
+   <div class="logo-chip">Python (principal)</div>
+   <div class="logo-chip">Bash</div>
+   <div class="logo-chip">PowerShell</div>
+   <div class="logo-chip">C (bases)</div>
+   <div class="logo-chip">JavaScript (bases)</div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- ANECDOTES                 -->
+  <!-- ========================================== -->
+  <h2>La compétence en pratique</h2>
+
+  <!-- ===== ANECDOTE 1 : deploy.sh ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 1, fin 2025, ce portfolio</span>
+   <h3>Écrire un script de déploiement Bash idempotent pour ce portfolio</h3>
+
+   <p>Pour mettre en place ce portfolio sur mon homelab, j'ai très vite eu besoin d'un <strong>processus de déploiement reproductible</strong>. Comme je rédige tous les contenus en dehors des pages actives, j'avais besoin d'un script qui transfère la nouvelle version au bon endroit, sauvegarde l'ancienne, applique les permissions correctement, et recharge Apache, sans risquer de casser le site exposé sur Internet.</p>
+
+   <p>J'ai donc écrit <code>deploy.sh</code>, un script Bash <strong>idempotent</strong> d'environ 90 lignes qui prend en entrée un zip de la nouvelle version. Le script vérifie les prérequis (root, présence du zip, présence d'<code>unzip</code> qu'il installe au besoin), <strong>sauvegarde automatiquement la version précédente</strong> dans un zip horodaté côté <code>/tmp</code>, déploie les fichiers dans <code>/var/www/portfolio</code>, applique les permissions Apache (<code>www-data</code>, 644 pour les fichiers, 755 pour les répertoires), et recharge Apache. Si Apache n'est pas actif, il est démarré. Le script utilise <code>set -e</code> en début pour échouer proprement au premier problème, et présente un résumé final avec le nombre de fichiers déployés et le chemin du backup.</p>
+
+   <p>L'écriture m'a pris un peu de temps à cause de plusieurs petites galères classiques en Bash : la <strong>détection correcte du dossier racine</strong> à l'intérieur du zip (qui n'a pas toujours le même nom que le zip), la gestion propre des permissions différenciées fichiers/dossiers avec <code>find -exec</code>, et le comportement du <code>set -e</code> avec les expressions composées qu'il faut savoir tempérer. Comme à chaque fois que j'écris un script, j'en ai profité pour apprendre quelque chose de nouveau, ici les bonnes pratiques de gestion d'erreur en Bash que je ne maîtrisais pas complètement.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> chaque déploiement de nouvelle version du portfolio prend désormais <strong>quelques secondes en ligne de commande</strong>, avec un backup automatique qui me permet de revenir en arrière en cas de problème. Le gain par déploiement est de <strong>5 à 10 minutes</strong> par rapport à une opération manuelle, mais surtout c'est <strong>0 erreur humaine</strong> sur les permissions ou le reload Apache. Sur la durée du projet portfolio, ça représente plusieurs heures économisées et la garantie que le site reste accessible après chaque mise à jour.
+   </div>
+
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-4.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Portfolio auto-hébergé</a></p>
+  </div>
+
+  <!-- ===== ANECDOTE 2 : Sonde IDS, tooling ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 2, depuis octobre 2025, projet personnel open source</span>
+   <h3>Passer du scripting au tooling avec la sonde IDS conteneurisée</h3>
+
+   <p>Mon projet personnel <a href="https://github.com/ninko0/Docker-IDS-Sensor" target="_blank"><strong>Docker-IDS-Sensor</strong></a> est l'exemple le plus complet de mon basculement dans une logique <strong>tooling</strong>. Là où un script de déploiement de sonde resterait personnel, j'ai construit un outil pensé pour être utilisé par d'autres : avec une <strong>documentation README structurée</strong>, une configuration paramétrable, et une logique modulaire qui permet de n'utiliser qu'une partie de la stack si on le souhaite.</p>
+
+   <p>Concrètement, le projet représente <strong>environ 500 lignes de Dockerfiles</strong> répartis sur quatre composants (Suricata, Zeek, Arkime, OpenCanary), chacun compilé depuis les sources Alpine pour avoir des versions récentes que les images publiques ne fournissent pas. À cela s'ajoutent les fichiers <code>docker-compose</code> qui orchestrent le tout, les scripts d'initialisation, et la documentation utilisateur.</p>
+
+   <p>Comme tous mes projets de tooling, le <strong>README est systématiquement présent et soigné</strong>. C'est pour moi non négociable : un outil publié sans documentation utilisable est un outil que personne n'utilisera, et qui ne servira donc à rien d'autre qu'à mon ego. Je documente l'installation, les prérequis, l'usage, les paramètres et les cas d'erreur courants.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> un proche pentester de ma communauté a validé que le déploiement fonctionne en quelques minutes en suivant le README, et utilise activement le composant OpenCanary dans son infrastructure professionnelle. C'est la <strong>preuve par l'usage</strong> que le passage du scripting au tooling a fonctionné : un autre humain a pu réutiliser mon code sans avoir à me poser de questions.
+   </div>
+
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-2.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Sonde IDS conteneurisée</a></p>
+  </div>
+
+  <!-- ===== ANECDOTE 3 : CTF / Root-Me ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 3, 2023-2025, Root-Me et challenges pentest</span>
+   <h3>Coder pour résoudre, et résoudre pour apprendre à coder</h3>
+
+   <p>Une part importante de ma pratique du scripting vient de la résolution de challenges de sécurité. Je suis actif sur <strong>Root-Me</strong> où j'ai capitalisé un parcours conséquent, et j'utilise principalement <strong>Python</strong> pour ces challenges car il s'intègre naturellement avec les outils d'écosystème pentest et bénéficie de modules prêts à l'emploi (<code>requests</code>, <code>pwntools</code>, <code>scapy</code>, etc.).</p>
+
+   <div class="stats-row">
+    <div class="stat-card">
+     <span class="stat-value">7168</span>
+     <span class="stat-label">Place</span>
     </div>
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Définition</h2>
-    <p style="margin-bottom:1rem;">
-      La configuration système regroupe l'ensemble des actions visant à installer, paramétrer et maintenir
-      un système d'exploitation dans un état fonctionnel, cohérent et sécurisé. Elle concerne aussi bien
-      les environnements <strong>Linux</strong> que les postes et serveurs <strong>Windows</strong>, ainsi
-      que certains services déployés dans des environnements cloud.
-    </p>
-    <p style="margin-bottom:1.5rem;">
-      Elle inclut la gestion des processus, utilisateurs, droits d'accès et services, mais aussi l'installation
-      de solutions spécifiques, serveurs web, bases de données, outils de monitoring, centralisation de logs
-      ou services propriétaires nécessitant des configurations avancées. Dans ma pratique, c'est une compétence
-      centrale que j'applique à chaque étape de mes projets, depuis l'installation jusqu'à la mise en production.
-    </p>
+    <div class="stat-card">
+     <span class="stat-value">1890</span>
+     <span class="stat-label">Points</span>
+    </div>
+    <div class="stat-card">
+     <span class="stat-value">115</span>
+     <span class="stat-label">Challenges</span>
+    </div>
+    <div class="stat-card">
+     <span class="stat-value">YesWeHack</span>
+     <span class="stat-label">Bugcrowd</span>
+    </div>
+   </div>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Éléments de preuve</h2>
-    <p style="margin-bottom:1rem;">
-      J'ai configuré de nombreux services essentiels : serveurs DNS, serveurs web, bases de données, solutions
-      de stockage type S3, outils de monitoring et services de sécurité. Ce portfolio lui-même est hébergé
-      sur une infrastructure locale avec redirection de port, illustrant la mise en œuvre concrète de ces
-      compétences. J'ai également configuré des outils de monitoring dans un contexte professionnel ainsi
-      que des services liés à l'analyse de sécurité.
-    </p>
-    <p style="margin-bottom:1rem;">
-      Les politiques de durcissement que j'applique sont facilitées par les scripts open source que j'ai
-      développés, permettant une intégration rapide et cohérente sur l'ensemble d'une infrastructure.
-    </p>
+   <p>Au fil des années, j'ai écrit un éventail varié de scripts dans ce cadre : <strong>scripts pwndbg</strong> pour automatiser des analyses de binaires en dynamique, <strong>brute-forceurs</strong> custom pour des contextes où les outils existants ne s'appliquaient pas, <strong>gestionnaires de mots de passe</strong> simples par curiosité de comprendre la cryptographie sous-jacente, <strong>exploits d'escalade de privilège</strong>, <strong>backdoors</strong> dans un cadre strictement éducatif, et même la <strong>création de challenges</strong> à mon tour pour d'autres apprenants.</p>
 
-    <h2 style="font-size:1.05rem; margin: 1.5rem 0 0.5rem;">Autocritique</h2>
-    <p style="margin-bottom:1rem;">
-      Je considère avoir un <strong>bon niveau en configuration système</strong>, notamment grâce aux
-      automatismes développés au fil de mes expériences. Je suis capable de comprendre rapidement le
-      fonctionnement de nouveaux systèmes ou fichiers de configuration et de m'adapter à des environnements
-      inconnus. Je n'ai jamais rencontré de blocage technique empêchant l'aboutissement d'un projet, même
-      si certaines problématiques nécessitent un temps de recherche important.
-    </p>
+   <p>Un exemple représentatif : sur un challenge web où il fallait extraire une information cachée derrière une <strong>logique d'authentification temporisée</strong>, j'ai écrit un script Python d'une vingtaine de lignes qui combinait <code>requests</code> et la mesure fine du temps de réponse pour faire un <strong>timing attack</strong> et déduire le contenu d'un secret caractère par caractère. Le challenge se résolvait théoriquement à la main, mais en quelques heures, là où le script l'a réglé en une minute trente.</p>
 
-    <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Évolution</h2>
-    <p>
-      Mon objectif est de conserver cet état d'esprit basé sur l'autonomie, la persévérance et la résolution
-      de problèmes. Je cherche à capitaliser sur les erreurs de configuration et les incidents rencontrés
-      afin d'améliorer progressivement ma rapidité d'analyse et de résolution. Chaque problème rencontré
-      devient une opportunité de renforcer ma compréhension des systèmes et d'optimiser mes méthodes.
-    </p>
-  </main>
+   <p>Sur le bug bounty, je suis inscrit sur <strong>YesWeHack et Bugcrowd</strong>. Je n'ai pas encore décroché de récompense financière, mais j'ai trouvé plusieurs <strong>XSS côté client (DOM-based)</strong> sur des plateformes qui ne rémunéraient pas cette catégorie. C'est honnête à dire, et c'est une marche normale de progression dans cette discipline qui rappelle que la valeur d'une vulnérabilité ne dépend pas seulement de sa technicité.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> ces années de CTF m'ont apporté une <strong>aisance avec Python en contexte hostile</strong> (parsing tordu, protocoles dégradés, sortie peu fiable) qui n'a aucun équivalent dans un apprentissage purement académique. J'ai fait une pause de quelques mois sur les CTF, études et alternance étant intenses, mais je compte <strong>recréer une équipe dès la fin de mes études</strong> pour reprendre cette dynamique collective qui m'avait beaucoup fait progresser.
+   </div>
+  </div>
+
+  <!-- ===== ANECDOTE 4 : outil tickets DEV Paritel ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 4, en cours, Paritel</span>
+   <h3>Concevoir un outil pour la qualité des tickets DEV</h3>
+
+   <p>Mon entreprise actuelle, Paritel, est culturellement réticente aux solutions "faites à la main" pour des sujets d'envergure : elle préfère investir dans des outils robustes plutôt que des bricolages personnels. C'est une position que je comprends et que je respecte, et qui change ma manière d'aborder le tooling en contexte professionnel.</p>
+
+   <p>Sur un besoin concret toutefois, je développe actuellement un <strong>outil d'aide à la création de tickets pour l'équipe DEV</strong>. Le constat est simple : les tickets reçus côté infrastructure manquent souvent de détails techniques essentiels (logs, contexte d'exécution, étapes de reproduction), ce qui rallonge inutilement les cycles de résolution. L'outil que je conçois vise à <strong>guider la création de tickets via un formulaire structuré</strong> qui force les champs manquants et propose des modèles selon le type d'incident remonté.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> projet encore en cours, donc impact non mesurable à date. L'objectif est clair : <strong>réduire le temps moyen de qualification</strong> des tickets DEV et limiter les allers-retours d'éclaircissement. Ma valeur ajoutée est de prendre en charge un point de friction quotidien que personne ne traitait, parce qu'il ne relève pas d'un projet stratégique mais d'une amélioration continue.
+   </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- NIVEAU DE MAÎTRISE             -->
+  <!-- ========================================== -->
+  <h2>Mon niveau de maîtrise</h2>
+  <p>Je considère aujourd'hui avoir un niveau <strong>intermédiaire</strong> en scripting et en tooling. Je ne suis pas développeur de formation et je n'évolue pas dans un contexte où le développement est une activité quotidienne. Mes compétences se sont construites principalement de manière autodidacte, en réponse à des besoins concrets liés à mes projets et à mon environnement technique.</p>
+
+  <div class="skill-level-grid">
+   <div class="skill-level-card">
+    <div class="lvl-name">Python (langage principal)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:65%;"></div></div>
+    <div class="lvl-text">13/20 · Scripts solides en autonomie</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Bash</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:65%;"></div></div>
+    <div class="lvl-text">13/20 · Scripts robustes</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">PowerShell</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:50%;"></div></div>
+    <div class="lvl-text">10/20 · Tâches d'administration Windows</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">C (bases)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:30%;"></div></div>
+    <div class="lvl-text">6/20 · Lecture, modifications simples</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">JavaScript</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:30%;"></div></div>
+    <div class="lvl-text">6/20 · Usage ponctuel front</div>
+   </div>
+  </div>
+
+  <p><strong>Contextualisation :</strong> mes compétences sont <strong>opérationnelles sur les usages concrets</strong> que je rencontre : scripts d'automatisation système, parsing de données, scripts d'exploit en CTF, outils en ligne de commande, Dockerfiles. Elles restent <strong>limitées sur des sujets plus avancés</strong> de développement logiciel : architecture d'applications, design patterns objet, tests automatisés industrialisés, performance critique. Mon approche reste avant tout orientée vers <strong>l'efficacité opérationnelle</strong> plutôt que vers des logiques de développement complexes ou industrielles.</p>
+
+  <!-- ========================================== -->
+  <!-- PLACE & VITESSE D'ACQUISITION       -->
+  <!-- ========================================== -->
+  <h2>Place dans mon profil et vitesse d'acquisition</h2>
+  <p>Le scripting occupe une place de <strong>multiplicateur d'efficacité</strong> dans mon profil. Je n'ai pas vocation à devenir développeur, mais sans scripting je serais largement moins efficace sur toutes mes autres compétences : configuration système automatisée, analyse de logs, exploitation de challenges sécurité, déploiements reproductibles. C'est une compétence dont je ne pourrais pas me passer même si elle n'est pas mon cœur de métier.</p>
+
+  <p><strong>Vitesse d'acquisition :</strong> très progressive et continue. Chaque nouveau script est l'occasion d'apprendre quelque chose : une syntaxe spécifique, une bibliothèque, un pattern. Comme je m'impose de ne pas dépasser <strong>une heure</strong> sur un script ponctuel quand l'objectif est de gagner une dizaine d'heures à terme, la progression se fait en accumulant <strong>beaucoup de petites itérations</strong> plutôt qu'en de grandes phases d'apprentissage formalisées. Cette méthode me convient car elle reste motivante : chaque script résout un vrai problème immédiat.</p>
+
+  <!-- ========================================== -->
+  <!-- RECUL & CONSEILS              -->
+  <!-- ========================================== -->
+  <h2>Mon recul sur la compétence</h2>
+  <p>Avec l'expérience que j'ai aujourd'hui, je conseille en premier lieu d'<strong>apprendre les bases de la programmation</strong> sérieusement avant de toucher au scripting système. Trop de gens commencent par copier-coller des scripts Bash depuis Stack Overflow sans comprendre ce qu'ils font, et finissent par bricoler des solutions fragiles. Comprendre ce qu'est une variable, un type, une condition, une boucle, une fonction, un retour d'erreur, c'est <strong>la base sur laquelle reposent tous les langages</strong> qu'on apprendra ensuite, du Bash au Python en passant par C ou Go.</p>
+
+  <p>Le second conseil, et c'est probablement le plus important sur la durée, est de <strong>rester curieux</strong>. Le scripting n'est pas un domaine qu'on maîtrise une fois pour toutes : les langages évoluent, les bibliothèques apparaissent et disparaissent, les paradigmes changent. La seule attitude qui fonctionne dans le temps, c'est de continuer à essayer des choses nouvelles, à lire le code des autres, et à se laisser embarquer par un projet personnel de temps en temps même quand il sort de notre zone de confort technique habituelle.</p>
+
+  <p>Enfin, je conseille de <strong>se fixer une limite de temps avant d'écrire un script</strong>. La règle que je m'applique est simple : si je passe plus d'une heure à écrire un script censé me faire gagner du temps, c'est que je suis en train d'apprendre quelque chose, pas d'automatiser. Les deux sont légitimes, mais il faut savoir lequel des deux on est en train de faire.</p>
+
+  <!-- ========================================== -->
+  <!-- ÉVOLUTION & FORMATIONS           -->
+  <!-- ========================================== -->
+  <h2>Évolution et formations</h2>
+
+  <p>Mon objectif sur cette compétence est de <strong>continuer à progresser de manière organique</strong> via mes projets concrets, plutôt que par des certifications ou des cours formels. C'est cohérent avec la place que le scripting occupe dans mon profil : un multiplicateur d'efficacité, pas une spécialité.</p>
+
+  <p>Sur les <strong>langages que je veux explorer</strong>, ma priorité va vers <strong>Rust</strong>. Mon raisonnement est simple : Rust est aujourd'hui le candidat sérieux pour remplacer progressivement le C dans des contextes critiques (le noyau Linux intègre du code Rust depuis 2022, plusieurs projets système comme bottlerocket OS ou des composants Mozilla y sont écrits). Si Rust prend durablement la place du C dans les fondations de l'informatique, des OS seront un jour basés dessus, et il deviendra <strong>important de comprendre les différences de fonctionnement</strong>, notamment sur la gestion mémoire et la concurrence. Je préfère anticiper cette transition plutôt que la subir. Go reste une option pour des outils en ligne de commande performants, mais sans la même portée systémique.</p>
+
+  <p>Sur le plan des <strong>lectures techniques</strong>, je m'appuie notamment sur les ressources de la communauté <strong>VXunderground</strong>, qui publie des analyses approfondies d'exploits réels et de techniques offensives. Ce sont des lectures denses et exigeantes mais qui apprennent <strong>la vraie programmation système</strong>, pas la version filtrée des manuels académiques.</p>
+
+  <p>Sur les <strong>CTF et le bug bounty</strong>, je suis en pause active depuis quelques mois car la combinaison études + alternance ne me laisse pas suffisamment de temps. <strong>Dès la fin de mes études, je prévois de reformer une équipe CTF</strong> pour reprendre cette dynamique. Sur le bug bounty, mes comptes <strong>YesWeHack</strong> et <strong>Bugcrowd</strong> restent ouverts, et j'y reviendrai dès que j'aurai à nouveau du temps de cerveau disponible.</p>
+
+  <p>Concernant ma <strong>veille</strong>, elle suit la même structure que pour mes autres compétences : flux RSS, échanges sur Keybase avec ma communauté technique, et Twitter sur les comptes de chercheurs en sécurité offensive et mainteneurs d'outils.</p>
+
+  <!-- ========================================== -->
+  <!-- RÉALISATIONS LIÉES             -->
+  <!-- ========================================== -->
+  <h2>Réalisations rattachées</h2>
+  <p>Cette compétence est mobilisée dans deux réalisations détaillées. La <a href="../realisations/real-2.html"><strong>Sonde IDS conteneurisée</strong></a> illustre le passage du scripting au tooling complet, avec environ 500 lignes de Dockerfiles, configuration paramétrable et documentation utilisateur. Le <a href="../realisations/real-4.html"><strong>Portfolio auto-hébergé</strong></a> mobilise mon script Bash <code>deploy.sh</code> qui matérialise concrètement comment je conçois un outil de déploiement reproductible.</p>
+
+ </main>
 </body>
 </html>

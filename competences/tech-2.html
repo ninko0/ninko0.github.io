@@ -1,171 +1,364 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Virtualisation & Conteneurisation, Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
-  <style>
-    .logo-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-      margin: 1rem 0 1.5rem;
-    }
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Virtualisation & Conteneurisation, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  .logo-row {
+   display: flex; flex-wrap: wrap; gap: 1rem;
+   align-items: center; margin: 1rem 0 1.5rem;
+  }
+  .logo-chip {
+   display: flex; align-items: center; gap: 0.5rem;
+   padding: 0.4rem 0.85rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-lg);
+   font-family: var(--font-mono); font-size: 0.78rem;
+   color: var(--text-muted);
+   transition: border-color 0.15s;
+  }
+  .logo-chip:hover { border-color: var(--violet-light); }
+  .logo-chip svg { flex-shrink: 0; }
 
-    .logo-chip {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.85rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      transition: border-color 0.15s;
-    }
+  /* === Blocs anecdotes === */
+  .anecdote {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-left: 3px solid var(--violet);
+   border-radius: var(--radius);
+   padding: 1rem 1.2rem;
+   margin-bottom: 1rem;
+  }
+  .anecdote-tag {
+   font-family: var(--font-mono);
+   font-size: 0.7rem;
+   color: var(--violet);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.35rem;
+   display: block;
+  }
+  .anecdote h3 {
+   font-size: 1rem;
+   margin: 0 0 0.6rem;
+   color: var(--text);
+  }
+  .anecdote p { margin-bottom: 0.6rem; }
+  .anecdote p:last-child { margin-bottom: 0; }
+  .anecdote-result {
+   margin-top: 0.7rem;
+   padding: 0.55rem 0.8rem;
+   background: var(--green-pale);
+   border-left: 2px solid var(--green);
+   border-radius: var(--radius);
+   font-size: 0.9rem;
+  }
+  .anecdote-result strong { color: var(--green); }
 
-    .logo-chip:hover { border-color: var(--violet-light); }
-    .logo-chip svg { flex-shrink: 0; }
-  </style>
+  /* === Bloc niveau de maîtrise === */
+  .skill-level-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+   gap: 0.6rem;
+   margin: 0.8rem 0 1rem;
+  }
+  .skill-level-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.7rem 0.9rem;
+  }
+  .skill-level-card .lvl-name {
+   font-family: var(--font-mono);
+   font-size: 0.78rem;
+   font-weight: 600;
+   margin-bottom: 0.3rem;
+  }
+  .skill-level-card .lvl-bar {
+   height: 6px;
+   background: var(--bg-alt);
+   border-radius: 999px;
+   overflow: hidden;
+   margin-bottom: 0.3rem;
+  }
+  .skill-level-card .lvl-fill {
+   height: 100%;
+   background: linear-gradient(90deg, var(--violet), var(--green));
+   border-radius: 999px;
+  }
+  .skill-level-card .lvl-text {
+   font-size: 0.78rem;
+   color: var(--text-muted);
+  }
+
+  /* === Conseil === */
+  .conseil-block {
+   background: var(--violet-pale);
+   border: 1px solid var(--violet-light);
+   border-radius: var(--radius-lg);
+   padding: 1rem 1.2rem;
+   margin: 1rem 0;
+  }
+  .conseil-block strong { color: var(--violet); }
+
+  /* === Formations === */
+  .formation-block {
+   background: var(--green-pale);
+   border: 1px solid var(--green-light);
+   border-radius: var(--radius-lg);
+   padding: 1rem 1.2rem;
+   margin: 1rem 0;
+  }
+  .formation-block ul { list-style: none; padding: 0; margin: 0.5rem 0 0; }
+  .formation-block li {
+   font-size: 0.9rem;
+   padding: 0.3rem 0;
+   border-bottom: 1px dashed var(--green-light);
+  }
+  .formation-block li:last-child { border-bottom: none; }
+  .formation-block li::before { content: '→ '; color: var(--green); font-family: var(--font-mono); }
+
+  h2 {
+   margin-top: 1.8rem;
+   padding-bottom: 0.35rem;
+   border-bottom: 1px solid var(--border);
+   font-size: 1.1rem;
+  }
+ </style>
 </head>
 <body data-page="competences">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Technique 02</p>
-    <div class="page-header">
-      <h1>Virtualisation &amp; Conteneurisation</h1>
-</div>
-    <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
-      <a href="../realisations/real-1.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
-      <a href="../realisations/real-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
-      <a href="../realisations/real-3.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Audit de sécurité</a>
-    </div>
-    <h2>Définition</h2>
-    <p>La virtualisation sur hyperviseur repose sur un logiciel intermédiaire qui crée une couche d'abstraction entre le matériel et les systèmes invités, permettant à plusieurs environnements indépendants de fonctionner simultanément sur une même machine physique. L'hyperviseur répartit et gère les ressources (CPU, mémoire, stockage, réseau) tout en garantissant l'isolation de chaque machine virtuelle.</p>
-    <p style="margin-bottom:1.5rem;">La <strong>conteneurisation</strong> est une méthode complémentaire qui permet d'exécuter des applications dans des environnements isolés légers, partageant le noyau du système hôte. <strong>Docker</strong> standardise la création et le déploiement de conteneurs. <strong>Kubernetes</strong> orchestre ces conteneurs à grande échelle. <strong>Terraform</strong> permet de provisionner l'infrastructure nécessaire sous forme de code (IaC).</p>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../competences.html">← Compétences</a> / Technique 02</p>
+  <div class="page-header">
+   <h1>Virtualisation &amp; Conteneurisation</h1>
+  </div>
 
-    <!-- Logos hyperviseurs -->
-    <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.5rem;">Hyperviseurs utilisés</p>
-    <div class="logo-row">
+  <div style="display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:1.5rem;">
+   <a href="../realisations/real-1.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Infrastructure sécurisée</a>
+   <a href="../realisations/real-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Sonde IDS conteneurisée</a>
+   <a href="../realisations/real-3.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;">→ Audit de sécurité</a>
+  </div>
 
-      <!-- Proxmox -->
-      <div class="logo-chip">
-        <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100" height="100" rx="10" fill="#E57000"/>
-          <path d="M20 30 L50 15 L80 30 L80 55 L50 70 L20 55 Z" fill="white" opacity="0.15"/>
-          <path d="M50 15 L80 30 L80 55 L50 70" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round"/>
-          <path d="M50 15 L20 30 L20 55 L50 70" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round"/>
-          <path d="M20 30 L50 45 L80 30" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round"/>
-          <line x1="50" y1="45" x2="50" y2="70" stroke="white" stroke-width="5"/>
-          <path d="M20 55 L50 70 L80 55" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round"/>
-        </svg>
-        Proxmox VE
-      </div>
+  <!-- ========================================== -->
+  <!-- DÉFINITION                 -->
+  <!-- ========================================== -->
+  <h2>Définition</h2>
+  <p>La <strong>virtualisation sur hyperviseur</strong> repose sur un logiciel intermédiaire qui crée une couche d'abstraction entre le matériel et les systèmes invités, permettant à plusieurs environnements indépendants de fonctionner simultanément sur une même machine physique. L'hyperviseur répartit les ressources (CPU, mémoire, stockage, réseau) tout en garantissant l'isolation de chaque machine virtuelle.</p>
+  <p>La <strong>conteneurisation</strong> est une méthode complémentaire : les conteneurs partagent le noyau du système hôte, ce qui les rend plus légers et rapides à déployer. <strong>Docker</strong> standardise leur création, <strong>Kubernetes</strong> orchestre des dizaines à des milliers d'instances, et <strong>Terraform</strong> permet de provisionner l'infrastructure sous-jacente sous forme de code (IaC).</p>
+  <p style="margin-bottom:1.5rem;"><em>Contexte actuel</em> : la virtualisation est un <strong>socle non négociable</strong> de toute infrastructure moderne. Avec la généralisation du cloud, la pression sur l'efficacité énergétique des datacenters et la montée des architectures hybrides on-prem / cloud, la maîtrise des hyperviseurs et de Kubernetes est devenue un prérequis. La fin annoncée du support de Broadcom-VMware pour les petits clients accélère par ailleurs l'adoption massive de <strong>Proxmox VE</strong> en France depuis 2024, ce qui correspond directement à mon environnement de travail.</p>
 
-      <!-- VirtualBox -->
-      <div class="logo-chip">
-        <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100" height="100" rx="10" fill="#183A6E"/>
-          <rect x="18" y="30" width="40" height="40" rx="4" fill="none" stroke="white" stroke-width="5"/>
-          <rect x="42" y="30" width="40" height="40" rx="4" fill="#183A6E" stroke="white" stroke-width="5"/>
-          <rect x="42" y="30" width="40" height="40" rx="4" fill="none" stroke="white" stroke-width="5"/>
-          <line x1="18" y1="50" x2="42" y2="50" stroke="white" stroke-width="3" stroke-dasharray="4 3"/>
-          <line x1="42" y1="30" x2="42" y2="70" stroke="white" stroke-width="3"/>
-        </svg>
-        VirtualBox
-      </div>
+  <!-- Logos hyperviseurs (inchangés) -->
+  <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.5rem;">Hyperviseurs utilisés</p>
+  <div class="logo-row">
+   <div class="logo-chip">
+    <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <rect width="100" height="100" rx="10" fill="#E57000"/>
+     <path d="M20 30 L50 15 L80 30 L80 55 L50 70 L20 55 Z" fill="white" opacity="0.15"/>
+     <path d="M50 15 L80 30 L80 55 L50 70" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round"/>
+     <path d="M50 15 L20 30 L20 55 L50 70" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round"/>
+     <path d="M20 30 L50 45 L80 30" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round"/>
+     <line x1="50" y1="45" x2="50" y2="70" stroke="white" stroke-width="5"/>
+     <path d="M20 55 L50 70 L80 55" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round"/>
+    </svg>
+    Proxmox VE
+   </div>
+   <div class="logo-chip">
+    <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <rect width="100" height="100" rx="10" fill="#183A6E"/>
+     <rect x="18" y="30" width="40" height="40" rx="4" fill="none" stroke="white" stroke-width="5"/>
+     <rect x="42" y="30" width="40" height="40" rx="4" fill="#183A6E" stroke="white" stroke-width="5"/>
+     <rect x="42" y="30" width="40" height="40" rx="4" fill="none" stroke="white" stroke-width="5"/>
+     <line x1="18" y1="50" x2="42" y2="50" stroke="white" stroke-width="3" stroke-dasharray="4 3"/>
+     <line x1="42" y1="30" x2="42" y2="70" stroke="white" stroke-width="3"/>
+    </svg>
+    VirtualBox
+   </div>
+   <div class="logo-chip">
+    <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <rect width="100" height="100" rx="10" fill="#607078"/>
+     <path d="M15 38 L32 62 L50 38 L68 62 L85 38" fill="none" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    VMware
+   </div>
+   <div class="logo-chip">
+    <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <rect width="100" height="100" rx="10" fill="#0060A9"/>
+     <line x1="18" y1="22" x2="82" y2="78" stroke="white" stroke-width="8" stroke-linecap="round"/>
+     <line x1="82" y1="22" x2="18" y2="78" stroke="white" stroke-width="8" stroke-linecap="round"/>
+     <circle cx="50" cy="50" r="12" fill="#0060A9" stroke="white" stroke-width="5"/>
+    </svg>
+    Xen / XCP-ng
+   </div>
+  </div>
 
-      <!-- VMware -->
-      <div class="logo-chip">
-        <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100" height="100" rx="10" fill="#607078"/>
-          <path d="M15 38 L32 62 L50 38 L68 62 L85 38" fill="none" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        VMware
-      </div>
+  <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.5rem;">Conteneurisation &amp; orchestration</p>
+  <div class="logo-row">
+   <div class="logo-chip">
+    <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <rect width="100" height="100" rx="10" fill="#2496ED"/>
+     <rect x="14" y="46" width="15" height="13" rx="2" fill="white"/>
+     <rect x="32" y="46" width="15" height="13" rx="2" fill="white"/>
+     <rect x="50" y="46" width="15" height="13" rx="2" fill="white"/>
+     <rect x="32" y="30" width="15" height="13" rx="2" fill="white"/>
+     <rect x="50" y="30" width="15" height="13" rx="2" fill="white"/>
+     <path d="M68 52 C72 44 84 44 84 52" stroke="white" stroke-width="3" fill="none"/>
+     <path d="M68 52 C62 48 56 55 65 60 L82 60 C90 60 88 50 80 50" fill="white"/>
+     <path d="M14 58 C20 70 60 70 68 58" stroke="white" stroke-width="2.5" fill="none"/>
+    </svg>
+    Docker
+   </div>
+   <div class="logo-chip">
+    <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <rect width="100" height="100" rx="10" fill="#326CE5"/>
+     <circle cx="50" cy="50" r="22" fill="none" stroke="white" stroke-width="4"/>
+     <line x1="50" y1="28" x2="50" y2="72" stroke="white" stroke-width="3"/>
+     <line x1="50" y1="50" x2="72" y2="38" stroke="white" stroke-width="3"/>
+     <line x1="50" y1="50" x2="28" y2="38" stroke="white" stroke-width="3"/>
+     <line x1="50" y1="50" x2="72" y2="62" stroke="white" stroke-width="3"/>
+     <line x1="50" y1="50" x2="28" y2="62" stroke="white" stroke-width="3"/>
+     <circle cx="50" cy="50" r="5" fill="white"/>
+    </svg>
+    Kubernetes
+   </div>
+   <div class="logo-chip">
+    <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <rect width="100" height="100" rx="10" fill="#5C4EE5"/>
+     <polygon points="50,15 72,28 72,54 50,67" fill="white" opacity="0.9"/>
+     <polygon points="28,28 50,15 50,67 28,54" fill="white" opacity="0.6"/>
+     <polygon points="28,58 50,71 50,85 28,72" fill="white" opacity="0.75"/>
+    </svg>
+    Terraform
+   </div>
+  </div>
 
-      <!-- Xen -->
-      <div class="logo-chip">
-        <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100" height="100" rx="10" fill="#0060A9"/>
-          <line x1="18" y1="22" x2="82" y2="78" stroke="white" stroke-width="8" stroke-linecap="round"/>
-          <line x1="82" y1="22" x2="18" y2="78" stroke="white" stroke-width="8" stroke-linecap="round"/>
-          <circle cx="50" cy="50" r="12" fill="#0060A9" stroke="white" stroke-width="5"/>
-        </svg>
-        Xen / XCP-ng
-      </div>
+  <!-- ========================================== -->
+  <!-- ANECDOTES (3 anecdotes précises)      -->
+  <!-- ========================================== -->
+  <h2>La compétence en pratique</h2>
 
-    </div>
+  <!-- ===== ANECDOTE 1, Proxmox Valesys ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 1 · Octobre 2023 → Août 2024 · Valesys</span>
+   <h3>Bâtir une infrastructure virtualisée à partir de zéro chez une TPE</h3>
 
-    <!-- Logos conteneurisation -->
-    <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.5rem;">Conteneurisation &amp; orchestration</p>
-    <div class="logo-row">
+   <p>À mon arrivée chez Valesys en septembre 2023, l'infrastructure se résumait à <strong>un NAS et un pare-feu</strong> : pas d'hyperviseur, pas de VM, aucune segmentation, aucun environnement de test. Avec un autre alternant, nous avons récupéré un <strong>serveur Dell 1U d'occasion</strong> et déployé <strong>Proxmox VE</strong> dessus dès octobre 2023. En deux mois, j'ai mis en place le <strong>Proxmox Backup Server</strong> (PBS) avec déports des sauvegardes sur le NAS existant pour ne pas dépendre du serveur unique.</p>
 
-      <!-- Docker -->
-      <div class="logo-chip">
-        <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100" height="100" rx="10" fill="#2496ED"/>
-          <rect x="14" y="46" width="15" height="13" rx="2" fill="white"/>
-          <rect x="32" y="46" width="15" height="13" rx="2" fill="white"/>
-          <rect x="50" y="46" width="15" height="13" rx="2" fill="white"/>
-          <rect x="32" y="30" width="15" height="13" rx="2" fill="white"/>
-          <rect x="50" y="30" width="15" height="13" rx="2" fill="white"/>
-          <path d="M68 52 C72 44 84 44 84 52" stroke="white" stroke-width="3" fill="none"/>
-          <path d="M68 52 C62 48 56 55 65 60 L82 60 C90 60 88 50 80 50" fill="white"/>
-          <path d="M14 58 C20 70 60 70 68 58" stroke="white" stroke-width="2.5" fill="none"/>
-        </svg>
-        Docker
-      </div>
+   <p>En mars 2024, l'entreprise a obtenu un budget pour un <strong>second serveur Proxmox hébergé en cloud</strong>. J'ai profité de cette opportunité pour déployer un <strong>cluster Ceph à 2 nœuds avec 2 To utiles par serveur</strong>, en miroir, ce qui nous a permis de basculer vers un stockage distribué et résilient.</p>
 
-      <!-- Kubernetes -->
-      <div class="logo-chip">
-        <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100" height="100" rx="10" fill="#326CE5"/>
-          <circle cx="50" cy="50" r="22" fill="none" stroke="white" stroke-width="4"/>
-          <line x1="50" y1="28" x2="50" y2="72" stroke="white" stroke-width="3"/>
-          <line x1="50" y1="50" x2="72" y2="38" stroke="white" stroke-width="3"/>
-          <line x1="50" y1="50" x2="28" y2="38" stroke="white" stroke-width="3"/>
-          <line x1="50" y1="50" x2="72" y2="62" stroke="white" stroke-width="3"/>
-          <line x1="50" y1="50" x2="28" y2="62" stroke="white" stroke-width="3"/>
-          <circle cx="50" cy="50" r="5" fill="white"/>
-        </svg>
-        Kubernetes
-      </div>
+   <p>Au final, l'infrastructure hébergeait <strong>une quinzaine de VM en production</strong> (DNS, reverse proxy Nginx, Passbolt, Zabbix, stack Wazuh/ELK/Graylog/Grafana, AD secondaire) et <strong>une vingtaine de VM de pré-production / lab</strong> pour tester les évolutions avant mise en service.</p>
 
-      <!-- Terraform -->
-      <div class="logo-chip">
-        <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100" height="100" rx="10" fill="#5C4EE5"/>
-          <polygon points="50,15 72,28 72,54 50,67" fill="white" opacity="0.9"/>
-          <polygon points="28,28 50,15 50,67 28,54" fill="white" opacity="0.6"/>
-          <polygon points="28,58 50,71 50,85 28,72" fill="white" opacity="0.75"/>
-        </svg>
-        Terraform
-      </div>
+   <p><strong>Une difficulté très formatrice</strong> est survenue avant le cluster : nous n'avions encore que 500 Go sur le premier serveur, et les logs ingérés par ELK ont saturé le datastore une nuit. Le Proxmox a crashé. Nous avons dû redémarrer en <strong>mode single-user Linux</strong>, identifier la VM en cause (la stack ELK), purger une VM de test inutile pour libérer de l'espace, et refaire toute la politique de <strong>rétention des logs ELK</strong> côté Elasticsearch (ILM policies, hot/warm tiers). Quelques semaines plus tard, une <strong>coupure de courant</strong> a confirmé l'autre faiblesse de l'architecture : un seul serveur physique signifiait l'indisponibilité totale de tous les services. C'est ce double incident qui a directement justifié <strong>la demande budgétaire pour un second nœud cloud</strong> et le déploiement du cluster Ceph.</p>
 
-    </div>
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> infrastructure transformée en moins de 12 mois, de <em>« 1 NAS + 1 firewall »</em> à un environnement de <strong>~35 VM</strong> sur cluster Proxmox HA + Ceph, avec sauvegardes PBS et un SOC mis en production. Le SOC a ensuite été <strong>commercialisé auprès de clients</strong> de Valesys, transformant un projet interne en offre de service. Ma valeur ajoutée a été de transformer une contrainte (panne de stockage, coupure de courant) en <strong>argument budgétaire concret</strong> pour faire évoluer l'architecture.
+   </div>
 
-    <h2>Éléments de preuve</h2>
-    <p style="margin-bottom:0.75rem;">J'ai utilisé <strong>VirtualBox</strong> lors de ma formation pour des machines virtuelles temporaires, puis mis en place un <strong>laboratoire personnel sous Proxmox</strong> avec sauvegardes et architectures réseau segmentées. En contexte professionnel chez Valesys, j'ai travaillé sur Proxmox avec haute disponibilité, stockage distribué Ceph et gestion de VLAN multiples.</p>
-    <p style="margin-bottom:1rem;">Concernant la conteneurisation, j'ai réalisé un projet académique utilisant <strong>Kubernetes et Terraform</strong>, validant les bases de l'orchestration et de l'IaC. J'ai également développé une solution personnelle de <strong>déploiement rapide de sondes IDS</strong> basée sur Docker, permettant de déployer en quelques minutes Suricata, Zeek et Arkime avec un système de monitoring des alertes.</p>
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-1.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Infrastructure sécurisée</a></p>
+  </div>
 
-    <p style="margin-bottom:0.5rem;">
-      🔗 <a href="https://github.com/ninko0/Docker-IDS-Sensor" target="_blank">github.com/ninko0/Docker-IDS-Sensor</a> — Sonde IDS conteneurisée (Docker, open source)
-    </p>
-    <p style="margin-bottom:1.5rem;">
-      🔗 <a href="https://github.com/ninko0" target="_blank">github.com/ninko0</a> — Dépôts GitHub personnels
-    </p>
+  <!-- ===== ANECDOTE 2, Sonde IDS Docker ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 2 · Octobre 2025 → aujourd'hui · Projet personnel open source</span>
+   <h3>Concevoir une sonde IDS conteneurisée publiée sur GitHub</h3>
 
-    <h2>Autocritique</h2>
-    <p style="margin-bottom:1rem;">Je dispose d'un bon niveau global sur les technologies de virtualisation. Les hyperviseurs font partie des domaines que je maîtrise avec assurance. La conteneurisation reste un axe de progression, notamment sur l'orchestration avancée et l'industrialisation à grande échelle. Mon acquisition de cette compétence s'est faite rapidement, guidée par des contraintes concrètes d'optimisation de ressources. <strong>Je recommande de ne pas se limiter à une approche théorique</strong> et de pratiquer en conditions réelles le plus tôt possible, c'est en cassant des environnements de lab qu'on apprend vraiment.</p>
+   <p>En octobre 2025, j'ai démarré <a href="https://github.com/ninko0/Docker-IDS-Sensor" target="_blank"><strong>Docker-IDS-Sensor</strong></a>, un projet personnel visant à standardiser le déploiement d'une sonde réseau open source réunissant <strong>Suricata, Zeek, Arkime et un OpenCanary</strong>. Une <strong>v1 a été publiée environ un mois après le démarrage</strong>, et le projet a continué d'évoluer depuis.</p>
 
-    <h2>Évolution</h2>
-    <p style="margin-bottom:1rem;">Je développe actuellement un projet personnel d'infrastructure complète basée sur Docker et Kubernetes, incluant DNS, serveur web, proxy, GitLab auto-hébergé et base de données. L'objectif est d'atteindre un niveau opérationnel équivalent à celui d'un administrateur systèmes junior sur ces technologies. Je poursuis également des certifications cloud (Azure, Associate Cloud Engineer) qui complètent cette compétence sur les environnements hybrides.</p>
+   <p>J'ai conçu <strong>un Dockerfile par composant</strong> (Suricata, Zeek, Arkime, OpenCanary) à partir d'images <strong>Alpine Linux</strong> de base, puis l'orchestration via <strong>docker-compose</strong>. La stack OpenSearch / OpenSearch Dashboards utilisée comme backend SIEM s'appuie sur les images officielles, qui sont indispensables au fonctionnement de l'ensemble.</p>
 
-  </main>
+   <p><strong>Difficulté technique principale :</strong> les versions récentes de Suricata et Zeek <strong>n'existent pas en image Docker officielle à jour</strong>. J'ai donc dû compiler ces outils depuis les sources dans des Dockerfiles multi-stage Alpine, en gérant les dépendances système (libpcap, hyperscan pour Suricata, etc.). Autre point sensible : faire fonctionner la capture réseau en mode promisc dans un conteneur. Cela impose de lancer les conteneurs avec <code>--cap-add=NET_ADMIN</code> et <code>--cap-add=NET_RAW</code>, et de soigner le binding des interfaces physiques (souvent en <code>network_mode: host</code>) pour que la sonde voie réellement le trafic. Sans ces réglages, les conteneurs démarrent sans erreur mais ne capturent rien, un faux positif silencieux particulièrement piégeux.</p>
+
+   <p><strong>Multiples interfaces réseau</strong> : la sonde devait pouvoir surveiller plusieurs VLAN simultanément. J'ai donc paramétré chaque conteneur Suricata / Zeek pour écouter sur une interface spécifique, avec des fichiers de configuration générés dynamiquement à partir d'un fichier d'inventaire YAML simple à éditer.</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat &amp; valeur ajoutée :</strong> le déploiement d'une sonde complète (4 composants) passe de <strong>1 à 2 heures de configuration manuelle</strong> par sonde à <strong>10 à 20 minutes de configuration + quelques minutes de build/run</strong>, soit environ <strong>1 heure pour 4 sondes</strong>. Un proche de mon réseau (pentester) a validé le déploiement et utilise activement le composant OpenCanary dans l'infrastructure de son entreprise. Le projet n'a pas encore décollé en termes de visibilité publique malgré des publications sur X (Twitter), ce qui est un point honnête à mentionner : ma valeur ajoutée est sur la <strong>conception</strong>, pas encore sur la <strong>traction communautaire</strong>.
+   </div>
+
+   <p style="margin-top:0.7rem;"><a href="../realisations/real-2.html" style="font-family:var(--font-mono); font-size:0.8rem;">→ Voir la réalisation complète : Sonde IDS conteneurisée</a></p>
+  </div>
+
+  <!-- ===== ANECDOTE 3, Laboratoire perso / Kubernetes ===== -->
+  <div class="anecdote">
+   <span class="anecdote-tag">Anecdote 3 · En cours · Projet personnel</span>
+   <h3>Monter une infrastructure Docker + Kubernetes auto-hébergée pour combler ma marge sur l'orchestration</h3>
+
+   <p>J'ai identifié l'orchestration Kubernetes comme la principale zone de progression de cette compétence. Plutôt que de me contenter d'un cours théorique, je construis depuis fin 2025 une <strong>infrastructure complète auto-hébergée</strong> sur mon homelab Proxmox, basée sur Docker puis Kubernetes : DNS interne, serveur web, reverse proxy, <strong>GitLab auto-hébergé</strong> avec runners CI/CD, et base de données PostgreSQL avec sauvegardes.</p>
+
+   <p>L'objectif est explicite : atteindre <strong>un niveau opérationnel équivalent à un administrateur systèmes junior</strong> sur K8s d'ici mi-2026, en confrontant la théorie à la pratique sur des services réels (pas des nginx-demo).</p>
+
+   <div class="anecdote-result">
+    <strong>Résultat (en cours) &amp; valeur ajoutée :</strong> j'apprends en construisant, pas en consommant. Ce labo me sert aussi de support pour les certifications cloud que je prépare, en remplaçant les déploiements managés par des équivalents auto-hébergés, ce qui force à comprendre ce qui se passe sous le capot.
+   </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- NIVEAU DE MAÎTRISE             -->
+  <!-- ========================================== -->
+  <h2>Mon niveau de maîtrise</h2>
+  <p>Mon niveau varie fortement selon les briques techniques. Je préfère afficher honnêtement où je suis solide et où j'ai encore à progresser, plutôt que de revendiquer une maîtrise globale qui ne correspondrait pas à la réalité.</p>
+
+  <div class="skill-level-grid">
+   <div class="skill-level-card">
+    <div class="lvl-name">Hyperviseurs (Proxmox, VMware)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:95%;"></div></div>
+    <div class="lvl-text">19/20 · Autonome en production</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Conteneurisation (Docker)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:60%;"></div></div>
+    <div class="lvl-text">12/20 · Conception de stacks complètes</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">Orchestration (Kubernetes)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:35%;"></div></div>
+    <div class="lvl-text">7/20 · En progression active</div>
+   </div>
+   <div class="skill-level-card">
+    <div class="lvl-name">IaC (Terraform)</div>
+    <div class="lvl-bar"><div class="lvl-fill" style="width:20%;"></div></div>
+    <div class="lvl-text">4/20 · En progression</div>
+   </div>
+  </div>
+
+  <p><strong>Contextualisation :</strong> ma maîtrise des hyperviseurs est solide en environnement PME ou opérateur télécom (Proxmox, Ceph 2-nœuds, VLAN multiples, PBS). Elle resterait <strong>en progression sur des environnements grand compte</strong> avec dizaines de nœuds, vMotion VMware multi-datacenter ou orchestrations VRO complexes, contextes que je n'ai pas encore rencontrés.</p>
+
+  <!-- ========================================== -->
+  <!-- PLACE & VITESSE D'ACQUISITION       -->
+  <!-- ========================================== -->
+  <h2>Place dans mon profil et vitesse d'acquisition</h2>
+  <p>La virtualisation est pour moi une <strong>compétence socle, à priorité maximale</strong> dans mon profil d'ingénieur infrastructure orienté sécurité. Aucun projet récent que j'ai mené (chez Valesys comme chez Paritel) ne se serait fait sans elle : c'est ce qui rend une infrastructure déployable, testable, reproductible et résiliente.</p>
+
+  <p><strong>Vitesse d'acquisition :</strong> j'ai appris Proxmox en <strong>2 à 3 semaines</strong> d'usage intensif en septembre-octobre 2023, en lisant l'intégralité de la documentation officielle sur un week-end puis en l'appliquant en conditions réelles la semaine suivante. C'est ma méthode habituelle quand un sujet me passionne : je lis tout, puis je casse des labs jusqu'à ce que ça marche. La même méthode m'a permis de monter à un niveau opérationnel sur Ceph en environ un mois, et de publier la v1 de la sonde IDS Docker un mois après le démarrage.</p>
+
+  <!-- ========================================== -->
+  <!-- RECUL & CONSEILS              -->
+  <!-- ========================================== -->
+  <h2>Mon recul sur la compétence</h2>
+  <p>Avec l'expérience que j'ai aujourd'hui, je conseille d'aborder la virtualisation par <strong>le dessin avant le clic</strong>. Une architecture qu'on n'arrive pas à schématiser sur papier est une architecture qu'on ne maîtrisera pas en production : les schémas réseau et système doivent exister avant que la première VM ne soit créée. C'est ce que j'ai appliqué systématiquement chez Valesys, et c'est ce qui a permis aux choix initiaux de rester cohérents tout au long du déploiement.</p>
+
+  <p>Je conseille aussi de <strong>lire la documentation officielle en entier, en une seule fois</strong>, plutôt que de la consulter par fragments selon les problèmes rencontrés. Survoler n'apprend rien : c'est en absorbant Proxmox, Docker ou Ceph d'un bloc qu'on capte les concepts ensemble, et qu'on évite les erreurs de débutant qu'on retrouve cinq mois plus tard en incident. Ma méthode personnelle est claire : un week-end de lecture intégrale, suivi d'une semaine de pratique en lab.</p>
+
+  <p>Enfin, et c'est probablement le conseil le plus important pour quelqu'un qui débute, il faut <strong>comprendre la différence fondamentale entre virtualisation et conteneurisation</strong>. Ce ne sont pas des outils interchangeables : un conteneur n'est pas une « petite VM ». Tant qu'on n'a pas intégré que le conteneur partage le noyau de l'hôte, on prend les mauvaises décisions d'isolation et de sécurité. Cette confusion est la première source d'erreurs que j'observe chez les autres apprenants autour de moi.</p>
+
+  <!-- ========================================== -->
+  <!-- ÉVOLUTION & FORMATIONS           -->
+  <!-- ========================================== -->
+  <h2>Évolution et formations</h2>
+  <p>Mon niveau cible à 18-24 mois est d'atteindre <strong>une maîtrise opérationnelle complète sur Kubernetes</strong> (déploiement, observabilité, sécurité des workloads, networking) et de gagner en aisance sur l'IaC avec Terraform, afin de pouvoir concevoir des infrastructures hybrides on-prem / cloud sans dépendre d'un spécialiste.</p>
+
+  <p>Sur le plan des formations, je suis actuellement engagé dans plusieurs <strong>certifications cloud</strong> qui couvrent directement le volet virtualisation managée : <strong>Microsoft Azure Cloud Computing</strong> (en cours), avec un complément orienté workloads spécialisés sur <strong>Microsoft Azure IA</strong> (en cours), et l'<strong>Associate Cloud Engineer Google Cloud</strong> (en cours) pour me construire une vision multi-cloud et éviter de dépendre d'un seul fournisseur. Une <strong>certification Kubernetes</strong> reste à définir précisément en fonction de l'évolution de mon labo personnel, mais l'objectif est de valider formellement ce niveau d'ici fin 2026.</p>
+
+  <p>En complément, je maintiens une <strong>veille continue</strong> sur les documentations officielles de Proxmox, Docker et Kubernetes, sur les blogs techniques de la communauté Proxmox, ainsi que sur les <em>release notes</em> de Suricata, Zeek et Arkime qui conditionnent l'évolution de ma sonde IDS open source.</p>
+
+  <!-- ========================================== -->
+  <!-- RÉALISATIONS LIÉES             -->
+  <!-- ========================================== -->
+  <h2>Réalisations rattachées</h2>
+  <p style="margin-bottom:0.7rem;">Cette compétence est mobilisée dans plusieurs réalisations détaillées. <a href="../realisations/real-1.html"><strong>Infrastructure sécurisée</strong></a> illustre le déploiement Proxmox, PBS et Ceph en environnement de production TPE. <a href="../realisations/real-2.html"><strong>Sonde IDS conteneurisée</strong></a> matérialise la conception et la publication open source d'une stack Docker complète. Enfin, l'<a href="../realisations/real-3.html"><strong>Audit de sécurité</strong></a> mobilise quotidiennement des machines virtuelles jetables pour les phases de reconnaissance et de pentest.</p>
+
+ </main>
 </body>
 </html>

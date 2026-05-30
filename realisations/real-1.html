@@ -1,55 +1,314 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Infrastructure sécurisée, Nicolas Lages</title>
-  <link rel="stylesheet" href="../style.css" />
+ <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Infrastructure sécurisée, Nicolas Lages</title>
+ <link rel="stylesheet" href="../style.css" />
+ <style>
+  /* Styles spécifiques à la page réalisation enrichie */
+  h2.section-title {
+   font-size: 1.1rem;
+   margin-top: 1.8rem;
+   margin-bottom: 0.6rem;
+   padding-bottom: 0.35rem;
+   border-bottom: 1px solid var(--border);
+  }
+  .step-block {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-left: 3px solid var(--violet);
+   border-radius: var(--radius);
+   padding: 1rem 1.2rem;
+   margin-bottom: 1rem;
+  }
+  .step-block .step-tag {
+   font-family: var(--font-mono);
+   font-size: 0.7rem;
+   color: var(--violet);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.35rem;
+   display: block;
+  }
+  .step-block h3 {
+   font-size: 1rem;
+   margin: 0 0 0.6rem;
+   color: var(--text);
+  }
+  .step-block p { margin-bottom: 0.6rem; }
+  .step-block p:last-child { margin-bottom: 0; }
+  .step-block pre {
+   background: var(--bg-alt);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.7rem 0.9rem;
+   font-family: var(--font-mono);
+   font-size: 0.78rem;
+   line-height: 1.55;
+   overflow-x: auto;
+   margin: 0.6rem 0;
+   color: var(--text);
+  }
+  .step-block code {
+   font-family: var(--font-mono);
+   font-size: 0.85rem;
+   background: var(--bg-alt);
+   padding: 0.08rem 0.35rem;
+   border-radius: 3px;
+   color: var(--violet);
+  }
+  .horizon-block {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.85rem 1.1rem;
+   margin-bottom: 0.7rem;
+  }
+  .horizon-block .horizon-tag {
+   font-family: var(--font-mono);
+   font-size: 0.72rem;
+   font-weight: 600;
+   color: var(--green);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin-bottom: 0.3rem;
+   display: block;
+  }
+  .horizon-block p { margin: 0; font-size: 0.92rem; }
+  .conclusion-block {
+   background: var(--green-pale);
+   border: 1px solid var(--green-light);
+   border-radius: var(--radius-lg);
+   padding: 1rem 1.25rem;
+   margin: 1rem 0;
+  }
+  .conclusion-block h3 {
+   font-size: 0.85rem;
+   font-family: var(--font-mono);
+   color: var(--green);
+   text-transform: uppercase;
+   letter-spacing: 0.07em;
+   margin: 0 0 0.45rem;
+  }
+  .conclusion-block p { margin-bottom: 0.6rem; }
+  .conclusion-block p:last-child { margin-bottom: 0; }
+  .kpi-row {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+   gap: 0.6rem;
+   margin: 1rem 0;
+  }
+  .kpi-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 0.75rem;
+   text-align: center;
+  }
+  .kpi-card .kpi-value {
+   font-size: 1.35rem;
+   font-weight: 700;
+   color: var(--violet);
+   font-family: var(--font-mono);
+   display: block;
+   margin-bottom: 0.15rem;
+  }
+  .kpi-card .kpi-label {
+   font-size: 0.7rem;
+   color: var(--text-muted);
+   text-transform: uppercase;
+   letter-spacing: 0.05em;
+  }
+ </style>
 </head>
 <body data-page="realisations">
-  <script src="../navbar.js"></script>
-  <main>
-    <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 01</p>
-    <div>
-      <div>
-        <div class="page-header">
-          <h1>Création d'une infrastructure sécurisée</h1>
-          <div class="page-tags" style="margin-top:0.4rem;">
-            <a href="../competences/tech-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Virtualisation</a>
-            <a href="../competences/tech-3.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Administration Réseau</a>
-            <a href="../competences/tech-4.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Configuration Système</a>
-            <a href="../competences/hum-1.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Gestion de projet</a>
-            <a href="../competences/hum-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Initiative</a>
-          </div>
-        </div>
-        <div style="margin-bottom:1.75rem;">
-      <img src="infra-valesys.png" alt="Architecture infrastructure sécurisée — VLAN, pfSense, Proxmox, services" style="width:100%; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
-      <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Architecture de l'infrastructure — VLAN utilisateur, serveur, test, pfSense, Proxmox et services</p>
-    </div>
+ <script src="../navbar.js"></script>
+ <main>
+  <p class="breadcrumb"><a href="../realisations.html">← Réalisations</a> / Réalisation 01</p>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Contexte et présentation</h2>
-        <p style="margin-bottom:1rem;">Dans le cadre de ma première alternance chez <strong>Valesys</strong>, entre septembre 2023 et août 2024, j'ai travaillé sur l'infrastructure interne d'une entreprise d'environ quinze personnes. À mon arrivée, accompagné d'un autre alternant, nous avons découvert un environnement extrêmement limité : un pare-feu et un NAS, sans gestion des identités, sans segmentation réseau, sans environnement de test ni outils de supervision. L'ensemble des utilisateurs partageait un réseau unique, sans distinction des usages ni contrôle des flux.</p>
+  <div class="page-header">
+   <h1>Création d'une infrastructure sécurisée</h1>
+   <div class="page-tags" style="margin-top:0.4rem;">
+    <a href="../competences/tech-2.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Virtualisation</a>
+    <a href="../competences/tech-3.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Administration Réseau</a>
+    <a href="../competences/tech-1.html" style="color:var(--violet); background:var(--violet-pale); border:1px solid var(--violet-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Configuration Système</a>
+    <a href="../competences/hum-1.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Gestion de projet</a>
+    <a href="../competences/hum-4.html" style="color:var(--green); background:var(--green-pale); border:1px solid var(--green-light); font-family:var(--font-mono); font-size:0.74rem; padding:0.18rem 0.6rem; border-radius:999px; text-decoration:none;"># Initiative</a>
+   </div>
+  </div>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Objectifs et redéfinition du besoin</h2>
-        <p style="margin-bottom:1rem;">La demande initiale consistait à déployer un SOC. Après une phase d'analyse de l'existant, nous avons identifié que cette demande reposait sur des fondations insuffisantes. Nous avons pris l'initiative, en concertation avec notre responsable, de <strong>redéfinir les priorités</strong> : construire d'abord une infrastructure sécurisée et cohérente, avant d'envisager tout mécanisme avancé de détection. L'enjeu était double : améliorer immédiatement la sécurité globale, tout en posant les bases d'un SOC réellement pertinent.</p>
+  <div style="margin-bottom:1.75rem;">
+   <img src="infra-valesys.png" alt="Architecture infrastructure sécurisée, VLAN, pfSense, Proxmox, services" style="width:100%; display:block; border-radius:var(--radius-lg); border:1px solid var(--border);" />
+   <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light); margin-top:0.4rem;">Architecture de l'infrastructure : 3 VLAN (Utilisateur, Lab-R&amp;D, Production), pfSense, Proxmox et services associés.</p>
+  </div>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Étapes de réalisation</h2>
-        <p style="margin-bottom:0.75rem;"><strong>1 — Refonte réseau :</strong> Mise en place d'une segmentation logique via <strong>VLAN</strong>, configuration des règles de filtrage inter-VLAN, maîtrise des flux sortants. Déploiement d'un accès distant sécurisé via <strong>VPN OpenVPN/pfSense</strong>.</p>
-        <p style="margin-bottom:0.75rem;"><strong>2 — Virtualisation :</strong> Intégration d'un serveur Dell, déploiement d'un hyperviseur <strong>Proxmox</strong> pour virtualiser l'ensemble des composants critiques. Isolation des services, facilitation des opérations de maintenance.</p>
-        <p style="margin-bottom:0.75rem;"><strong>3 — Services essentiels :</strong> Serveur DNS interne, <strong>Proxmox Backup Server</strong> pour la résilience, <strong>Passbolt</strong> (gestionnaire de mots de passe open source) déployé à tous les utilisateurs, <strong>Zabbix</strong> pour la supervision en temps réel, reverse proxy <strong>Nginx</strong> pour centraliser les accès et gérer les certificats.</p>
-        <p style="margin-bottom:1rem;"><strong>4 — SOC :</strong> Une fois l'infrastructure stabilisée, déploiement d'un SOC complet basé sur <strong>Wazuh</strong>, intégrant la stack ELK, Graylog et Grafana. Capacités avancées de détection, corrélation et visualisation des événements.</p>
+  <!-- ========================================== -->
+  <!-- REGARD CRITIQUE EN OUVERTURE        -->
+  <!-- ========================================== -->
+  <div class="conclusion-block">
+   <h3>// En une phrase</h3>
+   <p>Transformer en 12 mois l'environnement d'une TPE composé d'un pare-feu et d'un NAS en une infrastructure complète à 35 machines virtuelles, dont un SOC qui a ensuite été <strong>commercialisé en offre de service</strong> auprès des clients de l'entreprise.</p>
+  </div>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Organisation et acteurs</h2>
-        <p style="margin-bottom:1rem;">Ce projet a été mené exclusivement par mon collègue alternant et moi-même, avec une validation ponctuelle d'un responsable sans compétences techniques approfondies. Cette situation nous a amenés à structurer le projet de manière autonome, à prendre des décisions techniques importantes et à assumer pleinement la responsabilité des choix effectués.</p>
+  <!-- ========================================== -->
+  <!-- 1. CONTEXTE ET PRÉSENTATION         -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Contexte et présentation</h2>
+  <p>Dans le cadre de ma première alternance chez <strong>Valesys</strong>, entre <strong>septembre 2023 et août 2024</strong>, j'ai travaillé sur l'infrastructure interne d'une entreprise d'environ quinze personnes. À mon arrivée, accompagné d'un autre alternant, nous avons découvert un environnement extrêmement limité : un pare-feu et un NAS, sans gestion des identités, sans segmentation réseau, sans environnement de test, ni outils de supervision. L'ensemble des utilisateurs partageait un réseau unique, sans distinction des usages ni contrôle des flux. C'est dans ce contexte que j'ai construit, en quasi-totale autonomie technique, une infrastructure complète et sécurisée.</p>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Résultats</h2>
-        <p style="margin-bottom:1rem;">À la fin de l'alternance, l'entreprise disposait d'une infrastructure totalement transformée : réseau segmenté, systèmes sécurisés, accès contrôlés et supervisés, SOC fonctionnel. L'environnement était prêt à accueillir des projets de R&D.</p>
+  <!-- ========================================== -->
+  <!-- 2. OBJECTIFS, ENJEUX, RISQUES        -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Objectifs, enjeux et redéfinition du besoin</h2>
+  <p>La demande initiale consistait à déployer un <strong>SOC</strong>. Après une phase d'analyse de l'existant, j'ai rapidement identifié que cette demande reposait sur des fondations insuffisantes : monter un dispositif de détection sur une infrastructure sans segmentation, sans gestion d'identité et sans supervision aurait produit un produit de façade plutôt qu'un véritable outil de sécurité. J'ai donc pris l'initiative, en concertation avec mon responsable, de <strong>redéfinir les priorités</strong> du projet : construire d'abord une infrastructure sécurisée et cohérente, puis seulement ensuite y greffer un mécanisme avancé de détection.</p>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Les suites du projet</h2>
-        <p style="margin-bottom:1rem;">Le projet a continué après mon départ : déploiement d'un Active Directory, extension du SOC à plusieurs clients, ajout de nouveaux nœuds Proxmox en datacenter. Ces évolutions confirment la pertinence des choix d'architecture réalisés en amont.</p>
+  <p>L'enjeu était double. Pour Valesys, il s'agissait d'<strong>améliorer immédiatement la posture de sécurité</strong> tout en posant les bases d'un SOC réellement pertinent, qui pourrait éventuellement être commercialisé auprès des clients de l'entreprise. Pour moi, il s'agissait de <strong>conduire un projet de bout en bout</strong> sans encadrement technique senior, dans un environnement où chaque décision avait un impact réel et durable.</p>
 
-        <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">Regard critique</h2>
-        <p>Ce projet constitue une étape déterminante dans mon parcours. Le manque d'encadrement technique, bien que contraignant, a été un facteur d'apprentissage fort, il m'a obligé à développer une approche rigoureuse et à structurer mes méthodes. Cette expérience a profondément modifié ma manière d'aborder les projets, en m'amenant à accorder une importance centrale à la conception et à l'intégration de la sécurité dès les premières étapes.</p>
-      </div></div>
-  </main>
+  <p><strong>Les risques principaux</strong> étaient triples. Un risque <strong>technique</strong> : faire des choix d'architecture difficilement réversibles avec une expérience limitée. Un risque <strong>opérationnel</strong> : casser l'existant pendant la migration, en privant les utilisateurs d'outils dont ils dépendaient. Un risque <strong>de continuité</strong> enfin : nous étions deux alternants, et tout ce que nous bâtirions devait pouvoir être maintenu après notre départ par d'autres profils.</p>
+
+  <!-- ========================================== -->
+  <!-- 3. ÉTAPES DE RÉALISATION (LE GROS MORCEAU) -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Étapes de réalisation</h2>
+
+  <!-- ===== ÉTAPE 1 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 1 · Refonte réseau</span>
+   <h3>Concevoir la segmentation, le pare-feu et l'accès distant</h3>
+   <p>La première étape, qui conditionnait toutes les suivantes, a été la <strong>refonte complète du réseau</strong>. J'ai conçu une segmentation en <strong>trois VLAN</strong> aux finalités distinctes : un VLAN <strong>Utilisateur</strong> pour les postes de travail, un VLAN <strong>Lab-R&amp;D</strong> pour les environnements de test isolés, et un VLAN <strong>Production</strong> pour les serveurs critiques exposés à des services métier. Ce découpage permettait de contenir les incidents par zone et de définir des politiques de filtrage inter-zone explicites.</p>
+   <p>Le pare-feu <strong>pfSense</strong> a été configuré avec une politique restrictive par défaut : tout flux non autorisé explicitement était bloqué. Les règles entre VLAN ont été définies en partant des besoins fonctionnels recensés auprès des utilisateurs, puis affinées par observation des logs sur les premières semaines de production. L'accès distant a été assuré par un service <strong>OpenVPN hébergé directement sur pfSense côté Production</strong>, ce qui m'évitait d'exposer une machine d'administration sur Internet et concentrait l'authentification VPN sur l'équipement le plus surveillé de l'infrastructure.</p>
+   <p>Cette première étape m'a confronté à une difficulté pratique récurrente : <strong>écrire des règles de filtrage fines coûte du temps, mais une règle "any/any" en production est un piège</strong> qui revient toujours en dette technique. C'est exactement le réflexe que je pratique aujourd'hui chez Paritel, où la rigueur sur la matrice de flux est encore plus critique.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 2 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 2 · Virtualisation et stockage</span>
+   <h3>Déployer Proxmox, puis évoluer vers un cluster Ceph résilient</h3>
+   <p>Une fois le réseau prêt, j'ai déployé l'<strong>hyperviseur Proxmox VE</strong> sur un serveur <strong>Dell 1U d'occasion</strong> récupéré en octobre 2023. Cet hyperviseur unique a porté toute l'infrastructure pendant les premiers mois : DNS interne, supervision, services applicatifs, machines de test. Le <strong>Proxmox Backup Server</strong> a été déployé en parallèle, avec déport des sauvegardes vers le NAS existant pour ne pas dépendre du serveur unique.</p>
+   <p>Deux incidents ont rapidement justifié une évolution. D'abord une <strong>saturation du datastore</strong> par les logs ingérés par la stack de supervision : le Proxmox a crashé pendant une nuit, et j'ai dû redémarrer le serveur en <strong>mode single-user Linux</strong>, identifier la VM en cause, supprimer une VM de test pour libérer de l'espace et reconfigurer la politique de rétention des logs. Ensuite une <strong>coupure de courant</strong> qui a rendu l'ensemble des services indisponibles pendant plusieurs heures, faute de redondance matérielle. Ces deux incidents ont directement servi d'<strong>arguments budgétaires</strong> pour obtenir un second serveur.</p>
+   <p>En <strong>mars 2024</strong>, un second nœud Proxmox a été obtenu, hébergé en cloud, avec <strong>2 To utiles par serveur</strong>. J'ai déployé un <strong>cluster Ceph à 2 nœuds en miroir</strong> avec mon collègue alternant, permettant la résilience du stockage et la haute disponibilité des VM critiques. Au pic d'activité, l'infrastructure hébergeait une <strong>quinzaine de VM en production</strong> et une <strong>vingtaine de VM de pré-production et de lab</strong>.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 3 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 3 · Services essentiels</span>
+   <h3>DNS interne, supervision, reverse proxy, gestion des secrets</h3>
+   <p>Les services applicatifs ont été déployés dans un <strong>ordre dicté par les priorités opérationnelles</strong>, pas par la facilité de mise en œuvre. <strong>Zabbix</strong> a été déployé en premier car la supervision des serveurs et du réseau était mon besoin le plus critique à court terme : je ne connaissais pas encore les enjeux de l'entreprise côté utilisateur, et il fallait d'abord stabiliser le socle technique avant d'ajouter des couches métier. <strong>Passbolt</strong> est arrivé plus tard, quand nous avons commencé à structurer la sécurité côté utilisateurs.</p>
+
+   <p>Le <strong>DNS interne</strong> a été assuré par <strong>Bind9 avec DNSSEC activé</strong>, pour garantir l'intégrité des résolutions internes. La configuration de zone signée ressemblait à ceci, avec une rotation manuelle des clés au début, puis automatisée par la suite :</p>
+   <pre><code>// /etc/bind/named.conf.local
+zone "valesys.lan" {
+  type master;
+  file "/etc/bind/db.valesys.lan.signed";
+  auto-dnssec maintain;
+  inline-signing yes;
+  key-directory "/etc/bind/keys";
+  allow-query { internal-net; };
+};</code></pre>
+
+   <p>Le <strong>reverse proxy Nginx</strong> centralisait l'accès aux interfaces web internes (Zabbix, Passbolt, Proxmox, etc.). Tous les certificats X.509 étaient <strong>auto-signés par une autorité de certification interne</strong> que j'avais générée pour l'occasion, plutôt que de m'appuyer sur Let's Encrypt qui ne fonctionne pas pour des services internes non exposés à Internet. L'import de cette autorité dans le magasin de confiance des postes Debian se faisait en deux commandes :</p>
+   <pre><code># Sur chaque machine cliente Debian
+sudo cp valesys-internal-ca.crt /usr/local/share/ca-certificates/
+sudo update-ca-certificates</code></pre>
+
+   <p>Pour industrialiser cette opération sur tous les nouveaux serveurs déployés, j'ai écrit un <strong>script d'automatisation portatif</strong> qui prenait en charge l'import de la CA, l'application des règles de durcissement de base et la configuration des outils de supervision. Ce script est mentionné dans ma <a href="../competences/tech-4.html">compétence Tooling &amp; Scripting</a> comme l'un des outils que j'ai conçus dans une logique de réutilisabilité.</p>
+
+   <p><strong>Passbolt</strong> a été déployé dans un second temps, avec <strong>une vingtaine de comptes</strong> : un compte par collaborateur de l'entreprise, plus un compte de service dédié aux techniciens qui hébergeait les informations sensibles côté client (accès clients, secrets d'infrastructure). Cette séparation a été ma première véritable confrontation à la <strong>gestion d'identités en environnement multi-utilisateurs</strong>, exercice plus subtil qu'il n'y paraît : décider qui voit quoi, comment révoquer un accès quand un collaborateur part, comment gérer un compte de service partagé sans diluer la responsabilité.</p>
+  </div>
+
+  <!-- ===== ÉTAPE 4 ===== -->
+  <div class="step-block">
+   <span class="step-tag">Étape 4 · SOC et supervision avancée</span>
+   <h3>Déployer Wazuh comme socle de détection, avec une stack ELK en arrière-plan</h3>
+   <p>Une fois l'infrastructure stabilisée, j'ai abordé la mission initiale : <strong>déployer un SOC</strong>. Le choix s'est porté sur <strong>Wazuh</strong> plutôt que sur une stack ELK pure, car Wazuh embarque déjà la stack ELK comme back-end tout en apportant nativement les agents, les decoders et le moteur de règles de corrélation. À l'inverse, une stack ELK seule aurait demandé de tout construire à la main : agents, parsers, règles, dashboards. J'ai effectivement <strong>tenté une approche ELK pure en R&amp;D</strong>, qui était techniquement viable mais bien plus coûteuse à mettre en œuvre dans le temps disponible. Ce projet R&amp;D a été abandonné au profit de Wazuh, ce qui a été le bon arbitrage pour le contexte.</p>
+
+   <p>Sur Wazuh, j'ai mis en place <strong>plusieurs règles de corrélation custom</strong>, en complément des règles fournies par défaut. Ces règles couvraient des cas spécifiques au contexte Valesys (alerte sur connexion VPN inhabituelle, détection de modifications de fichiers critiques sur les serveurs Proxmox, surveillance des authentifications Passbolt). Une partie de ces règles devait être <strong>évaluée et ajustée avec les clients</strong> lors de la commercialisation du SOC, ce qui a été fait après mon départ.</p>
+
+   <p>La complétion par <strong>Graylog</strong> et <strong>Grafana</strong> permettait des visualisations avancées et des tableaux de bord opérationnels. La stack complète ingérait les logs depuis pfSense, les serveurs Proxmox, les VM applicatives, et les postes utilisateurs équipés d'agents Wazuh.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 4. ACTEURS                 -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Organisation et acteurs</h2>
+  <p>Ce projet a été mené par <strong>mon collègue alternant et moi-même</strong>, avec une validation ponctuelle d'un responsable sans compétences techniques approfondies. Cette configuration nous a placés dans une <strong>autonomie technique inhabituelle pour des alternants</strong> : pas de senior pour valider une commande critique avant exécution, pas d'architecte pour challenger un choix de stack, pas de pair pour relire une configuration sensible. Nous nous validions mutuellement avant chaque décision structurante.</p>
+
+  <p>La dynamique en binôme a été un facteur clé de réussite. Nous nous répartissions les sujets selon nos affinités (j'avais une plus grande appétence pour la sécurité et la conception, lui pour certaines parties opérationnelles), mais nous nous obligions à passer du temps sur les sujets de l'autre pour éviter les <strong>bus factor</strong> : aucun de nous deux ne devait être le seul à savoir comment redémarrer un service ou réparer une VM.</p>
+
+  <p>Les <strong>utilisateurs internes</strong> (une quinzaine de collaborateurs) ont été des interlocuteurs réguliers, notamment pour la phase de déploiement de Passbolt qui touchait directement leur quotidien. Apprendre à expliquer un changement technique à un public non-technique a été l'un des apprentissages collatéraux les plus précieux de cette mission.</p>
+
+  <!-- ========================================== -->
+  <!-- 5. RÉSULTATS                -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Résultats</h2>
+
+  <div class="kpi-row">
+   <div class="kpi-card">
+    <span class="kpi-value">~35</span>
+    <span class="kpi-label">VM déployées</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">2 nœuds</span>
+    <span class="kpi-label">Cluster Ceph</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">3</span>
+    <span class="kpi-label">VLAN segmentés</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">~20</span>
+    <span class="kpi-label">Comptes Passbolt</span>
+   </div>
+   <div class="kpi-card">
+    <span class="kpi-value">1</span>
+    <span class="kpi-label">SOC commercialisé</span>
+   </div>
+  </div>
+
+  <p><strong>Pour Valesys</strong>, l'entreprise est passée d'un environnement informatique limité à un pare-feu et un NAS à une <strong>infrastructure complète à 35 machines virtuelles</strong>, avec segmentation réseau, supervision en temps réel, gestion centralisée des secrets, sauvegardes automatisées et SOC opérationnel. Le SOC issu de ce projet a ensuite été <strong>commercialisé en offre de service auprès des clients de l'entreprise</strong>, transformant ce qui aurait pu être un produit interne de surface en un <strong>vrai produit commercial</strong>. C'est probablement le meilleur indicateur de la qualité du travail réalisé : ce que nous avons construit a été jugé suffisamment robuste pour être vendu à des tiers.</p>
+
+  <p><strong>Pour moi</strong>, le résultat a été un saut de maturité technique difficilement quantifiable, mais bien réel. J'ai acquis une <strong>confiance opérationnelle</strong> qu'aucun cours ne donne : la certitude que face à un problème inconnu, je trouverai un chemin parce que je l'ai déjà fait sur des sujets très différents. J'ai aussi consolidé des compétences sur Proxmox et Ceph qui me servent aujourd'hui chez Paritel comme sur mes projets personnels, et j'ai compris dans la pratique pourquoi la <strong>sécurité doit être pensée dès la conception</strong> et non ajoutée après coup.</p>
+
+  <!-- ========================================== -->
+  <!-- 6. LENDEMAINS (3 HORIZONS GRILLE)      -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Lendemains du projet</h2>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// Futur immédiat (été 2024, mon départ)</span>
+   <p>J'ai laissé à mon départ une <strong>série complète de documentation</strong> sur les choix d'infrastructure et le fonctionnement détaillé de chaque machine virtuelle. Mon objectif était simple : que cette infrastructure ne soit pas laissée à l'abandon par manque de transmission. Cette documentation couvrait les schémas réseau, la configuration de pfSense, la procédure de basculement Ceph, les politiques de sauvegarde PBS, et les playbooks pour les opérations de maintenance courantes. La passation s'est faite avec le nouvel arrivant en charge de prendre la suite, et le binôme alternant avec qui j'ai construit l'infrastructure est resté en poste pour assurer la continuité.</p>
+  </div>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// À distance (fin 2024 et 2025)</span>
+   <p>L'infrastructure a continué d'évoluer après mon départ. Un <strong>Active Directory</strong> a été déployé pour structurer la gestion d'identité côté utilisateurs, ce qui n'avait pas pu être fait pendant mon contrat faute de temps. Le <strong>SOC a été étendu à plusieurs clients commerciaux</strong> de Valesys, qui louent désormais la capacité de supervision développée pendant ma mission. Des nœuds Proxmox supplémentaires ont été déployés pour absorber la croissance d'activité. Ces informations me viennent directement d'un <strong>ami et ancien collègue qui travaille encore chez Valesys</strong>, ce qui me permet de continuer à suivre l'évolution de l'infrastructure malgré mon départ.</p>
+  </div>
+
+  <div class="horizon-block">
+   <span class="horizon-tag">// Aujourd'hui (2026)</span>
+   <p>Aujourd'hui chez Paritel, je travaille à une échelle radicalement différente : l'équipe Sécurité &amp; Réseaux opère <strong>trois clusters ELK distincts</strong> (un client, un personnel, un de lab) qui ingèrent en moyenne <strong>700 000 logs par jour</strong>, en provenance d'une grande diversité de sources (gestionnaire de mots de passe 1Password, reverse proxies HAProxy, pare-feux Juniper, Fortinet, Palo Alto, sondes IDS, trafic client par JFlow sur les routeurs externes, et de nombreux composants tiers de sécurité). Cette exposition à une échelle opérateur a profondément fait évoluer ma compréhension de ce qu'est un SOC mature.</p>
+   <p>Avec cette expérience, je referais aujourd'hui <strong>certains choix différemment</strong> chez Valesys. Je structurerais davantage les pipelines Logstash dès le départ, j'investirais plus tôt dans les politiques de rétention par index, je découperais le cluster ELK en plusieurs nœuds dédiés plutôt que tout sur une seule VM, et j'industrialiserais davantage la création de règles Wazuh via du code versionné plutôt que via l'interface graphique. Ce qui prouve que <strong>cette compétence n'est jamais figée</strong> : chaque nouvelle expérience reconfigure rétrospectivement les précédentes.</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 7. REGARD CRITIQUE (3 AXES GRILLE)     -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Regard critique</h2>
+
+  <p><strong>Mes apports concrets au projet</strong> ont été triples. D'abord le <strong>recadrage initial de la mission</strong> : refuser de partir directement sur le SOC pour analyser ce qui manquait en amont a été la décision la plus structurante de tout le projet, et elle a été prise dans les deux premières semaines. Ensuite la <strong>conception bout en bout de l'architecture</strong> : VLAN, choix d'hyperviseur, dimensionnement du stockage, choix du SIEM, ces décisions techniques structurantes ont été prises en autonomie. Enfin l'<strong>industrialisation</strong> à travers les scripts d'automatisation et la documentation, qui ont permis à l'infrastructure de survivre à mon départ.</p>
+
+  <p><strong>Ma valeur ajoutée mesurable</strong> est dans le passage du "produit interne" au "produit commercialisable". Sans la phase d'infrastructure préalable, le SOC initialement demandé aurait été un produit de surface, jamais commercialisable. En posant les fondations techniques avant de déployer la couche détection, j'ai transformé une mission de quelques mois en un <strong>actif commercial pour l'entreprise</strong>, ce qui dépasse largement le périmètre attendu d'un alternant.</p>
+
+  <p><strong>Mes enseignements personnels</strong> sont nombreux. L'autonomie sans filet a confirmé que <strong>je sais avancer seul face à un problème inconnu</strong>, ce qui n'était pas garanti avant cette mission. L'importance des fondations techniques, qu'on a tendance à sacrifier pour aller vite, est devenue pour moi un <strong>principe non négociable</strong> : on ne pose pas une couche avancée sur des fondations bancales, sinon on construit du fragile. Et la <strong>sécurité dès la conception</strong> ("security by design") n'est plus pour moi une formule théorique : c'est devenu un réflexe pratique que j'applique à tous mes projets, professionnels ou personnels.</p>
+
+  <p>Avec le recul, je vois aussi <strong>les limites de cette expérience</strong>. L'absence d'encadrement technique senior, qui a été un accélérateur d'autonomie, a aussi été un <strong>frein à la rigueur méthodologique</strong> : personne ne nous a appris à structurer une revue de configuration, à formaliser un post-mortem d'incident, à documenter une décision d'architecture (ADR). Ces pratiques, je les ai découvertes seulement plus tard chez Paritel, et je sais aujourd'hui que je les aurais introduites bien plus tôt si on me les avait montrées. C'est précisément pour cela que je cherche désormais des contextes professionnels où je peux apprendre <strong>au contact de profils techniques expérimentés</strong>.</p>
+
+  <!-- ========================================== -->
+  <!-- COMPÉTENCES RATTACHÉES           -->
+  <!-- ========================================== -->
+  <h2 class="section-title">Compétences rattachées</h2>
+  <p>Ce projet a mobilisé l'essentiel de mes compétences techniques et humaines. Sur le volet technique, il illustre principalement la <a href="../competences/tech-2.html"><strong>Virtualisation</strong></a> (Proxmox, cluster Ceph, PBS), l'<a href="../competences/tech-3.html"><strong>Administration Réseau</strong></a> (segmentation VLAN, pfSense, VPN OpenVPN) et la <a href="../competences/tech-1.html"><strong>Configuration Système</strong></a> (Bind9 DNSSEC, Wazuh, Nginx, Zabbix, Passbolt). Sur le volet humain, il met en avant la <a href="../competences/hum-1.html"><strong>Gestion de projet</strong></a> conduite en autonomie sur 12 mois et la capacité à <a href="../competences/hum-4.html"><strong>Faire preuve d'initiative</strong></a>, dont le recadrage initial de la mission est probablement la meilleure illustration.</p>
+
+ </main>
 </body>
 </html>
